@@ -28,7 +28,7 @@
 /*                                  */
 /************************************/
 /* General */
-#define INI_FILE_NAME     "\\cwmm.ini"
+#define MMCLS_INI_FILE_NAME     "\\cwmm.ini"
 #define INI_WINDOWPOS_KEY "windowpos"    /* Key for storing window position */
 
 /* Audio player */

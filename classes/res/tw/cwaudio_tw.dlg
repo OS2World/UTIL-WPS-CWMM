@@ -1,0 +1,76 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+DLGTEMPLATE IDDLG_ID3TAGS LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_ID3TAGS, 92, 13, 209, 120, NOT FS_DLGBORDER | 
+            WS_VISIBLE
+    BEGIN
+        PUSHBUTTON      "儲存(~S)", IDPB_ID3SAVE, 44, 1, 40, 14
+        PUSHBUTTON      "取消(~C)", IDPB_CANCEL, 87, 1, 40, 14
+        PUSHBUTTON      "解說(~H)", IDPB_ID3HELP, 130, 1, 40, 14, BS_HELP
+        GROUPBOX        "ID3 Tags", IDGB_ID3TAGS, 6, 17, 202, 97
+        LTEXT           "名稱：", 210, 9, 95, 57, 8
+        ENTRYFIELD      "", IDEF_ID3NAME, 73, 95, 127, 8, ES_MARGIN
+        LTEXT           "演出者：", 211, 9, 82, 57, 8
+        ENTRYFIELD      "", IDEF_ID3ARTIST, 73, 82, 127, 8, ES_MARGIN
+        LTEXT           "專輯：", 212, 9, 69, 57, 8
+        ENTRYFIELD      "", IDEF_ID3ALBUM, 73, 69, 127, 8, ES_MARGIN
+        LTEXT           "註解：", 213, 9, 56, 57, 8
+        ENTRYFIELD      "", IDEF_ID3COMMENT, 73, 56, 127, 8, ES_MARGIN
+        LTEXT           "年份：", 214, 9, 44, 57, 8
+        ENTRYFIELD      "", IDEF_ID3YEAR, 73, 43, 40, 8, ES_MARGIN
+        LTEXT           "類型：", 215, 9, 26, 57, 8
+        CONTROL         "", IDDD_ID3GENRE, 71, 5, 99, 31, WC_COMBOBOX, 
+                        CBS_DROPDOWN | WS_GROUP | WS_TABSTOP | WS_VISIBLE
+    END
+END
+
+DLGTEMPLATE IDDLG_WAVEINFOPAGE LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_WAVEINFOPAGE, 91, 31, 169, 109, NOT FS_DLGBORDER | 
+            WS_VISIBLE | NOT WS_SAVEBITS
+    BEGIN
+        GROUPBOX        "聲音資訊", IDGB_WAVEINFO, 6, 4, 154, 67, NOT 
+                        WS_GROUP
+        LTEXT           "取樣速度：", IDST_SAMPLERATELABEL, 17, 35, 76, 8
+        LTEXT           "取樣大小(Bits)：", IDST_BPSLABEL, 17, 23, 76, 8
+        LTEXT           "播放時間：", IDST_PLAYTIMELABEL, 17, 47, 76, 8
+        LTEXT           "聲道：", IDST_CHANNELSLABEL, 17, 12, 76, 8
+        LTEXT           "??:??", IDST_PLAYTIME, 108, 47, 39, 8
+        LTEXT           "??", IDST_SAMPLERATE, 108, 35, 39, 8
+        LTEXT           "??", IDST_BPS, 108, 23, 39, 8
+        LTEXT           "??", IDST_CHANNELS, 108, 12, 39, 8
+    END
+END
+
+DLGTEMPLATE IDDLG_IMAGEINFOPAGE LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_IMAGEINFOPAGE, 91, 31, 169, 109, NOT FS_DLGBORDER | 
+            WS_VISIBLE
+    BEGIN
+        GROUPBOX        "影像資訊", IDGB_IMAGEINFO, 6, 4, 154, 78, 
+                        NOT WS_GROUP
+        LTEXT           "寬度：", IDST_IMAGEWIDTHLABEL, 17, 35, 76, 8
+        LTEXT           "高度：", IDST_IMAGEHEIGHTLABEL, 17, 23, 76, 8
+        LTEXT           "深度：", IDST_COLORDEPTHLABEL, 17, 12, 76, 8
+        LTEXT           "??", IDST_IMAGEWIDTH, 108, 35, 39, 8
+        LTEXT           "??", IDST_IMAGEHEIGHT, 108, 23, 39, 8
+        LTEXT           "??", IDST_COLORDEPTH, 108, 12, 39, 8
+        LTEXT           "", IDST_IMAGEFORMAT, 17, 48, 135, 21, DT_WORDBREAK
+    END
+END
+
+DLGTEMPLATE IDDLG_STREAMURLPAGE LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_STREAMURLPAGE, 91, 31, 169, 109, NOT FS_DLGBORDER | 
+            WS_VISIBLE
+    BEGIN
+        GROUPBOX        "URL", IDGB_STREAMURL, 6, 4, 154, 61, NOT WS_GROUP
+        ENTRYFIELD      "", IDEF_URL, 13, 23, 140, 8, ES_MARGIN
+        LTEXT           "輸入 URL 至串流伺服器：", IDST_URLTEXT, 12, 
+                        37, 143, 8
+    END
+END
+

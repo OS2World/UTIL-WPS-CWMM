@@ -1,5 +1,5 @@
 /*
- * (C) Chris Wohlgemuth 2002-2003
+ * (C) Chris Wohlgemuth 2002-2005
  *
  */
 /*
@@ -38,6 +38,7 @@
 #define INCL_PM
 #include <os2.h>
 #include "cwvideo.ih"
+#include "cwaudioinc.h" /* For REXX script name */
 //#include "cwmmres.h"
 //#include "mmres.h"
 
@@ -45,7 +46,9 @@ HMODULE queryResModuleHandle(void);
 HMODULE queryModuleHandle(void);
 BOOL getMessage(char* text,ULONG ulID, LONG lSizeText, HMODULE hResource,HWND hwnd);
 ULONG launchPMProg(PSZ pszTitle, PSZ wrapperExe, PSZ parameters,  CWMMDataFile *thisPtr, ULONG ulView);
+BOOL getStringFromRexxScript(PSZ rexxFile, char* chrResult, ULONG ulSize);
 
+char chrMMVideoExt[400]={0};/* Array holding the extensions for wpclsQueryInstanceFilter() */
 
 /*
  * SOM_Scope BOOL  SOMLINK cwvideo_wpModifyPopupMenu(CWVideo *somSelf, 
@@ -183,6 +186,39 @@ SOM_Scope BOOL  SOMLINK cwvideoM_wpclsCreateDefaultTemplates(M_MMVideo *somSelf,
 }
 
 
+SOM_Scope PSZ  SOMLINK cwvideoM_wpclsQueryInstanceType(M_MMVideo *somSelf)
+{
+  /*   static char chrTitle[40]={0}; */
+    /* M_MMVideoData *somThis = M_MMVideoGetData(somSelf); */
+    M_MMVideoMethodDebug("M_MMVideo","cwvideoM_wpclsQueryInstanceType");
+
+#if 0
+    /* The type probably shouldn't be translated to make changing files between languages
+       easier.*/
+    if(chrTitle[0]==0)
+      if(!getMessage(chrTitle, IDSTR_CWVIDEOTITLE, sizeof(chrTitle), queryResModuleHandle(), HWND_DESKTOP))
+        strcpy(chrTitle,"Digital video");
+#endif
+    return TYPE_DIGITALVIDEO;
+    /*  return (M_MMVideo_parent_M_CWMMDataFile_wpclsQueryInstanceType(somSelf)); */
+}
+
+SOM_Scope PSZ  SOMLINK cwvideoM_wpclsQueryInstanceFilter(M_MMVideo *somSelf)
+{
+    /* M_MMVideoData *somThis = M_MMVideoGetData(somSelf); */
+    M_MMVideoMethodDebug("M_MMVideo","cwvideoM_wpclsQueryInstanceFilter");
+
+    /* The list of additional extensions is built in wpclsInitData(). 
+
+       FIXME
+       This is a static list read in only once during startup.
+       Should probably be changed later on.
+       */
+    return chrMMVideoExt;
+
+    /* return (M_MMVideo_parent_M_CWMMDataFile_wpclsQueryInstanceFilter(somSelf)); */
+}
+
 /*
  * SOM_Scope PSZ  SOMLINK cwvideoM_wpclsQueryTitle(M_CWVideo *somSelf)
  */
@@ -203,6 +239,41 @@ SOM_Scope PSZ  SOMLINK cwvideoM_wpclsQueryTitle(M_MMVideo *somSelf)
     return chrTitle;
 }
 
+
+SOM_Scope void  SOMLINK cwvideoM_wpclsInitData(M_MMVideo *somSelf)
+{
+  static BOOL bGotVideoExt=FALSE;
+
+    /* M_MMVideoData *somThis = M_MMVideoGetData(somSelf); */
+    M_MMVideoMethodDebug("M_MMVideo","cwvideoM_wpclsInitData");
+
+    /* 
+       Taken from the audio classes. I suspect the same is true for the video classes.
+       Anyway it wont hurt having this here.
+
+       Get extensions of additional audio procs. These extensions may be specified by
+       newly installed IO procs in MMPM2.INI or by using the Multimedia setup. For
+       example the MMIOMP3 procedure for reading MP3 files adds the MP3 extension this
+       way to the system. Extensions already handled by a specialized class will be
+       filtered in the called REXX script e.g. MP3 so only unknown extensions end up here.
+
+       Strangely enough wpclsQueryInstanceFilter() is called during wpclsInitData() so
+       we query the extensions here before calling the parent.
+
+       FIXME:
+       The check is only done once during initialization. This is a little annoyance for
+       the user because new extension specified in the settings will only be picked up
+       on next WPS start. 
+       */
+     if(!bGotVideoExt)
+      {
+        /* REXX script: "videoext.rx" */
+        getStringFromRexxScript(MMVIDEO_GETEXT_RX, chrMMVideoExt, sizeof(chrMMVideoExt));
+        bGotVideoExt=TRUE; 
+      }
+
+    M_MMVideo_parent_M_CWMMDataFile_wpclsInitData(somSelf);
+}
 
 /*
  * SOM_Scope ULONG  SOMLINK cwvideoM_wpclsQueryDefaultView(M_CWVideo *somSelf)

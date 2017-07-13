@@ -7,7 +7,7 @@ BEGIN
 IDSTR_TYPEAUDIO       "Audio"
 IDSTR_TYPEIMAGE       "Image"
 IDSTR_TYPEVIDEO       "Video"
-IDSTR_AUDIOINFOTEXT   "Play time:\t%02d:%02d\n\nSamplerate:\t%d\n\nBits per sample:\t%d\n\nChannels:\t%d"
+IDSTR_AUDIOINFOTEXT   "Play time:\t%02d:%02d\x0a\x0aSamplerate:\t%d\x0a\x0aBits per sample:\t%d\x0a\x0aChannels:\t%d"
 IDSTR_NOMMTEMPLATEFLDRTITLE "Error during file creation"
 IDSTR_NOMMTEMPLATEFLDR "Multimedia template folder can't be found. It may has lost the object ID <MMPM2_MMTEMPLATEFOLDER>."
 END

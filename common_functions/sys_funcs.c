@@ -21,20 +21,20 @@
 extern "C" {
 #endif
   
-  /**!**************************************************/
-  /*                                                  */
-  /* @@DESC                                           */
-  /*                                                  */
-  /* This funktion returns the drive letter of the    */
-  /* boot partition.                                  */
-  /*                                                  */
-  /* @@RETURNS                                        */
-  /*                                                  */
-  /* char chrDrive                                    */
-  /*                                                  */
-  /* Drive from which the system was booted.          */
-  /*                                                  */
-  /**!!*************************************************/
+/*!**************************************************/
+/*                                                  */
+/* @@DESC                                           */
+/*                                                  */
+/* This funktion returns the drive letter of the    */
+/* boot partition.                                  */
+/*                                                  */
+/* @@RETURNS                                        */
+/*                                                  */
+/* char chrDrive                                    */
+/*                                                  */
+/* Drive from which the system was booted.          */
+/*                                                  */
+/*!!*************************************************/
 char SysQueryBootDriveLetter(void)
 {
   ULONG ulSysValue;
@@ -72,7 +72,10 @@ ULONG SysQueryOSRelease(void)
 
 }
 
-/**!**************************************************/
+/*
+   Documentation script can't handle the const keyword yet!!!!
+*/
+/*--->!**************************************************/
 /*                                                  */
 /* @@DESC                                           */
 /*                                                  */
@@ -86,7 +89,7 @@ ULONG SysQueryOSRelease(void)
 /*                                                  */
 /* !parsing is broken at the moment because of const and (...)              */
 /*                                                  */
-/**!!*************************************************/
+/*!!*************************************************/
 void SysWriteToTrapLog(const char* chrFormat, ...)
 {
   char logNameLocal[CCHMAXPATH];
@@ -142,6 +145,11 @@ BOOL SysCheckFileExists(char* chrFileName)
 /*                                                  */
 /* Size of the file.                                */
 /*                                                  */
+/* @@REMARKS                                        */
+/*                                                  */
+/* In case of a nonexistant file 0 is returned. So  */
+/* it's necessary to first check if the file exists.*/
+/*                                                  */
 /*!!*************************************************/ 
 ULONG SysQueryFileSize(char* chrFileName)
 {
@@ -178,6 +186,13 @@ ULONG SysQueryCurrentTID(void)
   return ptib->tib_ptib2->tib2_ultid;
 }
 
+/*!**************************************************/
+/*                                                  */
+/* @@DESC                                           */
+/*                                                  */
+/* To be written...                                 */
+/*                                                  */
+/*!!*************************************************/
 ULONG SysQueryDriveType(ULONG ulDriveNum)
 {
   ULONG ulDisk=0;
@@ -214,7 +229,7 @@ ULONG SysQueryDriveType(ULONG ulDriveNum)
       PFSQBUFFER2 pBuf=(PFSQBUFFER2)buf;
       
       //      SysWriteToTrapLog("Drive nr.: %d, rc for DSK_BLOCKREMOVABLE-> ERROR_NOT_SUPPORTED\n", ulDriveNum);
-      sprintf(chrDev, "%c:", 'a'+ulDriveNum-1);
+      sprintf(chrDev, "%c:", 'a'+(char)(ulDriveNum-1));
       cbBuf=sizeof(buf);
       
       /* Check if local or remote (or anything else) */
@@ -349,6 +364,13 @@ ULONG SysQueryDriveType_(ULONG ulDriveNum)
 }
 #endif
 
+/*!**************************************************/
+/*                                                  */
+/* @@DESC                                           */
+/*                                                  */
+/* To be written...                                 */
+/*                                                  */
+/*!!*************************************************/
 ULONG SysQueryFreeDriveSpace(ULONG ulDriveNum, ULONG *ulTotal, ULONG * ulFree, ULONG* ulBytesUnit)
 {
   FSALLOCATE fsa;
@@ -370,11 +392,45 @@ ULONG SysQueryFreeDriveSpace(ULONG ulDriveNum, ULONG *ulTotal, ULONG * ulFree, U
   return(NO_ERROR);
 }
 
-/*
-  The returned volname is always terminated by zero.
-  ulDriveNum:  1...26
- */
-ULONG SysQueryDiskName(ULONG ulDriveNum, ULONG ulSize, char *chrBuffer)
+/*!**************************************************/
+/*                                                  */
+/* @@DESC                                           */
+/*                                                  */
+/* This function returns the home directory of the  */
+/* current user.                                    */
+/*                                                  */
+/* @@RETURNS                                        */
+/*                                                  */
+/* ULONG rc                                         */
+/*                                                  */
+/* NO_ERROR is returned if the function succeeds.   */
+/*                                                  */
+/* @@PARAM                                          */
+/*                                                  */
+/* ULONG ulDriveNum input                           */
+/*                                                  */
+/* The number of the drive to be queried (1-26).    */
+/*                                                  */
+/* @@PARAM                                          */
+/*                                                  */
+/* char* chrBuffer in/out                           */
+/*                                                  */
+/* Pointer to a buffer where the volume name will   */
+/* be placed.                                       */
+/*                                                  */
+/* @@PARAM                                          */
+/*                                                  */
+/* ULONG ulSize input                               */
+/*                                                  */
+/* Size of the name buffer.                         */
+/*                                                  */
+/* @@REMARKS                                        */
+/*                                                  */
+/* The returned name is always terminated by zero.  */
+/*                                                  */
+/*!!*************************************************/
+
+ULONG SysQueryDiskName(ULONG ulDriveNum, char *chrBuffer, ULONG ulSize)
 {
   FSINFO fsIBuf;
   ULONG rc;
@@ -393,17 +449,48 @@ ULONG SysQueryDiskName(ULONG ulDriveNum, ULONG ulSize, char *chrBuffer)
   return(NO_ERROR);
 }
 
+/*!**************************************************/
+/*                                                  */
+/* @@DESC                                           */
+/*                                                  */
+/* This function returns the home directory of the  */
+/* current user.                                    */
+/*                                                  */
+/* @@RETURNS                                        */
+/*                                                  */
+/* BOOL fSuccess                                    */
+/*                                                  */
+/* TRUE if the home dir is specified and does exist */
+/*                                                  */
+/* @@PARAM                                          */
+/*                                                  */
+/* char* chrBuf in/out                              */
+/*                                                  */
+/* Pointer to a buffer where the home directory     */
+/* name will be placed.                             */
+/*                                                  */
+/* @@PARAM                                          */
+/*                                                  */
+/* ULONG ulSize input                               */
+/*                                                  */
+/* Size of the name buffer.                         */
+/*                                                  */
+/* @@REMARKS                                        */
+/*                                                  */
+/* The returned string is always terminated by zero.*/
+/* .p:                                              */
+/* If a directory is specified in the HOME          */
+/* environment variable but doesn't exist FALSE is  */
+/* returned and a message is written to the apps    */
+/* exception log.                                   */
+/*                                                  */
+/*!!*************************************************/
 BOOL SysQueryHomeDir(char* chrBuf, ULONG ulSize)
 {
   char *chrHome=getenv("HOME");
 
   if(!chrHome || !chrBuf)
     return FALSE;
-
-#if 0
-  SysWriteToTrapLog("r:\\temp: %d , r:\\bla: %d \n",
-                    SysCheckFileExists("r:\\temp"), SysCheckFileExists("r:\\bla"));
-#endif
 
   if(strlcpy(chrBuf, chrHome, ulSize)>=ulSize) {
     chrBuf[0]=0; 

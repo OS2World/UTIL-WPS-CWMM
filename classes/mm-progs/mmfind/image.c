@@ -91,9 +91,6 @@ VOID DrawBitmap ( HWND hwnd )
     bReturnCode = WinEndPaint (hps);
 }
 
-
-
-
 MRESULT EXPENTRY bmpPreviewProc(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
 {
 
@@ -115,6 +112,7 @@ MRESULT EXPENTRY bmpPreviewProc(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
 }
 
 
+#if 0
 /*
   Load an image file using IO-Procs
   */
@@ -377,3 +375,4 @@ HBITMAP loadBitmap ( PSZ pszFileName, PBITMAPINFOHEADER2 pBMPInfoHeader2)
 
     return(hbm);
 }
+#endif

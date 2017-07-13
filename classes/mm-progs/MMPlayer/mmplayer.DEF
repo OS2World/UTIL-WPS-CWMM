@@ -1,8 +1,12 @@
-; DEF-file for mmplayer.exe. This is a PM program which 
-; play audio files.
 ;
-;                    (C) Chris Wohlgemuth 2003
-
+; MMPLAYER: PM-Program for audio file playing
+;
+;
+;    (c) C. Wohlgemuth 2003-2005
+;
+;
+; Created 14 Aug 2005 21:15:29
+;
 ;/*
 ; * This program is free software; you can redistribute it and/or modify
 ; * it under the terms of the GNU General Public License as published by
@@ -25,9 +29,5 @@
 ; * http://www.geocities.com/SiliconValley/Sector/5785/
 ; */
 NAME MMPLAYER WINDOWAPI
-DESCRIPTION '$@#(c) Chris Wohlgemuth :V0.2.7 (17.08.2003)#@PM-Program for audio file playing'
+DESCRIPTION '$@#(c) C. Wohlgemuth 2005:0.2        #@##1## 14/08/05 21:15:29        My ;-)     ::::9::@@PM-Program for audio file playing V0.2.9'
 STACKSIZE    1638400
-
-
-
-

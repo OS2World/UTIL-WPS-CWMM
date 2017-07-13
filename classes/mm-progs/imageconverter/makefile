@@ -1,38 +1,31 @@
 # Makefile
 
 include ../../../make.inc
+include ../mmprog.inc
 
-CC           = gcc
-LIB_DIR      = $d:/emx/lib 
-#CPPFLAGS     = -Ge- /Gm+ -G4 -Gl  /O+ -Oc+ -Ol
-#CPPFLAGS     = -O -Zomf -Zcrtdll -Zmtd -s
-CPPFLAGS     = -O -Wall -Zomf -Zmt -Zsys -s
-INC		= ../include -I ../../../classes/inc -I ../../../common_functions/include
-DEFS         = 
-PROGS        =  
-ODIR		= .
-CPPDIR	= .
-LIBDIR	=	../lib
-OBJECTS	=	$(LIBDIR)/message.obj $(LIBDIR)/helper.obj $(LIBDIR)/progbars.obj $(LIBDIR)/sys_funcs.obj
+OBJECTS	=	$(LIBDIR)/message.obj \
+		$(LIBDIR)/helper.obj \
+		$(LIBDIR)/progbars.obj \
+		$(LIBDIR)/sys_funcs.obj
 
 all:	imgconv.exe
 
-$(LIBDIR)/%.obj:	$(COMMONSRC)/%.c
-	gcc -c -o$@ -Zomf -I$(INC) $<  
 
 imgconv.exe:	imgconv.c $(OBJECTS)
+	cmd /C $(TOOLDIR)\create_MMPROG_def.cmd imgconv.def
 #Use this command to link dynamicaly
-#	gcc $(CPPFLAGS) -I$(INC) imgconv.c $(OBJECTS) -Zmtd -los2me imgconv.def
-	gcc $(CPPFLAGS) -I$(INC) imgconv.c $(OBJECTS) -los2me imgconv.def
+	$(CC) $(CPPFLAGS) -I$(INC) imgconv.c $(OBJECTS) -los2me imgconv.def
 
 clean:
 	-rm *.exe
+	-rm *.dll
 	-rm *.obj
+	-rm *.res
+	-rm *.ini
 
 cleaner:
 	-rm *.*~
 	-rm *.flc
 
+
 distribution:
-	
-

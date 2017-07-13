@@ -1,8 +1,12 @@
-; DEF-file for audconv.exe. This is a PM program which 
-; shows a dialog box and converts audio files to waves.
 ;
-;                    (C) Chris Wohlgemuth 2001
-
+; AUDCONV: PM-Program for audio file converting
+;
+;
+;    (c) C. Wohlgemuth 2001-2006
+;
+;
+; Created 12 Feb 2006 19:46:31
+;
 ;/*
 ; * This program is free software; you can redistribute it and/or modify
 ; * it under the terms of the GNU General Public License as published by
@@ -24,10 +28,6 @@
 ; * http://www.os2world.com/cdwriting
 ; * http://www.geocities.com/SiliconValley/Sector/5785/
 ; */
-
-NAME audconv WINDOWAPI
-DESCRIPTION '$@#(c) Chris Wohlgemuth :V0.2.7 (17.08.2003)#@PM-Program for audio file converting'
-
-
-
-
+NAME AUDCONV WINDOWAPI
+DESCRIPTION '$@#(c) C. Wohlgemuth 2006:0.2        #@##1## 12/02/06 19:46:31        My ;-)     ::::9::@@PM-Program for audio file converting V0.2.9'
+STACKSIZE    1638400

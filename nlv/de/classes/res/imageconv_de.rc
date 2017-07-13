@@ -1,0 +1,8 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+STRINGTABLE
+BEGIN
+IDSTR_IMAGEBROWSETITLE   "Bild-Dateiname"
+END

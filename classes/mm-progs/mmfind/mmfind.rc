@@ -1,5 +1,7 @@
 #ifndef OS2_INCLUDED
    #include <os2.h>
 #endif
+#include "mmfind.h"
 
-rcinclude mmfind.dlg
+BITMAP IDBMP_PLAY  "./bmp/play.bmp"
+BITMAP IDBMP_STOP  "./bmp/stop.bmp"

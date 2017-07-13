@@ -334,4 +334,6 @@
 #define ID_MENUITEMID3            4
 #define ID_MENUITEMMASTERVOLUME 5
 
-
+#define IDPB_MMFINDSTOP             809
+#define IDPB_MMFINDPAUSE            810
+#define IDPB_MMFINDPLAY             811

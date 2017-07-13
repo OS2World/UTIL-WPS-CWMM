@@ -1,0 +1,20 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+
+STRINGTABLE 
+BEGIN
+
+IDSTR_CONVERTCHANNELS    "%d 聲道"
+IDSTR_CONVERTSAMPLERATE  "%d Hz"
+IDSTR_CONVERTPLAYTIME    "%d:%02d 分的播放時間"
+IDSTR_CONVERTDIALOGERROR "無法讀取對話框模版！請檢查你的安裝。"
+IDSTR_CONVERTNOSPACETITLE   "轉換成 wave"
+IDSTR_CONVERTNOSPACETEXT   "沒有足夠的空間來解碼檔案。請選擇至少有 %d MB 的未使用空間磁碟。"
+IDSTR_INSTALLERRORTITLE  "安裝問題"
+IDSTR_AUDIOBROWSETITLE   "音訊檔案名稱"
+
+END
+
+

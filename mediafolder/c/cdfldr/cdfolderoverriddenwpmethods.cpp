@@ -1,5 +1,5 @@
 /*
- * This file is (C) Chris Wohlgemuth 2002-2003
+ * This file is (C) Chris Wohlgemuth 2002-2005
  * 
  * It's part of the Media-Folder distribution
  */
@@ -56,7 +56,7 @@ extern BOOL somhlpQueryCWCDTrackMethodPtr(CWMediaFolder *thisPtr);
 MRESULT EXPENTRY cdFrameProc(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2);
 extern void showPlayTimeDisplay(CWMediaFolder *thisPtr, BOOL bShow);
 void setPlayTimeText2(CWMediaFolder *thisPtr, char * theText);
-void HlpWriteToTrapLog(const char* chrFormat, ...);
+
 /* Get the HWND of the play control dialog. This Dialog is on top of
    the top frame control. */
 HWND playControlDialogFromFrameHWND(HWND hwndFrame);
@@ -343,6 +343,7 @@ ULONG CWCDFolder::cwPlayAudioFile(HWND hwndFrame, ULONG ulWhich)
       break;
     }
   case PLAY_NEXT:
+  case PLAY_NEXT_CDFLDR:
     if(iWave==0)
       return cwPlayAudioFile(hwndFrame, PLAY_FIRST);/* Not yet playing */
 
@@ -449,9 +450,11 @@ ULONG CWCDFolder::cwPlayAudioFile(HWND hwndFrame, ULONG ulWhich)
     return 0;
   }/* switch */
 
-  if(!getMessage(chrCommand, IDSTR_STARTINGTRACK, sizeof(chrCommand), queryResModuleHandle(),  hwndFrame))
-    sprintf(chrCommand, "Starting track...");
-  setPlayTimeText2(this, chrCommand);
+  //  if(ulWhich!=PLAY_NEXT_CDFLDR) {
+    if(!getMessage(chrCommand, IDSTR_STARTINGTRACK, sizeof(chrCommand), queryResModuleHandle(),  hwndFrame))
+      sprintf(chrCommand, "Starting track...");
+    setPlayTimeText2(this, chrCommand);
+    // }
 
   strncpy(chrDevice,"CDAUDIO", sizeof(chrDevice));
 
@@ -518,7 +521,7 @@ ULONG CWCDFolder::cwPlayAudioFile(HWND hwndFrame, ULONG ulWhich)
     }
   }/*   if( ...|| !mrcPlaying) */
 
-  if(iPrevTrack+1==iTime2) {
+  if(iPrevTrack+1==iTime2 && ulWhich!=PLAY_NEXT_CDFLDR) {
     /* Previous track ended, now playing the next. Or user pressed 'Next' while playing */
     if(ulPos*1000 < ulTotalLength) {
       WinStopTimer(WinQueryAnchorBlock(hwndFrame), playControlDialogFromFrameHWND(hwndFrame), IDTIMER_PLAY);
@@ -538,11 +541,8 @@ ULONG CWCDFolder::cwPlayAudioFile(HWND hwndFrame, ULONG ulWhich)
         rc = mciSendString(chrCommand, retMsg, sizeof(retMsg), 0, 0);
         return 0;
       }
-      //  HlpWriteToTrapLog("\n2\n");
     }
   }
-
-  //  HlpWriteToTrapLog("About to get length...\n");
 
   /* Get length in ms */
   if(!methodPtrCDTrack)
@@ -551,13 +551,10 @@ ULONG CWCDFolder::cwPlayAudioFile(HWND hwndFrame, ULONG ulWhich)
     iTime2=methodPtrCDTrack((MMCDTrack*)contentObject, NULLHANDLE, 0, IDINFO_PLAYTIME);
   }
 
-  // HlpWriteToTrapLog("iTime2: %d\n", iTime2);
-
   sprintf(chrCommand,"%d:%02d  %d:%02d  -%d:%02d", iTime2/60, iTime2%60,
           0, 0,
           iTime2/60, iTime2%60);
 
-  //  HlpWriteToTrapLog("chrCommand: %s\n", chrCommand);
   
   //  WinSetWindowText(WinWindowFromID(hwndTop, IDST_PLAYTIME), chrCommand);
   //    WinSetWindowText(playTimeControlFromFrameHWND(HWND hwndFrame), chrCommand);
@@ -657,6 +654,8 @@ void CWCDFolder::cwPlayTimeCallback(HWND hwndFrame, LONG lPosSec)
   int iPrevTrack;
   int iCurrentTrack;
 
+  //SysWriteToTrapLog("\n%s:\n", __FUNCTION__);
+
   sprintf(chrCommand,"STATUS wave%d MODE WAIT", iWave);
   rc = mciSendString(chrCommand, retMsg, sizeof(retMsg), 0, 0);
   if((rc & 0x0000ffff)!=MCIERR_SUCCESS) {
@@ -687,19 +686,15 @@ void CWCDFolder::cwPlayTimeCallback(HWND hwndFrame, LONG lPosSec)
   }
   else {
     iCurrentTrack=atoi(retMsg);
+    //SysWriteToTrapLog(" iWave: %d. iPrevTrack: %d, iCurrentrack: %d\n", iWave, iPrevTrack, iCurrentTrack);
     /* Timeout. Check if track is still playing */
     if(iCurrentTrack==iPrevTrack+1) {
       /* Audio file played. Start next */
-      cwPlayAudioFile(hwndFrame, PLAY_NEXT); 
+      //SysWriteToTrapLog(" iWave: %d. iPrevTrack: %d, iCurrentrack: %d, startinb next (%d)\n", iWave, iPrevTrack, iCurrentTrack, __LINE__);
+      cwPlayAudioFile(hwndFrame, PLAY_NEXT_CDFLDR); 
     }
   }
 }
-
-
-
-
-
-
 
 
 

@@ -12,7 +12,7 @@ BINDIR		=	../../dist/bin
 HELPERDIR	=	..\helper
 
 CPPFILES	=
-all:	 pmcddb001.dll pmcddb049.dll pmcddb031.dll pmcddb039.dll
+all:	 pmcddb001.dll pmcddb049.dll pmcddb031.dll pmcddb039.dll pmcddb088.dll
 
 
 
@@ -48,6 +48,13 @@ pmcddb039.dll:	pmcddb039.c pmcddb039.res
 
 pmcddb039.res:	pmcddb039.rc pmcddb039.dlg $(INC)\pmcddbres.h 
 		rc  -i $(INC) -r pmcddb039.rc 
+
+pmcddb088.dll:	pmcddb088.c pmcddb088.res
+		gcc -Zdll -Zomf -Zno-rte -I$(INC) pmcddb088.c pmcddb088.def
+		rc pmcddb088.res pmcddb088.dll
+
+pmcddb088.res:	pmcddb088.rc pmcddb039.dlg $(INC)\pmcddbres.h 
+		rc  -i $(INC) -r pmcddb088.rc 
 
 clean:
 	-rm *.obj

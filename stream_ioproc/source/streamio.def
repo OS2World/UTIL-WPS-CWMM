@@ -30,7 +30,7 @@
 ; *
 ; */
 LIBRARY STREAMIO INITINSTANCE TERMINSTANCE
-DESCRIPTION '$@#(C) C. Wohlgemuth 2003:#@##1## 13.07.2002 15:17:00      My ;-)  : :::0::@@ Stream IO procedure V0.1.0' 
+DESCRIPTION '$@#(C) C. Wohlgemuth 2005:#@##1## 13.05.2005 15:17:00      My ;-)  : :::0::@@ Stream IO procedure V0.1.0' 
 DATA MULTIPLE NONSHARED
 SEGMENTS
    shardata CLASS 'DATA' SHARED

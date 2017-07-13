@@ -1,5 +1,5 @@
 /*
- * This file is (C) Chris Wohlgemuth 1999-2002
+ * This file is (C) Chris Wohlgemuth 1999-2005
  */
 /*
  * This program is free software; you can redistribute it and/or modify
@@ -28,6 +28,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "mediafolderinc.h"
+#include "mediafolderres.h"
+/* #include "sys_funcs.h" */
 
 #define  LVM_IS_HARDDISK  0  
 #define  LVM_IS_PRM       1
@@ -91,7 +93,137 @@ PFN pfnClose_LVM_Engine=NULLHANDLE;
 PFNVCA pfnvcaGet_Volume_Control_Data=NULLHANDLE;
 PFNVIR pfnvirGet_Volume_Information=NULLHANDLE;
 
-BOOL loadLVMFuncs(void)
+size_t strlcpy(char *dst, const char *src, size_t siz);
+
+/*
+  FIXME:
+
+  Use the function from the \common_funcs directory instead. 
+ */
+static BOOL getMessage(char* text,ULONG ulID, LONG lSizeText, HMODULE hResource)
+{
+  char* pOffset;
+  char* ptr;
+  int id=0;
+
+  text[0]='\0';
+
+  // printf("resource: %x, %d %d\n", hResource, ulID, (ulID/16)+1, 
+  // DosGetResource(hResource, RT_STRING, (ulID/16)+1, (PVOID)&pOffset));
+
+  if(DosGetResource(hResource, RT_STRING, (ulID/16)+1, (PVOID)&pOffset)!=NO_ERROR)
+    return FALSE;
+
+  ptr=pOffset;
+
+  //printf("\ngot resource...\n");
+
+  /* Parsing... */
+  id=ulID%16;
+
+  //printf("id: %d\n", id);
+  pOffset+=sizeof(USHORT); /* Skip codepage */
+
+  for(;id > 0;id--)
+    {
+      //printf("id: %d, length: %d %s\n", id, *pOffset, pOffset+1);
+      pOffset+=*pOffset+1;
+    }
+  //printf("length: %d %s\n",  *pOffset, pOffset+1);
+  strlcpy(text, pOffset+1, lSizeText);
+
+  if(*pOffset!=1){
+    DosFreeResource(ptr);
+  return TRUE;
+  }  
+  DosFreeResource(ptr);
+/* Length=1 means dummy entry filled by system */
+  return FALSE;
+}
+
+#if 0
+#pragma import(DosQueryModFromEIP,,"DOSCALL1",360)
+ APIRET APIENTRY DosQueryModFromEIP ( HMODULE *phMod, ULONG *pObjNum, ULONG BuffLen, PCHAR pBuff, ULONG *pOffset, PVOID Address ) ; 
+#endif
+
+/* This function returns the module handle of our ressource dll */
+static HMODULE queryResModuleHandle(void)
+{
+  char path[CCHMAXPATH];  
+  char buf[CCHMAXPATH];
+  char* found;
+  APIRET rc;
+  HMODULE RESSOURCEHANDLE;
+  HMODULE hmod;
+  PTIB   ptib = NULL;
+  PPIB   ppib = NULL;
+  
+  
+  // printf("rc=%d\n",DosQueryModFromEIP( &hmod, &ul, sizeof(path), path, 
+  //                  &off, (PVOID)queryResModuleHandle ) ); 
+  if(NO_ERROR==DosGetInfoBlocks(&ptib, &ppib))
+    DosQueryModuleName (ppib->pib_hmte,         /* Module handle to query     */
+                        sizeof(path),           /* Maximum length of result   */
+                        path);
+  
+  //printf("%s %x\n",path, hmod);
+
+  /* Get the language code of our system and load the  
+     resource DLL with the right language */
+  do 
+    {
+      static char chrLang[]="en_EN";
+      PSZ pszLang="";
+      char *chrPtr;
+        
+      /* Get Language var */
+      if(NO_ERROR!=DosScanEnv("LANG", &pszLang)) {
+        pszLang=chrLang;
+      }        
+      /* Skip leading spaces */
+      chrPtr=pszLang;
+      while(*chrPtr==' ')
+        chrPtr++;
+        
+      /* Check if value seems to be valid. The var must be something like xx_XX thus length is 5 */
+      if(strlen(chrPtr)<5)
+        break;
+        
+      if((found=strrchr(path, '\\'))!=NULLHANDLE)
+        *found=0;
+
+      /* Extract the first two chars and build DLL name */                
+      sprintf(buf, RESDLLNAME, chrPtr[0], chrPtr[1]);
+      strcat(path,buf);
+        
+      rc=DosLoadModule(buf,sizeof(buf),path, &RESSOURCEHANDLE);
+      if(rc==NO_ERROR)
+        break;
+                
+      /* NLS DLL not found. Try to load default */
+      found=strrchr(path,'\\');
+      if(!found)
+        break;
+        
+      *found=0;
+      sprintf(buf, DEFRESDLLNAME);
+      strcat(path,buf);
+        
+      rc=DosLoadModule(buf,sizeof(buf),path, &RESSOURCEHANDLE);
+      if(rc!=NO_ERROR) {
+        RESSOURCEHANDLE=NULLHANDLE;
+      }
+      else {
+        //  printf("Ressource DLL loaded.\n");
+      }
+      break;
+    }while(TRUE);
+  
+  return RESSOURCEHANDLE;
+}
+
+ 
+static BOOL loadLVMFuncs(void)
 {
   char chrErrorObject[CCHMAXPATH]={0};
   ULONG ulCB;
@@ -172,24 +304,31 @@ BOOL CDQueryCDDrives(int *iNumCD, char * cFirstDrive)
   return haveCD;				
 }
 
-int main(void)
+int main(int argc, char** argv)
 {
   CARDINAL32 error;
   int iNumCD;
   char cFirst;
-  char setup[100];
-  char name[100];
-  char id[40];
+  char setup[512];
+  char name[256];
+  char id[100];
+  char nameTemplate[256];
   int a;
+  HMODULE hmodRes=NULLHANDLE;
 
   if(!CDQueryCDDrives(&iNumCD, &cFirst))
     exit(1);
+
+  hmodRes=queryResModuleHandle();
+
+  if(!getMessage(nameTemplate, /* IDSTR_LAUNCHPADFLYOVER */ IDSTR_CDFOLDERNAME, sizeof(nameTemplate), hmodRes))
+    strncpy(nameTemplate, "CD-Audio player^Drive %c:", sizeof(nameTemplate));
 
   if(!loadLVMFuncs()) {
     for(a=0;a<iNumCD;a++) {
       int b;
       /* Build folder name */
-      sprintf(name, "CD-Audio^Drive %c:", cFirst+a);
+      sprintf(name, nameTemplate, cFirst+a);
       /* Build object ID */
       sprintf(id, CDFLDR_ID, cFirst+a);
       /* Build setup string */
@@ -230,7 +369,7 @@ int main(void)
               //     vca.Volume_Control_Data[a].Device_Type, vir.Current_Drive_Letter);
 
               /* Build folder name */
-              sprintf(name, "CD-Audio^Drive %c:", vir.Current_Drive_Letter);
+              sprintf(name, nameTemplate, vir.Current_Drive_Letter);
               /* Build object ID */
               sprintf(id, CDFLDR_ID, vir.Current_Drive_Letter);
               /* Build setup string */
@@ -241,7 +380,6 @@ int main(void)
 
                 if(WinCreateObject(CDFLDR_CLASSNAME, name, setup, CDFLDR_LOCATION, CO_UPDATEIFEXISTS))
                   break;
-
                 //      printf("Found:  %s, %s\n", name, setup);
                 DosSleep(5000);
               } /* for(b)*/
@@ -254,7 +392,60 @@ int main(void)
     }
     DosFreeModule(hMod);
   } /* else */
+  if(hmodRes)
+    DosFreeModule(hmodRes);
   return (0);
 }
 
+
+/********************************************************************/
+/*	$OpenBSD: strlcpy.c,v 1.8 2003/06/17 21:56:24 millert Exp $	*/
+
+/*
+ * Copyright (c) 1998 Todd C. Miller <Todd.Miller@courtesan.com>
+ *
+ * Permission to use, copy, modify, and distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ */
+
+
+/*
+ * Copy src to string dst of size siz.  At most siz-1 characters
+ * will be copied.  Always NUL terminates (unless siz == 0).
+ * Returns strlen(src); if retval >= siz, truncation occurred.
+ */
+static size_t
+strlcpy(char *dst, const char *src, size_t siz)
+{
+	register char *d = dst;
+	register const char *s = src;
+	register size_t n = siz;
+
+	/* Copy as many bytes as will fit */
+	if (n != 0 && --n != 0) {
+		do {
+			if ((*d++ = *s++) == 0)
+				break;
+		} while (--n != 0);
+	}
+
+	/* Not enough room in dst, add NUL and traverse rest of src */
+	if (n == 0) {
+		if (siz != 0)
+			*d = '\0';		/* NUL-terminate dst */
+		while (*s++)
+			;
+	}
+
+	return(s - src - 1);	/* count does not include NUL */
+}
 

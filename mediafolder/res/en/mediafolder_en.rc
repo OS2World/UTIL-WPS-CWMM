@@ -82,6 +82,7 @@ IDSTR_PLAYLISTVIEWTITLE  "Playlist Editor"
 IDSTR_LAUNCHPADFLYOVER   "Launchpad: Drop objects here"
 IDSTR_VIEWPAGENAME       "~View"
 IDSTR_VIEWCOMPACT        "Compact"
+IDSTR_CDFOLDERNAME       "CD-Audio player^Drive %c:"
 
 END
 

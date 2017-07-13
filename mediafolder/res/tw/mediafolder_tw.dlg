@@ -1,0 +1,130 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+DLGINCLUDE 1 "
+G:\Projects_working\mmclasses-0.3.0\source\include\mediafolderres.h"
+
+DLGTEMPLATE IDDLG_BOTTOMFRAME LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_BOTTOMFRAME, 12, 70, 300, 16, NOT FS_DLGBORDER | NOT 
+            WS_SAVEBITS
+    BEGIN
+        CTEXT           "", IDST_STATUSTEXT, 39, 1, 221, 8
+    END
+END
+
+DLGTEMPLATE IDDLG_FRAMERIGHT LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_FRAMERIGHT, 134, 21, 24, 109, NOT FS_DLGBORDER | NOT 
+            WS_SAVEBITS
+    BEGIN
+    END
+END
+
+DLGTEMPLATE IDDLG_LEFTFRAME LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_LEFTFRAME, 12, 6, 148, 148, NOT FS_DLGBORDER | NOT 
+            WS_SAVEBITS
+    BEGIN
+        CONTAINER       IDCNR_PLAYLIST, 14, 11, 123, 111, CCS_SINGLESEL | 
+                        CCS_AUTOPOSITION | CCS_MINIRECORDCORE | WS_GROUP
+        PUSHBUTTON      "Add", IDPB_ADD, 8, 129, 40, 14
+        PUSHBUTTON      "Remove", IDPB_REMOVE, 72, 129, 40, 14
+    END
+END
+
+DLGTEMPLATE IDDLG_TOOLBARSETTINGS LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_TOOLBARSETTINGS, 91, 22, 201, 199, NOT FS_DLGBORDER | 
+            WS_VISIBLE
+    BEGIN
+        GROUPBOX        "工具列", IDGB_TOOLBAR, 9, 24, 181, 127, NOT 
+                        WS_GROUP
+        AUTOCHECKBOX    "啟用即時解說(~E)", IDCB_ENABLETBFLYOVER, 16, 
+                        129, 152, 10
+        SPINBUTTON      IDSB_TBFLYOVERDELAY, 97, 115, 40, 12, 
+                        SPBS_NUMERICONLY | SPBS_MASTER | SPBS_FASTSPIN | 
+                        WS_GROUP
+        GROUPBOX        "即時顏色及字型", IDGB_COLORANDFONT, 15, 
+                        30, 168, 76, NOT WS_GROUP
+        LTEXT           "顏色或字體選用區的點擊按鈕。"
+                        "拖放時按住 <CTRL> 可以改變字體顏色。", 
+                        IDST_TEXTDEMOFIELD, 23, 35, 95, 57, DT_WORDBREAK
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x000000FFL
+                        PRESPARAMS PP_BACKGROUNDCOLOR, 0x00FFFFFFL
+        PUSHBUTTON      "顏色(~C)...", IDPB_COLORPALETTE, 129, 72, 45, 14
+        PUSHBUTTON      "字體(~F)...", IDPB_FONTPALETTE, 129, 49, 45, 14
+        PUSHBUTTON      "回復(~U)", IDPB_COLORUNDO, 16, 7, 52, 14
+        PUSHBUTTON      "預設值(~D)", IDPB_COLORSTANDARD, 74, 7, 52, 14
+        PUSHBUTTON      "解說(~H)", IDPB_COLORHELP, 132, 7, 52, 14, BS_HELP
+        RTEXT           "延遲(ms)：", IDGB_COLORANDFONT, 35, 116, 55, 8, 
+                        DT_VCENTER
+    END
+END
+
+DLGTEMPLATE IDDLG_TOPFRAME LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_TOPFRAME, 13, 52, 287, 26, NOT FS_DLGBORDER | 
+            FS_BORDER | NOT WS_SAVEBITS
+    BEGIN
+        PUSHBUTTON      "按", IDPB_PAUSE, 2, 6, 19, 14, NOT WS_VISIBLE
+    END
+END
+
+DLGTEMPLATE IDDLG_TOPMIDDLE LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_TOPMIDDLE, 12, 51, 249, 39, NOT FS_DLGBORDER | 
+            FS_BORDER | WS_VISIBLE | NOT WS_SAVEBITS
+    BEGIN
+        CONTROL         "倒退(~B)", IDPB_SKIPBACK, 19, 25, 20, 14, WC_BUTTON, 
+                        BS_USERBUTTON | BS_NOPOINTERFOCUS | WS_TABSTOP | 
+                        WS_VISIBLE
+        CONTROL         "停止(~S)", IDPB_STOP, 40, 25, 22, 14, WC_BUTTON, 
+                        BS_USERBUTTON | BS_NOPOINTERFOCUS | WS_VISIBLE
+        CONTROL         "暫停(~P)", IDPB_PAUSE, 61, 25, 20, 14, WC_BUTTON, 
+                        BS_USERBUTTON | BS_NOPOINTERFOCUS | WS_VISIBLE 
+        CONTROL         "播放(~L)", IDPB_PLAY, 79, 25, 20, 14, WC_BUTTON, 
+                        BS_USERBUTTON | BS_NOPOINTERFOCUS | WS_VISIBLE
+        CONTROL         "下一首(~N)", IDPB_SKIPFORWARD, 99, 25, 20, 14, WC_BUTTON, 
+                        BS_USERBUTTON | BS_NOPOINTERFOCUS | WS_VISIBLE
+        AUTOCHECKBOX    "重覆(~R)", IDCB_REPEAT, 133, 13, 73, 10,WS_VISIBLE|BS_USERBUTTON | BS_AUTOCHECKBOX
+        AUTOCHECKBOX    "隨機(~A)", IDCB_RANDOM, 133, 23, 73, 10, WS_VISIBLE  | BS_USERBUTTON | BS_AUTOCHECKBOX
+
+        CTEXT           "0:00", IDST_PLAYTIME, 133, 24, 102, 10, DT_VCENTER
+                        PRESPARAMS PP_FONTNAMESIZE, "10.Helv"
+        CONTROL         "音量槓", IDSL_VOLUMEARM, 209, 5, 14, 14, 
+                        WC_BUTTON, BS_USERBUTTON | WS_TABSTOP|BS_USERBUTTON
+        PUSHBUTTON      "音量", IDSL_VOLUME, 19, 4, 69, 14, 
+                        BS_NOPOINTERFOCUS | NOT WS_TABSTOP | NOT WS_VISIBLE |BS_USERBUTTON
+    END
+END
+
+#define VER_STRING "Media-Ordner V" \
+MFLDR_VERSION \
+BUILD_STRING
+
+DLGTEMPLATE IDDLG_ABOUT LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "產品資訊", IDDLG_ABOUT, 115, 69, 208, 132, 
+            WS_VISIBLE, FCF_TITLEBAR
+    BEGIN
+        GROUPBOX        "", IDGB_ABOUT, 3, 21, 200, 108
+;        CTEXT           "Media-Folder V0.2.5", IDST_PRODNAME, 36, 107, 135, 
+        CTEXT           VER_STRING, IDST_PRODNAME, 10, 107, 187, 
+                        12, DT_VCENTER | NOT WS_GROUP
+        CTEXT           "(C) Chris Wohlgemuth 2002/2003", IDST_PRODCOPY, 10, 87, 
+                        186, 12, DT_VCENTER | NOT WS_GROUP
+        CTEXT           "Graphics by Klaus Staedtler-Przyborski", 
+                        IDST_PRODGRAPHICS, 10, 64, 186, 17, DT_WORDBREAK | 
+                        NOT WS_GROUP
+        CTEXT           "http://www.geocities.com/SiliconValley/Sector/5785/"
+                        "index.html", IDST_URL1, 10, 46, 186, 18, 
+                        DT_WORDBREAK | NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        DEFPUSHBUTTON   "~Ok", DID_OK, 83, 3, 40, 14
+        CTEXT           "http://www.os2world.com/cdwriting", IDST_URL2, 10, 
+                        30, 186, 16, DT_WORDBREAK
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    END
+END
+

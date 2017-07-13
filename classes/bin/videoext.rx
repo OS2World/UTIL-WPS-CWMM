@@ -1,0 +1,110 @@
+/* rexx - Get the extension of video types added using
+   the multimedia setup object. For example *.QT.
+   This script is called by M_MMVideo.
+*/
+
+call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs'
+call SysLoadFuncs
+
+allExt=""
+waveaudio=""
+
+/* Get MMOS2 directory */
+mmos2Dir=STRIP(TRANSLATE(value("MMBASE",,"OS2ENVIRONMENT")," ",";"))
+if LEFT(mmos2Dir,1)='\' THEN
+	mmpm2Ini=mmos2Dir||'mmpm2.ini'
+else
+	mmpm2Ini=mmos2Dir||'\mmpm2.ini'
+
+if STREAM(mmpm2ini, "C", "Query exists")='' THEN DO
+	/* MMPM2.INI not found */
+	rc=""
+	exit ""
+END
+
+/* Read ini */
+a=0
+DO WHILE LINES(mmpm2ini)
+	a=a+1
+	mmini.a=STRIP(LINEIN(mmpm2ini))
+END
+mmini.0=a
+ret=STREAM(mmpm2ini, "C", "close")
+
+/* Find [DRIVERS] section */
+DO a=1 to mmini.0
+	if ABBREV(TRANSLATE(mmini.a), "[DRIVERS]")=1 THEN DO
+		call parseDrivers
+		LEAVE
+	END
+END
+
+if waveaudio="" THEN DO
+	rc=""
+	exit ""
+END
+/*Now we have the wave device(s) */
+
+/* Get extensions from all devices */
+tempext=""
+DO b=1 to WORDS(waveaudio)
+	/* We may have several video devices */
+	/* OpenMPEG by IBM is handled by it's own script called by M_MMPG */
+	IF POS("IBMMPEG", TRANSLATE(WORD(waveaudio, b))) = 0  THEN
+		tempExt=tempExt||' '||parseWaveDevice(WORD(waveaudio, b))
+END
+
+/* Build string and remove known extensions */
+DO b=1 to WORDS(tempExt)
+	curExt=WORD(tempExt,b)
+	SELECT
+	WHEN TRANSLATE(curExt)="AVI" THEN NOP /* Already supported by a spezialized class */
+	WHEN TRANSLATE(curExt)="FLI" THEN NOP
+	WHEN TRANSLATE(curExt)="MOV" THEN NOP
+	WHEN TRANSLATE(curExt)="MPG" THEN NOP
+
+	OTHERWISE
+		if allExt\='' THEN allExt=allExt||','
+		allExt=allExt||'*.'||STRIP(curExt)
+	END
+END
+return allExt
+EXIT
+
+/**************************************/
+
+parseDrivers:
+a=a+1
+DO WHILE LEFT(mmini.a,1)\='['
+	IF ABBREV(TRANSLATE(mmini.a),"DIGITALVIDEO")=1 THEN DO
+		thePos=POS("=",mmini.a)
+		if thePos=0 then return
+		waveaudio=TRANSLATE(RIGHT(mmini.a, LENGTH(mmini.a)-thePos)," ",",") /* There may be several entries */
+		return
+	END
+	a=a+1
+	IF a>mmini.0 THEN return
+END
+return
+
+parseWavedevice:
+
+theDevice='['ARG(1)']'
+DO a=1 to mmini.0
+	if ABBREV(TRANSLATE(mmini.a), TRANSLATE(theDevice))=1 THEN DO
+		/* Device section found */
+		a=a+1
+		DO WHILE LEFT(mmini.a,1)\='['
+			IF ABBREV(TRANSLATE(mmini.a),"EXTNAMES")=1 THEN DO
+				thePos=POS("=",mmini.a)
+				if thePos=0 then return
+				ext=SUBWORD(TRANSLATE(RIGHT(mmini.a, LENGTH(mmini.a)-thePos)," ",","),2)
+				return ext
+			END
+			a=a+1
+			IF a>mmini.0 THEN return ""
+		END
+	END
+END
+return ""
+

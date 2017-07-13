@@ -69,7 +69,7 @@
 char classDLLPath[CCHMAXPATH]={0};
 char chrHelpLibrary[CCHMAXPATH]={0};
 char chrInstallDir[CCHMAXPATH]={0};
-char chrMMAudioExt[200]={0};/* Array holding the extensions for wpclsQueryInstanceFilter() */
+char chrMMAudioExt[400]={0};/* Array holding the extensions for wpclsQueryInstanceFilter() */
 char resDLLPath[CCHMAXPATH]={0};
 
 static PSZ pszAudioColTitles[NUM_AUDIO_FIELDS]= {"Playtime", "Bitrate", "Samplerate", "Channels", "Bits per sample",

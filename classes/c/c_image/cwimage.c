@@ -1973,12 +1973,15 @@ static BOOL _getMissingExtFromImageIOProc(void)
         if(!strstr(chrMMImageKnownExt, pmmFormatInfoArray->szDefaultFormatExt)) {
           /* This extension is yet unknown */
           if(chrMMImageExt[0]==0) {
+            /* It's the first one */
             sprintf(chrMMImageExt,"*.%s", pmmFormatInfoArray->szDefaultFormatExt);
-            //   fFirstExt=FALSE;
           }
           else {
-            strncat(chrMMImageExt,",*.",sizeof(chrMMImageExt)-1-strlen(chrMMImageExt));
-            strncat(chrMMImageExt, pmmFormatInfoArray->szDefaultFormatExt, sizeof(chrMMImageExt)-1-strlen(chrMMImageExt));
+            /* Check if the extension is not already added (e.g. TIF has a lot of subformats) */
+            if(!strstr(chrMMImageExt, pmmFormatInfoArray->szDefaultFormatExt)) {
+              strncat(chrMMImageExt,",*.",sizeof(chrMMImageExt)-1-strlen(chrMMImageExt));
+              strncat(chrMMImageExt, pmmFormatInfoArray->szDefaultFormatExt, sizeof(chrMMImageExt)-1-strlen(chrMMImageExt));
+            }
           }
           //          HlpWriteToTrapLog("Known Extension: %s\n", chrMMImageKnownExt);
           //          HlpWriteToTrapLog("Extension: %s\n", chrMMImageExt);

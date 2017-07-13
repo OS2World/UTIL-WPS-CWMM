@@ -20,11 +20,13 @@ ifdef    ECS_COMPILE
 	ipfc mediafldr049_ecs.ipf mediafldr049.hlp
 	ipfc mediafldr031_ecs.ipf mediafldr031.hlp
 	ipfc mediafldr039_ecs.ipf mediafldr039.hlp
+	ipfc mediafldr088_ecs.ipf mediafldr088.hlp
 else
 	ipfc mediafldr.ipf
 	ipfc mediafldr049.ipf
 	ipfc mediafldr031.ipf
 	ipfc mediafldr039.ipf
+	ipfc mediafldr088.ipf
 endif
 
 

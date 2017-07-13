@@ -1,7 +1,9 @@
 /*
   This file conatins functions for loading image files. 
  */
+
 #define  INCL_PM
+#define INCL_OS2MM
 #define  INCL_MMIOOS2
 
 #include <os2.h>
@@ -17,24 +19,44 @@
 /*                                                  */
 /* This function loads a supported image file.      */
 /* Every format for which MMOS2 has an IO procedure */
-/* may be used here.                                */
+/* may be used here. In contrast to                 */
+/* ImgLoadImageFile() a provided BMPINFOHEADER2     */
+/* structure is filled with data.                   */
+/*                                                  */
 /*                                                  */
 /* @@RETURNS                                        */
 /*                                                  */
 /* HBITMAP hBitmap                                  */
 /*                                                  */
-/* HAndle to the bitmap of NULL.                    */
+/* Handle to the bitmap or NULL.                    */
+/*                                                  */
+/* @@PARAM                                          */
+/*                                                  */
+/* PSZ pszFileName input                            */
+/*                                                  */
+/* Name of the image file to load.                  */
+/*                                                  */
+/* @@PARAM                                          */
+/*                                                  */
+/* PBITMAPINFOHEADER2 pBMPInfoHeader2 in/out        */
+/*                                                  */
+/* Pointer to a BITMAPINFOHEADER2 structure.        */
+/*                                                  */
+/*                                                  */
+/* @@REMARKS                                        */
+/*                                                  */
+/* The caller must free the bitmap handle after     */
+/* use.                                             */
 /*                                                  */
 /*!!*************************************************/
-HBITMAP ImgLoadImageFile (  PSZ pszFileName )
+HBITMAP ImgLoadImageFileAndHeader( PSZ pszFileName, PBITMAPINFOHEADER2 pBMPInfoHeader2)
 {
     HBITMAP       hbm;
-    HBITMAP       hbmTarget;
     MMIOINFO      mmioinfo;
-        MMFORMATINFO  mmFormatInfo;
+    MMFORMATINFO  mmFormatInfo;
     HMMIO         hmmio;
-        ULONG         ulImageHeaderLength;
-        MMIMAGEHEADER mmImgHdr;
+    ULONG         ulImageHeaderLength;
+    MMIMAGEHEADER mmImgHdr;
     ULONG         ulBytesRead;
     ULONG         dwNumRowBytes;
     PBYTE         pRowBuffer;
@@ -130,11 +152,9 @@ HBITMAP ImgLoadImageFile (  PSZ pszFileName )
       ulReturnCode = mmioClose (hmmio, 0L);
             return (0L);
     }
-    /*
-    memcpy(pBMPInfoHeader2, &mmImgHdr.mmXDIBHeader.BMPInfoHeader2,
-           sizeof(BITMAPINFOHEADER2)+256*sizeof(RGB2) );
-           */
+
     /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+    *pBMPInfoHeader2=mmImgHdr.mmXDIBHeader.BMPInfoHeader2;
 
     /*
      *  Determine the number of bytes required, per row.
@@ -225,14 +245,6 @@ HBITMAP ImgLoadImageFile (  PSZ pszFileName )
                             NULL,
                             NULL);
 
-#if 0
-    hbm = GpiCreateBitmap ( hps,
-                            pBMPInfoHeader2,
-                            0L,
-                            NULL,
-                            NULL);
-#endif
-
     if ( !hbm )
     {
 #ifdef DEBUG
@@ -249,17 +261,15 @@ HBITMAP ImgLoadImageFile (  PSZ pszFileName )
       ulReturnCode = mmioClose (hmmio, 0L);
       return(0L);
     }
-    /*
-    // ***************************************************
-    // Select the bitmap into the memory device context.
-    // ***************************************************/
+    /****************************************************
+      Select the bitmap into the memory device context.
+      ***************************************************/
     hbReturnCode = GpiSetBitmap ( hps,
                                   hbm );
-    /*
-    //***************************************************************
-    //  LOAD THE BITMAP DATA FROM THE FILE
-    //      One line at a time, starting from the BOTTOM
-    //*************************************************************** */
+    /***************************************************************
+      LOAD THE BITMAP DATA FROM THE FILE
+      One line at a time, starting from the BOTTOM
+      ****************************************************************/
 
     for ( dwRowCount = 0; dwRowCount < dwHeight; dwRowCount++ )
     {
@@ -293,7 +303,60 @@ HBITMAP ImgLoadImageFile (  PSZ pszFileName )
 }
 
 
-BOOL ImgGetBmpInfoHeader(PBITMAPINFOHEADER2  bmpih2, PSZ pszFileName /*, char* procName, ULONG ulLength*/)
+/*!**************************************************/
+/*                                                  */
+/* @@DESC                                           */
+/*                                                  */
+/* This function loads a supported image file.      */
+/* Every format for which MMOS2 has an IO procedure */
+/* may be used here.                                */
+/*                                                  */
+/* @@PARAM                                          */
+/*                                                  */
+/* PSZ pszFileName input                            */
+/*                                                  */
+/* Name of the image file to load.                  */
+/*                                                  */
+/* @@RETURNS                                        */
+/*                                                  */
+/* HBITMAP hBitmap                                  */
+/*                                                  */
+/* Handle to the bitmap of NULL.                    */
+/*                                                  */
+/*!!*************************************************/
+HBITMAP ImgLoadImageFile (  PSZ pszFileName )
+{
+  BITMAPINFOHEADER2  bmpih2;
+
+  return ImgLoadImageFileAndHeader ( pszFileName, &bmpih2 );
+}
+
+
+
+/*!**************************************************/
+/*                                                  */
+/* @@DESC                                           */
+/*                                                  */
+/* Build a BITMAPINFOHEADER2 for the given file.    */
+/*                                                  */
+/* @@PARAM                                          */
+/*                                                  */
+/* PSZ pszFileName input                            */
+/*                                                  */
+/* Name of the image file.                          */
+/*                                                  */
+/* @@PARAM                                          */
+/*                                                  */
+/* PBITMAPINFOHEADER2 pBMPInfoHeader2 in/out        */
+/*                                                  */
+/* Pointer to a BITMAPINFOHEADER2 structure.        */
+/*                                                  */
+/* @@RETURNS                                        */
+/*                                                  */
+/* TRUE on success, FALSE otherwise                 */
+/*                                                  */
+/*!!*************************************************/
+BOOL ImgGetBmpInfoHeader(PSZ pszFileName, PBITMAPINFOHEADER2  bmpih2)
 {
     MMIOINFO      mmioinfo;
     MMFORMATINFO  mmFormatInfo;
@@ -304,11 +367,7 @@ BOOL ImgGetBmpInfoHeader(PBITMAPINFOHEADER2  bmpih2, PSZ pszFileName /*, char* p
     FOURCC        fccIOProc;
     ULONG         ulReturnCode;
     ULONG ulBytesRead;
-    char *pName;
     
-    //  if(procName)
-    //   procName[0]=0;
-
     /* Check file size */
     if(SysQueryFileSize(pszFileName)==0)
       return FALSE; /* File is empty at the moment, so return without reading. */

@@ -75,11 +75,12 @@ typedef JPGFILESTATUS FAR *PJPGFILESTATUS;
 #define     ONE_BLOCK                   6L
 #endif
 
-#define     FOURCC_STREAM               mmioFOURCC('C', 'A', 'S', 'T')
+#define     FOURCC_STREAM               mmioFOURCC('S', 'T', 'R', 'M')
 
 /* RC file defines */
 
-#define     HEX_FOURCC_STREAM           0x54534143L
+/* #define     HEX_FOURCC_STREAM           0x54534143L */
+#define     HEX_FOURCC_STREAM           0x4d5453L
 
 #define     MMOTION_IOPROC_NAME_TABLE   7000
 #define     MMOTION_NLS_CHARSET_INFO    7500

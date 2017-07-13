@@ -1,5 +1,5 @@
 /*
- * (C) Chris Wohlgemuth 2002-2004
+ * (C) Chris Wohlgemuth 2002-2005
  *
  */
 /*
@@ -40,14 +40,17 @@
 #include <os2.h>
 #include "helpid.h"
 #include "cwmpg.ih"
+#include "cwaudioinc.h" /* For REXX script name */
+#include "sys_funcs.h"
 
 extern char chrHelpLibrary[CCHMAXPATH];
+char chrMMMPGExt[400]={0};/* Array holding the extensions for wpclsQueryInstanceFilter() */
 
 HMODULE queryResModuleHandle(void);
 HMODULE queryModuleHandle(void);
 BOOL getMessage(char* text,ULONG ulID, LONG lSizeText, HMODULE hResource,HWND hwnd);
 ULONG launchPMProg(PSZ pszTitle, PSZ wrapperExe, PSZ parameters,  CWMMDataFile *thisPtr, ULONG ulView);
-
+BOOL getStringFromRexxScript(PSZ rexxFile, char* chrResult, ULONG ulSize);
 
 /*
  * SOM_Scope HWND  SOMLINK cwmpg_wpOpen(CWMPG *somSelf, HWND hwndCnr, 
@@ -154,7 +157,8 @@ SOM_Scope PSZ  SOMLINK cwmpgM_wpclsQueryInstanceFilter(M_MMMPG *somSelf)
     /* M_CWMPGData *somThis = M_CWMPGGetData(somSelf); */
     M_MMMPGMethodDebug("M_MMMPG","cwmpgM_wpclsQueryInstanceFilter");
 
-    return "*.MPG,*.VBS";
+    /* This list is build in wpclsInitData() */
+    return chrMMMPGExt;
 }
 
 
@@ -187,6 +191,47 @@ SOM_Scope ULONG  SOMLINK cwmpgM_wpclsQueryIconData(M_MMMPG *somSelf,
 }
 
 
+
+SOM_Scope void  SOMLINK cwmpgM_wpclsInitData(M_MMMPG *somSelf)
+{
+  static BOOL bGotMPEGExt=FALSE;
+
+    /* M_MMMPGData *somThis = M_MMMPGGetData(somSelf); */
+    M_MMMPGMethodDebug("M_MMMPG","cwmpgM_wpclsInitData");
+
+    /* 
+       Taken from the audio classes. I suspect the same is true for the video classes.
+       Anyway it wont hurt having this here.
+
+       Get extensions of additional audio procs. These extensions may be specified by
+       newly installed IO procs in MMPM2.INI or by using the Multimedia setup. For
+       example the MMIOMP3 procedure for reading MP3 files adds the MP3 extension this
+       way to the system. Extensions already handled by a specialized class will be
+       filtered in the called REXX script e.g. MP3 so only unknown extensions end up here.
+
+       Strangely enough wpclsQueryInstanceFilter() is called during wpclsInitData() so
+       we query the extensions here before calling the parent.
+
+       FIXME:
+       The check is only done once during initialization. This is a little annoyance for
+       the user because new extension specified in the settings will only be picked up
+       on next WPS start. 
+       */
+     if(!bGotMPEGExt)
+      {
+        /* REXX script: "mpegext.rx" */
+        getStringFromRexxScript(MMMPG_GETEXT_RX, chrMMMPGExt, sizeof(chrMMMPGExt));
+        /* Add our default extension *.MPG */
+        if(chrMMMPGExt[0]==0)
+          /* It's the first one */
+          strcpy(chrMMMPGExt,"*.MPG,*.VBS");
+        else 
+          strlcat(chrMMMPGExt, ",*.MPG,*.VBS", sizeof(chrMMMPGExt));
+        bGotMPEGExt=TRUE; 
+      }
+
+    M_MMMPG_parent_M_MMVideo_wpclsInitData(somSelf);
+}
 
 /*
  * SOM_Scope BOOL  SOMLINK cwmpgM_wpclsQueryDefaultHelp(M_CWMPG *somSelf, 

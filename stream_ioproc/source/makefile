@@ -31,12 +31,12 @@
 # */
 #################################################################################
 #
-# Makefile for JPG IOProc
+# Makefile for STREAM IOProc
 #
 #   Generates
-#         JPEGIO.dll       - JPG Image IOproc
+#         STREAMIO.dll       - Stream storage IOproc
 #
-# Copyright Chris Wohlgemuth 2002
+# Copyright Chris Wohlgemuth 2005
 #
 # http://www.os2world.com/cdwriting
 # http://www.geocities.com/SiliconValley/Sector/5785/
@@ -99,4 +99,4 @@ clean:
 	-rm *.res
 	-rm *.*~
 	-rm *.map
-	-rm *.sym
+	-rm *.sym

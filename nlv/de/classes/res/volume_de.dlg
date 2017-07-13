@@ -1,0 +1,20 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#define INCL_GRAPHICBUTTON
+#include <sw.h>
+
+DLGTEMPLATE IDDLG_VOLUME LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Lautst„rke", IDDLG_VOLUME, 73, 148, 112, 56,  
+             WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR |  FCF_TASKLIST |
+            FCF_MINBUTTON 
+    BEGIN
+        CONTROL         "~Lautst„rke", IDCS_VOLUME, 3, 3, 63, 44, WC_CIRCULARSLIDER, 
+                        WS_GROUP | WS_VISIBLE | WS_TABSTOP
+        CONTROL         "~Stumm", IDPB_MUTE , 65, 17, 40, 14, WC_GRAPHICBUTTON,
+			 WS_VISIBLE | GBS_AUTOTWOSTATE | WS_TABSTOP
+        GROUPBOX        "", IDGB_VOLUME,  1, 2, 109, 53
+    END
+END
+

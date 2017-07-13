@@ -82,6 +82,7 @@ IDSTR_PLAYLISTVIEWTITLE  "Afspeellijst Editor"
 IDSTR_LAUNCHPADFLYOVER   "Hoofdvenster: Laat objecten hierop vallen"
 IDSTR_VIEWPAGENAME       "O~verzicht"
 IDSTR_VIEWCOMPACT        "Compact"
+IDSTR_CDFOLDERNAME       "CD-Audio player^Drive %c:"
 
 END
 

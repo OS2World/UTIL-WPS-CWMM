@@ -13,6 +13,13 @@
 extern "C" {
 #endif
 
+/*!***********************************************************/
+/*                                                           */
+/* @@DESC                                                    */
+/*                                                           */
+/* To be written...                                          */
+/*                                                           */
+/*!!**********************************************************/
 SHORT LBFindMatch(HWND hwndLB, char *chrMatchText)
 {
   SHORT sItem;

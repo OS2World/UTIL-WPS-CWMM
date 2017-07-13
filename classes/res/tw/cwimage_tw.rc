@@ -1,0 +1,50 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+
+MENU ID_MENU_IMGEDITOR
+BEGIN
+        MENUITEM "相片編輯器(~E)", ID_MENU_IMGEDITOR       
+END
+
+
+STRINGTABLE 
+BEGIN
+IDSTR_MENU_CONVERT "轉換成(~C)"
+
+IDSTR_AVCTITLE      "AVCImage._IM"
+IDSTR_DIBTITLE      "DIBImage.DIB"
+IDSTR_GIFTITLE      "GIFImage.GIF"
+IDSTR_JPGTITLE      "JPGImage.JPG"
+IDSTR_PCDTITLE      "PCDImage.PCD"
+IDSTR_PCXTITLE      "PCXImage.PCX"
+IDSTR_TGATITLE      "TargaImage.TGA"
+IDSTR_TIFTITLE      "TIFImage.TIF"
+IDSTR_PNGTITLE      "PNGImage.PNG"
+IDSTR_MMOTIONTITLE  "VIDImage.VID"
+IDSTR_CWIMAGETITLE  "Digital image"
+
+IDSTR_IMAGEINFOPAGENAME "影像資訊(~I)"
+IDSTR_SPRINTFPIXEL	"%d 像素"
+IDSTR_SPRINTFBIT       "%d Bit"
+;Bitmpap load errors
+IDSTR_NOIMGIOPROCERROR   "無法找到此影像的輸入／輸出程序。"
+IDSTR_OPENFILEERRORTITLE "檔案錯誤"
+IDSTR_OPENFILEERROR      "無法開啟檔案。"
+IDSTR_NOMEMERROR         "無法使用記憶體"
+IDSTR_IMGIOPROCCRASH     "開啟影像時發生內部錯誤。必須重新啟動桌面或系統可能不穩定！不會關閉正在執行的應用程式。"
+
+IDSTR_IMAGEDETAIL_WIDTH   "寬度"
+IDSTR_IMAGEDETAIL_HEIGHT  "高度"
+IDSTR_IMAGEDETAIL_DEPTH   "深度"
+IDSTR_IMAGEDETAIL_FORMAT  "格式"
+
+;Titles used when starting player and editor applications
+IDSTR_IMGEDITORTITLE       "影像檢視器"
+IDSTR_MENU_IMAGEINFO        "影像資訊： %d x %d x %d"
+
+;IDSTR_HELPLIBRARY   "MMPARTS.HLP"
+END
+
+

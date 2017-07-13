@@ -80,6 +80,7 @@ IDSTR_PLAYLISTVIEWTITLE  "Playlist-Editor"
 IDSTR_LAUNCHPADFLYOVER   "Launchpad: Objekte hier ablegen"
 IDSTR_VIEWPAGENAME       "~Anzeige"
 IDSTR_VIEWCOMPACT        "Kompakt"
+IDSTR_CDFOLDERNAME       "Audio-CD-Spieler^Laufwerk %c:"
 
 END
 

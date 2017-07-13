@@ -24,6 +24,7 @@
 #define IDSTR_LAUNCHPADFLYOVER     23 /* Flyover help for launchpads */
 #define IDSTR_VIEWPAGENAME         24 /* Title for Details view page which has now a major tab */
 #define IDSTR_VIEWCOMPACT          25 /* View name when in 'Compact' mode */
+#define IDSTR_CDFOLDERNAME         26
 
 #define IDPB_VOLUME                 202
 #define IDDLG_TOPFRAME              100

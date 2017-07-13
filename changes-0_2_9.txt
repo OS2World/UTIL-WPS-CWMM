@@ -1,4 +1,25 @@
-0.2.9:
+0.2.9pre2: (11.08.05)
+-Close confirmation dialog of media folder will be dismissed automatically after 60s (use INI key to change)
+-MM-find: app opens audio files in editor now (used to open default view and the folder)
+-MM-find: video files are opened in player. No opening of the folder anymore
+-MM-find: app loads NLV strings from resource DLL
+-MM-find: query system for user added audio extensions for insertion into the search dialog
+-MM-find: improved handling of image extensions
+-MM-find: added to tasklist
+-MM-find: added play controls for audio files
+-MM-find: save last visited audio directory
+-Helper apps (converter etc.) create their INI file in the users home directory now
+-MMAudio class claimed to support *.wav extension while MMWAV should be the only one doing that (audioext.rx)
+-MMVideo: associate extensions added by third party IO procs with it automatically (videoext.rx) 
+-MMVideo: defined type "Digital video"
+-MMMPG: associate extensions added by OpenMPEG with it automatically (mpegext.rx) 
+-Improvements to the build process of the helper apps
+-createcd.exe takes the name of created CD-folders from the resource DLL
+-CWCDFolder: improved sorting (hope so, never saw problems on my system)
+-CWCDFolder: No more hic up at start of track
+-MM classes: fixed boot hangs because of endless loops in *.rx files under some circumstances
+
+0.2.9pre1:
 -Don't show a message box if resource DLL can't be found.
 -Changed DLL finding algorithm. Should be more robust, when classes are improperly registered.
 -New method cwmmRequestBmpDeletion() for WPS-wizard to trigger background BMP deletion.

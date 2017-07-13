@@ -24,6 +24,13 @@ typedef struct RxStemData {
     ULONG stemlen;                     /* Length of stem.            */
  } RXSTEMDATA;
 
+/*!**************************************************/
+/*                                                  */
+/* @@DESC                                           */
+/*                                                  */
+/* To be written...                                 */
+/*                                                  */
+/*!!*************************************************/
 LONG RxGetLongFromStemWithoutNumber(RXSTRING args, char * chrTail, ULONG* ulError)
 {
   char text[20];
@@ -73,12 +80,14 @@ LONG RxGetLongFromStemWithoutNumber(RXSTRING args, char * chrTail, ULONG* ulErro
   return atol(text);
 }
 
-/*************************************************************/
+/*!***********************************************************/
+/*                                                           */
+/* @@DESC                                                    */
 /*                                                           */
 /* This function returns a string from a stem. The caller    */
 /* must free the returned string with free()                 */
 /*                                                           */
-/*************************************************************/
+/*!!**********************************************************/
 PSZ RxGetStringFromStemWithoutNumber(RXSTRING args, char *chrTail, ULONG* ulError)
 {
   RXSTEMDATA ldp={0};
@@ -124,11 +133,13 @@ PSZ RxGetStringFromStemWithoutNumber(RXSTRING args, char *chrTail, ULONG* ulErro
   return pText;
 }
 
-/*************************************************************/
+/*!***********************************************************/
+/*                                                           */
+/* @@DESC                                                    */
 /*                                                           */
 /* This function returns a long from a REXX var.             */
 /*                                                           */
-/*************************************************************/
+/*!!**********************************************************/
 LONG RxGetLongFromVar(char * chrVar, ULONG* ulError)
 {
   char text[20];
@@ -174,6 +185,13 @@ LONG RxGetLongFromVar(char * chrVar, ULONG* ulError)
   return atol(text);
 }
 
+/*!***********************************************************/
+/*                                                           */
+/* @@DESC                                                    */
+/*                                                           */
+/* To be written...                                          */
+/*                                                           */
+/*!!**********************************************************/
 LONG RxSetLongInRexxVar(char* chrVar, ULONG ulVal)
 {
   RXSTEMDATA ldp;

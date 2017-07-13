@@ -256,6 +256,13 @@ void print_help(void)
     printf ("              which will also work for uptimes >= 50 days.\n");
 }
 
+/*!***********************************************************/
+/*                                                           */
+/* @@DESC                                                    */
+/*                                                           */
+/* To be written...                                          */
+/*                                                           */
+/*!!**********************************************************/
 ULONG SysGetUptimeSecs(BOOL fUseTimer)
 {
   if(fUseTimer)
@@ -264,6 +271,13 @@ ULONG SysGetUptimeSecs(BOOL fUseTimer)
     return get_uptime_from_swapfile();
 }
 
+/*!***********************************************************/
+/*                                                           */
+/* @@DESC                                                    */
+/*                                                           */
+/* To be written...                                          */
+/*                                                           */
+/*!!**********************************************************/
 char* SysGetUptimeString(BOOL fUseTimer, char * chrBuffer, ULONG ulSize)
 {
   unsigned long uptime, days, hours, minutes, seconds;

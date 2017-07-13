@@ -130,6 +130,7 @@ interface M_MMMPG : M_MMVideo
     wpclsQueryInstanceType  	: override;
     wpclsQueryInstanceFilter    : override;   
     wpclsQueryIconData          : override;
+    wpclsInitData   	        : override;
     wpclsQueryDefaultHelp       : override; 
   };
 

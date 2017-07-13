@@ -129,8 +129,11 @@ interface M_MMVideo : M_CWMMDataFile
      *
      */
     wpclsCreateDefaultTemplates : override;
-    wpclsQueryTitle         	: override;   
-    wpclsQueryDefaultView  : override;   
+    wpclsQueryInstanceType  	: override;
+    wpclsQueryInstanceFilter    : override;
+    wpclsQueryTitle         	: override;
+    wpclsInitData   	        : override;   
+    wpclsQueryDefaultView       : override;   
     wpclsQueryIconData          : override;
   };
 

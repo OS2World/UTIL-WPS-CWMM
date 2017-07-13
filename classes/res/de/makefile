@@ -3,7 +3,7 @@
 include ../../../make.inc
 include ../../../build.inc
 
-LANGUAGE	=	_DE
+LANGUAGE	=	_de
 
 CC           = icc
 CPPFLAGS     = /Ge- /Gm+ /G4 /Gl  /O+ /Oc+ /Ol- /Q+ $(VACDEBUG)
@@ -26,6 +26,7 @@ all:	$(OBJDIR)/mmres$(LANGUAGE).dll mmres$(LANGUAGE).def
 $(OBJDIR)/mmres$(LANGUAGE).dll:	mmres$(LANGUAGE).c $(OBJECTS) mmres$(LANGUAGE).def
 		icc $(CPPFLAGS) -I$(INC) /Fe$(OBJDIR)\$@ $< mmres$(LANGUAGE).def
 		rc -D $(ECS) -i $(INC) mmres$(LANGUAGE).rc $(OBJDIR)/mmres$(LANGUAGE).dll
+		rc -r -D $(ECS) -i $(INC) mmres$(LANGUAGE).rc $(OBJDIR)/mmres$(LANGUAGE).res
 #		rc  mmres$(LANGUAGE).res $(OBJDIR)/mmres$(LANGUAGE).dll
 
 #(OBJDIR)/mmres$(LANGUAGE).res:	mmres$(LANGUAGE).rc $(OBJECTS)
