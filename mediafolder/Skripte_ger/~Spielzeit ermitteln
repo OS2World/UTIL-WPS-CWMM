@@ -1,0 +1,68 @@
+/* Calculate the playtime of all selected tracks */
+
+/* Load Rexxutil functions */
+call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs'
+call SysLoadFuncs
+
+QC_FIRST=0
+QC_NEXT=1
+QC_LAST=2
+
+/* Check if we are executing */
+if ARG(1)\='/EXECUTE' THEN EXIT
+
+/* The media folder running this skript */
+mFldr=ARG(2)
+/* And the frame handle */
+frameHandle=ARG(3)
+
+/*Get the container handle */
+container=WPSWizCallWinFunc( "winQueryContainerHWND", frameHandle)
+
+if container=0 THEN DO
+    rc=RxMessageBox("Container-Handle kann nicht ermittlet werden!", "",'OK', "Information")
+     EXIT
+END
+
+pRec=WPSWizCallWinFunc( "winQueryContRecEmphasis", container, 16 , 1)
+
+a=0
+tracks.0=0
+DO WHILE (pRec\=0 & pRec\=-1)
+	/* Get object pointer */
+	obj=WPSWizCallWinFunc( "winObjectFromPRec", pRec)
+	/* Follow shadows to file system object */
+	obj=MFldrCallFunc( "cwGetFileSystemObject", mFldr, obj)
+	/* Check if it's an audio object */
+	IF MFldrCallFunc( "cwIsA", obj, "CWAudio")\=0 THEN DO
+	        a=a+1
+		tracks.a._obj=obj
+	END
+	pRec=WPSWizCallWinFunc( "winQueryContRecEmphasis", container, pRec , 1)
+	tracks.0=a
+END
+
+if tracks.0=0 THEN DO
+	rc=RxMessageBox("Keine Audio-Dateien ausgew„hlt.", "Information",'OK')
+	EXIT
+END
+
+playTime=0
+/* Now calculate play time */
+DO a=tracks.0 to 1 by -1
+tempTime=0
+	tempTime=MMClsCallFunc( "cwmmQueryTrackInfo", tracks.a._obj, 7)
+	if tempTime\= 'ERROR:' THEN DO
+		playTime=playTime+tempTime	
+	END
+END
+theString='Spielzeit aller ausgew„hlten Dateien ist:  '
+secs=RIGHT('00'||playTime//60 ,2)
+theString=theString||playTime%60||':'||secs||' min'||'0d'X||'0d'X
+theString=theString||'Anzahl ausgew„hlte Dateien: '||tracks.0||'0d'X||'  '
+rc=RxMessageBox(theString, "Information",'OK')
+
+RC=0
+exit
+
+

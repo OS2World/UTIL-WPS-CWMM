@@ -1,0 +1,102 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+DLGINCLUDE 1 "
+G:\Projects_working\mmclasses-0.3.0\source\include\mediafolderres.h"
+
+DLGTEMPLATE IDDLG_BOTTOMFRAME LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_BOTTOMFRAME, 12, 70, 300, 16, NOT FS_DLGBORDER | NOT 
+            WS_SAVEBITS
+    BEGIN
+        CTEXT           "", IDST_STATUSTEXT, 39, 1, 221, 8
+    END
+END
+
+DLGTEMPLATE IDDLG_FRAMERIGHT LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_FRAMERIGHT, 134, 21, 24, 109, NOT FS_DLGBORDER | NOT 
+            WS_SAVEBITS
+    BEGIN
+    END
+END
+
+DLGTEMPLATE IDDLG_LEFTFRAME LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_LEFTFRAME, 12, 6, 148, 148, NOT FS_DLGBORDER | NOT 
+            WS_SAVEBITS
+    BEGIN
+        CONTAINER       IDCNR_PLAYLIST, 14, 11, 123, 111, CCS_SINGLESEL | 
+                        CCS_AUTOPOSITION | CCS_MINIRECORDCORE | WS_GROUP
+        PUSHBUTTON      "Toevoegen", IDPB_ADD, 8, 129, 40, 14
+        PUSHBUTTON      "Verwijderen", IDPB_REMOVE, 72, 129, 40, 14
+    END
+END
+
+DLGTEMPLATE IDDLG_TOOLBARSETTINGS LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_TOOLBARSETTINGS, 91, 22, 201, 199, NOT FS_DLGBORDER | 
+            WS_VISIBLE
+    BEGIN
+        GROUPBOX        "Gereedschapsbalk", IDGB_TOOLBAR, 9, 24, 181, 127, NOT 
+                        WS_GROUP
+        AUTOCHECKBOX    "Activ~eer hulpballonnen", IDCB_ENABLETBFLYOVER, 16, 
+                        129, 152, 10
+        SPINBUTTON      IDSB_TBFLYOVERDELAY, 97, 115, 40, 12, 
+                        SPBS_NUMERICONLY | SPBS_MASTER | SPBS_FASTSPIN | 
+                        WS_GROUP
+        GROUPBOX        "Hulpballonnen kleuren en lettertype", IDGB_COLORANDFONT, 15, 
+                        30, 168, 76, NOT WS_GROUP
+        LTEXT           "Druk op knop voor kleur- of lettertype-palet.           "
+                        "              
+Houd <CTRL> ingedrukt tijdens het slepen om de tekst kleur aan te passen.", 
+                        IDST_TEXTDEMOFIELD, 23, 35, 95, 57, DT_WORDBREAK
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x000000FFL
+                        PRESPARAMS PP_BACKGROUNDCOLOR, 0x00FFFFFFL
+        PUSHBUTTON      "~Kleur...", IDPB_COLORPALETTE, 129, 72, 45, 14
+        PUSHBUTTON      "~Lettertype...", IDPB_FONTPALETTE, 129, 49, 45, 14
+        PUSHBUTTON      "~Startwaarde", IDPB_COLORUNDO, 16, 7, 52, 14
+        PUSHBUTTON      "S~tandaard", IDPB_COLORSTANDARD, 74, 7, 52, 14
+        PUSHBUTTON      "~Hulp", IDPB_COLORHELP, 132, 7, 52, 14, BS_HELP
+        RTEXT           "Vertraging (ms):", IDGB_COLORANDFONT, 35, 116, 55, 8, 
+                        DT_VCENTER
+    END
+END
+
+DLGTEMPLATE IDDLG_TOPFRAME LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_TOPFRAME, 13, 52, 287, 26, NOT FS_DLGBORDER | 
+            FS_BORDER | NOT WS_SAVEBITS
+    BEGIN
+        PUSHBUTTON      "Druk", IDPB_PAUSE, 2, 6, 19, 14, NOT WS_VISIBLE
+    END
+END
+
+DLGTEMPLATE IDDLG_TOPMIDDLE LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", IDDLG_TOPMIDDLE, 12, 51, 249, 39, NOT FS_DLGBORDER | 
+            FS_BORDER | WS_VISIBLE | NOT WS_SAVEBITS
+    BEGIN
+        CONTROL         "~Terug", IDPB_SKIPBACK, 19, 25, 20, 14, WC_BUTTON, 
+                        BS_USERBUTTON | BS_NOPOINTERFOCUS | WS_TABSTOP | 
+                        WS_VISIBLE
+        CONTROL         "~Stoppen", IDPB_STOP, 40, 25, 22, 14, WC_BUTTON, 
+                        BS_USERBUTTON | BS_NOPOINTERFOCUS | WS_VISIBLE
+        CONTROL         "~Pauze", IDPB_PAUSE, 61, 25, 20, 14, WC_BUTTON, 
+                        BS_USERBUTTON | BS_NOPOINTERFOCUS | WS_VISIBLE 
+        CONTROL         "Afspe~len", IDPB_PLAY, 79, 25, 20, 14, WC_BUTTON, 
+                        BS_USERBUTTON | BS_NOPOINTERFOCUS | WS_VISIBLE
+        CONTROL         "Volge~nde", IDPB_SKIPFORWARD, 99, 25, 20, 14, WC_BUTTON, 
+                        BS_USERBUTTON | BS_NOPOINTERFOCUS | WS_VISIBLE
+        AUTOCHECKBOX    "He~rhalen", IDCB_REPEAT, 133, 13, 73, 10,WS_VISIBLE|BS_USERBUTTON | BS_AUTOCHECKBOX
+        AUTOCHECKBOX    "~Willekeurig", IDCB_RANDOM, 133, 23, 73, 10, WS_VISIBLE  | BS_USERBUTTON | BS_AUTOCHECKBOX
+
+        CTEXT           "0:00", IDST_PLAYTIME, 133, 24, 102, 10, DT_VCENTER
+                        PRESPARAMS PP_FONTNAMESIZE, "10.Helv"
+        CONTROL         "VolumeArm", IDSL_VOLUMEARM, 209, 5, 14, 14, 
+                        WC_BUTTON, BS_USERBUTTON | WS_TABSTOP|BS_USERBUTTON
+        PUSHBUTTON      "Volume", IDSL_VOLUME, 19, 4, 69, 14, 
+                        BS_NOPOINTERFOCUS | NOT WS_TABSTOP | NOT WS_VISIBLE |BS_USERBUTTON
+    END
+END
+

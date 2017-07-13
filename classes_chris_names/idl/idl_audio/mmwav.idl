@@ -1,0 +1,111 @@
+
+/*
+ * MMWAV.idl:
+ */
+
+#include <cwaudio.idl>
+
+/*
+   CLASS: 
+*/
+
+interface M_CWWAV; 
+
+interface CWWAV : CWAudio
+{
+
+    /*
+     * New instance methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = mmwav_;
+    externalstem = mmwav;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = mmwav;           //# specifies the filestem for sc-generated files
+    metaclass = M_CWWAV;
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+
+    /*
+     * Internal instance variables
+     *
+     */
+
+
+    /*
+     * methods overridden 
+     *
+     */
+    wpSaveState               : override;
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+interface M_CWWAV : M_CWAudio
+{
+
+    /*
+     * New class methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = mmwavM_;
+    externalstem = mmwavM;
+    functionprefix = mmwavM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = mmwav;           //# specifies the filestem for sc-generated files
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+
+    wpclsQueryTitle   	        : override;   
+    wpclsQueryInstanceType  	: override;
+    wpclsQueryInstanceFilter    : override;   
+    wpclsQueryIconData          : override;
+    wpclsQueryDefaultHelp       : override; 
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+
+
+

@@ -1,0 +1,285 @@
+;/*
+; * This program is free software; you can redistribute it and/or modify
+; * it under the terms of the GNU General Public License as published by
+; * the Free Software Foundation; either version 2, or (at your option)
+; * any later version.
+; *
+; * This program is distributed in the hope that it will be useful,
+; * but WITHOUT ANY WARRANTY; without even the implied warranty of
+; * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+; * GNU General Public License for more details.
+; *
+; * You should have received a copy of the GNU General Public License
+; * along with this program; see the file COPYING.  If not, write to
+; * the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+; */
+;/*
+; * If you need another license for your project/product contact me at
+; * 
+; * http://www.os2world.com/cdwriting
+; * http://www.geocities.com/SiliconValley/Sector/5785/
+; */
+LIBRARY CWMM INITGLOBAL
+DESCRIPTION '$@#(C) C. Wohlgemuth 2001-2002:#@##1## 26.10.2002 18:17:00      My ;-)  : :::0::@@ Extended MM-Classes V0.2.4' 
+;DESCRIPTION '$@#(C) C. Wohlgemuth 2001-2002:#@ Extended MM-Classes V0.2.3'
+PROTMODE
+CODE PRELOAD DISCARDABLE
+DATA SHARED LOADONCALL
+
+EXPORTS  
+;Audio classes
+        M_CWAudioClassData	@1
+        M_CWAudioCClassData	@2
+        M_CWAudioNewClass	@3
+        CWAudioClassData	@4
+        CWAudioCClassData	@5
+        CWAudioNewClass		@6
+
+        M_CWMP3ClassData	@7
+        M_CWMP3CClassData	@8
+        M_CWMP3NewClass		@9
+        CWMP3ClassData		@10
+        CWMP3CClassData		@11
+        CWMP3NewClass		@12
+
+        M_CWOGGClassData	@13
+        M_CWOGGCClassData	@14
+        M_CWOGGNewClass		@15
+        CWOGGClassData		@16
+        CWOGGCClassData		@17
+        CWOGGNewClass		@18
+
+        M_CWCDTrackClassData	@19
+        M_CWCDTrackCClassData	@20
+        M_CWCDTrackNewClass	@21
+        CWCDTrackClassData	@22
+        CWCDTrackCClassData	@23
+        CWCDTrackNewClass	@24
+
+        M_CWMMDiskClassData	@25
+        M_CWMMDiskCClassData	@26
+        M_CWMMDiskNewClass		@27
+        CWMMDiskClassData		@28
+        CWMMDiskCClassData		@29
+        CWMMDiskNewClass		@30
+
+        M_CWWAVClassData	@31
+        M_CWWAVCClassData	@32
+        M_CWWAVNewClass		@33
+        CWWAVClassData		@34
+        CWWAVCClassData		@35
+        CWWAVNewClass		@36
+
+        M_CWAIFClassData	@37
+        M_CWAIFCClassData	@38
+        M_CWAIFNewClass		@39
+        CWAIFClassData		@40
+        CWAIFCClassData		@41
+        CWAIFNewClass		@42
+
+        M_CWAUClassData		@43
+        M_CWAUCClassData	@44
+        M_CWAUNewClass		@45
+        CWAUClassData		@46
+        CWAUCClassData		@47
+        CWAUNewClass		@48
+
+        M_CW_AUClassData	@49
+        M_CW_AUCClassData	@50
+        M_CW_AUNewClass		@51
+        CW_AUClassData		@52
+        CW_AUCClassData		@53
+        CW_AUNewClass		@54
+
+        M_CWIFFClassData	@55
+        M_CWIFFCClassData	@56
+        M_CWIFFNewClass		@57
+        CWIFFClassData		@58
+        CWIFFCClassData		@59
+        CWIFFNewClass		@60
+
+        M_CWSNDFClassData	@61
+        M_CWSNDFCClassData	@62
+        M_CWSNDFNewClass	@63
+        CWSNDFClassData		@64
+        CWSNDFCClassData	@65
+        CWSNDFNewClass		@66
+
+        M_CWVOCClassData	@67
+        M_CWVOCCClassData	@68
+        M_CWVOCNewClass		@69
+        CWVOCClassData		@70
+        CWVOCCClassData		@71
+        CWVOCNewClass		@72
+
+        M_CWMIDIClassData	@73
+        M_CWMIDICClassData	@74
+        M_CWMIDINewClass	@75
+        CWMIDIClassData		@76
+        CWMIDICClassData	@77
+        CWMIDINewClass		@78
+
+;Video classes
+        M_CWVideoClassData	@79
+        M_CWVideoCClassData	@80
+        M_CWVideoNewClass	@81
+        CWVideoClassData	@82
+        CWVideoCClassData	@83
+        CWVideoNewClass		@84
+
+        M_CWAVIClassData	@85
+        M_CWAVICClassData	@86
+        M_CWAVINewClass		@87
+        CWAVIClassData		@88
+        CWAVICClassData		@89
+        CWAVINewClass		@90
+
+        M_CWFLIClassData	@91
+        M_CWFLICClassData	@92
+        M_CWFLINewClass		@93
+        CWFLIClassData		@94
+        CWFLICClassData		@95
+        CWFLINewClass		@96
+
+        M_CWMOVClassData	@97
+        M_CWMOVCClassData	@98
+        M_CWMOVNewClass		@99
+        CWMOVClassData		@100
+        CWMOVCClassData		@101
+        CWMOVNewClass		@102
+
+        M_CWMPGClassData	@103
+        M_CWMPGCClassData	@104
+        M_CWMPGNewClass		@105
+        CWMPGClassData		@106
+        CWMPGCClassData		@107
+        CWMPGNewClass		@108
+
+;MM-Data file class
+        M_CWMMDataFileClassData	@109
+        M_CWMMDataFileCClassData	@110
+        M_CWMMDataFileNewClass	@111
+        CWMMDataFileClassData	@112
+        CWMMDataFileCClassData	@113
+        CWMMDataFileNewClass	@114
+
+;Image classes
+        M_CWImageClassData	@115
+        M_CWImageCClassData	@116
+        M_CWImageNewClass	@117
+        CWImageClassData	@118
+        CWImageCClassData	@119
+        CWImageNewClass		@120
+
+        M_CWAVCClassData	@121
+        M_CWAVCCClassData	@122
+        M_CWAVCNewClass		@123
+        CWAVCClassData		@124
+        CWAVCCClassData		@125
+        CWAVCNewClass		@126
+
+        M_CWDIBClassData	@127
+        M_CWDIBCClassData	@128
+        M_CWDIBNewClass		@129
+        CWDIBClassData		@130
+        CWDIBCClassData		@131
+        CWDIBNewClass		@132
+
+        M_CWGIFClassData	@133
+        M_CWGIFCClassData	@134
+        M_CWGIFNewClass		@135
+        CWGIFClassData		@136
+        CWGIFCClassData		@137
+        CWGIFNewClass		@138
+
+        M_CWJPGClassData	@139
+        M_CWJPGCClassData	@140
+        M_CWJPGNewClass		@141
+        CWJPGClassData		@142
+        CWJPGCClassData		@143
+        CWJPGNewClass		@144
+
+        M_CWPhotoCDClassData	@145
+        M_CWPhotoCDCClassData	@146
+        M_CWPhotoCDNewClass	@147
+        CWPhotoCDClassData	@148
+        CWPhotoCDCClassData	@149
+        CWPhotoCDNewClass	@150
+
+        M_CWPCXClassData	@151
+        M_CWPCXCClassData	@152
+        M_CWPCXNewClass		@153
+        CWPCXClassData		@154
+        CWPCXCClassData		@155
+        CWPCXNewClass		@156
+
+        M_CWTargaClassData	@157
+        M_CWTargaCClassData	@158
+        M_CWTargaNewClass	@159
+        CWTargaClassData	@160
+        CWTargaCClassData	@161
+        CWTargaNewClass		@162
+
+        M_CWTIFFClassData	@163
+        M_CWTIFFCClassData	@164
+        M_CWTIFFNewClass	@165
+        CWTIFFClassData		@166
+        CWTIFFCClassData	@167
+        CWTIFFNewClass		@168
+
+        M_CWMMotionClassData	@169
+        M_CWMMotionCClassData	@170
+        M_CWMMotionNewClass	@171
+        CWMMotionClassData	@172
+        CWMMotionCClassData	@173
+        CWMMotionNewClass	@174
+
+        M_CWBitmapClassData	@175
+        M_CWBitmapCClassData	@176
+        M_CWBitmapNewClass	@177
+        CWBitmapClassData	@178
+        CWBitmapCClassData	@179
+        CWBitmapNewClass	@180
+
+;Light table folder
+        M_MMFolderClassData	@181
+        M_MMFolderCClassData	@182
+        M_MMFolderNewClass	@183
+        MMFolderClassData	@184
+        MMFolderCClassData	@185
+        MMFolderNewClass	@186
+
+;Audio stream class
+        M_CWAudioStreamClassData	@187
+        M_CWAudioStreamCClassData	@188
+        M_CWAudioStreamNewClass	@189
+        CWAudioStreamClassData	@190
+        CWAudioStreamCClassData	@191
+        CWAudioStreamNewClass	@192
+
+IMPORTS
+	M_WPImageFileClassData=PMWP.495
+	M_WPImageFileCClassData=PMWP.494
+	M_WPImageFileNewClass=PMWP.496
+	WPImageFileClassData=PMWP.492
+	WPImageFileCClassData=PMWP.491
+	WPImageFileNewClass=PMWP.493
+
+
+;        M_MMWAVClassData	@31
+;        M_MMWAVCClassData	@32
+;        M_MMWAVNewClass		@33
+;        MMWAVClassData		@34
+;        MMWAVCClassData		@35
+;        MMWAVNewClass		@36
+
+
+;IMPORTS
+;	MMPARTS.M_MMAudioClassData
+;	MMPARTS.M_MMAudioCClassData
+;	MMPARTS.M_MMAudioNewClass
+;	MMPARTS.MMAudioClassData
+;	MMPARTS.MMAudioCClassData
+;	MMPARTS.MMAudioNewClass
+
+

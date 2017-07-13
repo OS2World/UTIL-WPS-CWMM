@@ -1,0 +1,49 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+
+MENU ID_MENU_IMGEDITOR
+BEGIN
+        MENUITEM "~Editor immagini", ID_MENU_IMGEDITOR
+END
+
+
+STRINGTABLE
+BEGIN
+IDSTR_MENU_CONVERT "~Converti in"
+
+IDSTR_AVCTITLE      "AVCImage._IM"
+IDSTR_DIBTITLE      "DIBImage.DIB"
+IDSTR_GIFTITLE      "GIFImage.GIF"
+IDSTR_JPGTITLE      "JPGImage.JPG"
+IDSTR_PCDTITLE      "PCDImage.PCD"
+IDSTR_PCXTITLE      "PCXImage.PCX"
+IDSTR_TGATITLE      "TargaImage.TGA"
+IDSTR_TIFTITLE      "TIFImage.TIF"
+IDSTR_PNGTITLE      "PNGImage.PNG"
+IDSTR_MMOTIONTITLE  "VIDImage.VID"
+IDSTR_CWIMAGETITLE  "Digital image"
+
+IDSTR_IMAGEINFOPAGENAME "Informazioni i~mmagine"
+IDSTR_SPRINTFPIXEL	"%d Pixel"
+IDSTR_SPRINTFBIT        "%d Bit"
+;Bitmpap load errors
+IDSTR_NOIMGIOPROCERROR   "Non Š stata trovata la procedura I/O corretta per questo tipo di immagine."
+IDSTR_OPENFILEERRORTITLE "Errore file"
+IDSTR_OPENFILEERROR      "Impossibile aprire il file."
+IDSTR_NOMEMERROR         "Non vi Š memoria disponibile."
+IDSTR_IMGIOPROCCRASH     "Si Š verificato un errore interno durante l'apertura dell'immagine. RIAVVIARE LA SCRIVANIA per evitare che il sistema diventi instabile! Tutte le applicazioni in funzione resteranno aperte."
+
+IDSTR_IMAGEDETAIL_WIDTH   "Larghezza"
+IDSTR_IMAGEDETAIL_HEIGHT  "Altezza"
+IDSTR_IMAGEDETAIL_DEPTH   "Profondit…"
+IDSTR_IMAGEDETAIL_FORMAT  "Formato"
+
+;Titles used when starting player and editor applications
+IDSTR_IMGEDITORTITLE       "Visualizzatore immagini"
+IDSTR_MENU_IMAGEINFO       "Informazioni immagine: %d x %d x %d"
+
+;IDSTR_HELPLIBRARY   "MMPARTS.HLP"
+END
+

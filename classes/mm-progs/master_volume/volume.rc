@@ -1,0 +1,8 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include "mmres.h"
+
+ICON ID_ICONVOLUME   "volume.ico"
+
+

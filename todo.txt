@@ -1,0 +1,21 @@
+Allow additional parameters for player and editor
+CDFolder: Create folder script
+
+-Help panel for PNG
+-Types (strings) for MM classes as resources
+-bitrate and #samples in EA
+-Help panel for FLAC
+-Hilfe fÅr volume
+
+cwimage:
+Create bitmap thread my not be thread safe.
+
+Delete main bitmap handle after creating a new one for the caller in
+wpQueryBitmapHandle().
+
+Implement a method for shared bitmaps with reference count.
+
+Mediafolder::wpSetup(): Volume setting is broken.
+
+
+

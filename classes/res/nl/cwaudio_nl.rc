@@ -1,0 +1,130 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+
+MENU ID_MENU_VOLUME
+BEGIN
+        MENUITEM "~Volume",ID_MENU_VOLUME       
+END
+
+MENU ID_MENU_START
+BEGIN
+        MENUITEM "~Start",ID_MENU_START       
+END
+
+MENU ID_MENU_STOP
+BEGIN
+        MENUITEM "~Stop", ID_MENU_STOP       
+END
+
+MENU ID_MENU_PAUSE
+BEGIN
+        MENUITEM "~Pauze", ID_MENU_PAUSE       
+END
+
+MENU ID_MENU_RESUME
+BEGIN
+        MENUITEM "Doo~rgaan", ID_MENU_RESUME       
+END
+
+MENU ID_MENU_EDITOR
+BEGIN
+        MENUITEM "~Geluidseditor", ID_MENU_EDITOR       
+END
+
+MENU ID_MENU_PLAYER
+BEGIN
+        MENUITEM "Afs~peler", ID_MENU_PLAYER       
+END
+
+MENU ID_MENU_CONVERT
+BEGIN
+	SUBMENU  "~Omzetten naar",ID_MENU_CONVERT
+	BEGIN
+        MENUITEM "~WAV (RIFF WAVE Digitaal Geluid)", ID_ITEM_CONVERT
+	END
+END
+
+MENU ID_MENUICONSIZE
+BEGIN
+;   MENUITEM  "" , ID_MENUICONSIZE, MIS_SEPARATOR
+   MENUITEM "Gewone pictogrammen", ID_NORMALICONSITEM
+   MENUITEM  "50 * 50" , ID_50X50ITEM
+   MENUITEM  "100 * 100" , ID_100X100ITEM
+   MENUITEM  "150 * 150" , ID_150X150ITEM
+   MENUITEM  "200 * 200" , ID_200X200ITEM
+   MENUITEM  "250 * 250" , ID_250X250ITEM
+END
+
+MENU ID_MENU_M3UEDITOR
+BEGIN
+        MENUITEM "Afspeellijst ~editor", ID_MENU_M3UEDITOR       
+END
+
+MENU ID_MENU_M3UPLAYER
+BEGIN
+        MENUITEM "S~peel deze lijst", ID_MENU_M3UPLAYER       
+END
+
+
+STRINGTABLE 
+BEGIN
+ID_WAVEINFOPAGENAME "~Geluidsinformatie"
+ID_ID3TAGSPAGENAME  "~ID3 Tags"
+ID_TRACKNAMEPAGENAME "~Spoor naam"
+IDSTR_TRACKNAME      "Spoornaam"
+
+IDSTR_PLAYTIME      "Speelduur"
+IDSTR_SAMPLERATE    "Samplesnelheid"
+IDSTR_CHANNELS      "Kanalen"
+IDSTR_BPS           "Bits per sample"
+
+;IDSTR_BITRATE       "Bitsnelheid"
+;IDSTR_VBR           "VBR"
+
+IDSTR_TITLE         "Titel"
+IDSTR_ARTIST        "Artiest"
+IDSTR_ALBUM         "Album"
+IDSTR_YEAR          "Jaar"
+IDSTR_COMMENT       "Commentaar"
+IDSTR_GENRE         "Genre"
+
+IDSTR_HELPLIBRARY      "MMPARTS.HLP"
+IDSTR_CWMMDATAFILETITLE "MMGegevens bestand"
+;Titles of audio classes
+IDSTR_CWAUDIOTITLE   "Digitaal Geluid"
+IDSTR_AIFTITLE       "AIFAudio.AIF"
+IDSTR_AUTITLE        "AUAudio.AU"
+IDSTR__AUTITLE       "_AUAudio._AU"
+IDSTR_IFFTITLE       "IFFAudio.IFF"
+IDSTR_SNDFTITLE      "SNDAudio.SND"
+IDSTR_VOCTITLE       "VOCAudio.VOC"
+IDSTR_WAVTITLE       "WAVAudio.WAV"
+IDSTR_OGGTITLE       "OGGAudio.OGG"
+IDSTR_MP3TITLE       "MP3Audio.MP3"
+IDSTR_MIDITITLE       "MIDI.MID"
+IDSTR_FLACTITLE       "FLACAudio.FLA"
+
+
+IDSTR_LIGHTTABLETITLE "Light table"
+
+IDSTR_ICONSIZEMENU    "Pictogram ~grootte"
+;Used as an information when starting and audio file from the WPS
+IDSTR_STARTINGTRACK      "Begin spoor..."
+IDSTR_AUDIOSCANNING     "Geluidsbestand scannen..."
+IDSTR_AUDIOSTREAMTITLE  "Geluidsstroom"
+IDSTR_STREAMURLPAGENAME "~URL-instelling"
+IDSTR_CDTRACKTITLE      "Cd-spoor"
+IDSTR_M3UTITLE          "M3U afspeellijst"
+;Titles used when starting player and editor applications
+IDSTR_AUDPLAYERTITLE       "Geluidsspeler"
+IDSTR_AUDEDITORTITLE       "Geluids editor"
+IDSTR_M3UEDITORTITLE       "Afspeellijst editor"
+IDSTR_TRACKPAUSED          " (onderbroken)"
+;Used for window list
+IDSTR_VOLUMETITLE       "Volume"
+
+END
+
+

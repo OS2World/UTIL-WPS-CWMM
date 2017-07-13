@@ -1,0 +1,18 @@
+G:\Projects_working\mmclasses-0.3.0\source\cddb\pmcddb.exe started with the following parameters:
+
+G:\Projects_working\mmclasses-0.3.0\source\cddb\pmcddb.exe
+N:
+D:\OS2\APPS\CWMMOS2\MEDIAFLD\bin\trknames.cmd
+
+Trying to load ressource DLL.
+Using the following DLL path: G:\Projects_working\mmclasses-0.3.0\source\cddb\PMDB049.dll
+Ressource-DLL for the current countrycode not found. Trying to load default one (nnnnn001.DLL).
+Using the following DLL path: G:\Projects_working\mmclasses-0.3.0\source\cddb\PMDB001.dll
+Ressource DLL loaded.
+Reading values from cddb.ini
+
+Cache directory is: G:\Projects_working\mmclasses-0.3.0\source\cddb\cddbdata\
+
+CDDB datafile name is: G:\Projects_working\mmclasses-0.3.0\source\cddb\cddbdata\65091a09
+Found CDDB data in cache directory. DB query finished.
+Trying to start D:\OS2\APPS\CWMMOS2\MEDIAFLD\bin\trknames.cmd

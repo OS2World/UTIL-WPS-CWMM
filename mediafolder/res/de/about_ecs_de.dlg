@@ -1,0 +1,28 @@
+#define VER_STRING "Media-Ordner V" \
+MFLDR_VERSION \
+BUILD_STRING
+
+ICON IDICON_FOLDER1  "../icons_ecs/mediafolder1.ico"
+
+DLGTEMPLATE IDDLG_ABOUT LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Produktinformation", IDDLG_ABOUT, 110, 125, 184, 58, 
+            WS_VISIBLE, FCF_TITLEBAR
+    BEGIN
+        ICON            IDICON_FOLDER1, IDICON_FOLDER1, 5, 33, 16, 15, 
+                        WS_GROUP
+        LTEXT           "Multimedia-Integration fÅr die ArbeitsoberflÑche", 
+                        IDST_PRODNAME, 28, 44, 154, 10, DT_VCENTER | NOT 
+                        WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans Bold"
+        CONTROL         "", 607, 28, 37, 150, 7, "CW_SEPARATOR", WS_VISIBLE
+        LTEXT           "(C) 2002-2004 Chris Wohlgemuth", IDST_PRODCOPY, 28, 
+                        26, 154, 11, DT_VCENTER | NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        LTEXT           "Lizenziert an Serenity Systems", 608, 28, 17, 154, 9, 
+                        DT_VCENTER
+                        PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        DEFPUSHBUTTON   "~Ok", IDSTR_CLOSETEXT, 28, 3, 30, 11
+    END
+END
+

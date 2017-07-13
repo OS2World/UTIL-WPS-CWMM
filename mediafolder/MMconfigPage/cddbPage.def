@@ -1,0 +1,8 @@
+LIBRARY cddbpage INITINSTANCE LONGNAMES
+PROTMODE
+DESCRIPTION 'CDDB Config page - (c) Copyright Chris Wohlgemuth 2002'
+DATA MULTIPLE NONSHARED
+STACKSIZE 32768
+EXPORTS
+     InsertCDDBConfigPage      @1
+

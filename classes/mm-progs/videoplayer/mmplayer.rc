@@ -1,0 +1,30 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include "mmplayerres.h"
+
+BITMAP IDBMP_TOPMIDDLE        "./res/bmp/mmplayer.bmp"
+
+BITMAP IDBMP_SKIPBACK         "./res/bmp/Wrwd2.bmp"   
+BITMAP IDBMP_SKIPBACKSEL      "./res/bmp/Brwd2.bmp"   
+
+BITMAP IDBMP_PLAY             "./res/bmp/WSTART2.bmp"
+BITMAP IDBMP_PLAYSEL          "./res/bmp/BSTART2.bmp"
+
+BITMAP IDBMP_PAUSE            "./res/bmp/wPause2.bmp"
+BITMAP IDBMP_PAUSESEL         "./res/bmp/BPause2.bmp"
+
+BITMAP IDBMP_STOP             "./res/bmp/Wstop2.bmp"
+BITMAP IDBMP_STOPSEL          "./res/bmp/Bstop2.bmp"
+
+BITMAP IDBMP_SKIPFORWARD      "./res/bmp/WFWD2.bmp"
+BITMAP IDBMP_SKIPFORWARDSEL   "./res/bmp/BFWD2.bmp" 
+
+BITMAP IDBMP_POSSLIDERARM     "./res/bmp/PosArm.bmp"
+
+BITMAP IDBMP_VOLSLIDERARM    "./res/bmp/WVOL.bmp"
+BITMAP IDBMP_VOLSLIDERARMSEL "./res/bmp/BVOL.bmp"
+
+POINTER IDPTR_ARROWWE        "./res/pointer/arrowwe.ptr"
+
+

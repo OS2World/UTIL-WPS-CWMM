@@ -1,0 +1,56 @@
+#define  INCL_GRAPHICBUTTON   /* need this for the graphic buttons control */
+#define  INCL_BITMAP
+
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include <sw.h>
+
+#include "mediafolderres.h"
+#include "version.h"
+#include "build.h"
+
+#ifdef ECS
+ICON IDICON_FOLDER1  "icons_ecs/mediafolder1.ico"
+ICON IDICON_FOLDER2  "icons_ecs/mediafolder2.ico"
+ICON IDICON_CDFOLDER "icons_ecs/warpcd.ico"
+ICON IDICON_M3UFILE  "icons_ecs/m3u.ico"
+#else
+ICON IDICON_FOLDER1  "icons/mediafolder1.ico"
+ICON IDICON_FOLDER2  "icons/mediafolder2.ico"
+ICON IDICON_CDFOLDER "icons/warpcd.ico"
+ICON IDICON_M3UFILE  "icons/m3u.ico"
+#endif
+
+BITMAP IDBMP_SKIPBACK         "bmp/Wrwd2.bmp"   
+BITMAP IDBMP_SKIPBACKSEL      "bmp/Brwd2.bmp"   
+
+BITMAP IDBMP_PLAY             "bmp/WSTART2.bmp"
+BITMAP IDBMP_PLAYSEL          "bmp/BSTART2.bmp"
+
+BITMAP IDBMP_PAUSE            "bmp/wPause2.bmp"
+BITMAP IDBMP_PAUSESEL         "bmp/BPause2.bmp"
+
+BITMAP IDBMP_STOP             "bmp/Wstop2.bmp"
+BITMAP IDBMP_STOPSEL          "bmp/Bstop2.bmp"
+
+BITMAP IDBMP_SKIPFORWARD      "bmp/WFWD2.bmp"
+BITMAP IDBMP_SKIPFORWARDSEL   "bmp/BFWD2.bmp"
+
+BITMAP IDBMP_POSSLIDERARM     "bmp/PosArm.bmp"
+
+BITMAP IDBMP_TOPMIDDLE        "bmp/Title3.bmp"
+BITMAP IDBMP_TOPLEFT          "bmp/Tile.bmp"
+BITMAP IDBMP_TOPRIGHT         "bmp/Tile.bmp"
+BITMAP IDBMP_BOTTOM           "bmp/bottom.bmp"
+
+BITMAP IDBMP_VOLSLIDERARM    "bmp/WVOL.bmp"
+BITMAP IDBMP_VOLSLIDERARMSEL "bmp/BVOL.bmp"
+
+BITMAP IDBMP_CHECK            "bmp/checked.bmp"
+BITMAP IDBMP_UNCHECK          "bmp/UNCHECKed.bmp"
+BITMAP IDBMP_CHECKSEL            "bmp/checkedsel.bmp"
+BITMAP IDBMP_UNCHECKSEL          "bmp/UNCHECKedsel.bmp"
+
+POINTER IDPTR_ARROWWE        "pointer/arrowwe.ptr"
+

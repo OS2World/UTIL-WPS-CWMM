@@ -1,0 +1,546 @@
+
+/*  The BASE.SCR change file for MMPM2.INI  */
+
+/* The basic syntax is KEYWORD = one of (STRING, NUMBER, ARRAY)      */
+/* All keywords are unique.                                          */
+
+/***
+    #define CO_FAILIFEXISTS       0
+    #define CO_REPLACEIFEXISTS    1
+    #define CO_UPDATEIFEXISTS     2
+***/
+
+/*
+
+---------------------------------------------------
+See comment for explanation of what's going on with
+these settings.
+---------------------------------------------------
+
+	Destination directories:
+
+$(DEST)1      :    \\MMOS2\\MMClass\\          <--- CWMM.DLL is in this directory
+$(DEST)2      :    \\MMOS2\\MediaFld\\bin\\    <--- MEDIAFLD.DLL is in this directory
+$(DEST)3      :    \\MMOS2\\FreeDB\\
+$(DEST)4      :    \\MMOS2\\FreeDB             <--- No trailing backslash for INI entry!!!
+
+The file tree must have the following format:
+
+ Verzeichnis von H:\MMOS2
+
+19.11.02  21.04      <DIR>           0  .
+19.11.02  21.04      <DIR>           0  ..
+19.11.02  22.29      <DIR>           0  MediaFld
+19.11.02  22.30      <DIR>         713  MMClass
+19.11.02  22.29      <DIR>           0  FreeDB              <--- Contains FreeDB client
+
+ Verzeichnis von H:\MMOS2\MediaFld
+
+19.11.02  22.29      <DIR>           0  .
+19.11.02  22.29      <DIR>           0  ..
+24.11.02   2.48      <DIR>         742  bin
+19.11.02  22.29      <DIR>           0  Doc
+
+ Verzeichnis von H:\MMOS2\MediaFld\bin
+
+19.11.02  22.29      <DIR>           0  .
+19.11.02  22.29      <DIR>           0  ..
+19.11.02  22.29       1233           0  createcd.exe
+19.11.02  22.29       1909          34  creatobj.cmd
+19.11.02  22.29      44211           0  media001.dll        <--- German NLV is: media049.dll
+19.11.02  22.29     126967          61  mediafld.dll
+19.11.02  22.29       2898           0  mediafld.hlp        <--- Use the right NLV
+19.11.02  22.29        504          35  setFolder.cmd
+19.11.02  22.29        891          35  setShadow.cmd
+19.11.02  22.29       2552          42  trknames.cmd
+
+
+ Verzeichnis von H:\MMOS2\MediaFld\Doc
+
+19.11.02  22.29      <DIR>           0  .
+19.11.02  22.29      <DIR>           0  ..
+19.11.02  22.29      19563           0  mediafldr.inf       <--- No need to create a program object. I think this doc is power user stuff.
+                                                                 So keep it hidden.
+         3 Datei(en)      19563 Byte belegt
+
+ Verzeichnis von H:\MMOS2\FreeDB            (Contains FreeDB client)
+
+19.11.02  22.29      <DIR>           0  .
+19.11.02  22.29      <DIR>           0  ..
+19.11.02  22.29      <DIR>           0  cddbdata
+19.11.02  22.29      <DIR>           0  logfiles
+19.11.02  22.29        444           0  cddb.ini
+19.11.02  22.29      14879          49  pmcddb.exe
+19.11.02  22.29       3019        3388  pmdb001.dll         <--- German NLV is pmdb049.dll
+
+ Verzeichnis von H:\MMOS2\FreeDB\cddbdata
+
+19.11.02  22.29      <DIR>           0  .
+19.11.02  22.29      <DIR>           0  ..
+
+ Verzeichnis von H:\MMOS2\FreeDB\logfiles
+
+19.11.02  22.29      <DIR>           0  .
+19.11.02  22.29      <DIR>           0  ..
+
+ Verzeichnis von H:\MMOS2\MMClass
+
+19.11.02  22.28      <DIR>           0  .
+19.11.02  22.28      <DIR>           0  ..
+19.11.02  22.28      <DIR>           0  bin
+19.11.02  22.28     216530           0  cwmm.dll            <--- Be sure to use the right NLV
+19.11.02  22.28       2982           0  cwmm.hlp            <--- Be sure to use the right NLV
+
+ Verzeichnis von H:\MMOS2\MMClass\bin
+
+19.11.02  22.28      <DIR>           0  .
+19.11.02  22.28      <DIR>           0  ..
+19.11.02  22.28       8066           0  audconv.exe         <--- Be sure to use the right NLV
+19.11.02  22.28        504           0  audfldr.cmd
+19.11.02  22.28       7758           0  imgconv.exe         <--- Be sure to use the right NLV
+19.11.02  22.28        504           0  imgfldr.cmd
+19.11.02  22.28       8409        4070  volume.exe          <--- Be sure to use the right NLV
+
+--------------
+
+The following files go into \MMOS2\DLL:
+
+19.11.02  22.28     186838           0  GBM.DLL
+19.11.02  22.28      17496           0  JPEGIO.DLL
+19.11.02  22.28       1540           0  JPEGIO.SYM
+
+--------------
+
+This DLL MUST be in the LIBPATH!!  (Preferably x:\OS2\DLL)
+
+19.11.02  22.29      33052           0  progfldr.dll
+
+*/
+
+/**************** Create volume object ****************/
+
+WPObject =
+   (
+   WPClassName   = "WPProgram"
+   WPTitle       = "Volume"
+   WPSetupString = ""EXENAME=$(DEST)1bin\\volume.exe;PROGTYPE=PM;OBJECTID=<MMPM2_MMVOLUME>"
+   WPLocation    = "<MMPM2_FOLDER>"
+   WPFlags       = 2L
+   )
+
+/**************** Create FreeDb configuration object ****************/
+
+WPObject =
+   (
+   WPClassName   = "WPProgram"
+   WPTitle       = "Configure FreeDB Client"
+   WPSetupString = ""EXENAME=$(DEST)3PMCDDB.EXE;ICONRESOURCE=1,$(DEST)3pmdb001.dll;PARAMETERS=/C [Your email (user@host.xxx)];PROGTYPE=PM;PARAMETERS=;OBJECTID=<CWFREEDB_CLIENT_CONFIG>"
+   WPLocation    = "<MMPM2_FOLDER>"
+   WPFlags       = 2L
+   )
+
+
+
+/**************** Set audioconverter exe ****************************/
+ProfileString =
+   (
+   inis = "hini_user"
+   appnames = "CWMM"
+   keynames = "audioconverter"
+   datas = "$(DEST)1bin\\audconv.exe"
+   )
+
+/**************** Set imageconverter exe ****************************/
+ProfileString =
+   (
+   inis = "hini_user"
+   appnames = "CWMM"
+   keynames = "imageconverter"
+   datas = "$(DEST)1bin\\imgconv.exe"
+   )
+
+/**************** Set install directory of the FreeDB client ********/
+ProfileString =
+   (
+   inis = "hini_user"
+   appnames = "CWMM"
+   keynames = "freedbclient"
+   datas = "$(DEST)4"
+   )
+
+/**************** Set default E-Mail address for FreeDB (e.g. user@hostname.com) ****************************/
+ProfileString =
+   (
+   inis = "$(DEST)3cddb.ini"
+   appnames = "cddb"
+   keynames = "cddbuser"
+   datas = "eCS.User"
+   )
+
+ProfileString =
+   (
+   inis = "$(DEST)3cddb.ini"
+   appnames = "cddb"
+   keynames = "cddbuserhost"
+   datas = "hostname.com"
+   )
+
+
+
+
+/******* Install MM base classes ********/
+
+
+/* The progfldr.dll MUST be in libpath! Preferably in x:\os2\dll */
+
+WPClass =
+   (
+   WPClassNameNew = "CWProgFolder"
+   WPDllName = "PROGFLDR"
+   WPReplaceClass = ""
+   )
+
+
+/* The classes will automatically create their templates when
+   the templates folder is opened. The multimedia template folder
+   must exist with the usual object ID (<MMPM2_MMTEMPLATEFOLDER>)!
+
+   Templates are only created for MM files for which a write enabled
+   IO-procedure exists.
+   
+   Image:
+		JPG
+		TIF
+		Targa
+		PCX
+		DIB
+		VID
+		GIF
+		MID
+
+		The Bitmap template should be automatically created by the system.
+
+   Audio:
+		WAV
+		OGG
+
+   Misc:
+		M3U playlist
+		Media player
+		Lighttable folder
+
+   No video templates are created because a working video editor does
+   not exist so a template would be senseless.
+
+*/
+
+WPClass =
+   (
+   WPClassNameNew = "MMDataFile"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMImage"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMAudio"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMVideo"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMMIDI"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMTarga"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMTIFF"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMGIF"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMPCX"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMPhotoCD"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMJPG"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMDIB"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMAVC"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMMMotion"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMVOC"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MM_AU"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMAIF"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMIFF"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMSNDF"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMWAV"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMMP3"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMOGG"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMAU"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMCDTrack"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMAudioStream"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMM3U"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMAVI"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMFLI"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMMPG"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMMOV"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+/* Light table folder */
+WPClass =
+   (
+   WPClassNameNew = "MMFolder"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMBitmap"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = "WPBitmap"
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "CWMMDisk"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = "WPDisk"
+   )
+
+/* IBM MM shadow */
+WPClass =
+   (
+   WPClassNameNew = "MMShadow"
+   WPDllName = "MMSHD"
+   WPReplaceClass = "WPShadow"
+   )
+
+/************ Media folder and cd folder **********************/
+
+
+WPClass =
+   (
+   WPClassNameNew = "CWMediaFolder"
+   WPDllName = "$(DEST)2MEDIAFLD"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "CWAudioShadow"
+   WPDllName = "$(DEST)2MEDIAFLD"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "CWCDFolder"
+   WPDllName = "$(DEST)2MEDIAFLD"
+   WPReplaceClass = ""
+   )
+
+/* end of base.scr */
+
+
+
+
+
+
+
+/***************** The following classes are discarded *********
+
+WPClass =
+   (
+   WPClassNameNew = "MMDevice"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMCDDevice"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMLVDDevice"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMVolume"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+WPClass =
+   (
+   WPClassNameNew = "MMFinder"
+   WPDllName = "$(DEST)1CWMM"
+   WPReplaceClass = ""
+   )
+
+***********************/

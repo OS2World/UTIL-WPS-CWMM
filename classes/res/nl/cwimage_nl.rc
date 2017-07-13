@@ -1,0 +1,50 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+
+MENU ID_MENU_IMGEDITOR
+BEGIN
+        MENUITEM "Afbeelding ~editor", ID_MENU_IMGEDITOR       
+END
+
+
+STRINGTABLE 
+BEGIN
+IDSTR_MENU_CONVERT "~Omzetten naar"
+
+IDSTR_AVCTITLE      "AVCImage._IM"
+IDSTR_DIBTITLE      "DIBImage.DIB"
+IDSTR_GIFTITLE      "GIFImage.GIF"
+IDSTR_JPGTITLE      "JPGImage.JPG"
+IDSTR_PCDTITLE      "PCDImage.PCD"
+IDSTR_PCXTITLE      "PCXImage.PCX"
+IDSTR_TGATITLE      "TargaImage.TGA"
+IDSTR_TIFTITLE      "TIFImage.TIF"
+IDSTR_PNGTITLE      "PNGImage.PNG"
+IDSTR_MMOTIONTITLE  "VIDImage.VID"
+IDSTR_CWIMAGETITLE  "Digitaal beeld"
+
+IDSTR_IMAGEINFOPAGENAME "~Beeld informatie"
+IDSTR_SPRINTFPIXEL	"%d Pixel"
+IDSTR_SPRINTFBIT       "%d Bit"
+;Bitmpap load errors
+IDSTR_NOIMGIOPROCERROR   "Geen input/output programma gevonden voor dit beeld."
+IDSTR_OPENFILEERRORTITLE "Bestandsfout"
+IDSTR_OPENFILEERROR      "Kan het bestand niet openen."
+IDSTR_NOMEMERROR         "Geen geheugen beschikbaar."
+IDSTR_IMGIOPROCCRASH     "Interne fout tijdens het openen van het beeld. De werkplek MOET herstart worden anders kan het systeem instabiel worden! Alle draaiende programma's zullen actief blijven."
+
+IDSTR_IMAGEDETAIL_WIDTH   "Breedte"
+IDSTR_IMAGEDETAIL_HEIGHT  "Hoogte"
+IDSTR_IMAGEDETAIL_DEPTH   "Diepte"
+IDSTR_IMAGEDETAIL_FORMAT  "Formaat"
+
+;Titles used when starting player and editor applications
+IDSTR_IMGEDITORTITLE       "Beeld bekijker"
+IDSTR_MENU_IMAGEINFO        "Beeld informatie: %d x %d x %d"
+
+;IDSTR_HELPLIBRARY   "MMPARTS.HLP"
+END
+
+

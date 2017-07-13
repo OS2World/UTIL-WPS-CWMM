@@ -1,0 +1,27 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+DLGTEMPLATE IDDLG_MMPLAYER LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Audio-Spieler", IDDLG_MMPLAYER, 68, 78, 207, 124, 
+            WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        CONTROL         "", ID_CLIENT, 18, 0, 56, 67, WC_STATIC, SS_FGNDRECT | 
+                        WS_GROUP | WS_VISIBLE 
+        CONTROL         "~Stop", IDPB_MMPLAYERSTOP, 40, 25, 22, 14, WC_BUTTON, 
+                        BS_USERBUTTON | WS_VISIBLE| WS_TABSTOP
+        CONTROL         "~Pause", IDPB_MMPLAYERPAUSE, 61, 25, 20, 14, WC_BUTTON, 
+                        BS_USERBUTTON | WS_VISIBLE
+        CONTROL         "P~lay", IDPB_MMPLAYERPLAY, 79, 25, 20, 14, WC_BUTTON, 
+                        BS_USERBUTTON | WS_VISIBLE
+        CTEXT           "0:00", IDST_MMPLAYERPLAYTIME, 123, 14, 134, 13, DT_VCENTER
+                        PRESPARAMS PP_FONTNAMESIZE, "10.Helv"
+;        CONTROL         "VolumeArm", IDSL_MMPLAYERVOLUMEARM, 209, 5, 14, 14, 
+;                        WC_BUTTON, BS_USERBUTTON | WS_TABSTOP|BS_USERBUTTON
+;        PUSHBUTTON      "Volume", IDSL_MMPLAYERVOLUME, 19, 4, 69, 14, 
+;                        BS_NOPOINTERFOCUS | NOT WS_TABSTOP | NOT WS_VISIBLE |BS_USERBUTTON
+
+    END
+END
+

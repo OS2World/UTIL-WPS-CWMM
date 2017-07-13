@@ -1,0 +1,62 @@
+/* rexx -  Parse the contents of an M3U file
+   and insert for every trackname a CWAudioShadow
+   in the given folder.
+
+   This script is part of the media folder package.
+
+   (c) Chris Wohlgemuth 2002-2003
+
+   http://www.os2world.com/cdwriting
+   http://www.geocities.com/SiliconValley/Sector/5785/
+
+ */
+
+call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs'
+call SysLoadFuncs
+
+
+theFilepath=ARG(1)
+theFolderPath=ARG(2)
+
+a=0
+DO WHILE lines(theFilePath)
+	theLine=STRIP(LINEIN(theFilePath))
+	if checkTheLine()=1 THEN DO
+		a=a+1
+		theTracks.a._name=theLine
+	END
+END
+theTracks.0=a
+call stream thefilepath, 'C','close'
+
+DO a=theTracks.0 to 1 by -1
+	rc=SysCreateObject(CWAudioShadow, " ", theFolderPath,"SHADOWID="theTracks.a._name)
+END
+
+rc=0
+EXIT
+
+
+checkTheLine:
+
+if LENGTH(theLine)=0 then 
+	return 0; /* Empty line */
+
+if SUBSTR(theLine, 1, 1)='#' then 
+	return 0; /* Comment */
+
+if SUBSTR(theLine, 2, 1)\=':' THEN DO
+	/* relative path. Prepend path of M3U file */
+	if SUBSTR(theLine, 1, 1)\='\' &  SUBSTR(theLine, 1, 1)\='/' THEN DO
+		theLine=FILESPEC('drive', theFilePath)||FILESPEC('path', theFilePath)||theLine
+	END
+	ELSE
+		theLine=FILESPEC('drive', theFilePath)||FILESPEC('path', theFilePath)||SUBSTR(theLine,2)
+
+END
+/* Rockbox for the ArchosJukebox uses '/' as path separators in M3U lists.
+   Change them to backslashes */
+theLine=TRANSLATE(theLine, '\', '/')
+return 1;
+
+

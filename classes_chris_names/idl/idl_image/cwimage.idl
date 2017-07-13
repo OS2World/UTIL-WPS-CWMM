@@ -1,0 +1,113 @@
+
+//  Module Header
+//
+//  Module Name: CWImage
+//
+//  OS/2 Presentation Manager Workplace class definitions
+//
+//
+
+#ifndef cwimage_idl
+#define cwimage_idl
+
+#include <wpimage.idl>
+#include <somcls.idl>
+
+
+interface M_CWImage;
+
+interface CWImage : WPImageFile                                                
+
+{
+    /*
+     * New instance methods
+     *
+     */
+	ULONG cwmmAddImageInformationPage(in HWND hwndNotebook);
+    HBITMAP cwmmQuerySmallBitmapHandle(in ULONG ulSize, in PMINIRECORDCORE pmrcToRefresh , in HWND hwndCnr);
+    void cwmmFreeBitmaps();  
+    void cwmmFreeSmallBitmap();
+	
+#ifdef __SOMIDL__
+  implementation {
+
+    releaseorder:     	cwmmAddImageInformationPage,
+    cwmmQuerySmallBitmapHandle,
+    cwmmFreeBitmaps, cwmmFreeSmallBitmap;
+
+/*wpQueryBitmapHandle, wpQueryBitmapInfoHeader,
+    wpQueryBitmapData, wpSetBitmapData, wpReadImageFile, wpWriteImageFile;
+*/
+    externalstem = cwimage;
+    local;
+    externalprefix = cwimg_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwimage;
+    metaclass = M_CWImage;
+    callstyle = oidl;
+    dllname = "cwimage.dll";               
+
+    passthru C_h_after =  ""
+    "#include \"cwmmres.h\""
+    "";
+
+    /*
+     * Internal instance variables
+     *
+     */
+
+    HBITMAP hBitmap;   /* Full size bitmap */
+    HBITMAP hBitmapSmall;   /* (Lighttable)Icon size bitmap */
+    ULONG   ulSizeSmallBitmap;
+    PBYTE   pBmpInfoHeader2;
+    char    chrIOProcName[64];
+    BOOL    bNoIOProcAvailable;
+    BOOL    bUseNewClsFeatures; /* Should we use the new features for this object? */
+
+    wpQueryBitmapHandle : override;            
+    wpQueryBitmapInfoHeader    : override;            
+    wpQueryBitmapData: override;            
+    wpSetBitmapData: override;            
+    wpReadImageFile: override;            
+    wpWriteImageFile: override;
+    wpUnInitData:   override;
+    /* wpInitData:   override; Not used. Default is instance var initializing to zero and that's what we need. */
+    wpModifyPopupMenu       : override;
+    wpMenuItemSelected      : override;
+    wpOpen                  : override;
+    wpAddSettingsPages      : override;
+    wpQueryDetailsData      : override;    
+    wpRestoreState         : override;
+  };
+#endif /* __SOMIDL__ */
+};
+
+interface M_CWImage : M_WPImageFile                                            
+{
+
+#ifdef __SOMIDL__
+  implementation {
+
+    externalstem = cwimage;
+    local;
+    externalprefix = cwimgM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwimage;
+    callstyle = oidl;
+    dllname = "cwimage.dll";               
+
+    wpclsInitData   : override;
+    wpclsQueryDefaultView : override;
+/*    wpclsQueryStyle: override; */
+    wpclsQueryTitle: override;
+    wpclsQueryIconData: override;
+/*    wpclsQueryDefaultHelp: override;*/
+    wpclsQueryDetailsInfo   	: override;  
+
+  };
+#endif /* __SOMIDL__ */
+};
+
+#endif  /* cwimage_idl */

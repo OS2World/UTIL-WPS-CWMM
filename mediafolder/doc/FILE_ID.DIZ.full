@@ -1,0 +1,27 @@
+CW-Multimedia classes V0.2.4
+(C) Chris Wohlgemuth 2001-2002
+http://www.geocities.com/SiliconValley/Sector/5785/
+http://www.os2world.com/cdwriting
+
+WPS classes for seamless integration of MP3 and OGG
+files into the WPS. Standard WPS audio menues like
+any other audio file.
+Information page in the settings notebook about audio
+characteristics.
+ID3 page for MP3 files for viewing and setting.
+Audio and ID3 information shown in details view.
+The classes were known as CW-audio-classes.
+
+Media-Folder class to play any known audio file.
+Use it as your favorite MP3-player.
+CD player with FreeDB support
+
+Requires:	OS/2 Warp 4 or eCS, MMOS2 and EMX runtime 09d fix4
+
+cw-mmclasses-0_2_2-ger.zip - german version
+cw-mmclasses-0_2_2-eng.zip - english version
+
+Licence:
+This package is provided 'as is' for free.
+
+

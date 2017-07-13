@@ -1,0 +1,56 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+ICON ID_ICONCWIMAGEFILE "../icons_image/cwimage.ico"
+ICON ID_ICONAVCFILE     "../Icons_image/AVC.ico"
+ICON ID_ICONDIBFILE     "../Icons_image/DIB.ico"
+ICON ID_ICONGIFFILE     "../Icons_image/GIF.ico"
+ICON ID_ICONJPGFILE     "../Icons_image/JPG.ico"
+ICON ID_ICONPCDFILE     "../Icons_image/PCD.ico"
+ICON ID_ICONPCXFILE     "../Icons_image/PCX.ico"
+ICON ID_ICONTGAFILE     "../Icons_image/TGA.ico"
+ICON ID_ICONTIFFILE     "../Icons_image/TIF.ico"
+ICON ID_ICON_IMFILE     "../Icons_image/_IM.ico"
+ICON ID_ICONBMPFILE     "../Icons_image/BMP.ico"
+
+MENU ID_MENU_IMGEDITOR
+BEGIN
+        MENUITEM "Picture ~editor", ID_MENU_IMGEDITOR       
+END
+
+
+STRINGTABLE 
+BEGIN
+IDSTR_MENU_CONVERT "~Convert to"
+
+IDSTR_AVCTITLE      "AVCImage._IM"
+IDSTR_DIBTITLE      "DIBImage.DIB"
+IDSTR_GIFTITLE      "GIFImage.GIF"
+IDSTR_JPGTITLE      "JPGImage.JPG"
+IDSTR_PCDTITLE      "PCDImage.PCD"
+IDSTR_PCXTITLE      "PCXImage.PCX"
+IDSTR_TGATITLE      "TargaImage.TGA"
+IDSTR_TIFTITLE      "TIFImage.TIF"
+IDSTR_MMOTIONTITLE  "VIDImage.VID"
+IDSTR_CWIMAGETITLE  "Digital image"
+
+IDSTR_IMAGEINFOPAGENAME "~Image information"
+IDSTR_SPRINTFPIXEL	"%d Pixel"
+IDSTR_SPRINTFBIT       "%d Bit"
+;Bitmpap load errors
+IDSTR_NOIMGIOPROCERROR   "No input/output procedure found for this image."
+IDSTR_OPENFILEERRORTITLE "File error"
+IDSTR_OPENFILEERROR      "Can't open the file."
+IDSTR_NOMEMERROR         "No memory available."
+IDSTR_IMGIOPROCCRASH     "Internal error during opening of the image. The desktop MUST be restarted or the system may get instable! All running applications will remain open."
+
+IDSTR_IMAGEDETAIL_WIDTH   "Width"
+IDSTR_IMAGEDETAIL_HEIGHT  "Height"
+IDSTR_IMAGEDETAIL_DEPTH   "Depth"
+IDSTR_IMAGEDETAIL_FORMAT  "Format"
+
+;IDSTR_HELPLIBRARY   "MMPARTS.HLP"
+END
+
+

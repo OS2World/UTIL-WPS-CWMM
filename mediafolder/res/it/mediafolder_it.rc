@@ -1,0 +1,84 @@
+#define  INCL_GRAPHICBUTTON   /* need this for the graphic buttons control */
+#define  INCL_BITMAP
+
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include <sw.h>
+
+#include "mediafolderres.h"
+#include "version.h"
+#include "build.h"
+
+MENU ID_MENUABOUT
+BEGIN
+   MENUITEM  "" , ID_MENUSEPARATOR, MIS_SEPARATOR
+   MENUITEM "Informazioni cartella ~multimedia",ID_ABOUTITEM
+END
+
+MENU ID_MBMENUSKRIPTS
+BEGIN
+
+END
+
+MENU ID_MENUVIEWCOMPACT
+BEGIN
+   MENUITEM  "~Compatta" , ID_MENUVIEWCOMPACT
+END
+
+MENU  ID_MENUTIMECONTEXT
+BEGIN
+	MENUITEM "Tempo ~trascorso"   ,         ID_MENUITEMELAPSED
+	MENUITEM "Tempo ~rimanente" ,           ID_MENUITEMREMAINING
+	MENUITEM "~Informazioni tracca" ,       ID_MENUITEMID3
+END
+
+MENU  ID_MENUFILE
+BEGIN
+	MENUITEM "~Salva"   ,           	ID_MENUITEMSAVE
+	MENUITEM ""           ,                 ID_MENUSEPARATOR, MIS_SEPARATOR
+	MENUITEM "~Esci" ,          		ID_MENUITEMEXIT
+END
+
+
+STRINGTABLE
+BEGIN
+IDSTR_CLOSETITLE "Conferma chiusura"
+IDSTR_CLOSETEXT  "E' in corso la riproduzione di un brano. Interromempere e chiudere il lettore?"
+IDSTRSETTING_TOOLBAR "Pannello"
+IDSTRS_NOFONTPALETTE          "Impossibile aprire l'elenco tipi carattere, potrebbe avere perso la sua ID. Verificare i file INI."
+IDSTRS_NOCOLORPALETTE         "Impossibile aprire l'elenco colori, potrebbe avere perso la sua ID. Verificare i file INI."
+IDSTRS_MEDIAFLDRSETTINGS   "Impostazioni cartella multimedia"
+IDSTR_MENUABOUT          "Informazioni cartella multimedia"
+IDSTR_MENUCOMPACT        "~Compatta"
+IDSTR_STATUSCOLLECTING   "Lettura tracce audio in corso"
+IDSTR_MENUSKRIPTS        "Script e strumenti"
+IDSTR_STATUSTIME1        "%d:%02d minuti"
+IDSTR_STATUSTIME2        "%d ore %d:%02d minuti"
+IDSTR_STATUSTIME3        "%d giorno(i) %d ore %d:%02d minuti"
+IDSTR_STATUSTIME4        "%d File audio   -   %d%s%03d%s%03d Byte   -   %s"
+IDSTR_STATUSTIME5        "%d File audio   -   pi— di 4 GByte"
+
+IDSTR_TITLEMEDIAFOLDER   "Media player"
+IDSTR_TITLECDFOLDER      "CD player"
+
+IDSTR_STARTINGTRACK      "Avvio traccia..."
+IDSTR_TITLEM3UFOLDER    "Editor M3U"
+IDSTR_M3UCLOSETEXT      "Playlist modificata. Salvare i cambiamenti?"
+IDSTR_MENUFILE           "~File"
+IDSTR_PLAYLISTVIEWTITLE  "Editor playlist"
+IDSTR_LAUNCHPADFLYOVER   "Pannello di avvio: trascinarvi sopra gli oggetti desiderati"
+IDSTR_VIEWPAGENAME       "~Visualizzazione"
+IDSTR_VIEWCOMPACT        "Compatta"
+
+END
+
+rcinclude "mediafolder_it.dlg"
+
+#ifdef ECS
+rcinclude "about_ecs_en.dlg"
+#else
+rcinclude "about_en.dlg"
+#endif
+
+

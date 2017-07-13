@@ -1,0 +1,55 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include "mmres.h"
+#include "cwaudioinc.h"
+
+
+#ifdef ECS
+ICON ID_ICONCWAUDIOFILE  "../Icons/Icons_audio_ecs/cwaudio.ico"
+ICON ID_ICONMP3FILE      "../Icons/Icons_audio_ecs/MP3.ico"
+ICON ID_ICONOGGFILE      "../Icons/Icons_audio_ecs/OGG.ico"
+ICON ID_ICONWAVFILE      "../Icons/Icons_audio_ecs/WAV.ico"
+
+ICON ID_ICONAIFFILE      "../Icons/Icons_audio_ecs/AIF.ico"
+ICON ID_ICONAUFILE       "../Icons/Icons_audio_ecs/AU.ico"
+ICON ID_ICON_AUFILE      "../Icons/Icons_audio_ecs/_AU.ico"
+ICON ID_ICONIFFFILE      "../Icons/Icons_audio_ecs/IFF.ico"
+ICON ID_ICONSNDFFILE     "../Icons/Icons_audio_ecs/SNDF.ico"
+ICON ID_ICONVOCFILE      "../Icons/Icons_audio_ecs/VOC.ico"
+ICON ID_ICONMIDIFILE     "../Icons/Icons_audio_ecs/MIDI.ico"
+
+ICON ID_ICONLIGHTTABLE   "../Icons/Icons_mm_ecs/mmfolder.ico"
+ICON ID_ICONLIGHTTABLE2  "../Icons/Icons_mm_ecs/mmfolder2.ico"
+
+ICON ID_ICONAUDIOSTREAM  "../Icons/Icons_audio_ecs/audiostream.ico"
+ICON ID_ICONM3UFILE      "../Icons/Icons_audio_ecs/m3u.ico"
+ICON ID_ICONFLACFILE     "../Icons/Icons_audio_ecs/flac.ico"
+
+#else
+
+ICON ID_ICONCWAUDIOFILE  "../Icons/Icons_audio/cwaudio.ico"
+ICON ID_ICONMP3FILE      "../Icons/Icons_audio/MP3.ico"
+ICON ID_ICONOGGFILE      "../Icons/Icons_audio/OGG.ico"
+ICON ID_ICONWAVFILE      "../Icons/Icons_audio/WAV.ico"
+
+ICON ID_ICONAIFFILE      "../Icons/Icons_audio/AIF.ico"
+ICON ID_ICONAUFILE       "../Icons/Icons_audio/AU.ico"
+ICON ID_ICON_AUFILE      "../Icons/Icons_audio/_AU.ico"
+ICON ID_ICONIFFFILE      "../Icons/Icons_audio/IFF.ico"
+ICON ID_ICONSNDFFILE     "../Icons/Icons_audio/SNDF.ico"
+ICON ID_ICONVOCFILE      "../Icons/Icons_audio/VOC.ico"
+ICON ID_ICONMIDIFILE     "../Icons/Icons_audio/MIDI.ico"
+
+ICON ID_ICONLIGHTTABLE   "../Icons/Icons_mm/mmfolder.ico"
+ICON ID_ICONLIGHTTABLE2  "../Icons/Icons_mm/mmfolder2.ico"
+
+ICON ID_ICONAUDIOSTREAM  "../Icons/Icons_audio/audiostream.ico"
+ICON ID_ICONM3UFILE      "../Icons/Icons_audio/m3u.ico"
+ICON ID_ICONFLACFILE     "../Icons/Icons_audio/flac.ico"
+#endif
+
+
+rcinclude "cwvideo.rc"
+rcinclude "cwimage.rc"
+

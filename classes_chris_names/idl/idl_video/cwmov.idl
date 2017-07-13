@@ -1,0 +1,113 @@
+
+/*
+ * CWmov.idl:
+ */
+
+#include <cwvideo.idl>
+
+
+/*
+   CLASS: CWMOV  
+*/
+
+interface M_CWMOV; 
+
+interface CWMOV : CWVideo
+{
+
+    /*
+     * New instance methods
+     *
+     */
+
+#ifdef __SOMIDL__
+  implementation {
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwmov_;
+    externalstem = cwmov;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwmov;           //# specifies the filestem for sc-generated files
+    metaclass = M_CWMOV;
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+    
+
+    passthru C_h_after =  ""
+    "#include \"cwmmres.h\""
+    "";
+
+    /*
+     * Internal instance variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+
+interface M_CWMOV : M_CWVideo
+{
+
+    /*
+     * New class methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwmovM_;
+    externalstem = cwmovM;
+    functionprefix = cwmovM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwmov;           //# specifies the filestem for sc-generated files
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+    wpclsQueryTitle         	: override;
+    wpclsQueryInstanceType  	: override;
+    wpclsQueryInstanceFilter    : override;   
+    wpclsQueryIconData          : override;
+    wpclsQueryDefaultHelp       : override; 
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+
+

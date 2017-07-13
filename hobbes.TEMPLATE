@@ -1,0 +1,28 @@
+                          Upload Information Template for Hobbes.nmsu.edu
+                          ===============================================
+
+        Archive Filename: 
+       Short Description: Replacement multimedia classes for the ones coming with MMOS2. These new classes are more robust and have additional features. Media player, slide show program and new JPG IO procedure. German language version.
+        Long Description: Additional WPS classes for seamless integration of MP3 and OGG files into the WPS. Standard WPS audio menues like any other audio file. Information page in the settings notebook about audio characteristics. ID3 (V1.0) page for MP3 files for viewing and setting. Audio and ID3 information shown in details view. Media-Folder class to play any known audio file. Use it as your favorite MP3-player. CD player with FreeDB support. Slide show program. PNG class. New JPEG IO procedure with support for progressive JPEG images. Audio stream class for IceCast servers. German language version.
+
+      Proposed directory
+           for placement: /pub/os2/apps/mmedia/sound/players/
+
+               Your name: Chris Wohlgemuth 
+           Email address: 
+    Program contact name: (same)
+   Program contact email: (same)
+             Program URL: http://www.os2world.com/cdwriting
+			
+      Would you like the
+   contact email address
+    included in listings? yes
+
+Operating System/Version: Warp 4, eCS. This package doesn't work with Warp3.
+ Additional requirements: MMOS/2 must be installed. EMX runtime 0.9d Fix 4. REXX
+
+                Replaces: (none)
+
+
+
+

@@ -1,0 +1,13 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include "classvolumeres.h"
+
+BITMAP IDBMP_MAIN        "./res/bmp/volume.bmp"
+
+BITMAP IDBMP_VOLSLIDERARM    "./res/bmp/WVOL.bmp"
+BITMAP IDBMP_VOLSLIDERARMSEL "./res/bmp/BVOL.bmp"
+
+POINTER IDPTR_ARROWWE        "./res/pointer/arrowwe.ptr"
+
+

@@ -1,0 +1,19 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+STRINGTABLE 
+BEGIN
+
+IDSTR_CONVERTCHANNELS    "%d KanÑle"
+IDSTR_CONVERTSAMPLERATE  "%d Hz"
+IDSTR_CONVERTPLAYTIME    "%d:%02d min Spielzeit"
+IDSTR_INSTALLERRORTITLE  "Installationsproblem"
+IDSTR_CONVERTDIALOGERROR "Dialog kann nicht geladen werden! Bitte Installation prÅfen."
+IDSTR_CONVERTNOSPACETITLE   "In Wavedatei umsetzen"
+IDSTR_CONVERTNOSPACETEXT   "Nicht genÅgend Platz fÅr die Zieldatei. Einen anderen Speicherort mit mindestens %d MB freiem Speicher wÑhlen."
+IDSTR_AUDIOBROWSETITLE   "Audio-Dateiname"
+
+
+END
+

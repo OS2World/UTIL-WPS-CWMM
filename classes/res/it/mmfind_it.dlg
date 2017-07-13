@@ -1,0 +1,51 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+DLGTEMPLATE IDDLG_MMFIND LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Trova file multimedia", IDDLG_MMFIND, 12, 23, 338, 133, WS_VISIBLE | WS_SYNCPAINT,
+            FCF_SYSMENU | FCF_TITLEBAR
+            PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+    BEGIN
+        LTEXT           "Apri file", 257, 4, 120, 51, 9, DT_VCENTER |
+                        NOT WS_GROUP
+        ENTRYFIELD      "*", 258, 55, 120, 239, 7, ES_MARGIN | WS_GROUP
+        LTEXT           "Unit…", 259, 4, 108, 51, 9, DT_VCENTER | NOT
+                        WS_GROUP
+        CONTROL         "H:  [SOURCES]", 260, 54, 18, 87, 99, WC_COMBOBOX,
+                        CBS_DROPDOWNLIST | WS_TABSTOP | WS_VISIBLE
+        LTEXT           "Limita ai file", 261, 174, 4, 46, 9, DT_VCENTER |
+                        NOT WS_GROUP | NOT WS_VISIBLE
+        CONTROL         "<Tutti i file>", 262, 209, 4, 29, 8, WC_COMBOBOX,
+                        CBS_DROPDOWNLIST | WS_TABSTOP
+        LTEXT           "Cartella", 263, 4, 97, 35, 7, NOT WS_GROUP
+        LTEXT           "", 270, 42, 98, 60, 6, NOT WS_GROUP | NOT
+                        WS_VISIBLE
+        LTEXT           "File", 265, 131, 97, 17, 7, NOT WS_GROUP
+        AUTOCHECKBOX    "Sola lettura", 269, 171, 97, 42, 8, NOT WS_TABSTOP |
+                        NOT WS_VISIBLE
+        LISTBOX         264, 4, 17, 116, 76, LS_OWNERDRAW | LS_HORZSCROLL
+        LISTBOX         266, 125, 17, 116, 76, LS_HORZSCROLL
+        RTEXT           "Tipo di file", IDST_TYPE, 146, 108, 58, 9, DT_VCENTER
+        CONTROL         "", IDCB_TYPEOFFILE, 208, 18, 87, 99, WC_COMBOBOX,
+                        CBS_DROPDOWNLIST | WS_GROUP | WS_TABSTOP |
+                        WS_VISIBLE
+        GROUPBOX        "Anteprima", IDGB_PREVIEW, 245, 16, 89, 80, NOT WS_VISIBLE
+        CONTROL         "", IDSR_IMGPREVIEW, 249, 20, 82, 68, WC_STATIC, SS_FGNDRECT |
+                        WS_GROUP
+        CTEXT           "Anteprima non disponibile", IDST_NOPREVIEWAVAILABLE, 251, 42, 78, 33,
+                        DT_WORDBREAK | NOT WS_VISIBLE
+        LTEXT           "", IDST_AUDIOINFO, 253, 21, 75, 62, DT_WORDBREAK | NOT
+                        WS_VISIBLE
+        GROUPBOX        "Informazioni audio", IDGB_AUDIOINFO, 245, 17, 89, 79, NOT WS_VISIBLE
+        DEFPUSHBUTTON   "~OK", DID_OK, 3, 2, 40, 12
+        PUSHBUTTON      "~Nuovo", IDPB_NEWFILE, 46, 2, 40, 12
+        PUSHBUTTON      "A~pplica", 268, 293, 3, 40, 12, NOT WS_TABSTOP | NOT
+                        WS_VISIBLE
+        PUSHBUTTON      "~Annulla", DID_CANCEL, 95, 2, 40, 12, NOT WS_TABSTOP
+        PUSHBUTTON      "A~iuto", 267, 243, 2, 40, 12, BS_NOPOINTERFOCUS | NOT
+                        WS_TABSTOP | NOT WS_VISIBLE
+        LISTBOX         3, 0, 0, 2, 1, NOT WS_TABSTOP | NOT WS_VISIBLE
+    END
+END

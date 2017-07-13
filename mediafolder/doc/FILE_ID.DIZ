@@ -1,0 +1,17 @@
+Media-Folder V0.2.5
+(C) Chris Wohlgemuth 2002-2003
+http://www.geocities.com/SiliconValley/Sector/5785/
+http://www.os2world.com/cdwriting
+
+Media-Folder. Class to play any known audio file.
+Use shadows to create a playlist. ID3 display.
+Use it as your favorite MP3-player.
+CD player with FreeDB support.
+Playlist editor.
+
+Requires:	OS/2 Warp 4 or eCS, MMOS2 and EMX runtime
+
+Licence:
+This package is provided 'as is' for free.
+
+

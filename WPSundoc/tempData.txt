@@ -1,0 +1,169 @@
+
+typedef struct _wpInstanceDataLong
+{
+USHORT	usType;				/* 0x0002 */
+USHORT	usKey;				/* key used in wpSaveLong() */
+USHORT	usLength;			/* size of value, always 0x0004 */
+ULONG	ulValue;
+}INSTANCEDATALONG;
+
+
+typedef struct _wpInstanceDataString
+{
+USHORT	usType;				/* 0x0003 */
+USHORT	usKey;				/* key used in wpSaveString() */
+USHORT	usLength;			/* String length including terminating 0 */
+UCHAR	ucData[];			/* The string including a terminating 0 */
+}INSTANCEDATASTRING;
+
+
+typedef struct _wpInstanceDataBinary
+{
+USHORT	usType;				/* 0x0004 */
+USHORT	usKey;				/* key used in wpSaveData() */
+USHORT	usLength;			/* Size of data block */
+BYTE	data[];
+}INSTANCEDATABINARY;
+
+
+/* Instance data block for a class. For every class in the chain of classes
+there may be one of these blocks. The current class is the first, the parent class
+instance data follows, then the grand parent class instance data etc. */
+typedef struct _InstanceDataBlockHead
+{
+USHORT	usClassNameLength;			/* Length of class name including terminating 0 */
+USHORT	usDataSize;				/* Size of data block starting after this structure */
+UCHAR	ucClassName[];				/* Array holding classname with terminating 0 */
+}INSTANCEDATABLOCK;
+						/* Data block with variable length is immediately following. 
+						   This data block consist of several INSTANCEDATALONG/STRING/BINARY */
+
+struct CLASSINFO
+{
+const USHORT	usEAType;			/* EAT_BINARY: 0xFFFE */
+USHORT		usSize;				/* Size of data following starting with usUnknown1 */
+USHORT		usUnknown1;
+USHORT		usUnknown2;
+USHORT		usDataSize;			/* Data size following the class name (starting with usOffset) */
+USHORT		usUnknown3;
+UCHAR		ucClassName[];			/* The class of this object including the terminating 0, e.g. WPDataFile */
+USHORT		usOffset;			/* Offset to WPObject instance data block starting at usOffset */
+USHORT		usUnknown4;
+USHORT		usUnknown5;
+USHORT		usSizeInstanceData;		/* Size of all INSTANCEDATABLOCKs + sizeof(usSizeInstanceData2) + sizeof(usUnknown7)
+						   + sizeof(usUnknown6) + sizeof(usUnknown5) + sizeof(usSizeInstanceData) */
+USHORT		usUnknown6;
+USHORT		usSizeInstanceData2;		/* Size of all INSTANCEDATABLOCKs including 6 terminating zero bytes.
+						   Each INSTANCEDATABLOCK structure is followed by a data block of variable length. */
+USHORT		usUnknown7;
+INSTANCEDATABLOCK	instanceDataBlocks[];	/* One or more instance data blocks. At least the WPObject data block is present. */
+						/* The WPObject instance data block is always the last one. Attention: the instance
+						   data blocks may have different sizes! */
+const UCHAR		ucZero[6];		/* Terminating zero bytes */
+}
+
+------------------------------------
+
+
+1:
+
+FE FF E9 00 10 00 00 00 D3 00 00 00 57 50 43 6F  þÿé.....Ó...WPCo
+6D 6D 61 6E 64 46 69 6C 65 00
+                             --> 6E 00 2D 15 10 00  mmandFile.n.-...
+                                 ^^^^^
+                                 |
+                                 110 Offset to WPObject
+
+    2D 15 CD 00 2D 15 C3 00 00 00 0E 00 4C 00 57 50  -.Í.-.Ã.....L.WP
+    50 72 6F 67 72 61 6D 46 69 6C 65 00 04 00 0A 00  ProgramFile.....
+    14 00 00 00 00 00 02 00 00 00 00 00 00 00 10 00  ................
+    00 00 01 00 00 00 04 00 0B 00 02 00 FF FF 04 00  ............ÿÿ..
+    06 00 24 00 00 00 00 00 00 00 00 00 00 00 00 00  ..$.............
+    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+    00 00 00 00 00 00 00 00 <--
+
+                            09 00 52 00 57 50 4F 62  ..........R.WPOb
+                            ^^^^^
+                            |
+                            WPObject class name length
+
+    6A 65 63 74 00 04 00 0B 00 20 00 04 00 00 00 00  ject..... ......
+
+
+00 00 00 0B 00 00 00 10 00 00 00 00 00 00 00 00  ................
+00 00 00 03 00 00 00 02 00 00 00 04 00 0C 00 18  ................
+00 02 00 32 30 37 30 39 34 40 32 30 2C 32 31 37  ...207094@20,217
+32 33 33 40 32 30 00 FF FF 04 00 04 00 08 00 FF  233@20.ÿÿ......ÿ
+FF FF FF FF FF FF FF 00 00 00 00 00 00           ÿÿÿÿÿÿÿ......   
+
+------------------
+
+2:
+
+FE FF 7E 00 00 00 00 00 6B 00 00 00 57 50 44 61  þÿ~.....k...WPDa
+74 61 46 69 6C 65 00
+                    --> 10 00 BE 14 10 00 BE 14 65  taFile...¾...¾.e
+                        ^^^^^
+                        |
+                        16 Offset to WPObject starting from this word
+
+00 BE 14 5B 00 00 00 <--
+
+                        09 00 48 00 57 50 4F 62 6A  .¾.[.....H.WPObj
+                        ^^^^^
+                        |
+                        WPObject class name length
+
+65 63 74 00 04 00 0B 00 20 00 00 10 00 00 00 00  ect..... .......
+00 00 09 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+00 00 03 00 00 00 02 00 00 00 04 00 0C 00 0E 00  ................
+02 00 32 30 39 31 32 37 40 32 30 00 FF FF 04 00  ..209127@20.ÿÿ..
+04 00 08 00 FF FF FF FF FF FF FF FF 00 00 00 00  ....ÿÿÿÿÿÿÿÿ....
+00 00                                            ..              
+
+
+----------------------------------------
+
+
+E FF 8C 02 80 00 00 00 7B 02 00 00 57 50 46 6F  þÿŒ.€...{...WPFo
+6C 64 65 72 00 20 02 CB 19 10 00 CB 19 75 02 CB  lder. .Ë...Ë.u.Ë
+19 6B 02 00 00 0C 00 28 00 43 61 6E 64 79 46 6F  .k.....(.CandyFo
+6C 64 65 72 00 02 00 94 11 04 00 00 00 00 00 02  lder...”........
+00 95 11 04 00 64 00 00 00 02 00 96 11 04 00 64  .•...d.....–...d
+00 00 00 02 00 97 11 04 00 64 00 00 00 09 00 32  .....—...d.....2
+00 43 57 46 6F 6C 64 65 72 00 02 00 E8 03 04 00  .CWFolder...è...
+00 00 00 00 02 00 E9 03 04 00 00 00 00 00 02 00  ......é.........
+EA 03 04 00 00 00 00 00 02 00 EB 03 04 00 96 00  ê.........ë...–.
+00 00 02 00 EC 03 04 00 03 00 00 00 08 00 1E 00  ....ì...........
+58 46 6F 6C 64 65 72 00 02 00 0B 00 04 00 FF 00  XFolder.......ÿ.
+00 00 02 00 0C 00 04 00 FF 00 00 00 02 00 0D 00  ........ÿ.......
+04 00 FF 00 00 00 09 00 62 01 57 50 46 6F 6C 64  ..ÿ.....b.WPFold
+65 72 00 04 00 6D 0B B6 00 43 4C 41 53 43 57 41  er...m.¶.CLASCWA
+75 64 69 6F 53 68 61 64 6F 77 00 43 4C 41 53 4D  udioShadow.CLASM
+4D 49 6D 61 67 65 00 43 4C 41 53 4D 4D 41 75 64  MImage.CLASMMAud
+69 6F 00 43 4C 41 53 58 57 50 46 6F 6E 74 4F 62  io.CLASXWPFontOb
+6A 65 63 74 00 43 4C 41 53 58 57 50 54 72 61 73  ject.CLASXWPTras
+68 4F 62 6A 65 63 74 00 43 4C 41 53 43 57 4D 61  hObject.CLASCWMa
+69 6C 46 69 6C 65 00 43 4C 41 53 57 50 46 74 70  ilFile.CLASWPFtp
+4F 62 6A 00 43 4C 41 53 57 50 55 72 6C 00 43 4C  Obj.CLASWPUrl.CL
+41 53 57 50 4F 62 6A 65 63 74 00 43 4C 41 53 57  ASWPObject.CLASW
+50 46 69 6C 65 53 79 73 74 65 6D 00 43 52 49 54  PFileSystem.CRIT
+BC F8 F7 13 00 00 00 00 00 00 00 00 08 00 00 00  ¼ø÷.............
+00 00 00 00 02 00 00 00 04 00 00 00 02 00 00 04  ................
+00 73 0B 54 00 04 00 30 00 64 00 50 00 28 80 30  .s.T...0.d.P.(€0
+00 02 00 00 00 00 00 00 00 FF FF FF FF 00 00 00  .........ÿÿÿÿ...
+40 EF FF FF FF EF FF FF FF DD FF FF FF EF FF FF  @ïÿÿÿïÿÿÿÝÿÿÿïÿÿ
+FF EF FF FF FF DD FF FF FF 00 00 00 40 00 00 00  ÿïÿÿÿÝÿÿÿ...@...
+40 00 00 00 40 00 00 00 00 02 00 00 00 D0 FF FF  @...@........Ðÿÿ
+FF D0 FF FF FF D0 FF FF FF 04 00 74 0B 10 00 08  ÿÐÿÿÿÐÿÿÿ..t....
+00 57 50 49 6D 61 67 65 46 69 6C 65 00 FF FF 04  .WPImageFile.ÿÿ.
+00 71 0B 18 00 FE FF FF FF 00 00 00 00 FE FF FF  .q...þÿÿÿ....þÿÿ
+FF 00 00 00 00 00 00 00 00 00 00 00 00 04 00 7A  ÿ..............z
+0B 08 00 00 00 00 00 00 00 00 00 02 00 7B 0B 04  .............{..
+00 00 00 00 00 09 00 48 00 57 50 4F 62 6A 65 63  .......H.WPObjec
+74 00 04 00 0B 00 20 00 01 00 00 00 00 00 00 00  t..... .........
+09 00 00 00 80 00 00 00 00 00 00 00 00 00 00 00  ....€...........
+03 00 00 00 02 00 00 00 04 00 0C 00 0E 00 02 00  ................
+32 31 37 33 36 34 40 32 30 00 FF FF 04 00 04 00  217364@20.ÿÿ....
+08 00 FF FF FF FF FF FF FF FF 00 00 00 00 00 00  ..ÿÿÿÿÿÿÿÿ......
+

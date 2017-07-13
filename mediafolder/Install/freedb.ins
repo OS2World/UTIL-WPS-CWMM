@@ -1,0 +1,36 @@
+[APPLICATION]
+NAME FreeDB client 0.1.0
+VERSION 0.1.0.0
+COPYRIGHT (C) Chris Wohlgemuth 2001-2002
+HOME http://www.os2world.com/cdwriting
+INTERNALNAME FREEDBCL
+TOTALSIZE 17466
+INSTALLER 0.1.1.0
+DESCRIPTION FreeDB client. This program is used by the CD player of the mediafolder package to get the titles of CDs from a FreeDB server. It may also be used from other programs or REXX scripts.
+
+[DESCRIPTION]
+DESCRIPTION  FreeDB client. This program is used by the CD player of the mediafolder package to get the titles of CDs from a FreeDB server. It may also be used from other programs or REXX scripts.
+
+[FILES]
+cddb.ini, %TARGET%\ ,  F,  444
+pmcddb.exe, %TARGET%\ ,  F,  14844
+pmdb001.dll, %TARGET%\ ,  F,  2178
+cddbdata, %TARGET%\ ,  D,  0
+logfiles, %TARGET%\ ,  D,  0
+
+[OBJECTS]
+Configure FreeDB Clientõ,õ <CWFREEDB_CLIENT_CONFIG>õ,õ WPProgramõ,õ <MMPM2_FOLDER>õ,õ ICONRESOURCE=1,%TARGET%\pmdb001.dll;EXENAME=%TARGET%\pmcddb.exe;PARAMETERS=/C [Your email (user@host.xxx)]õ,õ update
+
+[INSTALLPROFILES]
+FREEDBCL õ,õ FreeDB client to get CD titles from FreeDB servers õ,õ FreeDB client. This program is used by the CD player of the mediafolder package to get the titles of CDs from a FreeDB server. It may also be used from other programs or REXX scripts.
+
+[FREEDBCL]
+FREEDBCL, , ,S,[ ], freedb.ins
+
+[DEFAULTTARGET]
+PATH %APPS%\CWMMOS2\Freedb
+
+[INI]
+USER õ,õ CWMM õ,õ freedbclient õ,õ %TARGET% õ,õ YES
+
+

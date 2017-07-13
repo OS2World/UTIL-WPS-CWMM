@@ -1,0 +1,200 @@
+CW-MM classes
+-------------
+This package is a complete replacement for the
+multimedia classes coming with MMOS2. The convert menu
+is enhanced and the image classes are more robust WRT
+broken image files or buggy IO-procs. The limitations
+of the JPG-IO proc are still there. This procedure crashes
+on some images and the only way to resolve is a restart of
+the WPS. To overcome this limitiation a new JPGIO-IO procedure
+is included.
+
+Two classes are for seemless integration of the
+MMIO procedures for MP3 and OGG files written by
+Russel O'Connor.
+Get these procedures from:
+
+http://www.math.berkeley.edu/~roconnor/
+
+After installation Ogg- and MP3 files are treated the
+same way by the WPS as the other audio files. They have
+their own Icons and the same menus as for example
+wave files. A doubleclick starts playback another one
+stops it. The convert menu item helps you decoding the
+file to wave without any other program. 
+
+The settings notebook of every audio file gets a new
+page added describing the audio characteristics like
+playtime or samplerate. This data is also shown in the
+details view of folders if set to class:CWAudio.
+
+There's also a new open-item for volume.
+You may view and change the ID3 tags of MP3 files
+using the settings notebook. These tags are also shown
+in the details view.
+
+
+Additional features
+-------------------
+With the following keys in OS2.ini you may specify
+the programs to use when opening audio files. These
+programs must be PM programs.
+
+CWMM->audioplayer-><Name of program>
+CWMM->audioeditor-><Name of program>
+
+The following keys specify the videoplayer to use for
+MPG and AVI files:
+
+CWMM->aviplayer-><Name of program>
+CWMM->mpgplayer-><Name of program>
+
+The following key specifies the image editor to use when
+selecting the apropriate menu:
+
+CWMM->imageeditor-><Name of program>
+
+Use this key to enable details for image files on CD. Use
+only with fast drives.
+
+CWMM->useNewImgClsFeaturesOnCD->1
+
+Note: The keynames are case sensitive.
+
+
+Installation:
+-------------
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Make a backup of your INI files !
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Make a copy of the default JPEG IO-procedure JPEFIO.DLL.
+It's located in the MMOS2\DLL directory of your boot drive.
+
+Uninstall any version of the CWAudio classes you may have on
+your system.
+Put the contents of the archive into a directory and run
+cwmm.ins which will run the installer and register the
+new classes.
+The installer comes with Audio/data-Cd-Creator the 
+CW-Multimedia classes or may be downloaded here:
+ 
+http://www.os2world.com/cdwriting
+http://www.geocities.com/SiliconValley/Sector/5785/
+
+You have to restart the WPS so the changes can take effect.
+
+Open the multimedia settings notebook and add the types MP3
+and OGGS to digital audio if the menus do not work as expected.
+It may be necessary to also add associations to *.MP3 and
+*.OGG files.
+
+The command file audFldr.cmd sets the details and sort class of
+a folder to CWAudio so the new information is shown in the details
+view and the sort menu contains the new items. Just drop the folder
+in question on the script.
+The command file imgFldr.cmd sets the criteria to CWImage so details
+about image files are shown.
+
+
+Troubleshooting:
+----------------
+
+If anything goes wrong boot to a command line and delete
+the file cwmm.dll so the WPS can't load the classes.
+In the BIN dirctory you'll find a REXX-Skript for installing the
+classes. Move the script and the uninstall script to the root of
+the archive prior to running it.
+
+In the x:\MMOS2\INSTALL directory of your installation you'll find
+the script INSTMMVW.CMD. This script registers the standard MM classes
+coming with MMOS2.
+
+Have a copy of checkini around...
+
+
+Uninstallation:
+---------------
+
+Use the Generic Installer to uninstall the classes.
+
+
+Known problems
+--------------
+
+The playtime isn't correct for some VBR-MP3s. This is a problem
+of the MMIOMP3-Proc not the classes.
+
+
+History
+-------
+
+V0.1.0
+
+First release of the new audio classes.
+
+V0.2.0
+
+-Type 'Digital Audio' returned in addition to MP3/OGGS for the audio classes.
+-Setting of .TYPE EA so Digital Audio player works with MP3/OGG files without further fiddling
+-Caching of MP3 technical data in EAs to speed up folder opening.
+-ID3 data shown with the right codepage.
+-Mnemonic for Volume menu item.
+
+V0.2.1
+
+-A bunch of minor fixes.
+-No prereading of audio info for files on CD to speed up folder opening.
+
+V0.2.2
+
+-New CD track class for FreeDB enabled CD player
+-Improved open function. See media folder documentation
+
+
+V0.2.3 (13.07.2002)
+
+-Added new replacement classes for audio, video and image files. The MMOS2 classes are
+ not used anymore.
+-Improved lighttable folder with selectable icon size.
+
+
+V0.2.4
+-Added some more exception handlers.
+-Image details aren't read from CD unless key in INI file is set (see docs).
+-Titlebar of volume control may be hidden
+-Tabbing in volume control enabled
+-Save colors and position of volume control, audio- and image converter
+-Query audio information on a separate thread when awakening objects (speed boost for MP3)
+-Print menu removed for audio and video files.
+-Improved ID3 handling. ID3 V1.1 tracknumber is kept if present.
+
+Credits
+-------
+
+The Icons are (C) Klaus Staedtler-Przyborski. Thanks for fearless
+beta testing.
+
+
+License
+--------
+
+Theses classes are free to use but copyrighted. Use them on your own
+risk. If they burn your house or destroy your data it's all your
+fault.
+
+
+Author
+------
+
+These classes are
+
+(C) Chris Wohlgemuth 2001-2002
+
+http://www.geocities.com/SiliconValley/Sector/5785/
+http://www.os2world.com/cdwriting
+
+
+

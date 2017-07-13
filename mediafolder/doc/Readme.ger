@@ -1,0 +1,116 @@
+Media-Folder und Audio-Referenzen 12.05.02
+------------------------------------------
+
+Der Media-Folder ist ein Spieler fÅr alle OS/2
+bekannten Audiodateien. Die Åblichen Bedienelemente
+sind vorhanden und Playlisten kînnen einfach durch
+Fallenlassen von Audiodateien auf den Ordner erstellt
+werden.
+
+Es werden dabei Audio-Referenzen erstellt, die sich wie
+normale Referenzen verhalten aber die Details der
+Audiodateien in der Detailansicht des Media-Folders
+anzeigen.
+
+Ebenfalls enthalten ist ein WPS integrierter CD Spieler
+mit FreeDB-UnterstÅtzung.
+
+Installation
+------------
+
+Die Datei MEDIAFLD.INS îffnen, die dadurch den
+Generic Installer startet.
+
+Dieser Installer kommt z.B. mit Audio/Data-CD-Creator
+und den CW-Multimedia Klassen. Er ist darÅberhinaus
+erhÑltlich unter
+
+http://www.os2world.com/cdwriting
+http://www.geocities.com/SiliconValley/Sector/5785/
+
+Die WPS mu· nach der Installation neu gestartet werden.
+
+
+Das Skript setFolder.cmd setzt die Detailanzeige und das
+Sortierkriterium auf CWAudio, so da· die neuen Informationen
+in der Detailansicht und im SortierenmenÅ erscheinen. Einfach
+den jeweiligen Ordner auf das Skrip fallen lassen. 
+
+Das Skript setShadow.cmd setzt die Detailanzeige und das
+Sortierkriterium auf CWAudioShadow, so da· die neuen Informationen
+in der Detailansicht und im SortierenmenÅ auch bei Verwendung
+der neuen Referenzen erscheinen. Einfach den jeweiligen Ordner
+auf das Skrip fallen lassen. 
+
+
+Setupstrings
+-------------
+
+Die folgenden Setupstrings werden unterstÅtzt.
+
+MEDIAFLDRPLAY=1        Wiedergabe starten
+MEDIAFLDRSTOP=1        Wiedergave stoppen
+MEDIAFLDRNEXT=1        NÑchstes StÅck
+MEDIAFLDRPREV=1        Vorheriges StÅck
+MEDIAFLDRVOLUME=xx     LautstÑrke (0...100)
+
+Der Media Player mu· geîffnet sein bei Benutzung dieser
+Strings!
+
+
+Probleme
+--------
+
+Der LautstÑrke- und der Positionsregler sind noch nicht perfekt.
+Bei manchen VBR-MP3s wird die Spielzeit falsch angegeben. Dies
+ist ein Problem der MMIOMP3-Proc nicht der Klassen.
+
+
+Versionen
+---------
+
+0.2.0 Erste îffentliche Version
+
+-Neue Klassen CWMediaFolder und CWAudioShadow fÅr das Abspielen von Audiodateien.
+
+V0.2.1
+
+-Repeat function added
+-new (and improved) sliders
+-Keyboard control added (not for sliders yet)
+-Display for elapsed time, remaining time and ID3 tags (click to switch)
+-Change playtime font by DnD
+-Drag and drop handling rewritten.
+-Statusline added
+-REXX interface added
+
+V0.2.2
+
+-CD player object with FreeDB support added.
+-Some minor fixes.
+
+Credits
+-------
+
+Die Graphiken sind (C) Klaus Staedtler-Przyborski. Vielen Dank auch
+fÅr furchtloses Betatesten.
+
+
+Lizenz
+------
+
+Diese Klassen dÅrfen frei verwendet werden. Das Copyright verbleibt
+jedoch beim Author. Benutzung ausschlie·lich auf eigene
+Gefahr. Es wird KEINE Verantwortung fÅr Datenverluste, Ehekrisen
+und sonstige unerfreuliche Ereignisse Åbernommen.
+
+ 
+Author
+------
+
+Diese Klassen sind (C) 2001-2003 Chris Wohlgemuth.
+
+http://www.geocities.com/SiliconValley/Sector/5785/
+http://www.os2world.com/cdwriting
+
+

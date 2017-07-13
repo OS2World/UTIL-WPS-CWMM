@@ -1,0 +1,13 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+STRINGTABLE
+BEGIN
+IDSTR_TYPEAUDIO       "Audio"
+IDSTR_TYPEIMAGE       "Immagine"
+IDSTR_TYPEVIDEO       "Video"
+IDSTR_AUDIOINFOTEXT   "Tempo trascorso:\t%02d:%02d\n\nFrequenza campionamento:\t%d\n\nBit per campione:\t%d\n\nCanali:\t%d"
+IDSTR_NOMMTEMPLATEFLDRTITLE "Errore durante la creazione del file"
+IDSTR_NOMMTEMPLATEFLDR "Impossibile trovare il modello per la cartella multimedia. Potrebbe essersi persa la ID oggetto <MMPM2_MMTEMPLATEFOLDER>."
+END

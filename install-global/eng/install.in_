@@ -1,0 +1,42 @@
+[APPLICATION]
+NAME CW-Multimedia-Classes 0.2.9
+VERSION 0.2.9.0
+COPYRIGHT (C) Chris Wohlgemuth 2001-2005
+HOME http://www.os2world.com/cdwriting
+INTERNALNAME CWMMFULL
+TOTALSIZE 0
+INSTALLER 0.1.5.0
+DESCRIPTION New improved multimedia classes to replace the classes coming with MMOS2. New Classes to integrate MP3 and OGG files seemlessly into the WPS. After installation these files behave like any other audio file. For example a doubleclick starts playing. A Media-Folder class can be used as a MP3 player with the usual play controls and playlist support. CD player with FreeDB support.
+
+[DESCRIPTION]
+DESCRIPTION  New improved multimedia classes to replace the classes coming with MMOS2. New Classes to integrate MP3 and OGG files seemlessly into the WPS. After installation these files behave like any other audio file. For example a doubleclick starts playing. A Media-Folder class can be used as a MP3 player with the usual play controls and playlist support. CD player with FreeDB support.
+
+[LICENSE]
+FILE License
+
+[INSTALLPROFILES]
+CWMMFULL õ,õ Install Media-Folder AND multimedia classes õ,õ This option installs the new multimedia classes for WPS integration of MP3 and OGG files and the Media-Folder which serves as a player for any audio file known to OS/2. A CD player with FreeDB support is included.
+CWMM õ,õ Install new multimedia classes õ,õ Install new multimedia and classes to integrate MP3 and OGG files seemlessly into the WPS. After installation these files behave like any other audio file. For example a doubleclick starts playing. Information about the audio file (samplerate, playtime etc.) is shown in the details view of folders and in the settings notebook. The ID3 tags (V1.0) of MP3 files are changeable using a page of the settings notebook and also appear in the details view of folders.
+MEDIAFLD õ,õ Install Media-Folder (an audio player) õ,õ The Media-Folder class can be used as an MP3 or audio player. It has the usual play controls and playlist support. This player supports any audio file known to OS/2. Included is a CD player with FreeDB support.
+
+[CWMMFULL]
+CWMM, , ,S,[ ], CWMM-0_2_9-eng\CWmm.ins
+SLIDESHW, , ,S,[ ], Slide-Show\slideshoweng.ins
+MEDIAFLD, , ,S,[ ], CWMFldr-0_2_9-eng\mediafld.ins
+MFLDRSCR, , ,S,[ ], CWMFldr-0_2_9-eng\Skripte\mfldrscr.in_
+FREEDBCL, , ,S,[ ], CWMFldr-0_2_9-eng\freedb\freedb.ins
+[CWMM]
+CWMM, , ,S,[ ], CWMM-0_2_9-eng\CWmm.ins
+SLIDESHW, , ,S,[ ], Slide-Show\slideshoweng.ins
+[MEDIAFLD]
+MEDIAFLD, , ,S,[ ], CWMFldr-0_2_9-eng\mediafld.ins
+MFLDRSCR, , ,S,[ ], CWMFldr-0_2_9-eng\Skripte\mfldrscr.in_
+FREEDBCL, , ,S,[ ], CWMFldr-0_2_9-eng\freedb\freedb.ins
+
+[DEFAULTTARGET]
+PATH %APPS%\CWMMOS2
+
+[SKRIPTS]
+#This is a dummy entry so a message box appears at the very start
+#of the installation. The archive for Media-Folder contains a skript.
+

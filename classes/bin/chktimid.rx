@@ -1,0 +1,66 @@
+/* Rexx - check if Timidity is used as the default
+   sequencer.
+   The WPS crashes when Timidity is used to play a Midi
+   song using the classes.
+
+   (C) Chris Wohlgemuth 2003. This file is part of the
+       CW-Multimedia classes.
+
+      http://www.os2world.com/cdwriting
+
+   This skript is called by M_MMAudio::wpclsInitData()
+*/
+
+call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs'
+call SysLoadFuncs
+
+rc=0
+
+/* Get MMOS2 directory */
+mmos2Dir=STRIP(TRANSLATE(value("MMBASE",,"OS2ENVIRONMENT")," ",";"))
+if LEFT(mmos2Dir,1)='\' THEN
+	mmpm2Ini=mmos2Dir||'mmpm2.ini'
+else
+	mmpm2Ini=mmos2Dir||'\mmpm2.ini'
+
+if STREAM(mmpm2ini, "C", "Query exists")='' THEN DO
+	/* MMPM2.INI not found */
+	exit "0"
+END
+
+/* Read ini */
+a=0
+DO WHILE LINES(mmpm2ini)
+	a=a+1
+	mmini.a=STRIP(LINEIN(mmpm2ini))
+END
+mmini.0=a
+ret=STREAM(mmpm2ini, "C", "close")
+
+/* Find [DEFAULTNAMES] section */
+DO a=1 to mmini.0
+	if ABBREV(STRIP(TRANSLATE(mmini.a)), "[DEFAULTNAMES]")=1 THEN DO
+		rc=parseDefaultnames()
+		LEAVE
+	END
+END
+SAY rc
+if rc=1 THEN return "1"
+return "0"
+EXIT
+
+/**************************************/
+
+parseDefaultnames:
+a=a+1
+DO WHILE LEFT(mmini.a,1)\='['
+	IF ABBREV(TRANSLATE(mmini.a),"SEQUENCER")=1 THEN DO
+		thePos=POS("TIMIDITY",TRANSLATE(mmini.a))
+		if thePos=0 then return 0
+		return 1
+	END
+	a=a+1
+END
+return 0
+
+

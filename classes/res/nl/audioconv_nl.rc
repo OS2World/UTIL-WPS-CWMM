@@ -1,0 +1,20 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+
+STRINGTABLE 
+BEGIN
+
+IDSTR_CONVERTCHANNELS    "%d Kanalen"
+IDSTR_CONVERTSAMPLERATE  "%d Hz"
+IDSTR_CONVERTPLAYTIME    "%d:%02d min speelduur"
+IDSTR_CONVERTDIALOGERROR "Kan het dialoog sjabloon niet laden! Controleer a.u.b. uw installatie."
+IDSTR_CONVERTNOSPACETITLE   "Omzetten naar wave"
+IDSTR_CONVERTNOSPACETEXT   "Er is niet genoeg ruimte voor het gedecodeerde bestand. Kies een andere locatie met tenminste %d MB vrije schijfruimte."
+IDSTR_INSTALLERRORTITLE  "Installatie probleem"
+IDSTR_AUDIOBROWSETITLE   "Naam geluidsbestand"
+
+END
+
+

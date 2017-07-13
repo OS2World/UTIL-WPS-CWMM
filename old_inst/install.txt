@@ -1,0 +1,4 @@
+If you have problems installing the classes using the
+generic installer put these programs and scripts into
+the root of the unzipped package and start install.cmd.
+

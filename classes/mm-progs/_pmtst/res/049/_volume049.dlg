@@ -1,0 +1,21 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#define INCL_GRAPHICBUTTON
+#include <sw.h>
+
+DLGINCLUDE 1 "K:\cw-mm\cwaudio\progs\volume\volumeres.h"
+
+DLGTEMPLATE IDDLG_VOLUME LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Lautst„rke", IDDLG_VOLUME, 73, 148, 121, 59, NOT FS_DLGBORDER | 
+            WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR | FCF_MINBUTTON |FCF_TASKLIST
+    BEGIN
+        CONTROL         "~Lautst„rke", IDCS_VOLUME, 6, 22, 63, 44, WC_CIRCULARSLIDER, 
+                        WS_GROUP | WS_VISIBLE
+        CONTROL         "~Mute", IDPB_MUTE , 70, 38, 40, 14, WC_GRAPHICBUTTON,
+			 WS_VISIBLE | GBS_AUTOTWOSTATE
+        GROUPBOX        "", IDGB_VOLUME, 1, 3, 117, 56
+    END
+END
+

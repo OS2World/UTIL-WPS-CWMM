@@ -1,0 +1,405 @@
+1. CW-Multimedia-Klassen
+---------------------
+
+Dieses Paket ist ein kompletter Ersatz fÅr die
+Multimediaklassen von MMOS2. Sie sind robuster gegenÅber
+defekten Bilddateien oder fehlerhaften IO-Prozeduren.
+Das Konvertieren MenÅ wurde erweitert.
+
+Neue Klassen sorgen fÅr eine nahtlose
+Integration der MMIO-Prozeduren von Russel O'Connor 
+fÅr MP3- und OGG-Dateien in die WPS. Download der
+DLLs unter:
+
+http://www.math.berkeley.edu/~roconnor/
+
+Nach Installation der Klassen verhalten sich Ogg- und
+MP3-Dateien auf der WPS wie alle anderen Audiodateien
+(z.B. Wavedateien). Sie haben ein eigenes Icon und die
+MenÅs der Åbrigen Audiodateien. So startet z.B. ein
+Doppelklick die Wiedergabe ein weiterer stoppt sie.
+öber das 'Umsetzen'-MenÅ kînnen die Dateien einfach
+in Wavedateien umgesetzt werden.
+
+ZusÑtzlich wird in die Eigenschaftendialoge aller
+Audiodateien eine Informationsseite Åber die Datei
+eingefÅgt (Samplerate, Spieldauer etc.). Diese Daten
+erscheinen auch in der Detailansicht von Ordnern, wenn
+die Ansicht auf Klasse:CWAudio gesetzt wird.
+
+Im ôffnen-MenÅ ist zusÑtzlich ein Eintrag fÅr LautstÑrke.
+
+Bei MP3-Dateien lassen sich die ID3-Tags Åber den
+Eigenschaftendialog anzeigen und verÑndern. Die ID3-Tags
+werden darÅberhinaus in der Detailansicht von Ordnern
+angezeigt.
+
+Eine neue JPEG-IO-Prozedur kann auch progressive JPEG-Bilder
+einlesen.
+
+
+2. Media-Folder und Audio-Referenzen
+------------------------------------
+
+Der Media-Folder ist ein Spieler fÅr alle OS/2
+bekannten Audiodateien. Die Åblichen Bedienelemente
+sind vorhanden und Playlisten kînnen einfach durch
+Fallenlassen von Audiodateien auf den Ordner erstellt
+werden.
+
+Es werden dabei Audio-Referenzen erstellt, die sich wie
+normale Referenzen verhalten aber die Details der
+Audiodateien in der Detailansicht des Media-Folders
+anzeigen. Wenn WPS-Wizard V0.2.0 oder hîher installiert ist,
+steht eine REXX-UnterstÅtzung fÅr alle Funktionen zur
+VerfÅgung.
+
+Ebenfalls enthalten ist ein WPS integrierter CD Spieler
+mit FreeDB-UnterstÅtzung.
+
+Neu mit V0.2.4 ist ein Skript (FldTree.cmd), da· aus
+einem Baum von Ordnern mit MP3-Dateien einen entsprechenden
+Baum mit Media-Ordnern erstellt, um die MP3-Dateien komfortabel
+abspielen zu kînnen.
+Dieses Skript ist (c) Eirik Oeverby. FÅr Kontaktinformationen
+siehe Kommentar im Skript.
+
+ACHTUNG: Vor der Benutzung ist der Pfad zum Desktop im Skript
+anzupassen!
+Danach einfach einen MP3-Baum auf das OBject im Multimedia-Ordner
+fallen lassen.
+
+
+3. Diaschau
+----------
+
+Mit V0.2.8 ist ein Diaschau-Programm enthalten, das den Inhalt eines oder
+mehrerer Ordner anzeigt.
+
+
+Installation
+------------
+
+Bevor Fragen und GerÅchte auftauchen:
+
+JA, AUCH DIESE VERSION DER MULTIMEDIA-KLASSEN FUNKTIONIERT
+ZUSAMMEN MIT XWP, SO WIE JEDE ZUVOR AUCH!
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Kopien der INI-Dateien anfertigen!!
+
+Kopien der INI-Dateien anfertigen!!
+
+Kopien der INI-Dateien anfertigen!!
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+Achtung:
+Falls WordPercekt fÅr OS/2 5.2(a) installiert ist, scheitert die Deregistrierung
+der IBM-Multimediaklassen und das System wird bei der Installation der neuen
+Klassen abstÅrzen. Daher zunÑchst dieses Programm deinstallieren und die
+INI-Dateien mit 'checkini /C' reinigen. Die Ursache fÅr dieses Problem ist
+unbekannt. 
+
+Die Dateien JPEGIO.DLL und MMPARTS.DLL im Verzeichnis MMOS2\DLL
+sichern, da diese wÑhrend der Installation der Multimediaklassen
+Åberschrieben werden. Es werden zusÑtzlich vom Installationsskript
+Kopien dieser DLLs fÅr eine automatische Reinstallation der originalen
+IBM-Klassen im Verzeichnis MMOS2\CWMMBack erstellt.
+
+éltere Versionen des Media-Ordners und der CWAudio-Klassen
+deinstallieren und das System anschlie·end neu starten.
+
+1. Das Archiv in einen Ordner entpacken
+2. Das Skript Runme1st.cmd starten.
+3. Die WPS neu starten. DIESEN SCHRITT NICHT AUSLASSEN!
+4. Die INI-Dateien mit 'Checkini.exe /C' (wptool32.zip auf http://hobbes.nmsu.edu) reinigen.
+5. Die WPS neu starten. DIESEN SCHRITT NICHT AUSLASSEN!
+6. install.exe starten. Das Programm kopiert die Dateien und installiert die Klassen.
+7. Nach einem WPS-Neustart stehen sie zur VerfÅgung.
+
+Sollte die WPS nicht starten, reicht es, das Installationsverzeichnis
+von einer Kommandozeile aus umzubenennen. Bei WPS-Startproblemen hat es
+sich als hilfreich erwiesen, zeitweise alle Objekte vom Desktop zu entfernen.
+
+Es wird empfohlen, die aktuelle Version der MMIOMP3 IO-Prozeduren
+(http://www.math.berkeley.edu/~roconnor/) zu verwenden. Die Behandlung
+von MP3-Dateien hat sich signifikant verbessert.
+ 
+
+Deinstallation
+--------------
+
+1. Die Klassen Åber den Installer deinstallieren
+2. WPS neu starten. DIESEN SCHRITT NICHT AUSLASSEN!
+3. Die INI-Dateien mit 'Checkini.exe /C' (wptool32.zip auf http://hobbes.nmsu.edu) reinigen.
+4. Das Skript x:\MMOS2\CWMMBack\INSTIBM.CMD starten, um die IBM-Klassen
+ wieder zu installieren. x ist dabei das Bootlaufwerk.
+
+Nach einem Neustart der WPS stehen die Originalklassen wieder zur
+VerfÅgung.
+
+Mîgliche Probleme
+-----------------
+
+Bei manchen VBR-MP3s wird die Spielzeit falsch angegeben. Dies
+ist ein Problem der MMIOMP3-Prozedur nicht der Klassen.
+
+MP3-Dateien werden mîglicherweise nicht korrekt als solche erkannt.
+Dies tritt insbesondere auf, falls bereits eine Version der Klassen
+installiert war. In dem Fall den Ordner mit den MP3-Dateien auf
+das Skript \cwmm-x_x_x-lang\bin\RemoveEA.CMD fallen lassen. Der
+Ordner mu· dabei geschlossen sein!
+Das Skript entfernt das .CLASSINFO-Attribut und setzt das korrekte
+.TYPE-Attribut.
+Bei Wave- und OGG-Dateien kommt es dabei zum Verlust eingetragener
+Track-Informationen. Diese Daten mÅssen daher gegebenenfalls gesichert
+werden.
+
+Die Audio-Stream-Klasse funktioniert ausschlie·lich mit Icecast-Servern.
+Shoutcast wird nicht unterstÅtzt.
+
+
+Programmfehler
+---------------
+
+Bugs kînnen unter http://xtracker.netlabs.org unter 'Multimedia Extensions'
+gemeldet werden. 
+
+
+Weiteres
+--------
+
+Salvador Parra Camacho hat ein Programm geschrieben, um die versteckten
+Einstellungen (siehe Dokumentation) komfortabel verÑndern zu kînnen. Die
+Homepage findet sich unter:
+
+http://www.geocities.com/escajarro/
+
+Direktes Herunterladen ist hier mîglich:
+
+http://www.geocities.com/escajarro/soft/ccfg010z.zip   (Zip)
+http://www.geocities.com/escajarro/soft/ccfg010w.zip  (Wpi)
+
+
+Versionen
+---------
+
+V0.1.0
+
+First release of the new audio classes.
+
+V0.2.0
+
+-Type 'Digital Audio' returned in addition to MP3/OGGS for the audio classes.
+-Setting of .TYPE EA so Digital Audio player works with MP3/OGG files without further fiddling
+-Caching of MP3 technical data in EAs to speed up folder opening.
+-ID3 data shown with the right codepage.
+-Mnemonic for Volume menu item.
+
+-New classes CWMediaFolder and CWAudioShadow for playing of audio files.
+
+V0.2.1
+
+MMClasses:
+-A bunch of minor fixes.
+-No prereading of audio info for files on CD to speed up folder opening.
+
+Media folder:
+-Repeat function added
+-new (and improved) sliders
+-Keyboard control added (not for sliders yet)
+-Display for elapsed time, remaining time and ID3 tags (click to switch)
+-Change playtime font by DnD
+-Drag and drop handling rewritten.
+-Statusline added
+-REXX interface added
+-No audio info reading for files on CD to speed up CD opening. 
+
+V0.2.2 (29.03.2002)
+
+MMClasses:
+-New CD track class for FreeDB enabled CD player
+-Improved open function. See media folder documentation
+
+Media folder:
+-CD player object with FreeDB support added.
+-Some minor fixes.
+
+
+V0.2.3 (13.07.2002)
+
+MMClasses:
+-Added new replacement classes for audio, video and image files. The MMOS2 classes are
+ not used anymore.
+-Improved lighttable folder with selectable icon size.
+
+Media folder:
+-Added new replacement classes for audio, video and image files. The MMOS2 classes are
+ not used anymore.
+-Improved lighttable folder with selectable icon size.
+
+
+V0.2.4 (29.11.2002)
+
+Media folder:
+-Fixed PM-freeze with broken shadows.
+-Fixed problems when user deleted shadows during playing.
+-Repeat function was broken.
+-Device sharing didn't really work.
+-Random play added.
+-Launch area for objects.
+-Settings opening was only possible with closed folders 
+-Audio files are started on a separate thread.
+-Media folder will take over already playing files (very limited for now, only skip/stop).
+-CD-folder works for all drives not only default cd drive.
+
+MMClasses:
+-Added some more exception handlers.
+-Image details aren't read from CD unless key in INI file is set (see docs).
+-Titlebar of volume control may be hidden
+-Tabbing in volume control enabled
+-Save colors and position of volume control, audio- and image converter
+-Query audio information on a separate thread when awakening objects (speed boost for MP3)
+-Print menu removed for audio and video files.
+-Improved ID3 handling. ID3 V1.1 tracknumber is kept if present.
+-Elapsed time in icon titles when playing.
+-Changed names for classes to improve compatibility with the IBM classes.
+-Unified setup strings for MP3 and other audio files.
+-Lighttable folders: sometimes drawing of icons failed.
+
+
+V0.2.5 (16.02.2003)
+
+Media folder:
+-Popup menu on time control for changing display
+-New playlist editor
+-Shadows for fly over help
+
+MMClasses:
+-DLLs needed by specified players or editors weren't found if not in LIBPATH.
+-You may specify a different mp3 player
+-Fixed wrong icon size for standard classes in details view of light table folders.
+-Added support for animated folder icons in lightable folder
+-Templates were not drawn in light table folders icon view
+-Pause function for audio files
+-Fixed asscociations for image files.
+-Fixed image conversion.
+-Renamed REXX functions. The old names are still working but shouldn't be used longer.
+-Added new REXX function cwmmQueryImageInfo()
+-Added method cwmmQueryImageInfo().
+-ID3 tags of MP3 files weren't set when using setup strings. Only EAs were updated.
+-No more garbled characters with some players when reading the ID3 tags.
+-Black and white images are properly drawn in light table folder
+
+JPEG IO procedure:
+-Procedure now accepts 8 bit input images.
+
+
+V0.2.6 (02.07.2003)
+
+-Audio extensions added in the MM configuration notebook are recognized.
+-createcd compiled with VAC
+-helper progs statically linked.
+-No template for CWMMDataFile.
+-New FLAC class.
+-New EA MMNUMAUDIOBYTES containing the number of audio bytes of the file.
+-M3U playlist editor failed using M3U lists created by Rockbox.
+-Play menu for M3U objects.
+-Hilighting of play and pause buttons during device sharing corrected 
+-You can't start more than 3 audio files at a time now, preventing problems when a whole folder of audio objects was accidently selected.
+-Support for converting to OGG-Vorbis. Any future write enabled audio IO-Proc will be automatically supported now.
+-Default audio player replaced
+-Opening of folders with image files is faster now
+-Image spacing in lighttable folders improved
+-Image converter dialog had german resources in the english language version (obviously nobody cared...).
+-Preview in image converter
+-PNG image class
+-PNG files are recognized as image files. Automatic support of future image IO procs.
+-Only one INI file for MM class helpers.
+
+
+V0.2.7 (01.09.2003)
+
+-Renamed method cwmmAddWaveInformationPage() to cwmmAddAudioInformationPage().
+-Added container handle to parameter list of methods cwmmPlayTrack() and cwmmPauseTrack()
+-If several audio files in a folder are started at once they will be played consecutively. 
+-Image information in popup menu 
+-Added audio information for midi files in details view.
+-Audioplayer playback always started with default volume setting (70%).
+-Master volume item added to sys menu of audio player.
+-Language now derived from LANG setting not the country code.
+-URL of audio stream objects was truncated to 4 chars when reopening the settings.
+-Audio-Stream objects lost their type after changing settings.
+-Bitrate display for MP3 files if MMIOMP3 0.4.2 or above is installed.
+-Bitrate display for OGG files if MMIOOGG 0.3.1 or above is installed.
+-ID3 tag handling completely rewritten. Track information may be 256 bytes long per entry.
+ ID3 tags are handled separately now. 
+-Volume for audio files adjustable now. Volume menu no longer starts master volume.
+-Modified settings page handling for audio objects on CD
+-Added INI key to disable audio file scanning for certain drives.
+-Added INI key to disable ID3 tag reading for certain drives. 
+
+
+V0.2.7b (06.09.2003)
+
+-Skript creatobj.cmd for creation of CD players was broken.
+
+
+V0.2.8 (01.11.2004)
+
+-Icon view removed for media folders.
+-Icon view page removed for media folders. This removes it also from CD folders which never supported icon view anyway.
+-Compact view improved.
+-Track information in switch list and titles.
+-Opening of Media folder wasn't possible when settings already open.
+-Fixed a memory leak for image files.
+-Fixed deadlock when copying image files in light table folders.
+-Background bitmap deletion of image files to give memory back to the system.
+-English distribution included german help file for the classes.
+-Audio objects stopped playing after a second if not started from a folder.
+-Workaround for WPS crash with Timidity. No, It's still not working with the classes.
+-Fixed possible crash with abstract objects in light table folders.
+-Fixed CD querying for LVM systems (not for dynamically attached USB drives yet).
+-Audio file scanning now stops when folder is closed.
+-No scanning for CD tracks.
+-Video player didn't work at all.
+-ID3 info for artist was overwritten with the album name when using setup strings.
+-Trap when Quicktime for OS/2 was installed during scanning of MP3 files.
+-Marking image files as invalid for the WPS when caused a trap.
+-Only create thumbs when image is visible in container. Esp. useful when WPS-Wizard is installed.
+-When first creating ID3 tags the genre was always set to 'blues'.
+-CD objects are no longer created automatically. This will fix most lock ups people experienced.
+-Slide show program for displaying the contents of one or more directories
+
+
+Credits
+-------
+
+Die Icons und Graphiken sind (C) Klaus Staedtler-Przyborski. Vielen Dank auch
+fÅr furchtloses Betatesten.
+
+Das Skript zum Erstellen eines Media-Ordner-Baums ist
+(c) Eirik Oeverby.
+
+Lizenz
+------
+
+Diese Klassen dÅrfen frei verwendet werden. Das Copyright verbleibt
+jedoch beim Author. Benutzung ausschlie·lich auf eigene
+Gefahr. Es wird KEINE Verantwortung fÅr Datenverluste, Ehekrisen
+und sonstige unerfreuliche Ereignisse Åbernommen.
+
+ 
+Author
+------
+
+Diese Klassen sind (C) 2001-2005 Chris Wohlgemuth.
+
+http://www.geocities.com/SiliconValley/Sector/5785/
+http://www.os2world.com/cdwriting
+
+

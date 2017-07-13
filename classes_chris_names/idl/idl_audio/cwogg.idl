@@ -1,0 +1,118 @@
+
+/*
+ * CWMp3.idl:
+ */
+
+#include <cwaudio.idl>
+
+#define SIZE_PLAYTIME    11
+#define SIZE_SAMPLERATE  7
+#define SIZE_CHANNELS    2
+#define SIZE_BPS         3
+
+/*
+   CLASS: 
+*/
+
+interface M_CWOGG; 
+
+interface CWOGG : CWAudio
+{
+
+    /*
+     * New instance methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwogg_;
+    externalstem = cwogg;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwogg;           //# specifies the filestem for sc-generated files
+    metaclass = M_CWOGG;
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+
+    /*
+     * Internal instance variables
+     *
+     */
+
+
+    /*
+     * methods overridden 
+     *
+     */
+
+    wpObjectReady             : override;
+    wpSaveState               : override;
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+interface M_CWOGG : M_CWAudio
+{
+
+    /*
+     * New class methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwoggM_;
+    externalstem = cwoggM;
+    functionprefix = cwoggM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwogg;           //# specifies the filestem for sc-generated files
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+
+    wpclsQueryTitle   	        : override;   
+    wpclsQueryInstanceType  	: override;
+    wpclsQueryInstanceFilter    : override;   
+    wpclsQueryIconData          : override;
+    wpclsQueryDefaultHelp       : override; 
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+
+
+

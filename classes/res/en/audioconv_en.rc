@@ -1,0 +1,20 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+
+STRINGTABLE 
+BEGIN
+
+IDSTR_CONVERTCHANNELS    "%d Channels"
+IDSTR_CONVERTSAMPLERATE  "%d Hz"
+IDSTR_CONVERTPLAYTIME    "%d:%02d min playtime"
+IDSTR_CONVERTDIALOGERROR "Can't load dialog template! Please check your installation."
+IDSTR_CONVERTNOSPACETITLE   "Convert to wave"
+IDSTR_CONVERTNOSPACETEXT   "There isn't sufficient space for the decoded file. Choose another location with at least %d MB free disk space."
+IDSTR_INSTALLERRORTITLE  "Installation problem"
+IDSTR_AUDIOBROWSETITLE   "Audio file name"
+
+END
+
+

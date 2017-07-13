@@ -1,0 +1,38 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+DLGTEMPLATE IDDLG_CONVERT LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Convert audio file", IDDLG_CONVERT, 115, 36, 207, 174, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        GROUPBOX        "", IDGB_CONVERT, 3, 105, 203, 69
+        LTEXT           "Name:", IDST_CONVERTNAMELABEL, 7, 156, 32, 8
+        RTEXT           "", IDST_CONVERTNAME, 45, 156, 156, 8
+        LTEXT           "? Hz", IDST_CONVERTSAMPLERATE, 7, 131, 91, 8
+        LTEXT           "? Channels", IDST_CONVERTCHANNELS, 7, 120, 91, 8
+        LTEXT           "", IDST_CONVERTCDBITS, 103, 142, 98, 8
+        LTEXT           "(CD: 44100 Hz)", IDST_CONVERTCDSAMPLELABEL, 103, 131, 
+                        98, 8
+        LTEXT           "(CD: 2 Channels)", IDST_CONVERTCDCHANNELSLABEL, 103, 
+                        120, 98, 8
+        LTEXT           "Playtime: ?", IDST_CONVERTPLAYTIME, 7, 109, 161, 8
+        GROUPBOX        "", IDGB_CONVERT2, 3, 19, 203, 85
+        LTEXT           "Convert to:", 317, 7, 86, 86, 8
+        CONTROL         "", IDDD_IOPROC, 7, 28, 195, 54, WC_COMBOBOX, 
+                        CBS_DROPDOWNLIST | WS_GROUP | WS_TABSTOP | 
+                        WS_VISIBLE
+
+        LTEXT           "Target name:", 2419, 7, 57, 64, 8
+        ENTRYFIELD      "", IDEF_CONVERTTARGETNAME, 9, 45, 139, 8, ES_RIGHT | 
+                        ES_MARGIN
+        PUSHBUTTON      "~Browse...", IDPB_CONVERTBROWSE, 153, 42, 47, 14
+        CONTROL         "", IDBAR_CONVERTPROGRESS, 6, 24, 194, 13, 
+                        "CW_PERCENTBAR", 5 | WS_GROUP | WS_VISIBLE
+        DEFPUSHBUTTON   "~Convert", IDPB_CONVERTOK, 20, 2, 47, 14
+        PUSHBUTTON      "~Abort", IDPB_CONVERTABORT, 71, 2, 40, 14
+        PUSHBUTTON      "C~lose", IDPB_CONVERTCLOSE, 135, 2, 40, 14
+    END
+END
+

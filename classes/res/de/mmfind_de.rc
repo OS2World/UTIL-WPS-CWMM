@@ -1,0 +1,13 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+STRINGTABLE
+BEGIN
+IDSTR_TYPEAUDIO       "Audiodatei"
+IDSTR_TYPEIMAGE       "Bilddatei"
+IDSTR_TYPEVIDEO       "Videodatei"
+IDSTR_AUDIOINFOTEXT   "Spielzeit:\t%02d:%02d\n\nSamplerate:\t%d\n\nBits pro Sample:\t%d\n\nKan„le:\t%d"
+IDSTR_NOMMTEMPLATEFLDRTITLE "Fehler bei Dateierstellung"
+IDSTR_NOMMTEMPLATEFLDR "Multimedia-Schablonenordner kann nicht gefunden werden. M”glicherweise ist die Objekt-ID <MMPM2_MMTEMPLATEFOLDER> verloren gegangen."
+END

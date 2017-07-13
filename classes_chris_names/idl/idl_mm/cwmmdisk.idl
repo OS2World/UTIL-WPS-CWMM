@@ -1,0 +1,114 @@
+
+/*
+ * CWdisk.idl:
+ *
+ *
+ */
+
+#include <wpdisk.idl>           // this is SOM for WPDisk
+
+/*
+   CLASS: CWDisk
+
+   CLASS HIERARCHY:
+
+       SOMObject
+         ÀÄÄ WPObject
+               ÀÄÄ WPAbstract
+                     ÀÄÄ WPDisk
+                           ÀÄÄ CWDisk
+*/
+
+interface M_CWMMDisk;            // Forward Reference to XFldDisk metaclass
+
+interface CWMMDisk : WPDisk
+{
+
+    /*
+     * New instance methods for CWDisk:
+     *
+     */
+
+#ifdef __SOMIDL__
+  implementation {
+
+    /*
+     * Class Modifiers:
+     */
+
+    externalprefix = cwmmdisk_;
+    externalstem = cwmmdisk;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwmmdisk;           //# specifies the filestem for sc-generated files
+    metaclass = M_CWMMDisk;
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal instance variables for CWDisk:
+     *
+     */
+
+    /*
+     * WPDisk methods overridden by CWDisk:
+     *
+     */
+
+    wpViewObject     :override; 
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+interface M_CWMMDisk : M_WPDisk
+{
+
+    /*
+     * New class methods for M_CWDisk:
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwmmdiskM_;
+    externalstem = cwmmdiskM;
+    functionprefix = cwmmdiskM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwmmdisk;           //# specifies the filestem for sc-generated files
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * M_WPDisk methods overridden by M_CWDisk:
+     *
+     */
+
+    wpclsQueryTitle: override;
+
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+
+

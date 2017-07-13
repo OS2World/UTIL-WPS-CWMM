@@ -1,0 +1,15 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+MENU  ID_MENUTIMECONTEXT
+BEGIN
+	MENUITEM "Tempo ~trascorso"   ,       ID_MENUITEMELAPSED
+	MENUITEM "Tempo ~rimanente" ,         ID_MENUITEMREMAINING
+	MENUITEM "Informazioni ~traccia" ,    ID_MENUITEMID3
+END
+
+STRINGTABLE
+BEGIN
+IDSTR_MASTERVOLUMEITEM "~Volume generale"
+END

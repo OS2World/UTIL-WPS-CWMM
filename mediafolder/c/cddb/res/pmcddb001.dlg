@@ -1,0 +1,61 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+DLGTEMPLATE IDDLG_CDDBSETUP2 LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "CDDB server setup", IDDLG_CDDBSETUP2, 37, 36, 208, 149, NOT 
+            FS_DLGBORDER | WS_VISIBLE
+    BEGIN
+        GROUPBOX        "CDDB server setup", IDGB_CDDBSERVERSETUP, 11, 29, 
+                        195, 116, NOT WS_GROUP
+        LTEXT           "Server:Port", IDST_SERVERPORT, 17, 123, 84, 8
+        LISTBOX         IDLB_CDDBSERVERS, 18, 63, 128, 56
+        PUSHBUTTON      "U~p", IDPB_SERVERUP, 155, 106, 40, 14, WS_GROUP
+        PUSHBUTTON      "D~own", IDPB_SERVERDOWN, 155, 88, 40, 14
+        PUSHBUTTON      "~Delete", IDPB_SERVERDELETE, 155, 63, 40, 14
+        LTEXT           "New server:", IDST_NEWSERVER, 17, 50, 84, 8
+        ENTRYFIELD      "", IDEF_NEWSERVER, 19, 38, 126, 8, ES_MARGIN
+        PUSHBUTTON      "~Add", IDPB_SERVERADD, 155, 35, 40, 14
+        PUSHBUTTON      "~Undo", IDPB_CDDB2UNDO, 16, 8, 40, 14, WS_GROUP
+        PUSHBUTTON      "~Help", IDPB_CDDB2HELP, 76, 8, 40, 14
+    END
+END
+
+DLGTEMPLATE IDDLG_CDDBSETUP LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "CDDB", IDDLG_CDDBSETUP, 25, 20, 226, 150, NOT FS_DLGBORDER | 
+            WS_VISIBLE
+    BEGIN
+        GROUPBOX        "CDDB user setup", IDGB_CDDBUSER, 9, 30, 142, 112, 
+                        NOT WS_GROUP
+        AUTOCHECKBOX    "Use ~CDDB/Freedb", IDCB_USECDDB, 16, 119, 109, 10
+        LTEXT           "User name:", IDST_USERNAME, 17, 104, 119, 8, NOT 
+                        WS_GROUP
+        ENTRYFIELD      "", IDEF_CDDBUSER, 19, 92, 120, 8, ES_MARGIN
+        LTEXT           "User host:", IDST_USERHOST, 17, 77, 119, 8, NOT 
+                        WS_GROUP
+        ENTRYFIELD      "", IDEF_USERHOST, 19, 65, 120, 8, ES_MARGIN
+        LTEXT           "Specify the servers on the next page.", 
+                        IDST_SERVERNEXTPAGE, 17, 35, 124, 22, DT_WORDBREAK | 
+                        NOT WS_GROUP
+        PUSHBUTTON      "~Undo", IDPB_CDDBUNDO, 5, 9, 40, 14, WS_GROUP
+        PUSHBUTTON      "~Help", IDPB_CDDBHELP, 65, 9, 40, 14
+    END
+END
+
+DLGTEMPLATE IDDLG_CDDBCHOOSE LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Query FreeDB - Select match", IDDLG_CDDBCHOOSE, 29, 47, 258, 85, WS_VISIBLE, 
+            FCF_TITLEBAR
+    BEGIN
+        LISTBOX         IDLB_CDDBCHOOSE, 5, 25, 246, 40, LS_HORZSCROLL
+        LTEXT           "Select one of these matches:", IDST_CDDBCHOOSE, 6, 71, 246, 8
+        PUSHBUTTON      "~Ok", IDPB_OK, 5, 5, 40, 14
+        PUSHBUTTON      "~Cancel", IDPB_CANCEL, 55, 5, 40, 14
+    END
+END
+
+
+
+

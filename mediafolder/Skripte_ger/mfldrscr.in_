@@ -1,0 +1,44 @@
+[APPLICATION]
+NAME Media Spieler Skripte
+VERSION 0.1.2.0
+COPYRIGHT (C) Chris Wohlgemuth 2002
+HOME http://www.os2world.com/cdwriting
+INTERNALNAME MFLDRSCR
+TOTALSIZE 13584
+INSTALLER 0.1.1.0
+DESCRIPTION REXX-Skripte fÅr den Media-Ordner. Diese Skripte ermîglichen unter anderem das einfache Erstellen neuer Playlisten oder das Brennen von Audio-CDs. Die Skripte sind Åber die MenÅleiste des Media-Ordners ereichbar. WPS-Wizard V0.2.0 mu· installiert sein, um Skripte verwenden zu kînnen.
+
+[DESCRIPTION]
+DESCRIPTION  REXX-Skripte fÅr den Media-Ordner. Diese Skripte ermîglichen unter anderem das einfache Erstellen neuer Playlisten oder das Brennen von Audio-CDs. Die Skripte sind Åber die MenÅleiste des Media-Ordners ereichbar. WPS-Wizard V0.2.0 mu· installiert sein, um Skripte verwenden zu kînnen.
+
+[FILES]
+mfldrscr.in_, %TARGET%\Skripte\ ,  F,  1489
+~Audio CD brennen, %TARGET%\Skripte\ ,  F,  4016
+~Playlist erstellen, %TARGET%\Skripte\ ,  F,  3312
+~Spielzeit ermitteln, %TARGET%\Skripte\ ,  F,  1781
+~M3U-Playlist erstellen, %TARGET%\Skripte\ ,  F, 2986 
+
+[OBJECTS]
+Skripte fÅr Media-Ordnerı,ı <SKRIPTS_CWMediaFolder>ı,ı CWMenuFolderı,ı <WPSWIZ_CONFIG>ı,ı CLEARMENUCACHE=1;DEFAULTVIEW=ICON;SHOWALLINTREEVIEW=YES;ICONVIEW=NONFLOWED,MINI;HIDECLASSPAGE=1ı,ı update
+~Audio CD brennenı,ı <MFLDR_BURNAUD_SHW>ı,ı WPShadowı,ı <SKRIPTS_CWMediaFolder>ı,ı SHADOWID=%TARGET%\Skripte\~Audio CD brennenı,ı update
+~Playlist erstellenı,ı <MFLDR_PLAYLST_SHW>ı,ı WPShadowı,ı <SKRIPTS_CWMediaFolder>ı,ı SHADOWID=%TARGET%\Skripte\~Playlist erstellenı,ı update
+~Spielzeit ermittelnı,ı <MFLDR_PLAYTIME_SHW>ı,ı WPShadowı,ı <SKRIPTS_CWMediaFolder>ı,ı SHADOWID=%TARGET%\Skripte\~Spielzeit ermittelnı,ı update
+~M3U-Playlist erstellenı,ı <MFLDR_PLAYLSTM3U_SHW>ı,ı WPShadowı,ı<SKRIPTS_CWMediaFolder>ı,ı SHADOWID=%TARGET%\Skripte\~M3U-Playlist erstellenı,ı update
+Benutzer MenÅ Media-Ordnerı,ı <USERMENU_MEDIAFOLDER>ı,ı CWMenuFolderı,ı <WPSWIZ_CONFIG>ı,ı CLEARMENUCACHE=1;DEFAULTVIEW=ICON;SHOWALLINTREEVIEW=YES;ICONVIEW=NONFLOWED,MINI;HIDECLASSPAGE=1ı,ı update
+MenÅ Konfigurationı,ı <MFLDR_MENUCONFIG_SHW>ı,ı WPShadowı,ı <USERMENU_MEDIAFOLDER>ı,ı SHADOWID=<WPSWIZ_CONFIG>ı,ı update
+Skripte fÅr M3U-Listenı,ı <SKRIPTS_CWM3UFolder>ı,ı CWMenuFolderı,ı <WPSWIZ_CONFIG>ı,ı CLEARMENUCACHE=1;DEFAULTVIEW=ICON;SHOWALLINTREEVIEW=YES;ICONVIEW=NONFLOWED,MINI;HIDECLASSPAGE=1ı,ı update
+~Audio CD brennenı,ı <M3UFLDR_BURNAUD_SHW>ı,ı WPShadowı,ı <SKRIPTS_CWM3UFolder>ı,ı SHADOWID=%TARGET%\Skripte\~Audio CD brennenı,ı update
+
+[SKRIPTS]
+BEFOREINST ı,ı /* öberprÅfung ob WPS-Wizard installiert ist */;call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs';call SysLoadFuncs;ret=SysQueryClassList('classes.');found=0;DO cls=1 to classes.0;	theclass=WORD(classes.cls, 1);	thePath=SUBWORD(classes.cls, 2);	IF TRANSLATE(theClass)='CWMENUFOLDER' THEN DO;		found=1	;		LEAVE;	END;END;;RC=0;IF found=0 THEN DO;		usrdata._mBTitle="Media Skripte Installation";		usrData._mBCBTxt="";		usrdata._mBTxt='WPS-Wizard ist nicht installiert. ';		usrdata._mBTxt=usrdata._mBTxt||'Dieses Paket in der Version V0.2.0 oder hîher ist erforderlich, um Skripte ';		usrdata._mBTxt=usrdata._mBTxt||'ausfÅhren zu kînnen.'||'0d'x;		usrdata._mBTxt=usrdata._mBTxt||'Es ist erhÑltlich unter'||'0d'x||'0d'x;		usrdata._mBTxt=usrdata._mBTxt||'http://www.os2world.com/cdwriting/'||'0d'x||'0d'x;		usrdata._mBTxt=usrdata._mBTxt||'Dieses Skripte-Paket kann nicht installiert werden.'||'0d'x;		usrData._mBType="OK";		call beep 1000, 100;		ret=ModalFor('usermsgBox');		RC=1;END;;
+
+[INSTALLPROFILES]
+MFLDRSCR ı,ı Media-Ordner REXX-Skripte ı,ı Installation zusÑtzlicher Skripte, um die Erstellung von Playlisten und Audio-CDs zu erleichtern. Diese Skripte sind Åber die MenÅleiste des Media-Ordners erreichbar. WPS-Wizard V0.2.0 mu· fÅr die Nutzung dieses Paketes installiert sein.
+
+[MFLDRSCR]
+MFLDRSCR, , ,S,[ ], mfldrscr.in_
+
+[DEFAULTTARGET]
+PATH %APPS%\CWMMOS2\MediaFld
+
+

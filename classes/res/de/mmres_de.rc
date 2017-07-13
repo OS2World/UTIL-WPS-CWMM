@@ -1,0 +1,38 @@
+#define  INCL_GRAPHICBUTTON   /* need this for the graphic buttons control */
+#define  INCL_BITMAP
+
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include <sw.h>
+
+#include "mmres.h"
+
+;#include "version.h"
+;#include "build.h"
+
+
+;Dialog Resources for volume.exe
+rcinclude "volume_de.rc"
+rcinclude "volume_de.dlg"
+
+rcinclude "audioconv_de.rc"
+rcinclude "audioconv_de.dlg"
+
+rcinclude "imageconv_de.rc"
+rcinclude "imageconv_de.dlg"
+
+rcinclude "audioplayer_de.rc"
+rcinclude "audioplayer_de.dlg"
+
+rcinclude "classvolume_de.dlg"
+
+rcinclude "cwaudio_de.rc"
+rcinclude "cwaudio_de.dlg"
+
+rcinclude "cwimage_de.rc"
+rcinclude "cwvideo_de.rc"
+
+rcinclude "mmfind_de.rc"
+rcinclude "mmfind_de.dlg"
+

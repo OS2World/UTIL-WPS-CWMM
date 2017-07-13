@@ -1,0 +1,16 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include "volumeres.h"
+
+rcinclude "volume.dlg"
+
+ICON ID_ICONVOLUME   "../icons/volume.ico"
+
+MENU    IDM_POPUP
+BEGIN
+    MENUITEM    "~Hide titlebar",    IDM_ITEMTITLEBAR
+    MENUITEM    "",    0, MIS_SEPARATOR
+    MENUITEM    "E~xit",    IDM_ITEMEXIT
+END
+

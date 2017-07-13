@@ -1,0 +1,285 @@
+PROTMODE
+CODE PRELOAD DISCARDABLE
+DATA SHARED LOADONCALL
+
+EXPORTS  
+;Audio classes
+        M_MMAudioClassData	@1
+        M_MMAudioCClassData	@2
+        M_MMAudioNewClass	@3
+        MMAudioClassData	@4
+        MMAudioCClassData	@5
+        MMAudioNewClass		@6
+
+        M_MMMP3ClassData	@7
+        M_MMMP3CClassData	@8
+        M_MMMP3NewClass		@9
+        MMMP3ClassData		@10
+        MMMP3CClassData		@11
+        MMMP3NewClass		@12
+
+        M_MMOGGClassData	@13
+        M_MMOGGCClassData	@14
+        M_MMOGGNewClass		@15
+        MMOGGClassData		@16
+        MMOGGCClassData		@17
+        MMOGGNewClass		@18
+
+        M_MMCDTrackClassData	@19
+        M_MMCDTrackCClassData	@20
+        M_MMCDTrackNewClass	@21
+        MMCDTrackClassData	@22
+        MMCDTrackCClassData	@23
+        MMCDTrackNewClass	@24
+
+        M_CWMMDiskClassData	@25
+        M_CWMMDiskCClassData	@26
+        M_CWMMDiskNewClass		@27
+        CWMMDiskClassData		@28
+        CWMMDiskCClassData		@29
+        CWMMDiskNewClass		@30
+
+        M_MMWAVClassData	@31
+        M_MMWAVCClassData	@32
+        M_MMWAVNewClass		@33
+        MMWAVClassData		@34
+        MMWAVCClassData		@35
+        MMWAVNewClass		@36
+
+        M_MMAIFClassData	@37
+        M_MMAIFCClassData	@38
+        M_MMAIFNewClass		@39
+        MMAIFClassData		@40
+        MMAIFCClassData		@41
+        MMAIFNewClass		@42
+
+        M_MMAUClassData		@43
+        M_MMAUCClassData	@44
+        M_MMAUNewClass		@45
+        MMAUClassData		@46
+        MMAUCClassData		@47
+        MMAUNewClass		@48
+
+        M_MM_AUClassData	@49
+        M_MM_AUCClassData	@50
+        M_MM_AUNewClass		@51
+        MM_AUClassData		@52
+        MM_AUCClassData		@53
+        MM_AUNewClass		@54
+
+        M_MMIFFClassData	@55
+        M_MMIFFCClassData	@56
+        M_MMIFFNewClass		@57
+        MMIFFClassData		@58
+        MMIFFCClassData		@59
+        MMIFFNewClass		@60
+
+        M_MMSNDFClassData	@61
+        M_MMSNDFCClassData	@62
+        M_MMSNDFNewClass	@63
+        MMSNDFClassData		@64
+        MMSNDFCClassData	@65
+        MMSNDFNewClass		@66
+
+        M_MMVOCClassData	@67
+        M_MMVOCCClassData	@68
+        M_MMVOCNewClass		@69
+        MMVOCClassData		@70
+        MMVOCCClassData		@71
+        MMVOCNewClass		@72
+
+        M_MMMIDIClassData	@73
+        M_MMMIDICClassData	@74
+        M_MMMIDINewClass	@75
+        MMMIDIClassData		@76
+        MMMIDICClassData	@77
+        MMMIDINewClass		@78
+
+;Video classes
+        M_MMVideoClassData	@79
+        M_MMVideoCClassData	@80
+        M_MMVideoNewClass	@81
+        MMVideoClassData	@82
+        MMVideoCClassData	@83
+        MMVideoNewClass		@84
+
+        M_MMAVIClassData	@85
+        M_MMAVICClassData	@86
+        M_MMAVINewClass		@87
+        MMAVIClassData		@88
+        MMAVICClassData		@89
+        MMAVINewClass		@90
+
+        M_MMFLIClassData	@91
+        M_MMFLICClassData	@92
+        M_MMFLINewClass		@93
+        MMFLIClassData		@94
+        MMFLICClassData		@95
+        MMFLINewClass		@96
+
+        M_MMMOVClassData	@97
+        M_MMMOVCClassData	@98
+        M_MMMOVNewClass		@99
+        MMMOVClassData		@100
+        MMMOVCClassData		@101
+        MMMOVNewClass		@102
+
+        M_MMMPGClassData	@103
+        M_MMMPGCClassData	@104
+        M_MMMPGNewClass		@105
+        MMMPGClassData		@106
+        MMMPGCClassData		@107
+        MMMPGNewClass		@108
+
+;MM-Data file class
+        M_CWMMDataFileClassData	@109
+        M_CWMMDataFileCClassData	@110
+        M_CWMMDataFileNewClass	@111
+        CWMMDataFileClassData	@112
+        CWMMDataFileCClassData	@113
+        CWMMDataFileNewClass	@114
+
+;Image classes
+        M_MMImageClassData	@115
+        M_MMImageCClassData	@116
+        M_MMImageNewClass	@117
+        MMImageClassData	@118
+        MMImageCClassData	@119
+        MMImageNewClass		@120
+
+        M_MMAVCClassData	@121
+        M_MMAVCCClassData	@122
+        M_MMAVCNewClass		@123
+        MMAVCClassData		@124
+        MMAVCCClassData		@125
+        MMAVCNewClass		@126
+
+        M_MMDIBClassData	@127
+        M_MMDIBCClassData	@128
+        M_MMDIBNewClass		@129
+        MMDIBClassData		@130
+        MMDIBCClassData		@131
+        MMDIBNewClass		@132
+
+        M_MMGIFClassData	@133
+        M_MMGIFCClassData	@134
+        M_MMGIFNewClass		@135
+        MMGIFClassData		@136
+        MMGIFCClassData		@137
+        MMGIFNewClass		@138
+
+        M_MMJPGClassData	@139
+        M_MMJPGCClassData	@140
+        M_MMJPGNewClass		@141
+        MMJPGClassData		@142
+        MMJPGCClassData		@143
+        MMJPGNewClass		@144
+
+        M_MMPhotoCDClassData	@145
+        M_MMPhotoCDCClassData	@146
+        M_MMPhotoCDNewClass	@147
+        MMPhotoCDClassData	@148
+        MMPhotoCDCClassData	@149
+        MMPhotoCDNewClass	@150
+
+        M_MMPCXClassData	@151
+        M_MMPCXCClassData	@152
+        M_MMPCXNewClass		@153
+        MMPCXClassData		@154
+        MMPCXCClassData		@155
+        MMPCXNewClass		@156
+
+        M_MMTargaClassData	@157
+        M_MMTargaCClassData	@158
+        M_MMTargaNewClass	@159
+        MMTargaClassData	@160
+        MMTargaCClassData	@161
+        MMTargaNewClass		@162
+
+        M_MMTIFFClassData	@163
+        M_MMTIFFCClassData	@164
+        M_MMTIFFNewClass	@165
+        MMTIFFClassData		@166
+        MMTIFFCClassData	@167
+        MMTIFFNewClass		@168
+
+        M_MMMMotionClassData	@169
+        M_MMMMotionCClassData	@170
+        M_MMMMotionNewClass	@171
+        MMMMotionClassData	@172
+        MMMMotionCClassData	@173
+        MMMMotionNewClass	@174
+
+        M_MMBitmapClassData	@175
+        M_MMBitmapCClassData	@176
+        M_MMBitmapNewClass	@177
+        MMBitmapClassData	@178
+        MMBitmapCClassData	@179
+        MMBitmapNewClass	@180
+
+;Light table folder
+        M_MMFolderClassData	@181
+        M_MMFolderCClassData	@182
+        M_MMFolderNewClass	@183
+        MMFolderClassData	@184
+        MMFolderCClassData	@185
+        MMFolderNewClass	@186
+
+;Audio stream class
+        M_MMAudioStreamClassData	@187
+        M_MMAudioStreamCClassData	@188
+        M_MMAudioStreamNewClass	@189
+        MMAudioStreamClassData	@190
+        MMAudioStreamCClassData	@191
+        MMAudioStreamNewClass	@192
+
+;M3U playlist
+        M_MMM3UClassData	@193
+        M_MMM3UCClassData	@194
+        M_MMM3UNewClass		@195
+        MMM3UClassData		@196
+        MMM3UCClassData		@197
+        MMM3UNewClass		@198
+
+;MMPNG class
+        M_MMPNGClassData	@199
+        M_MMPNGCClassData	@200
+        M_MMPNGNewClass		@201
+        MMPNGClassData		@202
+        MMPNGCClassData		@203
+        MMPNGNewClass		@204
+
+;MMFLAC class
+        M_MMFLACClassData	@205
+        M_MMFLACCClassData	@206
+        M_MMFLACNewClass		@207
+        MMFLACClassData		@208
+        MMFLACCClassData	@209
+        MMFLACNewClass		@210
+
+IMPORTS
+	M_WPImageFileClassData=PMWP.495
+	M_WPImageFileCClassData=PMWP.494
+	M_WPImageFileNewClass=PMWP.496
+	WPImageFileClassData=PMWP.492
+	WPImageFileCClassData=PMWP.491
+	WPImageFileNewClass=PMWP.493
+
+
+;        M_MMWAVClassData	@31
+;        M_MMWAVCClassData	@32
+;        M_MMWAVNewClass		@33
+;        MMWAVClassData		@34
+;        MMWAVCClassData		@35
+;        MMWAVNewClass		@36
+
+
+;IMPORTS
+;	MMPARTS.M_MMAudioClassData
+;	MMPARTS.M_MMAudioCClassData
+;	MMPARTS.M_MMAudioNewClass
+;	MMPARTS.MMAudioClassData
+;	MMPARTS.MMAudioCClassData
+;	MMPARTS.MMAudioNewClass
+
+

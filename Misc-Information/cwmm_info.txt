@@ -1,0 +1,22 @@
+Installation
+----------
+
+1. IBM classes must be deinstalled
+2. MMPARTS.DLL must be copied out of the libpath
+3. ab.exe and ib.exe must be copied into the MMPARTS.DLL directory.
+4. In user INI there must be pointers to the new location of these programs. Keys: CWMM->ab and CWMM->ib
+
+Programming
+------------
+1.
+During installation the MMPARTS.DLL is copied out of the LIBPATH. ab.exe and ib.exe are copied to the new
+location of MMPARTS.DLL. The new location of these programs is written to user-ini under the keys CWMM->ab
+and CWMM->ib.
+In the wpOpen() method of MMAudio and MMImage this new location is queried to start the respective programs
+(image and audio editor). When the editor apps finally are replaced this can be changed.
+
+2.
+Creating of *.hh files from IDL files:
+
+sc -shh -S 64000  -m noqualifytypes <filename_without_ext>
+

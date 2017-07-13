@@ -1,0 +1,89 @@
+[APPLICATION]
+NAME CW-Multimedia Classes 0.2.5
+VERSION 0.2.5.0
+COPYRIGHT (C) Chris Wohlgemuth 2001-2002
+HOME http://www.os2world.com/cdwriting
+INTERNALNAME CWMM
+TOTALSIZE 749793
+INSTALLER 0.1.5.0
+DESCRIPTION Ersatzmultimediaklassen fÅr MMOS2. Diese neuen Klassen sind robuster als die Standardklassen und haben einige erweiterte Eigenschaften. Zwei neue Klassen fÅr eine nahtlose Integration von MP3- und OGG-Dateien in die WPS sind vorhanden. Nach der Installation verhalten sich diese Audiodateien wie alle anderen. So startet ein Doppelklick die Wiedergabe und ein weiterer stoppt sie. Informationen Åber die Datei wie Samplerate, Spielzeit usw. werden in der Detailansicht von Ordnern angezeigt und ebenso in den Einstellungen aller Audiodateien. Die ID3-Tags (V1.0) von MP3-Dateien lassen sich Åber die Einstellungen Ñndern und erscheinen zusÑtzlich in der Detailansicht.
+
+[DESCRIPTION]
+DESCRIPTION  Ersatzmultimediaklassen fÅr MMOS2. Diese neuen Klassen sind robuster als die Standardklassen und haben einige erweiterte Eigenschaften. Zwei neue Klassen fÅr eine nahtlose Integration von MP3- und OGG-Dateien in die WPS sind vorhanden. Nach der Installation verhalten sich diese Audiodateien wie alle anderen. So startet ein Doppelklick die Wiedergabe und ein weiterer stoppt sie. Informationen Åber die Datei wie Samplerate, Spielzeit usw. werden in der Detailansicht von Ordnern angezeigt und ebenso in den Einstellungen aller Audiodateien. Die ID3-Tags (V1.0) von MP3-Dateien lassen sich Åber die Einstellungen Ñndern und erscheinen zusÑtzlich in der Detailansicht.
+
+[LICENSE]
+FILE Lizenz
+
+[FILES]
+cwmm.dll, %TARGET%\ ,  F,  366185
+cwmm.hlp, %TARGET%\ ,  F,  3473
+cwmm.ins, %TARGET%\ ,  F,  6187
+FILE_ID.DIZ, %TARGET%\ ,  F,  710
+Lizenz, %TARGET%\ ,  F,  595
+Readme.ger, %TARGET%\ ,  F,  5987
+bin\audconv.exe, %TARGET%\ ,  F,  14935
+bin\audfldr.cmd, %TARGET%\ ,  F,  504
+bin\imgconv.exe, %TARGET%\ ,  F,  12375
+bin\imgfldr.cmd, %TARGET%\ ,  F,  504
+bin\installmm.cmd, %TARGET%\ ,  F,  8626
+bin\uninstmm.cmd, %TARGET%\ ,  F,  7559
+bin\volume.exe, %TARGET%\ ,  F,  13376
+DLL\GBM.DLL, %?%:\MMOS2\ ,  F,  279468
+DLL\JPEGIO.DLL, %?%:\MMOS2\ ,  F,  27769
+DLL\JPEGIO.SYM, %?%:\MMOS2\ ,  F,  1540
+
+[CLASSES]
+CWMMDataFile, %TARGET%\cwmm.dll, 
+CWAudio, %TARGET%\cwmm.dll, 
+CWMP3, %TARGET%\cwmm.dll, 
+CWOGG, %TARGET%\cwmm.dll, 
+CWWAV, %TARGET%\cwmm.dll, 
+CWAIF, %TARGET%\cwmm.dll, 
+CWAU, %TARGET%\cwmm.dll, 
+CW_AU, %TARGET%\cwmm.dll, 
+CWIFF, %TARGET%\cwmm.dll, 
+CWSNDF, %TARGET%\cwmm.dll, 
+CWVOC, %TARGET%\cwmm.dll, 
+CWCDTrack, %TARGET%\cwmm.dll, 
+CWMIDI, %TARGET%\cwmm.dll, 
+CWVideo, %TARGET%\cwmm.dll, 
+CWAVI, %TARGET%\cwmm.dll, 
+CWFLI, %TARGET%\cwmm.dll, 
+CWMOV, %TARGET%\cwmm.dll, 
+CWMPG, %TARGET%\cwmm.dll, 
+CWImage, %TARGET%\cwmm.dll, 
+CWAVC, %TARGET%\cwmm.dll, 
+CWDIB, %TARGET%\cwmm.dll, 
+CWGIF, %TARGET%\cwmm.dll, 
+CWJPG, %TARGET%\cwmm.dll, 
+CWPhotoCD, %TARGET%\cwmm.dll, 
+CWPCX, %TARGET%\cwmm.dll, 
+CWTarga, %TARGET%\cwmm.dll, 
+CWTIFF, %TARGET%\cwmm.dll, 
+CWMMotion, %TARGET%\cwmm.dll, 
+CWBitmap, %TARGET%\cwmm.dll, WPBitmap
+CWMMDisk, %TARGET%\cwmm.dll, WPDisk
+MMFolder, %TARGET%\cwmm.dll, 
+
+[OBJECTS]
+Volumeı,ı <MMPM2_MMVOLUME>ı,ı WPProgramı,ı <MMPM2_FOLDER>ı,ı EXENAME=%TARGET%\bin\volume.exe;ı,ı update
+CD-Playerı,ı <MMPM2_CDPLAYER>ı,ı WPProgramı,ı <MMPM2_FOLDER>ı,ı EXENAME=cdpm.exeı,ı update
+
+[SKRIPTS]
+BEFOREINST ı,ı /* Message for the user */;call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs';call SysLoadFuncs;;RC=0;;usrdata._mBTitle="Installation";usrData._mBCBTxt="";usrdata._mBTxt='Haben Sie eine Kopie der JPEGIO.DLL im Verzeichnis MMOS2\DLL angefertigt?';usrdata._mBTxt=usrdata._mBTxt||'0d'x||'0d'x||'Auswahl von NEIN bricht die Installation ab.';usrData._mBType="YESNO";call beep 1000, 100;ret=ModalFor('usermsgBox');IF TRANSLATE(ret)='NO' THEN rc=1;
+AFTERCOPY ı,ı /* Load all the Rexx Util functions */;call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs';call SysLoadFuncs;call RxFuncAdd 'RxWinReplaceObjectClass', 'mmparts', 'RxWinReplaceObjectClass';;deinstalling = '-R';;/* First uninstall the standard MM-stuff */;MMClasses.   = '';MMClasses.1  = 'MMDataFile';MMClasses.2  = 'MMImage';MMClasses.3  = 'MMAudio';MMClasses.4  = 'MMVideo';MMClasses.5  = 'MMMIDI';MMClasses.6  = 'MMTarga';MMClasses.7  = 'MMTIFF';MMClasses.8  = 'MMGIF';MMClasses.9  = 'MMPCX';MMClasses.10 = 'MMPhotoCD';MMClasses.11 = 'MMAVC';MMClasses.12 = 'MMMMotion';MMClasses.13 = 'MMDIB';MMClasses.14 = 'MMDevice';MMClasses.15 = 'MMCDDevice';MMClasses.16 = 'MMLVDDevice';MMClasses.17 = 'MMVolume';MMClasses.18 = 'MMVOC';MMClasses.19 = 'MM_AU';MMClasses.20 = 'MMAU';MMClasses.21 = 'MMAIF';MMClasses.22 = 'MMIFF';MMClasses.23 = 'MMSNDF';MMClasses.24 = 'MMAVI';MMClasses.25 = 'MMFLI';MMClasses.26 = 'MMMPG';MMClasses.27 = 'MMJPG';MMClasses.28 = 'MMWAV';MMClasses.29 = 'MMMOV';MMClasses.30 = 'MMFolder';MMClasses.31 = 'MMFinder';;x = 1;;;do while MMClasses.x <> ''   /* loop until no more classes */;   if deinstalling = '-R' then;      if SysDeregisterObjectClass(MMClasses.x) then;         say MMClasses.x 'class deregistration successful';      else;         say MMClasses.x 'class deregistration failed';   else;      if SysRegisterObjectClass(MMClasses.x, "mmparts") then;         say MMClasses.x 'class registration successful';      else;         say MMClasses.x 'class registration failed';   x = x + 1;end;;/* Do MMBitmap Replacement Class */;;if deinstalling = '-R' then;   do;      if RxWinReplaceObjectClass('WPBitmap','MMBitmap', '0') then;         say 'UnReplace MMBitmap successful';      else;         say 'UnReplace MMBitmap failed';;      if SysDeregisterObjectClass('MMBitmap') then;         say 'MMBitmap class deregistration successful';      else;         say 'MMBitmap class deregistration failed';;   end;;rc=SysDestroyObject('<MMPM2_MMVOLUME>');;RC=0;;
+
+[INSTALLPROFILES]
+CWMM ı,ı Installation der WPS-Klassen ı,ı Installation der Ersatzmultimediaklassen fÅr MMOS2. Diese neuen Klassen sind robuster als die Standardklassen und haben einige erweiterte Eigenschaften. Zwei neue Klassen fÅr eine nahtlose Integration von MP3- und OGG-Dateien in die WPS sind vorhanden. Nach der Installation verhalten sich diese Audiodateien wie alle anderen. So startet ein Doppelklick die Wiedergabe und ein weiterer stoppt sie. Informationen Åber die Datei wie Samplerate, Spielzeit usw. werden in der Detailansicht von Ordnern angezeigt und ebenso in den Einstellungen aller Audiodateien. Die ID3-Tags (V1.0) von MP3-Dateien lassen sich Åber die Einstellungen Ñndern und erscheinen zusÑtzlich in der Detailansicht.
+
+[CWMM]
+CWMM, , ,S,[ ], cwmm.ins
+
+[DEFAULTTARGET]
+PATH %APPS%\CWMMOS2\CWMM
+
+[INI]
+USER ı,ı CWMM ı,ı audioconverter ı,ı %TARGET%\bin\audconv.exe ı,ı YES
+USER ı,ı CWMM ı,ı imageconverter ı,ı %TARGET%\bin\imgconv.exe ı,ı YES
+
+

@@ -1,0 +1,10 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+MENU    IDM_POPUP
+BEGIN
+    MENUITEM    "~Nascondi barra del titolo",    IDM_ITEMTITLEBAR
+    MENUITEM    "",    0, MIS_SEPARATOR
+    MENUITEM    "~Esci",    IDM_ITEMEXIT
+END

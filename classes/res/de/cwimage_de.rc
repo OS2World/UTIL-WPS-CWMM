@@ -1,0 +1,49 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+
+MENU ID_MENU_IMGEDITOR
+BEGIN
+        MENUITEM "Bild~editor", ID_MENU_IMGEDITOR       
+END
+
+
+STRINGTABLE 
+BEGIN
+IDSTR_MENU_CONVERT "~Umsetzen in"
+ 
+IDSTR_AVCTITLE      "AVCImage._IM"
+IDSTR_DIBTITLE      "DIBImage.DIB"
+IDSTR_GIFTITLE      "GIFImage.GIF"
+IDSTR_JPGTITLE      "JPGImage.JPG"
+IDSTR_PCDTITLE      "PCDImage.PCD"
+IDSTR_PCXTITLE      "PCXImage.PCX"
+IDSTR_TGATITLE      "TargaImage.TGA"
+IDSTR_TIFTITLE      "TIFImage.TIF"
+IDSTR_PNGTITLE      "PNGImage.PNG"
+IDSTR_MMOTIONTITLE  "VIDImage.VID"
+IDSTR_CWIMAGETITLE  "Digitales Bild"
+
+IDSTR_IMAGEINFOPAGENAME "~Bild Information"
+IDSTR_SPRINTFPIXEL	"%d Pixel"
+IDSTR_SPRINTFBIT       "%d Bit"
+;Bitmpap load errors
+IDSTR_NOIMGIOPROCERROR   "Keine Ein/Ausgabeprozedur zum Laden des Bildes gefunden."
+IDSTR_OPENFILEERRORTITLE "Dateifehler"
+IDSTR_OPENFILEERROR      "Datei kann nicht geîffnet werden."
+IDSTR_NOMEMERROR         "Nicht genÅgend Speicher verfÅgbar!"
+IDSTR_IMGIOPROCCRASH     "Ein interner Fehler trat beim ôffnen des Bildes auf. Die ArbeitsoberflÑche MUSS neu gestartet werden, andernfalls kann es zu StabilitÑtsproblemen kommen! Alle laufenden Programme bleiben gestartet."
+
+IDSTR_IMAGEDETAIL_WIDTH   "Breite"
+IDSTR_IMAGEDETAIL_HEIGHT  "Hîhe"
+IDSTR_IMAGEDETAIL_DEPTH   "Farbtiefe"
+IDSTR_IMAGEDETAIL_FORMAT  "Format"
+;Titles used when starting player and editor applications
+IDSTR_IMGEDITORTITLE       "Bildanzeige"
+IDSTR_MENU_IMAGEINFO        "Bild-Information: %d x %d x %d"
+
+;IDSTR_HELPLIBRARY   "MMPARTS.HLP"
+END
+
+

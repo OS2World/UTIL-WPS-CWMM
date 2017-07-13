@@ -1,0 +1,141 @@
+1. MP3/Ogg multimedia audio-classes 12.05.02
+--------------------------------------------
+
+These classes are for seemless integration of the
+MMIO procedures for MP3 and OGG files written by
+Russel O'Connor.
+Get these procedures from:
+
+http://www.math.berkeley.edu/~roconnor/
+
+After installation Ogg- and MP3 files are treated the
+same way by the WPS as the other audio files. They have
+their own Icons and the same menus as for example
+wave files. A doubleclick starts playback another one
+stops it. The convert menu item helps you decoding the
+file to wave without any other program. 
+
+The settings notebook of every audio file gets a new
+page added describing the audio characteristics like
+playtime or samplerate. This data is also shown in the
+details view of folders if set to class:CWAudio.
+
+There's also a new open-item for volume.
+
+You may view and change the ID3 tags of MP3 files
+using the settings notebook. These tags are also shown
+in the details view.
+
+
+2. Media-Folder and Audio-Shadow 13.03.02
+-----------------------------------------
+
+The Media-Folder serves as a player for any
+audio file known by OS/2. The usual play
+controls are available and you may create
+playlists just by dropping files into the folder.
+
+Audio files will not be put into the folder directly
+but shadows are created.
+A new shadow class shows you details information
+for the linked audio files in the details view of a
+Media-Folder. A REXX interface is available if 
+WPS-wizard V0.2.0 or above is installed.
+
+A WPS enabled CD player with FreeDB support is included.
+
+Installation
+------------
+
+Put the contents of the archive into a directory and run
+install.exe which will copy the files and register the
+new classes.
+
+DON'T START *install.INS* TO MAKE SURE THE RIGHT INSTALLER
+IS USED IN CASE YOU HAVE AN OLDER VERSION ALREADY INSTALLED!
+
+You have to restart the WPS so the changes can take effect.
+
+Open the multimedia settings notebook and add the types MP3
+and OGGS to digital audio if the menus do not work as expected.
+It may be necessary to also add associations to *.MP3 and
+*.OGG files.
+
+The command file setFolder.cmd sets the details and sort class of
+a folder to CWAudio so the new information is shown in the details
+view and the sort menu contains the new items. Just drop the folder
+in question on the script.
+
+The command file setShadow.cmd sets the details and sort class of
+a folder to CWAudioShadow so the new information is shown in the details
+view and the sort menu contains the new items when using the new
+Audio-shadows automatically created when dropping audio files on a
+Media-Folder. Just drop the folder in question on the script.
+
+
+Uninstallation
+--------------
+
+Use the uninstall feature of the generic installer.
+
+Known problems
+--------------
+
+The playtime may be not correct for some VBR-MP3s. This is a problem
+of the MMIOMP3-Proc not the classes.
+
+
+History
+-------
+
+V0.1.0
+
+First release of the new audio classes.
+
+V0.2.0
+
+-Type 'Digital Audio' returned in addition to MP3/OGGS for the audio classes.
+-Setting of .TYPE EA so Digital Audio player works with MP3/OGG files without further fiddling
+-Caching of MP3 technical data in EAs to speed up folder opening.
+-ID3 data shown with the right codepage.
+-Mnemonic for Volume menu item.
+
+-New classes CWMediaFolder and CWAudioShadow for playing of audio files.
+
+V0.2.1
+
+-Repeat function added
+-new (and improved) sliders
+-Keyboard control added (not for sliders yet)
+-Display for elapsed time, remaining time and ID3 tags (click to switch)
+-Change playtime font by DnD
+-Drag and drop handling rewritten.
+-Statusline added
+-REXX interface added
+-No audio info reading for files on CD to speed up CD opening. 
+
+
+Credits
+-------
+
+The Icons and graphics are (C) Klaus Staedtler-Przyborski. Thanks for
+fearless beta testing.
+
+
+License
+--------
+
+Theses classes are free to use but copyrighted. Use them on your own
+risk. If they burn your house or destroy your data it's all your
+fault.
+
+ 
+Author
+------
+
+These classes are (C) 2001-2002 Chris Wohlgemuth.
+
+http://www.geocities.com/SiliconValley/Sector/5785/
+http://www.os2world.com/cdwriting
+
+

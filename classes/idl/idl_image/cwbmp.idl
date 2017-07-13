@@ -1,0 +1,156 @@
+/*
+ * (C) Chris Wohlgemuth 2002-2003
+ *
+ */
+/*
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2, or (at your option)
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; see the file COPYING.  If not, write to
+ * the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+ */          
+/*
+ * If you need another license for your project/product (commercial,
+ * noncommercial, whatever) contact me at
+ * 
+ * http://www.os2world.com/cdwriting
+ * http://www.geocities.com/SiliconValley/Sector/5785/
+ *
+ */
+
+/*
+ * CWBmp.idl:
+ */
+
+#include <wpbitmap.idl>
+
+/*
+   CLASS: 
+*/
+
+interface M_MMBitmap; 
+
+interface MMBitmap : WPBitmap
+{
+
+    /*
+     * New instance methods
+     *
+     */
+
+	ULONG cwmmAddImageInformationPage(in HWND hwndNotebook);
+    HBITMAP cwmmQuerySmallBitmapHandle(in ULONG ulSize);
+    void cwmmFreeBitmaps();  
+    void cwmmFreeSmallBitmap();
+    PBYTE cwmmQueryBitmapInfoHeader();
+	ULONG    cwmmQueryImageInfo(out char* chrString, in ULONG ulSize, in int iWhich); 
+
+#ifdef __SOMIDL__
+  implementation {
+    releaseorder:     	cwmmAddImageInformationPage,
+    cwmmQuerySmallBitmapHandle,
+    cwmmFreeBitmaps, cwmmFreeSmallBitmap, cwmmQueryBitmapInfoHeader,
+    cwmmQueryImageInfo;
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwbmp_;
+    externalstem = cwbmp;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwbmp;           //# specifies the filestem for sc-generated files
+    metaclass = M_MMBitmap;
+    dllname = "cwimage.dll";
+    callstyle = oidl;
+
+
+    /*
+     * Internal instance variables
+     *
+     */
+    HBITMAP hBitmapSmall;   /* (Lighttable)Icon size bitmap */
+    ULONG   ulSizeSmallBitmap;
+    PBYTE   pBmpInfoHeader2;
+    char    chrIOProcName[64];
+    BOOL bNoIOProcAvailable;
+    /*
+     * methods overridden 
+     *
+     */
+    wpModifyPopupMenu       : override;
+    wpMenuItemSelected      : override;
+    wpOpen                  : override;
+    wpAddSettingsPages      : override;
+    wpUnInitData:   override;
+    wpInitData:   override;
+    wpQueryDetailsData      : override; 
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+interface M_MMBitmap : M_WPBitmap
+{
+
+    /*
+     * New class methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwbmpM_;
+    externalstem = cwbmpM;
+    functionprefix = cwbmpM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwbmp;           //# specifies the filestem for sc-generated files
+    dllname = "cwimage.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+    wpclsCreateDefaultTemplates :override;   
+    wpclsQueryDefaultView : override;
+    wpclsQueryIconData          : override;
+    wpclsQueryDetailsInfo   	: override;
+    wpclsInitData   : override;  
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+
+
+

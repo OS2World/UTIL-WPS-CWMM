@@ -1,0 +1,15 @@
+/* rexx -  Change the details and sort class
+   of a folder to use MMAudio instead of WPFileSystem */
+
+call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs'
+call SysLoadFuncs
+
+/* call RxMessageBox ARG(3) */
+
+		call beep 1000, 200
+		call beep 2000, 200
+		call beep 3000, 200
+theVar.0="Var contents is NIL"
+call testFunc theVar.
+	EXIT(0)
+

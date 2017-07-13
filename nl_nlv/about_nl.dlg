@@ -1,0 +1,28 @@
+#define VER_STRING "Media-Ordner V" \
+MFLDR_VERSION \
+BUILD_STRING
+
+DLGTEMPLATE IDDLG_ABOUT LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Produkt informatie", IDDLG_ABOUT, 115, 69, 208, 132, 
+            WS_VISIBLE, FCF_TITLEBAR
+    BEGIN
+        GROUPBOX        "", IDGB_ABOUT, 3, 21, 200, 108
+;        CTEXT           "Media-map V0.2.5", IDST_PRODNAME, 36, 107, 135, 
+        CTEXT           VER_STRING, IDST_PRODNAME, 10, 107, 187, 
+                        12, DT_VCENTER | NOT WS_GROUP
+        CTEXT           "(C) Chris Wohlgemuth 2002/2003", IDST_PRODCOPY, 10, 87, 
+                        186, 12, DT_VCENTER | NOT WS_GROUP
+        CTEXT           "Graphics door Klaus Staedtler-Przyborski", 
+                        IDST_PRODGRAPHICS, 10, 64, 186, 17, DT_WORDBREAK | 
+                        NOT WS_GROUP
+        CTEXT           "http://www.geocities.com/SiliconValley/Sector/5785/"
+                        "index.html", IDST_URL1, 10, 46, 186, 18, 
+                        DT_WORDBREAK | NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        CTEXT           "http://www.os2world.com/cdwriting", IDST_URL2, 10, 
+                        30, 186, 16, DT_WORDBREAK
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        DEFPUSHBUTTON   "~Ok", DID_OK, 83, 3, 40, 14
+    END
+END

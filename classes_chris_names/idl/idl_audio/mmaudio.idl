@@ -1,0 +1,126 @@
+
+/*
+ * MMAudio.idl:
+ */
+
+#include <mmdataf.idl>
+
+/*
+   CLASS: 
+*/
+
+interface M_MMAudio; 
+
+interface MMAudio : MMDataFile
+{
+
+    /*
+     * New instance methods
+     *
+     */
+
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = mmaudio_;
+    externalstem = mmaudio;
+    majorversion = 1;
+    minorversion = 1;
+    filestem = mmaudio;           //# specifies the filestem for sc-generated files
+    metaclass = M_MMAudio;
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal instance variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+
+    mmFilterPopupMenu       : override;
+    mmViewNotify            : override;
+
+    wpFormatDragItem       	: override;
+    wpMenuItemSelected     	: override;
+    wpModifyPopupMenu      	: override;
+    wpOpen                 	: override;
+    wpQueryDefaultView     	: override;
+    wpUnInitData            : override;  	
+         	
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+interface M_MMAudio : M_MMDataFile
+{
+
+    /*
+     * New class methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = mmaudioM_;
+    externalstem = mmaudioM;
+    functionprefix = mmaudioM_;
+    majorversion = 1;
+    minorversion = 1;
+    filestem = mmaudio;           //# specifies the filestem for sc-generated files
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+
+mmclsDeleteFromTypeList 	: override;   
+mmclsDeleteFromExtensionList: override;   
+mmclsInitTypesAndExtensions	: override;   
+
+wpclsQueryInstanceType  	: override;   
+wpclsQueryInstanceFilter	: override;   
+
+wpclsInitData           	: override;   
+wpclsQueryDefaultHelp   	: override;   
+wpclsQueryTitle         	: override;   
+wpclsUnInitData         	: override;   
+wpclsQueryIconData          : override;              	
+
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+

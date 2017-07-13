@@ -1,0 +1,130 @@
+           // this is SOM for WPDisk
+/*
+ * mmfolder.idl:
+ *
+ *
+ */
+
+#include <wpfolder.idl>
+
+/*
+
+   CLASS HIERARCHY:
+
+       SOMObject
+         ÀÄÄ WPObject
+*/
+
+interface M_MMFolder;
+
+interface MMFolder : WPFolder
+{
+
+    /*
+     * New instance methods:
+     *
+     */
+
+#ifdef __SOMIDL__
+  implementation {
+
+    /*
+     * Class Modifiers:
+     */
+
+    externalprefix = mmfldr_;
+    externalstem = mmfolder;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = mmfolder;           //# specifies the filestem for sc-generated files
+    metaclass = M_MMFolder;
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal instance variables for CWDisk:
+     *
+     */
+PFNWP	oldFrameProc;
+PFNWP	oldContainerProc;
+ULONG   ulCurrentSize;
+ULONG   usLastSelMenuItem;
+ULONG*  pulGridSpacing;
+PBYTE   pFldrLongArray;
+
+
+    /*
+     *
+     */
+
+	wpOpen :override;
+/*	wpSetupOnce :override;*/
+	wpRestoreState :override;
+	wpRestoreData :override;
+	wpSaveState   :override;
+	wpSaveData   :override;
+	wpMenuItemSelected :override;
+	wpObjectReady:override;
+	wpSetup:override;
+
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+interface M_MMFolder : M_WPFolder
+{
+
+    /*
+     * New class methods for M_CWDisk:
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = mmfldrM_;
+    externalstem = mmfldrM;
+    functionprefix = mmfldrM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = mmfolder;           //# specifies the filestem for sc-generated files
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * M_WPFolder methods overridden:
+     *
+     */
+    wpclsCreateDefaultTemplates : override;
+    wpclsQueryTitle             : override;
+    wpclsQueryIconData          : override;
+    wpclsQueryIconDataN         : override;
+    wpclsQueryDefaultView       : override; 
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+
+
+
+
+

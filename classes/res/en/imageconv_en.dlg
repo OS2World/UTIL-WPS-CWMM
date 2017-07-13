@@ -1,0 +1,29 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+DLGTEMPLATE IDDLG_IMGCONVERT LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Convert digital image", IDDLG_IMGCONVERT, 68, 78, 207, 191, 
+            WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        GROUPBOX        "", IDGB_IMGCONVERT, 2, 19, 203, 172
+        LTEXT           "Name:", IDST_IMGCONVERTNAMELABEL, 7, 173, 32, 8
+        LTEXT           "", IDST_IMGCONVERTNAME, 44, 173, 156, 8
+        CONTROL         "", IDSR_BMP, 12, 100, 185, 69, WC_STATIC, 
+                        SS_FGNDRECT | WS_GROUP | WS_VISIBLE
+        LTEXT           "Convert to", IDST_IMGCONVERTTO, 7, 88, 53, 8
+        CONTROL         "", IDDD_IMGIOPROC, 6, 6, 196, 78, WC_COMBOBOX, 
+                        CBS_DROPDOWNLIST | LS_HORZSCROLL | WS_GROUP | 
+                        WS_TABSTOP | WS_VISIBLE
+        LTEXT           "Target name:", 2419, 7, 57, 64, 8
+        ENTRYFIELD      "", IDEF_IMGCONVERTTARGETNAME, 9, 45, 139, 8, ES_MARGIN
+        PUSHBUTTON      "~Browse...", IDPB_IMGCONVERTBROWSE, 153, 42, 47, 14
+        CONTROL         "", IDBAR_IMGCONVERTPROGRESS, 6, 24, 194, 13, 
+                        "CW_PERCENTBAR", 5 | WS_GROUP | WS_VISIBLE
+        DEFPUSHBUTTON   "~Convert", IDPB_IMGCONVERTOK, 20, 2, 47, 14
+        PUSHBUTTON      "~Abort", IDPB_IMGCONVERTABORT, 71, 2, 40, 14
+        PUSHBUTTON      "C~lose", IDPB_IMGCONVERTCLOSE, 135, 2, 40, 14
+    END
+END
+

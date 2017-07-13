@@ -1,0 +1,67 @@
+Multimedia-Klassen
+---------------
+
+* * * * * A C H T U N G * * * * *
+
+In der Vergangenheit wurden die Klassen wiederholt
+und in z.T. extrem unsachlicher Art und Weise
+geschm„ht. Auch vor pers”nlichen Beleidigungen an
+mich als Author, die ich hier lieber nicht wiedergeben
+m”chte, wurde dabei nicht zurck geschreckt,
+was angesichts eines kostenlosen Produkts schon
+erstaunt.
+
+Ich m”chte an dieser Stelle daher ein paar Dinge klar stellen.
+
+1. Dies ist ein reines Freizeitprojekt und es besteht daher
+   kein Anspruch auf Untersttzung irgendwelcher Art, was
+   nicht heiát, daá es keine gibt.
+
+2. Wer glaubt, durch Beleidigungen und Schm„hungen eine
+   L”sung fr seine Probleme zu bekommen, sollte mal
+   unter Menschen gehen, um zu lernen, was soziale
+   Kompetenz ist.
+
+3. Es gibt technische Grnde, warum einige Dinge so
+   implementiert sind, wie das der Fall ist.
+   Wem meine L”sungen nicht gefallen, soll einen besseren
+   Vorschlag machen, aber nicht meine Zeit mit akademischen
+   Diskussionen verschwenden, nur um das letzte Wort zu
+   behalten.
+
+4. Auch mein Tag hat nur 24 Stunden.
+
+5. Wenn das Paket nicht funktioniert, gibt es stets die
+   M”glichkeit, die originalen IBM-Klassen zu verwenden.
+   Niemand ist gezwungen diese Klassen zu verwenden!
+
+* * * * * A C H T U N G * * * * *
+
+
+Lizenz
+------
+
+Diese Klassen drfen frei verwendet werden. Das Copyright verbleibt
+jedoch beim Author. Benutzung ausschlieálich auf eigene
+Gefahr. Es wird KEINE Verantwortung fr Datenverluste, Ehekrisen
+und sonstige unerfreuliche Ereignisse bernommen. Das Paket
+ist als Beta-Version zu verstehen und kann Fehler beinhalten, die zu
+Datenverlusten fhren. Es ist dementsprechend vor der Installation durch
+Datensicherung Vorsorge zu treffen.
+
+
+Author
+------
+
+Diese Klassen sind (C) 2001-2005 Chris Wohlgemuth.
+
+http://www.geocities.com/SiliconValley/Sector/5785/
+http://www.os2world.com/cdwriting
+
+
+Credits
+-------
+
+Die Graphiken sind (C) Klaus Staedtler-Przyborski. Vielen Dank auch
+fr furchtloses Betatesten.
+

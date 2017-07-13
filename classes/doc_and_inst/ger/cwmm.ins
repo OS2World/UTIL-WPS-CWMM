@@ -1,0 +1,97 @@
+[APPLICATION]
+NAME CW-Multimedia Classes 0.2.8
+VERSION 0.2.8.0
+COPYRIGHT (C) Chris Wohlgemuth 2001-2004
+HOME http://www.os2world.com/cdwriting
+INTERNALNAME CWMM
+TOTALSIZE 813607
+INSTALLER 0.1.5.0
+DESCRIPTION Ersatzmultimediaklassen fÅr MMOS2. Diese neuen Klassen sind robuster als die Standardklassen und haben einige erweiterte Eigenschaften. Zwei neue Klassen fÅr eine nahtlose Integration von MP3- und OGG-Dateien in die WPS sind vorhanden. Nach der Installation verhalten sich diese Audiodateien wie alle anderen. So startet ein Doppelklick die Wiedergabe und ein weiterer stoppt sie. Informationen Åber die Datei wie Samplerate, Spielzeit usw. werden in der Detailansicht von Ordnern angezeigt und ebenso in den Einstellungen aller Audiodateien. Die ID3-Tags (V1.0) von MP3-Dateien lassen sich Åber die Einstellungen Ñndern und erscheinen zusÑtzlich in der Detailansicht.
+
+[DESCRIPTION]
+DESCRIPTION  Ersatzmultimediaklassen fÅr MMOS2. Diese neuen Klassen sind robuster als die Standardklassen und haben einige erweiterte Eigenschaften. Zwei neue Klassen fÅr eine nahtlose Integration von MP3- und OGG-Dateien in die WPS sind vorhanden. Nach der Installation verhalten sich diese Audiodateien wie alle anderen. So startet ein Doppelklick die Wiedergabe und ein weiterer stoppt sie. Informationen Åber die Datei wie Samplerate, Spielzeit usw. werden in der Detailansicht von Ordnern angezeigt und ebenso in den Einstellungen aller Audiodateien. Die ID3-Tags (V1.0) von MP3-Dateien lassen sich Åber die Einstellungen Ñndern und erscheinen zusÑtzlich in der Detailansicht.
+
+[FILES]
+cwmm.dll, %TARGET%\ ,  F,  235401
+cwmm.hlp, %TARGET%\ ,  F,  4615
+cwmm.ins, %TARGET%\ ,  F,  5741
+cwmm.sym, %TARGET%\ ,  F,  21700
+bin\audconv.exe, %TARGET%\ ,  F,  41765
+bin\audFldr.CMD, %TARGET%\ ,  F,  504
+bin\audioext.rx, %TARGET%\ ,  F,  2336
+bin\chktimid.rx, %TARGET%\ ,  F,  1374
+bin\classvol.exe, %TARGET%\ ,  F,  43832
+bin\imageadd.rx, %TARGET%\ ,  F,  181
+bin\imageext.rx, %TARGET%\ ,  F,  454
+bin\imgconv.exe, %TARGET%\ ,  F,  42573
+bin\imgFldr.CMD, %TARGET%\ ,  F,  504
+bin\mmfind.exe, %TARGET%\ ,  F,  76370
+bin\mmplayer.exe, %TARGET%\ ,  F,  66076
+bin\mmres_DE.dll, %TARGET%\ ,  F,  20213
+bin\removeEA.CMD, %TARGET%\ ,  F,  1408
+bin\volume.exe, %TARGET%\ ,  F,  42138
+DLL\GBM.DLL, %?%:\MMOS2\ ,  F,  186838
+DLL\JPEGIO.DLL, %?%:\MMOS2\ ,  F,  18044
+DLL\JPEGIO.SYM, %?%:\MMOS2\ ,  F,  1540
+
+[CLASSES]
+CWMMDataFile, %TARGET%\cwmm.dll, 
+MMAudio, %TARGET%\cwmm.dll, 
+MMMP3, %TARGET%\cwmm.dll, 
+MMOGG, %TARGET%\cwmm.dll, 
+MMWAV, %TARGET%\cwmm.dll, 
+MMAIF, %TARGET%\cwmm.dll, 
+MMAU, %TARGET%\cwmm.dll, 
+MM_AU, %TARGET%\cwmm.dll, 
+MMIFF, %TARGET%\cwmm.dll, 
+MMSNDF, %TARGET%\cwmm.dll, 
+MMVOC, %TARGET%\cwmm.dll, 
+MMCDTrack, %TARGET%\cwmm.dll, 
+MMMIDI, %TARGET%\cwmm.dll, 
+MMVideo, %TARGET%\cwmm.dll, 
+MMAVI, %TARGET%\cwmm.dll, 
+MMFLI, %TARGET%\cwmm.dll, 
+MMMOV, %TARGET%\cwmm.dll, 
+MMMPG, %TARGET%\cwmm.dll, 
+MMFLAC, %TARGET%\cwmm.dll, 
+MMImage, %TARGET%\cwmm.dll, 
+MMAVC, %TARGET%\cwmm.dll, 
+MMDIB, %TARGET%\cwmm.dll, 
+MMGIF, %TARGET%\cwmm.dll, 
+MMJPG, %TARGET%\cwmm.dll, 
+MMPhotoCD, %TARGET%\cwmm.dll, 
+MMPCX, %TARGET%\cwmm.dll, 
+MMTarga, %TARGET%\cwmm.dll, 
+MMTIFF, %TARGET%\cwmm.dll, 
+MMPNG, %TARGET%\cwmm.dll, 
+MMM3U, %TARGET%\cwmm.dll, 
+MMAudioStream, %TARGET%\cwmm.dll, 
+MMMMotion, %TARGET%\cwmm.dll, 
+MMBitmap, %TARGET%\cwmm.dll, WPBitmap
+CWMMDisk, %TARGET%\cwmm.dll, WPDisk
+MMFolder, %TARGET%\cwmm.dll, 
+
+[OBJECTS]
+Volumeı,ı <MMPM2_MMVOLUME>ı,ı WPProgramı,ı <MMPM2_FOLDER>ı,ı EXENAME=%TARGET%\bin\volume.exe;ı,ı update
+CD-Playerı,ı <MMPM2_CDPLAYER>ı,ı WPProgramı,ı <MMPM2_FOLDER>ı,ı EXENAME=cdpm.exeı,ı update
+M3U-Playlistı,ı <MMPM2_MMM3UTEMPLATE>ı,ı MMM3Uı,ı <MMPM2_MMTEMPLATEFOLDER>ı,ı TEMPLATE=YES;ı,ı update
+Audio-Streamı,ı <MMPM2_AUDISTREAMTEMPLATE>ı,ı MMAudioStreamı,ı <MMPM2_MMTEMPLATEFOLDER>ı,ı TEMPLATE=YES;ı,ı update
+Finde^Multimedia-Dateienı,ı <MMPM2_MMFIND>ı,ı WPProgramı,ı <MMPM2_FOLDER>ı,ı EXENAME=%TARGET%\bin\mmfind.exe;ı,ı update
+
+[SKRIPTS]
+BEFOREINST ı,ı /* Message for the user */;call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs';call SysLoadFuncs;;RC=0;;usrdata._mBTitle="Installation";usrData._mBCBTxt="";usrdata._mBTxt='Haben Sie eine Kopie der JPEGIO.DLL im Verzeichnis MMOS2\DLL angefertigt?';usrdata._mBTxt=usrdata._mBTxt||'0d'x||'0d'x||'Auswahl von NEIN bricht die Installation ab.';usrData._mBType="YESNO";call beep 1000, 100;ret=ModalFor('usermsgBox');IF TRANSLATE(ret)='NO' THEN rc=1;IF rc=0 THEN DO; usrdata._mBTxt='Haben Sie das Skript RUNME1ST.CMD gestartet und die WPS neu gestartet? Dieses ist erforderlich vor der Installation der Klassen!';usrdata._mBTxt=usrdata._mBTxt||'0d'x||'0d'x||'Auswahl von NEIN bricht die Installation ab.';usrData._mBType="YESNO";call beep 1000, 100;ret=ModalFor('usermsgBox');IF TRANSLATE(ret)='NO' THEN rc=1;END;
+AFTERCLASSES ı,ı /* Message for the user */;call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs';call SysLoadFuncs;;RC=0;;call RxMessageBox "MM-Klassen wurden installiert. Denken Sie daran, die WPS nach Abschlu· der Installation neu zu starten.", "Hinweis", "OK", "INFORMATION";
+
+[INSTALLPROFILES]
+CWMM ı,ı Installation der WPS-Klassen ı,ı Installation der Ersatzmultimediaklassen fÅr MMOS2. Diese neuen Klassen sind robuster als die Standardklassen und haben einige erweiterte Eigenschaften. Zwei neue Klassen fÅr eine nahtlose Integration von MP3- und OGG-Dateien in die WPS sind vorhanden. Nach der Installation verhalten sich diese Audiodateien wie alle anderen. So startet ein Doppelklick die Wiedergabe und ein weiterer stoppt sie. Informationen Åber die Datei wie Samplerate, Spielzeit usw. werden in der Detailansicht von Ordnern angezeigt und ebenso in den Einstellungen aller Audiodateien. Die ID3-Tags (V1.0) von MP3-Dateien lassen sich Åber die Einstellungen Ñndern und erscheinen zusÑtzlich in der Detailansicht.
+
+[CWMM]
+CWMM, , ,S,[ ], cwmm.ins
+
+[DEFAULTTARGET]
+PATH %APPS%\CWMMOS2\CWMM
+
+[INI]
+USER ı,ı CWMM ı,ı audioconverter ı,ı %TARGET%\bin\audconv.exe ı,ı YES
+USER ı,ı CWMM ı,ı imageconverter ı,ı %TARGET%\bin\imgconv.exe ı,ı YES
+

@@ -1,0 +1,101 @@
+0.2.9:
+-Don't show a message box if resource DLL can't be found.
+-Changed DLL finding algorithm. Should be more robust, when classes are improperly registered.
+-New method cwmmRequestBmpDeletion() for WPS-wizard to trigger background BMP deletion.
+-Help for audio stream class.
+-Close confirmation dialog of media folder is now modal to the folder
+
+0.2.8:
+-Icon view removed for media folders.
+-Icon view page removed for media folders. This removes it also from CD folders which never supported icon view anyway.
+-Compact view improved.
+-Track information in switch list and titles.
+-Opening of Media folder wasn't possible when settings already open.
+-Fixed a memory leak for image files.
+-Fixed deadlock when copying image files in light table folders.
+-Background bitmap deletion of image files to give memory back to the system.
+-English distribution included german help file for the classes.
+-Audio objects stopped playing after a second if not started from a folder.
+-Workaround for WPS crash with Timidity. No, It's still not working with the classes.
+-Fixed possible crash with abstract objects in light table folders.
+-Fixed CD querying for LVM systems (not for dynamically attached USB drives yet).
+-Audio file scanning now stops when folder is closed.
+-No scanning for CD tracks.
+-Video player didn't work at all.
+-ID3 info for artist was overwritten with the album name when using setup strings.
+-Trap when Quicktime for OS/2 was installed during scanning of MP3 files.
+-Marking image files as invalid for the WPS when caused a trap.
+-Only create thumbs when image is visible in container. Esp. useful when WPS-Wizard is installed.
+-When first creating ID3 tags the genre was always set to 'blues'.
+-CD objects are no longer created automatically. This will fix most lock ups people experienced.
+-Slide show program for displaying the contents of one or more directories
+
+0.2.7b:
+-New creatobj.cmd.
+
+0.2.7
+-Renamed method cwmmAddWaveInformationPage() to cwmmAddAudioInformationPage().
+-Added container handle to parameter list of methods cwmmPlayTrack() and cwmmPauseTrack()
+-If several audio files in a folder are started at once they will be played consecutively. 
+-Image information in popup menu 
+-Added audio information for midi files in details view.
+-Audioplayer playback always started with default volume setting (70%).
+-Master volume item added to sys menu of audio player.
+-Language now derived from LANG setting not the country code.
+-URL of audio stream objects was truncated to 4 chars when reopening the settings.
+-Audio-Stream objects lost their type after changing settings.
+-Bitrate display for MP3 files if MMIOMP3 0.4.2 or above is installed.
+-Bitrate display for OGG files if MMIOOGG 0.3.1 or above is installed.
+-ID3 tag handling completely rewritten. Track information may be 256 bytes long per entry.
+ ID3 tags are handled separately now. 
+-Volume for audio files adjustable now. Volume menu no longer starts master volume.
+-Modified settings page handling for audio objects on CD
+-Added INI key to disable audio file scanning for certain drives.
+-Added INI key to disable ID3 tag reading for certain drives. 
+
+0.2.6
+-Audio extensions added in the MM configuration notebook are recognized.
+-createcd compiled with VAC
+-helper progs statically linked.
+-No template for CWMMDataFile.
+-New FLAC class.
+-New EA MMNUMAUDIOBYTES containing the number of audio bytes of the file.
+-M3U playlist editor failed using M3U lists created by Rockbox.
+-Play menu for M3U objects.
+-Hilighting of play and pause buttons during device sharing corrected 
+-You can't start more than 3 audio files at a time now, preventing problems when a whole folder of audio objects was accidently selected.
+-Support for converting to OGG-Vorbis. Any future write enabled audio IO-Proc will be automatically supported now.
+-Default audio player replaced
+-Opening of folders with image files is faster now
+-Image spacing in lighttable folders improved
+-Image converter dialog had german resources in the english language version (obviously nobody cared...).
+-Preview in image converter
+-PNG files are recognized as image files. Automatic support of future image IO procs.
+-PNG image class
+-Only one INI file for MM class helpers.
+
+0.2.5
+Media folder:
+-Popup menu on time control for changing display
+-New playlist editor
+-Shadows for fly over help
+
+MMClasses:
+-DLLs needed by specified players or editors weren't found if not in LIBPATH.
+-You may specify a different mp3 player
+-Fixed wrong icon size for standard classes in details view of light table folders.
+-Added support for animated folder icons in lightable folder
+-Templates were not drawn in light table folders icon view
+-Pause function for audio files
+-Fixed asscociations for image files.
+-Fixed image conversion.
+-Renamed REXX functions. The old names are still working but shouldn't be used longer.
+-Added new REXX function cwmmQueryImageInfo()
+-Added method cwmmQueryImageInfo().
+-ID3 tags of MP3 files weren't set when using setup strings. Only EAs were updated.
+-No more garbled characters with some players when reading the ID3 tags.
+-Black and white images are properly drawn in lightable folders
+
+JPEG IO procedure:
+-Procedure now accepts 8 bit input images.
+
