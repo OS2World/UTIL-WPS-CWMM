@@ -1,12 +1,13 @@
 /* rexx - Get the extension of audio types added using
    the multimedia setup object. For example *.FLA.
-   This script is called by M_MMAudio.
+   This script is called by M_MMAudio and mmfind.exe.
 */
 
 call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs'
 call SysLoadFuncs
 
 allExt=""
+waveaudio=""
 
 /* Get MMOS2 directory */
 mmos2Dir=STRIP(TRANSLATE(value("MMBASE",,"OS2ENVIRONMENT")," ",";"))
@@ -59,6 +60,7 @@ DO b=1 to WORDS(tempExt)
 	WHEN TRANSLATE(curExt)="OGG" THEN NOP
 	WHEN TRANSLATE(curExt)="FLA" THEN NOP
 	WHEN TRANSLATE(curExt)="FLAC" THEN NOP
+	WHEN TRANSLATE(curExt)="WAV" THEN NOP
 
 	OTHERWISE
 		if allExt\='' THEN allExt=allExt||','
@@ -80,6 +82,7 @@ DO WHILE LEFT(mmini.a,1)\='['
 		return
 	END
 	a=a+1
+	IF a>mmini.0 THEN return
 END
 return
 
@@ -98,8 +101,8 @@ DO a=1 to mmini.0
 				return ext
 			END
 			a=a+1
+			IF a>mmini.0 THEN return ""
 		END
 	END
 END
 return ""
-

@@ -1,5 +1,5 @@
 /* rexx - Return all image extensions we have a MM class for.   
-   This script is called by M_MMImage. After getting the extensions
+   This script is called by M_MMImage and mmfind.exe. After getting the extensions
    M_MMImage checks if there're any additional extensions handled by
    installed image IO procedures. If yes, these unhandled extensions
    are associated with the MMImage class so lighttable folder and
@@ -7,8 +7,7 @@
 */
 
 
-allExt="_IM DIB GIF JPG VID PCX PCD TIF TGA BMP"
+allExt="*._IM,*.DIB,*.GIF,*.JPG,*.VID,*.PCX,*.PCD,*.TIF,*.TGA,*.BMP"
 return allExt
 EXIT
 
-

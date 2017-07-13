@@ -17,10 +17,9 @@ MOREINC	=	./include -I./inc -I../common_functions/include
 CDIR	=	./c
 IDLDIR	=	./idl
 OBJDIR	=	./obj
-# Object files of common functions are going here
+
+# Object files of common functions (CW functions) are going here
 LIBDIR	=	./lib
-#Where the resource dlls are going 
-RESDLLDIR	=	./RES/dll
 
 
 #######################################
@@ -28,8 +27,11 @@ RESDLLDIR	=	./RES/dll
 # Define compile command
 #
 #######################################
+
+########### C compile #################
 COMPILE		=	$(CC) -I $(MOREINC) $(CFLAGS)  /Fo$@ $<
 
+########### SOM compile ###############
 #Audio classes
 AUD_SCCOMPILEC	=	sc -I $(IDLDIR)/idl_audio -I $(IDLDIR)/idl_mm -p -r -sc -d$(CDIR)/c_audio -maddstar -mnoint -S128000 -C128000  $<
 AUD_SCCOMPILEIH	=	sc -I $(IDLDIR)/idl_audio -I $(IDLDIR)/idl_mm -p -r -sih";"h -dinclude -maddstar -mnoint -S128000 -C128000  $<
@@ -113,10 +115,16 @@ ALL_OBJECTS	=	$(MM_OBJECTS) $(OBJECTS) $(VID_OBJECTS) $(IMG_OBJECTS) \
 			$(COMMON_OBJECTS) $(LIBOBJS)
 
 
+#######################################
+#
+# Define *.hlp files.
+#
+#######################################
 HLP_FILES	=	./Help/de/cwmm049.hlp \
 			./Help/en/cwmm.hlp \
 			./Help/nl/cwmm031.hlp \
-			./Help/it/cwmm039.hlp
+			./Help/it/cwmm039.hlp \
+			./Help/tw/cwmm088.hlp
 
 
 #######################################
@@ -124,9 +132,11 @@ HLP_FILES	=	./Help/de/cwmm049.hlp \
 # Define *.ih files.
 #
 #######################################
-MM_IHFILES	=	./include/cwmmdataf.ih ./include/cwmmdisk.ih ./include/mmfolder.ih
+MM_IHFILES	=	./include/cwmmdataf.ih \
+			./include/cwmmdisk.ih \
+			./include/mmfolder.ih
 
-IHFILES	=		./include/cwmp3.ih \
+IHFILES		=	./include/cwmp3.ih \
 			./include/cwogg.ih \
 			./include/cwaudio.ih \
 			./include/cwcdtrack.ih  \
@@ -167,7 +177,7 @@ IMG_IHFILES	=	./include/wpimage.ih \
 # Define targets to build
 #
 #######################################
-all: cwmm.dll $(HLP_FILES) 
+all: cwmm.dll $(HLP_FILES) nlv
 	cd ./mm-progs && make
 
 
@@ -175,12 +185,22 @@ RESDLL	:
 
 cwmm.dll: $(MM_IHFILES) $(IHFILES) $(VID_IHFILES) $(IMG_IHFILES) \
 	$(ALL_OBJECTS)
-	@create_cwmm_def.CMD ./c/cwmm.def
-	$(CC) $(LDFLAGS) /L  /Fm$(basename $@)  /Fe$@ $(ALL_OBJECTS) $(LIBS) ./c/cwmm.def
-#Add icons to DLL
+	@create_cwmm_def.CMD $(OBJDIR)/cwmm.def
+	$(CC) $(LDFLAGS) /L  /Fm$(basename $@)  /Fe$@ $(ALL_OBJECTS) $(LIBS) $(OBJDIR)/cwmm.def
+#Add icons to DLL (no NLV stuff)
 	cd ./res && make
 	rc ./res/common_res/cwaudio.res cwmm.dll
 	MAPSYM $(basename $@)
+
+###################################
+#
+#  Rules for generating the NLV
+#  ressources.
+#
+###################################
+nlv:
+	cd ./res && make
+	
 
 ###################################
 #
@@ -202,6 +222,10 @@ cwmm.dll: $(MM_IHFILES) $(IHFILES) $(VID_IHFILES) $(IMG_IHFILES) \
 # Italian
 ./Help/it/cwmm039.hlp:	./Help/it/cwmm039.ipf
 	cd ./Help/it && make
+
+# Traditional chinese (TW)
+./Help/tw/cwmm088.hlp:	./Help/tw/cwmm088.ipf
+	cd ./Help/tw && make
 
 ###################################
 #
@@ -292,6 +316,7 @@ clean:
 	-cd ./Help/en && make clean
 	-cd ./Help/nl && make clean
 	-cd ./Help/it && make clean
+	-cd ./Help/tw && make clean
 	-cd ./res && make clean
 	-cd ./mm-progs && make clean
 
@@ -304,6 +329,7 @@ cleaner:
 	-cd ./Help/en && make cleaner
 	-cd ./Help/nl && make cleaner
 	-cd ./Help/it && make cleaner
+	-cd ./Help/tw && make cleaner
 	-cd ./res && make cleaner
 	-cd ./mm-progs && make cleaner
 	-cd ./include && rm *.*~

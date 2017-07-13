@@ -46,3 +46,6 @@
 #define IDINFO_CHANNELS          10
 
 #define IDINFO_LASTINFO          10
+
+#define PMCDDB_LOGFILENAME       "freedb.log"
+#define PMCDDB_INIFILENAME       "freedb.ini"

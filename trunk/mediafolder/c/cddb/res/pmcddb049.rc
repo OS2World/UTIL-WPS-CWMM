@@ -34,9 +34,8 @@ IDSTR_ERRORCDDBLOCALDB      "Warning! Cannot open CDDB.ini file!"
 IDSTR_INIFILEOPENWARNING  "Hinweis! Ini-Datei (cddb.ini) kann nicht ge”ffnet werden!"
 IDSTR_PMCDDBTITLE         "FreeDB Abfrage"  
 
-IDSTR_USAGE               "Email-Adresse mit folgender Option festlegen:  /C <email address> "
+IDSTR_USAGE               "Email-Adresse mit folgender Option festlegen:  /C <Email-Adresse> "
 IDSTR_SETUPERROR         "Der Username oder der Host wurden nicht festgelegt. Pmcddb.exe mit Parameter /C starten, um die Adresse festzulegen."
 END
 
 RCINCLUDE "pmcddb049.dlg"
-

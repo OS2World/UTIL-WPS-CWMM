@@ -1,0 +1,77 @@
+#define  INCL_GRAPHICBUTTON   /* need this for the graphic buttons control */
+#define  INCL_BITMAP
+
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include <sw.h>
+
+#include "mediafolderres.h"
+#include "version.h"
+#include "build.h"
+
+MENU ID_MENUABOUT
+BEGIN
+   MENUITEM  "" , ID_MENUSEPARATOR, MIS_SEPARATOR
+   MENUITEM "媒體資料夾資訊(~M)",ID_ABOUTITEM   
+END
+
+MENU ID_MBMENUSKRIPTS
+BEGIN
+
+END
+
+MENU ID_MENUVIEWCOMPACT
+BEGIN
+   MENUITEM  "壓縮(~C)" , ID_MENUVIEWCOMPACT
+END
+
+MENU  ID_MENUTIMECONTEXT
+BEGIN
+	MENUITEM "經過時間(~E)"   ,          ID_MENUITEMELAPSED
+	MENUITEM "剩餘時間(~R)" ,          ID_MENUITEMREMAINING
+	MENUITEM "曲目資訊(~T)" ,       ID_MENUITEMID3
+END
+
+MENU  ID_MENUFILE
+BEGIN
+	MENUITEM "儲存(~S)"   ,          	ID_MENUITEMSAVE
+	MENUITEM ""           ,                 ID_MENUSEPARATOR, MIS_SEPARATOR               
+	MENUITEM "離開(~E)" ,          		ID_MENUITEMEXIT
+END
+
+
+STRINGTABLE
+BEGIN
+IDSTR_CLOSETITLE "確認"
+IDSTR_CLOSETEXT  "目前正在播放歌曲，你確定要停止播放並關閉播放器？"
+IDSTRSETTING_TOOLBAR "工具列"
+IDSTRS_NOFONTPALETTE          "無法開啟字體選用區，其 ID 可能已遺失，請檢查 INI 檔案。"
+IDSTRS_NOCOLORPALETTE         "無法開啟顏色選用區，其 ID 可能已遺失，請檢查 INI 檔案。"
+IDSTRS_MEDIAFLDRSETTINGS   "Media-Folder 設定"
+IDSTR_MENUABOUT          "Media-Folder 資訊"
+IDSTR_MENUCOMPACT        "壓縮(~C)"
+IDSTR_STATUSCOLLECTING   "收集聲音曲目中…"
+IDSTR_MENUSKRIPTS        "腳本及工具"
+IDSTR_STATUSTIME1        "%d:%02d 分"
+IDSTR_STATUSTIME2        "%d 時 %d:%02d 分"
+IDSTR_STATUSTIME3        "%d 天 %d 時 %d:%02d 分"
+IDSTR_STATUSTIME4        "%d Audiofiles   -   %d%s%03d%s%03d Bytes   -   %s"
+IDSTR_STATUSTIME5        "%d Audiofiles   -   超過 4 GBytes"
+
+IDSTR_TITLEMEDIAFOLDER   "媒體播放器"
+IDSTR_TITLECDFOLDER      "CD 播放器"
+
+IDSTR_STARTINGTRACK      "開始追蹤…"
+IDSTR_TITLEM3UFOLDER    "M3U 編輯器"
+IDSTR_M3UCLOSETEXT      "清單已改變，現在要儲存嗎？"
+IDSTR_MENUFILE           "檔案(~F)"
+IDSTR_PLAYLISTVIEWTITLE  "清單編輯器"
+IDSTR_LAUNCHPADFLYOVER   "發射台：放物件至此"
+IDSTR_VIEWPAGENAME       "檢視(~V)"
+IDSTR_VIEWCOMPACT        "壓縮"
+
+END
+
+rcinclude "mediafolder_tw.dlg"
+

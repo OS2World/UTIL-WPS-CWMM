@@ -70,6 +70,7 @@ IDSTR_PLAYLISTVIEWTITLE  "Editor playlist"
 IDSTR_LAUNCHPADFLYOVER   "Pannello di avvio: trascinarvi sopra gli oggetti desiderati"
 IDSTR_VIEWPAGENAME       "~Visualizzazione"
 IDSTR_VIEWCOMPACT        "Compatta"
+IDSTR_CDFOLDERNAME       "CD-Audio player^Drive %c:"
 
 END
 

@@ -1,5 +1,5 @@
 /*
- * This file is (C) Chris Wohlgemuth 2001/2002
+ * This file is (C) Chris Wohlgemuth 2001-2005
  */
 /*
  * This program is free software; you can redistribute it and/or modify

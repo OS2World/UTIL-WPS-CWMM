@@ -310,9 +310,6 @@ HWND CWMediaFolder::wpOpen(HWND hwndCnr,ULONG ulView,ULONG ulParam)
   /* Call parent to build folder window */
   hwnd=CWProgFolder::wpOpen(hwndCnr, ulView, ulParam);
 
-  /* Save this ptr */
-  //  WinSetWindowULong( hwnd, ulQWP_THISPTR, (ULONG)this);
-    
   /* Only subclass folder frames, not settings notebooks */
   if(ulView!=OPEN_SETTINGS){
     if(!hResource) {
@@ -408,7 +405,6 @@ HWND CWMediaFolder::wpOpen(HWND hwndCnr,ULONG ulView,ULONG ulParam)
 #endif
       }/* menu hwnd */
 
-      //#if 0      
       /* Subclass container for tabbing */
       myFrameCtrlHWND=WinWindowFromID(hwnd,FID_CLIENT);//Get container hwnd
       if(myFrameCtrlHWND){
@@ -418,7 +414,6 @@ HWND CWMediaFolder::wpOpen(HWND hwndCnr,ULONG ulView,ULONG ulParam)
         WinSetWindowULong( hwnd, ulQWP_CONTAINERPROC, (ULONG)pfnwpContainer);
       }
 
-      //#endif
       /* Now add the framecontrols */
 
       /* This is the Top-frameCtrl. */
@@ -1351,11 +1346,12 @@ BOOL CWMediaFolder::cwClose(HWND hwndFrame)
   HWND hwndOwner=HWND_DESKTOP;
 
   /* Check if we currently play a song */
-  if(iWave) {
-    PVIEWITEM pViewItem;
-    int a=0;
+  if(iWave && !(ulPrivFlags & MFLDR_SHOWING_MBOX)) {
+    LONG lDelay;
 
 #if 0
+    PVIEWITEM pViewItem;
+    int a=0;
     /* Check if we close a settings view or a folder view. */
     for(pViewItem=wpFindViewItem(VIEW_ANY, NULLHANDLE); pViewItem; pViewItem=wpFindViewItem(VIEW_ANY, pViewItem))
       a+=1;
@@ -1369,10 +1365,22 @@ BOOL CWMediaFolder::cwClose(HWND hwndFrame)
     if(WinIsWindow(WinQueryAnchorBlock(HWND_DESKTOP), hwndFrame))
       hwndOwner=hwndFrame;
 
+    /* Start a timer which will cause the folder to close automatically after some time even
+       if the user doesn't click any button. Get the timeout from the INI file if available. */
+    if((lDelay=PrfQueryProfileInt(HINI_USERPROFILE, "CWMM", MFLDR_TIMER_DELAY_KEY, MFLDR_MBOX_TIMER_DELAY)) 
+       < MFLDR_MBOX_MIN_TIMER_DELAY)
+      lDelay=MFLDR_MBOX_MIN_TIMER_DELAY;
+
+    WinStartTimer(WinQueryAnchorBlock(HWND_DESKTOP), hwndFrame, MFLDR_MBOX_TIMER_ID, lDelay);
+    ulPrivFlags|= MFLDR_SHOWING_MBOX;
+    /* Ask user if he really wants to stop playing and close the folder */
     if(messageBox( text, IDSTR_CLOSETEXT, sizeof(text),
                    title, IDSTR_CLOSETITLE, sizeof(title),
-                   queryResModuleHandle(), hwndOwner, MB_YESNO|MB_MOVEABLE|MB_ICONQUESTION)==MBID_NO)
+                   queryResModuleHandle(), hwndOwner, MB_YESNO|MB_MOVEABLE|MB_ICONQUESTION)==MBID_NO) {
+      WinStopTimer(WinQueryAnchorBlock(HWND_DESKTOP), hwndFrame, MFLDR_MBOX_TIMER_ID);
+      ulPrivFlags&= ~MFLDR_SHOWING_MBOX;
       return FALSE;
+    }
   }
   cwStopAudioFile(hwndFrame);  
   /* Stop the playing thread */
@@ -1383,7 +1391,7 @@ BOOL CWMediaFolder::cwClose(HWND hwndFrame)
     WinPostMsg(hwndObject, WM_APPTERMINATENOTIFY, 0, 0);
   }
 
-  ulPrivFlags&= ~MFLDR_VIEW_COMPACT;
+  ulPrivFlags&= ~(MFLDR_VIEW_COMPACT|MFLDR_SHOWING_MBOX);
   hwndMFldrFrame=NULL;
   wpSaveDeferred();
   return TRUE;
@@ -1392,18 +1400,33 @@ BOOL CWMediaFolder::cwClose(HWND hwndFrame)
 void CWMediaFolder::wpInitData()
 {
   ULONG ulErr;
+  /*
+    FIXME:
+    This init call of the parent should be changed to allow replacement of
+    CWProgFolder.
+    */
   CWProgFolder::wpInitData();
   /* Get storage for private data. */
   if((mfData=(PMEDIAFLDRDATA)wpAllocMem(sizeof(MEDIAFLDRDATA), &ulErr))!=NULLHANDLE)
     memset((void*)mfData, 0, sizeof(MEDIAFLDRDATA));
 
   ulPrivFlags=0;
-
 }
 
 void  CWMediaFolder::wpUnInitData()
 {
-  wpFreeMem((PBYTE)mfData);
+  if(mfData)
+    wpFreeMem((PBYTE)mfData);
+
+  /*
+    FIXME:
+    This uninit call of the parent should be changed to allow replacement of
+    CWProgFolder.
+    */
   CWProgFolder::wpUnInitData();
 }
+
+
+
+
 

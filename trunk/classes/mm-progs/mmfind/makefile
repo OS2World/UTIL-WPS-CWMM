@@ -1,37 +1,26 @@
 # Makefile
 
 include ../../../make.inc
+include ../mmprog.inc
 
-CC           = gcc
-LIB_DIR      = $d:/emx/lib 
-#CPPFLAGS     = -Ge- /Gm+ -G4 -Gl  /O+ -Oc+ -Ol
-#CPPFLAGS     = -O -Zomf -Zcrtdll -Zmtd -s
-CPPFLAGS     = -O -Wall -Zomf -Zmt -Zsys -s
-INC		= ../include -I ../../../classes/inc -I ../../../common_functions/include
-DEFS         = 
-PROGS        =  
-ODIR		= .
-CPPDIR	= .
-LIBDIR	=	../lib
-OBJECTS	=	$(LIBDIR)/helper.obj $(LIBDIR)/message.obj $(LIBDIR)/sys_funcs.obj
-# $(LIBDIR)/menu_funcs.obj 
-OBJS2		=	image.obj	 
-#customprocs.obj playaudio.obj display.obj
+LIBOBJECTS	=	$(LIBDIR)/helper.obj \
+			$(LIBDIR)/message.obj \
+			$(LIBDIR)/sys_funcs.obj \
+			$(LIBDIR)/window_funcs.obj \
+			$(LIBDIR)/img_funcs.obj \
+			$(LIBDIR)/ini_funcs.obj
+
+
+OBJECTS		=	image.obj	 
 
 
 all:	mmfind.exe
 
-$(LIBDIR)/%.obj:	$(COMMONSRC)/%.c 
-	gcc -c -Wall -o$@ -Zomf -I$(INC) $<  
-
-%.obj:	%.c
-	gcc -c -Wall -o$@ -Zomf -I$(INC) $<  
-
-mmfind.exe:	mmfind.c $(OBJECTS) $(OBJS2) makefile
+mmfind.exe:	mmfind.c $(LIBOBJECTS) $(OBJECTS) makefile mmfind.rc def.tpl
 #Use this command to link dynamicaly
-	gcc $(CPPFLAGS) -I$(INC) mmfind.c $(OBJECTS) $(OBJS2) -los2me mmfind.def
-#	rc mmfind.rc mmfind.exe
-
+	cmd /C $(TOOLDIR)\create_MMPROG_def.cmd mmfind.def
+	gcc $(CPPFLAGS) -I$(INC) mmfind.c $(LIBOBJECTS) $(OBJECTS) -los2me mmfind.def
+	rc mmfind.rc mmfind.exe
 
 clean:
 	-rm *.exe
@@ -44,5 +33,5 @@ cleaner:
 	-rm *.*~
 	-rm *.flc
 
+
 distribution:
-	

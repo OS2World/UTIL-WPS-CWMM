@@ -75,24 +75,52 @@ SHORT menuInsertMenuItem( HWND hwndMenu, HWND hwndSubMenu, SHORT sPosition, USHO
                     (MPARAM)chrText));                 
 }
 
+/*!***********************************************************/
+/*                                                           */
+/* @@DESC                                                    */
+/*                                                           */
+/* To be written...                                          */
+/*                                                           */
+/*!!**********************************************************/
 SHORT menuQueryItemCount(HWND hwndMenu)
 {
   return SHORT1FROMMR(WinSendMsg( hwndMenu, MM_QUERYITEMCOUNT, MPFROMLONG(0L),
                      MPFROMLONG(0L))); 
 }
 
+/*!***********************************************************/
+/*                                                           */
+/* @@DESC                                                    */
+/*                                                           */
+/* To be written...                                          */
+/*                                                           */
+/*!!**********************************************************/
 MRESULT menuCheckItem(HWND hwndMenu, USHORT usID, BOOL fIncludeSubMenu, BOOL fCheck)
 {
   return WinSendMsg( hwndMenu, MM_SETITEMATTR, MPFROM2SHORT(usID, fIncludeSubMenu),
                      MPFROM2SHORT(MIA_CHECKED, (fCheck ? MIA_CHECKED : FALSE))); 
 }
 
+/*!***********************************************************/
+/*                                                           */
+/* @@DESC                                                    */
+/*                                                           */
+/* To be written...                                          */
+/*                                                           */
+/*!!**********************************************************/
 MRESULT menuRemoveItem(HWND hwndMenu, USHORT usID, BOOL fIncludeSubMenu)
 {
   return WinSendMsg( hwndMenu, MM_SETITEMATTR, MPFROM2SHORT(usID, fIncludeSubMenu),
                      MPFROMLONG(0L)); 
 }
 
+/*!***********************************************************/
+/*                                                           */
+/* @@DESC                                                    */
+/*                                                           */
+/* To be written...                                          */
+/*                                                           */
+/*!!**********************************************************/
 MRESULT menuCheckForItem(HWND hwndMenu, USHORT usID, BOOL fIncludeSubMenu)
 {
   MENUITEM mi;

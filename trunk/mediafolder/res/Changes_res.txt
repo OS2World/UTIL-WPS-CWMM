@@ -1,0 +1,6 @@
+Mediafolder:
+Added:
+
+IDSTR_CDFOLDERNAME       "CD-Audio^Drive %c:"
+
+-------------------------------

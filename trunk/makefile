@@ -25,6 +25,11 @@ all:
 	@echo ''
 	cd ./mediafolder && make
 
+nlv_tst:
+#this is a target used to test NLV building outside the source tree
+# Will eventually superseed nlv target.
+	cd ./nlv && make
+
 nlv:
 	cd ./classes && make nlv
 	cd ./mediafolder && make nlv

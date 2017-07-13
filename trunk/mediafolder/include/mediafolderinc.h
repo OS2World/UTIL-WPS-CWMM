@@ -39,6 +39,30 @@
 /* Random play */
 #define FLAG_RANDOM            0x00000004
 
+/*** Private folder flags: ***/
+/* Flag indicating from where a method was called */
+#define MFLDR_CURACTION_ADDFOLDERVIEW3  0x00000001
+/* Flag telling if folder is in compact view */
+#define MFLDR_VIEW_COMPACT              0x00000002
+/* The view is currently changing */
+#define MFLDR_CHANGING_VIEW             0x00000004
+/* Indicate, we are currently showing the cancellation message box to the user */
+#define MFLDR_SHOWING_MBOX              0x00000008
+/*** End of private folder flags ***/
+
+/* Timer for automatically dismissing the message box and closing a mediafolder
+   when playing a media file. Used for enabling automatic shutdown. Otherwise
+the shutdown would hang until the user clicks 'ok'. See cwClose() */
+#define MFLDR_MBOX_TIMER_ID 100
+/* The timer delay in ms. This can be set in the INI file. */
+#define MFLDR_MBOX_TIMER_DELAY 60000
+/* The allowed minimum for the timer delay in ms */
+#define MFLDR_MBOX_MIN_TIMER_DELAY 5000
+/* */
+#define MFLDR_TIMER_DELAY_KEY "mfldrMBoxDisplayTime"
+
+#define IDHLP_MEDIAFOLDERMAIN  100
+
 /* Which display to show */
 #define DISPLAY_TIMEELAPSED    0
 #define DISPLAY_TIMEREMAINING  1
@@ -111,12 +135,13 @@
 #define OPEN_PLAYING           OPEN_USER+1000
 
 /* Which track to start */
-#define PLAY_FIRST    1L
-#define PLAY_NEXT     2L
-#define PLAY_PREV     3L
-#define PAUSE_TRACK   4L
-#define STOP_TRACK    5L
-#define SEEK_TRACK    6L
+#define PLAY_FIRST       1L
+#define PLAY_NEXT        2L
+#define PLAY_PREV        3L
+#define PAUSE_TRACK      4L
+#define STOP_TRACK       5L
+#define SEEK_TRACK       6L
+#define PLAY_NEXT_CDFLDR 7L /* CD folders need special handling because they're slow */
 
 /* The IDs for the playtime display */
 #define IDTIMER_PLAY  5L

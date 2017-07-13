@@ -1,5 +1,5 @@
 /*
- * This file is (C) Chris Wohlgemuth 2001/2004
+ * This file is (C) Chris Wohlgemuth 2001-2005
  */
 /*
  * This program is free software; you can redistribute it and/or modify
@@ -328,12 +328,20 @@ PSZ queryInstallDir(void)
   return NULLHANDLE;
 }
 
+/* MMCLS_INI_FILE_NAME = "\\cwmm.ini" See ...\common.h */
 PSZ _queryMMClassIniFile(void)
 {
   static char iniName[CCHMAXPATH]= {0};
 
-  if(iniName[0]==0)
-    sprintf(iniName, "%s\\bin\\CWMM.INI", queryInstallDir());
+  if(iniName[0]==0) {
+    /* Default is INI file in users home dir */
+    if(SysQueryHomeDir(iniName, sizeof(iniName))) {
+      strlcat(iniName, MMCLS_INI_FILE_NAME, sizeof(iniName)); /* MMCLS_INI_FILE_NAME = "\\CWMM.INI" */
+      return iniName;
+    }
+
+    sprintf(iniName, "%s\\bin%s", queryInstallDir(), MMCLS_INI_FILE_NAME);
+  }
 
   return iniName;
 }

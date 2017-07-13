@@ -1,8 +1,12 @@
-; DEF-file for volume.exe. This is a PM program which 
-; shows a dialog box for setting the masteraudio.
 ;
-;                    (C) Chris Wohlgemuth 2001
-
+; VOLUME: Master volume applet
+;
+;
+;    (c) C. Wohlgemuth 2001-2006
+;
+;
+; Created 12 Feb 2006 19:56:10
+;
 ;/*
 ; * This program is free software; you can redistribute it and/or modify
 ; * it under the terms of the GNU General Public License as published by
@@ -24,11 +28,6 @@
 ; * http://www.os2world.com/cdwriting
 ; * http://www.geocities.com/SiliconValley/Sector/5785/
 ; */
-
 NAME VOLUME WINDOWAPI
-DESCRIPTION '$@#(c) Chris Wohlgemuth :V0.2.7 (17.08.2003)#@Master volume applet'
-;EXPORTS         decodeStatusDialogProc
-
-
-
-
+DESCRIPTION '$@#(c) C. Wohlgemuth 2006:0.2        #@##1## 12/02/06 19:56:10        My ;-)     ::::9::@@Master volume applet V0.2.9'
+STACKSIZE    1638400

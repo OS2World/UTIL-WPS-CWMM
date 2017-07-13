@@ -1,8 +1,12 @@
-; DEF-file for imgconv.exe. This is a PM program which 
-; shows a dialog box and converts image files.
 ;
-;                    (C) Chris Wohlgemuth 2002
-
+; IMGCONV: PM-Program for image file converting
+;
+;
+;    (c) C. Wohlgemuth 2002-2006
+;
+;
+; Created 12 Feb 2006 19:48:25
+;
 ;/*
 ; * This program is free software; you can redistribute it and/or modify
 ; * it under the terms of the GNU General Public License as published by
@@ -24,10 +28,6 @@
 ; * http://www.os2world.com/cdwriting
 ; * http://www.geocities.com/SiliconValley/Sector/5785/
 ; */
-NAME imgconv WINDOWAPI
-DESCRIPTION '$@#(c) Chris Wohlgemuth :V0.2.7 (17.08.2003)#@PM-Program for image file converting'
+NAME IMGCONV WINDOWAPI
+DESCRIPTION '$@#(c) C. Wohlgemuth 2006:0.2        #@##1## 12/02/06 19:48:25        My ;-)     ::::9::@@PM-Program for image file converting V0.2.9'
 STACKSIZE    1638400
-
-
-
-

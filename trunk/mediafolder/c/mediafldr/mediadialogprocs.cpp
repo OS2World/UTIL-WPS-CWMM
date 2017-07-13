@@ -404,6 +404,15 @@ MRESULT EXPENTRY mediaFrameProc(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
       if(somIsObj(thisPtr))
         thisPtr->usLastSelMenuItem=SHORT1FROMMP(mp1);
       break;
+    case WM_TIMER:
+      /* The user didn't click any button on the message box asking for closing the
+         folder. Now the system forces the closing so automatic shutdown may finally
+         succeed. */
+      if(SHORT1FROMMP(mp1)==MFLDR_MBOX_TIMER_ID) {
+        WinStopTimer(WinQueryAnchorBlock(HWND_DESKTOP), hwnd, MFLDR_MBOX_TIMER_ID);
+        WinPostMsg(hwnd, WM_CLOSE, 0, 0);
+      }
+      return MRFALSE;
     default:
       break;
     }

@@ -1,5 +1,5 @@
 # List of languages to be built.
-LANGUAGES	=	de en nl it
+LANGUAGES	=	de en nl it tw 
 
 #define the next makro if compiling a release rather than a beta
 #This will remove the build string from the about dialog
@@ -8,7 +8,7 @@ export CWMMRELEASE	=	YES
 #define the next makro if compiling eCS. Undef if normal compile!
 #That's used for createcd.exe until I find a decent documentation for make to do it better...
 #Also used for including the right icons
-#ECS_COMPILE	=	YES
+ECS_COMPILE	=	YES
 
 ifdef    ECS_COMPILE
 #         Don't use an empty string here!
@@ -35,8 +35,10 @@ ECSBASE = add2mmos2
 ECSCLASSDIR = MMClass
 ECSMFLDRDIR = MediaFld
 
-#The base dir for additional functions for the MM helper programs
+#The base dir off the CW function toolkit
 export COMMONSRC	=	H:/cwmm/common_functions
 
+export NLVBASE		=	H:/cwmm/nlv
+export MMSRCBASE	=	H:/cwmm
 
 

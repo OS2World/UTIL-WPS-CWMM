@@ -69,26 +69,6 @@ BOOL IniRestoreData(char * iniFile, char* chrApp, char *chrKey, void * theData, 
 void writeLog(char* logText);
 void HlpWriteToTrapLog(const char* chrFormat, ...);
 
-#if 0
-/****************************************************
- *                                                  *
- * This funktion returns the running OS version:    *
- *                                                  *
- * 30: Warp 3, 40 Warp 4                            *
- *                                                  *
- ****************************************************/
-ULONG cwQueryOSRelease()
-{
-  static ULONG ulVersionMinor=0;
-
-  if(!ulVersionMinor)
-    if(DosQuerySysInfo(QSV_VERSION_MINOR, QSV_VERSION_MINOR, &ulVersionMinor, sizeof(ulVersionMinor)))
-      ulVersionMinor=30;/* Default Warp 3 */
-
-  return ulVersionMinor;
-
-}
-#endif
 
 void removeLog(void)
 {
@@ -563,18 +543,46 @@ void HlpCloseIni(HINI hini)
       PrfCloseProfile(hini);
 }
 #endif
+#if 0
+if(SysQueryHomeDir(chrHomeDir, sizeof(chrHomeDir))) {
+    strcpy(chrPath, chrHomeDir);
+    strncat(chrPath, "\\WPSWIZZ.INI", size-strlen(chrPath)-1);/* Default is INI file in users home dir */
+    return;
+  }
 
+  strcpy(chrPath, queryHelpPath());
+  if((ptrChar=strrchr(chrPath, '\\'))!=NULLHANDLE) {
+    *ptrChar=0;
+    if((ptrChar=strrchr(chrPath, '\\'))!=NULLHANDLE)
+      *ptrChar=0;
+  }
+  strncat(chrPath, "\\WPSWIZZ.INI", size-strlen(chrPath)-1);
+  chrPath[size-1]=0;
+#endif
+
+/*
+  Query the path to the INI file used by the MM progs to store the private data.
+  If a home dir exists on the users system the INI file will be create there otherwise
+  in the directory where the calling EXE is located.
+ */
 BOOL HlpBuildMMProgIniFileName(char* chrProgname, char * chrBuffer, ULONG ulBufferSize)
 {
   char * chrPtr;  
-  strncpy(chrBuffer, chrProgname,ulBufferSize);
-  chrBuffer[ulBufferSize-1]=0;
+
+  /* Default is INI file in users home dir */
+  if(SysQueryHomeDir(chrBuffer, ulBufferSize)) {
+    strlcat(chrBuffer, MMCLS_INI_FILE_NAME, ulBufferSize); /* MMCLS_INI_FILE_NAME = "\\CWMM.INI" */
+    return TRUE;
+  }
+
+  /* No HOME dir for some reason */
+  strlcpy(chrBuffer, chrProgname, ulBufferSize);
 
   if((chrPtr=strrchr(chrBuffer,'\\'))==NULLHANDLE)
-    return FALSE;
+    return FALSE; // This shouldn't happen!
 
   *chrPtr=0;
-  strncat(chrBuffer,INI_FILE_NAME, ulBufferSize-strlen(chrBuffer)-1);
+  strlcat(chrBuffer, MMCLS_INI_FILE_NAME, ulBufferSize);
 
   return TRUE;
 }

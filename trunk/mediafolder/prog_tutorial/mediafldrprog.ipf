@@ -516,6 +516,7 @@ The following features of the CW-multimedia classes may be enabled by setting va
 :li.:link reftype=hd res=418.Disable creating of a shadow to the Media Player template:elink.
 :li.:link reftype=hd res=420.Disable audio file checking:elink.
 :li.:link reftype=hd res=421.Disable ID3 tag reading:elink.
+:li.:link reftype=hd res=422.Set time for message box display:elink.
 :eul.
 
 .im hiddenfeatures.inc

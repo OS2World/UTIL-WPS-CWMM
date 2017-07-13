@@ -98,7 +98,7 @@ following key to OS2.INI:
 :h2 res=423
 x=50% width=50%
 group=2
-.Replace M3U olayer
+.Replace M3U player
 :p.
 The default M3U player may be replaced by adding the
 following key to OS2.INI:
@@ -261,3 +261,20 @@ Example:
 CWMM->mmClsDontReadID3OnDrives->abcghzy
 :exmp.
 
+
+:h2 res=424
+x=50% width=50%
+group=2
+.Set time for message box display
+:p.
+The confirmation message box shown when closing a mediafolder while playing a track automatically closes after 60s and the
+folder will be closed. This delay may be changed by setting the following key.
+
+:p.
+:hp2.CWMM->mfldrMBoxDisplayTime-><time in milli seconds>:ehp2.
+:nt.Be sure to keep the uppercase characters!
+:ent.
+:nt.The shortest allowed time is 5000ms.
+:ent.
+
+.* last id 424

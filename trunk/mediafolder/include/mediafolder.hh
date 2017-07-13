@@ -1,5 +1,5 @@
 /*
- * This file is (C) Chris Wohlgemuth 2002
+ * This file is (C) Chris Wohlgemuth 2002-2005
  */
 /*
  * This program is free software; you can redistribute it and/or modify
@@ -63,19 +63,6 @@
 
 #define SHOWABOUTDIALOG_COMMAND   "SHOWABOUTDIALOG=1"
 #define SETUP_SHOWABOUTDIALOG     "SHOWABOUTDIALOG"
-
-/*** Private folder flags: ***/
-
-/* Flag indicating from where a method was called */
-#define MFLDR_CURACTION_ADDFOLDERVIEW3  0x00000001
-/* Flag telling if folder is in compact view */
-#define MFLDR_VIEW_COMPACT              0x00000002
-/* The view is currently changing */
-#define MFLDR_CHANGING_VIEW             0x00000004
-/*** End of private folder flags ***/
-
-#define IDHLP_MEDIAFOLDERMAIN  100
-
 
 #pragma SOMAsDefault(on)
 #include <som.hh>

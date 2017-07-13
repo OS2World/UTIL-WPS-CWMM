@@ -2,6 +2,7 @@
 #define IMG_FUNCS_H_INCLUDED
 
 HBITMAP ImgLoadImageFile (  PSZ pszFileName );
-BOOL ImgGetBmpInfoHeader(PBITMAPINFOHEADER2  bmpih2, PSZ pszFileName /*, char* procName, ULONG ulLength*/);
+HBITMAP ImgLoadImageFileAndHeader (  PSZ pszFileName, PBITMAPINFOHEADER2 pBMPInfoHeader2);
+BOOL ImgGetBmpInfoHeader(PSZ pszFileName, PBITMAPINFOHEADER2  bmpih2 /*, char* procName, ULONG ulLength*/);
 
 #endif

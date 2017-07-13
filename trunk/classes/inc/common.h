@@ -65,4 +65,6 @@
 #define IDKEY_FDRLONGARRAY       2931
 #endif
 
+#define MMCLS_INI_FILE_NAME     "\\cwmm.ini"
+
 #endif

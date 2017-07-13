@@ -104,7 +104,8 @@ char* params[4]={"","","",""};
 
 HMODULE RESSOURCEHANDLE=0;
 
-char logName[CCHMAXPATH]="Cddb.log";
+char logName[CCHMAXPATH]=PMCDDB_LOGFILENAME;
+char logNameFullPath[CCHMAXPATH];
 
 #define QUERYCDDB_VERSION "0.1"
 
@@ -615,12 +616,13 @@ int main (int argc, char *argv[])
   /* Create a copy of the args */
   /* argv[0]: progname
    * argv[1]: cd drive or /C for configuring
-   * argv[2]: REXX file
+   * argv[2]: REXX file. This file is used to parse the queried data file and
+   *          set all the info of the CD track objects.
+   *          When configuring argv[2] is the email address.
    * argv[3]: folder path
    */
 
   numArgs=argc;
-
 
   for(a=0;a<argc;a++)
     {
@@ -631,8 +633,6 @@ int main (int argc, char *argv[])
   if((chrPtr=strrchr(chrBinDir, '\\'))!=NULLHANDLE)
     *chrPtr=0;
   strncpy(chrInstallDir, chrBinDir, sizeof(chrInstallDir)-1);
-  /*  if((chrPtr=strrchr(chrInstallDir, '\\'))!=NULLHANDLE)
-   *chrPtr=0;*/
 
   if(numArgs<3) {
     usage(argv[0]);

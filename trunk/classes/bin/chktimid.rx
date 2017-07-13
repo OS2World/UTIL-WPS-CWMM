@@ -60,6 +60,7 @@ DO WHILE LEFT(mmini.a,1)\='['
 		return 1
 	END
 	a=a+1
+	IF a>mmini.0 THEN return 0
 END
 return 0
 

@@ -63,6 +63,7 @@
 #define TYPE_CDTRACK         "CD-Track"
 #define TYPE_M3U             "M3U"
 #define TYPE_FLAC            "FLAC"
+#define TYPE_DIGITALVIDEO    "Digital Video"
 
 /* Setup strings for MMAudio (was CWAudio). These strings will
    be removed in the future. Use the MM* instead */
@@ -239,6 +240,9 @@ typedef struct _MMDATAFILEVIEW
 #define DEFVOLUME_AUDIO_FILE  70
 #define CLASS_VOLUME_APP   "classvolume"
 #define CLASS_VOLUME_KEY   "volume"
+
+#define MMVIDEO_GETEXT_RX  "videoext.rx"
+#define MMMPG_GETEXT_RX    "mpegext.rx"
 
 #endif
 

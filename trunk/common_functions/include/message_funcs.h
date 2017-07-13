@@ -8,9 +8,14 @@ extern "C" {
 ULONG messageBox( char* text, ULONG ulTextID , LONG lSizeText,
                   char* title, ULONG ulTitleID, LONG lSizeTitle,
                   HMODULE hResource, HWND hwnd, ULONG ulFlags);
-ULONG showMessageBox2(HWND hwnd, ULONG ulIDTitle, ULONG ulIDText, HMODULE hModule, ULONG ulFlag);
+ULONG MsgShowMessageBox(HWND hwnd, ULONG ulIDTitle, ULONG ulIDText, HMODULE hModule, ULONG ulFlag);
 BOOL getMessage(char* text,ULONG ulID, LONG lSizeText, HMODULE hResource,HWND hwnd);
 BOOL MsgGetMessage(char* text,ULONG ulID, LONG lSizeText, HMODULE hResource,HWND hwnd);
+
+#if 0
+ULONG showMessageBox2(HWND hwnd, ULONG ulIDTitle, ULONG ulIDText, HMODULE hModule, ULONG ulFlag);
+#endif
+
 #ifdef __CPLUSPLUS__
 }
 #endif

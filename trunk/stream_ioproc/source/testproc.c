@@ -88,6 +88,21 @@ int queryNumStorageProcs(void)
   MMFORMATINFO mmfinfo;
   LONG lNum=0;
 
+  printf("In %s().\n", __FUNCTION__);
+
+  memset( &mmfinfo, '\0', sizeof(MMFORMATINFO) );
+  // mmfinfo.ulIOProcType=MMIO_IOPROC_STORAGESYSTEM;
+  //mmfinfo.ulMediaType=MMIO_MEDIATYPE_AUDIO;
+
+  mmioQueryFormatCount(&mmfinfo, &lNum, 0, 0);
+  return lNum;
+}
+
+int queryNumFormatProcs(void)
+{
+  MMFORMATINFO mmfinfo;
+  LONG lNum=0;
+
   memset( &mmfinfo, '\0', sizeof(MMFORMATINFO) );
   mmfinfo.ulIOProcType=MMIO_IOPROC_STORAGESYSTEM;
   mmfinfo.ulMediaType=MMIO_MEDIATYPE_AUDIO;
@@ -126,6 +141,8 @@ BOOL getFormats(LONG lNum)
           name[lBytesRead]=0;
           printf("%2d: %s\n", a+1, name);
         }
+      else
+        printf("%2d: Can't get format name\n", a+1);
       pmmfi++;
     }
   return TRUE;
@@ -135,6 +152,7 @@ int installProc(char * dllPath) {
     MMINIFILEINFO mmIniFileInfo;
     ULONG ulFlags = 0L;
     ULONG rc;
+
 #if 0
 
     memset( &mmIniFileInfo, '\0', sizeof(MMINIFILEINFO) );
@@ -188,12 +206,28 @@ int installProc(char * dllPath) {
     return 0;
 }
 
+void checkForIOProc(FOURCC fourcc1)
+{
+  PMMIOPROC  pIOProc1=NULLHANDLE;
+  ULONG      ulFlags;
+
+  ulFlags= MMIO_FINDPROC;
+  pIOProc1= mmioInstallIOProc (fourcc1, pIOProc1, ulFlags);
+  //  pIOProc1= mmioInstallIOProc (0x4745504a, pIOProc1, ulFlags);
+  if (!pIOProc1)
+    /* I/O Procedure NOT FOUND */
+    printf("IO-Proc NOT found 0x%x 0x%x\n", pIOProc1, fourcc1);
+  else
+    printf("IO-Proc found!!!\n");
+      /* I/O Procedure found */
+}
 int main(int argc, char **argv) {
 
-  printf("Test stream io proc...\n");
+  printf("Test stream io proc...\n\n");
   
-  printf("Installed storage procs: %d\n", queryNumStorageProcs());
+  printf("Number of installed storage procs: %d\n", queryNumStorageProcs());
   getFormats(queryNumStorageProcs());
+  checkForIOProc(mmioStringToFOURCC("WAVE",0));
 
   //  getFormats(45);
   installProc("STREAMIO.DLL");

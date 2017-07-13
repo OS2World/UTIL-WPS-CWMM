@@ -36,9 +36,13 @@ BEGIN
                         WS_GROUP
         CTEXT           "Anteprima non disponibile", IDST_NOPREVIEWAVAILABLE, 251, 42, 78, 33,
                         DT_WORDBREAK | NOT WS_VISIBLE
-        LTEXT           "", IDST_AUDIOINFO, 253, 21, 75, 62, DT_WORDBREAK | NOT
+        LTEXT           "", IDST_AUDIOINFO, 253, 41, 75, 42, DT_WORDBREAK | NOT
                         WS_VISIBLE
         GROUPBOX        "Informazioni audio", IDGB_AUDIOINFO, 245, 17, 89, 79, NOT WS_VISIBLE
+        PUSHBUTTON      "Stop", IDPB_MMFINDSTOP, 267, 19, 21, 10, 
+                        BS_NOPOINTERFOCUS | NOT WS_TABSTOP
+        PUSHBUTTON      "Play", IDPB_MMFINDPLAY, 291, 19, 21, 10, 
+                        BS_NOPOINTERFOCUS | NOT WS_TABSTOP
         DEFPUSHBUTTON   "~OK", DID_OK, 3, 2, 40, 12
         PUSHBUTTON      "~Nuovo", IDPB_NEWFILE, 46, 2, 40, 12
         PUSHBUTTON      "A~pplica", 268, 293, 3, 40, 12, NOT WS_TABSTOP | NOT

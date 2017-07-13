@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Chris Wohlgemuth 2002 
+ * Copyright (c) Chris Wohlgemuth 2005 
  * All rights reserved.
  *
  * http://www.geocities.com/SiliconValley/Sector/5785/

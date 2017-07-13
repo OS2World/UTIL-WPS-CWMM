@@ -1,5 +1,5 @@
 /*
- * This file is (C) Chris Wohlgemuth 2002
+ * This file is (C) Chris Wohlgemuth 2002-2005
  * 
  * It's part of the Media-Folder distribution
  */
@@ -72,7 +72,7 @@ BOOL CWCDFolder::cwInsertAllTracks(char* chrCDDrive)
           //sprintf(chrSetup,"CWAUDIOPLAYTIME=%d;CWCDTTRACKNUM=%d", lSecs, a);
           //        if(a==1)
           //        WinMessageBox(HWND_DESKTOP,HWND_DESKTOP, chrSetup, "", 12324, MB_MOVEABLE);
-          sprintf(chrTitle,"Track %d",a);
+          sprintf(chrTitle,"Track %02d",a);
           WinCreateObject("MMCDTrack", chrTitle, chrSetup, chrTarget, CO_REPLACEIFEXISTS);
         }
 
