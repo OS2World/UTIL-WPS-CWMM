@@ -1,3 +1,5 @@
+Cache Information for audio shadows so mp3 tracks from CD work in media folders.
+
 Allow additional parameters for player and editor
 CDFolder: Create folder script
 

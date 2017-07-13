@@ -221,9 +221,9 @@ german:
 	cp ./c/cddb/cddb.ini ../../$(PKGNAME)-$(VERSION)-ger/CWMFldr-$(VERSION)-ger/FreeDB/
 	cp ./install/freedbgr.ins ../../$(PKGNAME)-$(VERSION)-ger/CWMFldr-$(VERSION)-ger/FreeDB/
 	cp Skripte_ger/* ../../$(PKGNAME)-$(VERSION)-ger/CWMFldr-$(VERSION)-ger/Skripte/
-#	-cd ../../$(PKGNAME)-$(VERSION)-ger/CWMFldr-$(VERSION)-ger/bin && lxlite *
-#	-cd ../../$(PKGNAME)-$(VERSION)-ger/CWMFldr-$(VERSION)-ger/DLL && lxlite *
-#	-cd ../../$(PKGNAME)-$(VERSION)-ger/CWMFldr-$(VERSION)-ger/FreeDB && lxlite *
+	-cd ../../$(PKGNAME)-$(VERSION)-ger/CWMFldr-$(VERSION)-ger/bin && lxlite *
+	-cd ../../$(PKGNAME)-$(VERSION)-ger/CWMFldr-$(VERSION)-ger/DLL && lxlite *
+	-cd ../../$(PKGNAME)-$(VERSION)-ger/CWMFldr-$(VERSION)-ger/FreeDB && lxlite *
 
 done:
 	-cp doc/Readme.ger ../../$(PKGNAME)-$(VERSION)-ger/CWMFldr-$(VERSION)-ger/
@@ -245,7 +245,7 @@ english:
 	cp bin/*.dll ../../$(PKGNAME)-$(VERSION)-eng/CWMFldr-$(VERSION)-eng/dll/
 	cp ./c/createcd/createcd.exe  ../../$(PKGNAME)-$(VERSION)-eng/CWMFldr-$(VERSION)-eng/bin/
 	cp ./mediafolder.dll ../../$(PKGNAME)-$(VERSION)-eng/CWMFldr-$(VERSION)-eng/bin/mediafld.dll
-	cp ./res/obj/mediafolder_de.dll ../../$(PKGNAME)-$(VERSION)-eng/CWMFldr-$(VERSION)-eng/bin/mfldr_en.dll
+	cp ./res/obj/mediafolder_en.dll ../../$(PKGNAME)-$(VERSION)-eng/CWMFldr-$(VERSION)-eng/bin/mfldr_en.dll
 	cp ./help/mediafldr.hlp ../../$(PKGNAME)-$(VERSION)-eng/CWMFldr-$(VERSION)-eng/bin/mediafld.hlp
 	cp ./install/MEDIAFLD.ins  ../../$(PKGNAME)-$(VERSION)-eng/CWMFldr-$(VERSION)-eng/MEDIAFLD.INS
 	cp ./c/cddb/pmcddb.exe ../../$(PKGNAME)-$(VERSION)-eng/CWMFldr-$(VERSION)-eng/FreeDB/

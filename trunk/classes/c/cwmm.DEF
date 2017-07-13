@@ -24,7 +24,7 @@
 ; */
 
 LIBRARY CWMM INITGLOBAL
-DESCRIPTION '$@#(C) C. Wohlgemuth 2005:0.2        #@##1## 21/03/05 23:20:28        My ;-)  ::::9::@@CWMM-classes V0.2.9'
+DESCRIPTION '$@#(C) C. Wohlgemuth 2005:0.2        #@##1## 11/05/05 17:35:09        My ;-)  ::::9::@@CWMM-classes V0.2.9'
 
 PROTMODE
 CODE PRELOAD DISCARDABLE

@@ -1,6 +1,8 @@
 /* rexx -  replace  DLL */
 
-
+'replace H:\cwmm\classes\cwmm.dll D:\MMOS2\MMCLASS\CWMM.DLL'
+'replace H:\cwmm\classes\Res\dll\mmres_DE.dll d:\MMOS2\MMCLASS\bin\mmres_DE.dll'
+'replace H:\cwmm\classes\Res\dll\mmres_EN.dll d:\MMOS2\MMCLASS\bin\mmres_EN.dll'
 
 'replace H:\cwmm\classes\cwmm.dll J:\MMOS2\CWMM\CWMM.DLL'
 'replace H:\cwmm\mediafolder\mediafolder.dll J:\MMOS2\MEDIAFLD\BIN\MEDIAFLD.DLL'

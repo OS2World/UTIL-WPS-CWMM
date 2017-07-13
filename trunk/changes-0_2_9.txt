@@ -4,6 +4,9 @@
 -New method cwmmRequestBmpDeletion() for WPS-wizard to trigger background BMP deletion.
 -Help for audio stream class.
 -Close confirmation dialog of media folder is now modal to the folder
+-Audio information for shadows in media folders wasn't shown when linked object wasn't touched first.
+-Mediafolder refresh triggers new time calculation.
+-Stop menu item of audio stream objects didn't work.
 
 0.2.8:
 -Icon view removed for media folders.

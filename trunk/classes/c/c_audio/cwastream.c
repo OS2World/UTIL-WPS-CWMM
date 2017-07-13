@@ -128,15 +128,20 @@ MRESULT EXPENTRY playStreamProc(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
         MMAudio * thisPtr;
         OPENPARAMS * pParams;
 
-        pParams=PVOIDFROMMP(mp2);/* Get parameter block */
-        if(!pParams)
-          {
-            WinPostMsg(hwnd,WM_QUIT,0,0);
-            return MRFALSE;
-          }
-
-        WinSetWindowULong(hwnd, QWL_USER, (ULONG)pParams);        
-        thisPtr=pParams->wpObject;
+        /* Depending on mp1 the parameter in mp2 is either a pointer
+           to OPENPARAMS (mp1==ACKEY_START) or the object pointer (mp1==ACK_STOP) */
+        if(ACKEY_START==LONGFROMMP(mp1)) {
+          pParams=PVOIDFROMMP(mp2);/* Get parameter block */
+          if(!pParams)
+            {
+              WinPostMsg(hwnd,WM_QUIT,0,0);
+              return MRFALSE;
+            }
+          WinSetWindowULong(hwnd, QWL_USER, (ULONG)pParams);        
+          thisPtr=pParams->wpObject;
+        }
+        else
+          thisPtr=(MMAudio*)PVOIDFROMMP(mp2);
 
         if(somIsObj(thisPtr)) {
           switch(LONGFROMMP(mp1))
@@ -168,7 +173,6 @@ MRESULT EXPENTRY playStreamProc(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
                     if((rc & 0x0000ffff)!=MCIERR_SUCCESS) {
                       _cwmmSetRecordTitles(thisPtr, "Can't connect to server!", TRUE);
                       WinStartTimer(WinQueryAnchorBlock(hwnd), hwnd, 2, 4000);
-                      /*                    WinPostMsg(hwnd,WM_QUIT,0,0);*/
                       return MRFALSE;
                     }
 
@@ -201,7 +205,7 @@ MRESULT EXPENTRY playStreamProc(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
                 char retMsg[20];
 
                 WinStopTimer(WinQueryAnchorBlock(hwnd),hwnd,1 );
-                
+
                 sprintf(chrCommand,"stop wave%d wait", thisPtr);
                 mciSendString(chrCommand, retMsg, sizeof(retMsg), 0, 0);
                 
@@ -275,6 +279,7 @@ MRESULT EXPENTRY playStreamProc(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
   return WinDefWindowProc( hwnd, msg, mp1, mp2);
 }
 
+
 MRESULT EXPENTRY streamUrlDlgProc(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
 {
   MMAudioStream *cwAudioStream;
@@ -287,7 +292,7 @@ MRESULT EXPENTRY streamUrlDlgProc(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
         cwAudioStream=(MMAudio*)PVOIDFROMMP(mp2);
         WinSetWindowULong(WinWindowFromID(hwnd,IDEF_URL),
                           QWL_USER,(ULONG)cwAudioStream);//Save object ptr.
-        
+
         WinSendMsg(WinWindowFromID(hwnd,IDEF_URL),EM_SETTEXTLIMIT,MPFROMSHORT((SHORT)sizeof(chrURL)),0);
 
         /* Move default buttons on Warp 4 */

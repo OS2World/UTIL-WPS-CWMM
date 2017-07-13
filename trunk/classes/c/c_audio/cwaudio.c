@@ -3493,6 +3493,7 @@ MRESULT EXPENTRY audioWorkerProc(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
       char text[CCHMAXPATH];
       BOOL bContinue=FALSE;
       MMAudio *somSelf=(MMAudio*)mp1;
+      WPObject    *pLinkObj=NULLHANDLE;
       MMAudioData *somThis= MMAudioGetData(somSelf);
       ULONG ulLoop;
 
@@ -3533,13 +3534,41 @@ MRESULT EXPENTRY audioWorkerProc(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
             @@CHANGE 0.2.8
 
             Check if parent folder is closed. If yes, don't start file scanning.
+
+            @@CHANGE 0.2.9
+
+            Check if we have a shadow in an open folder.
+
             */
+
           wpFolder=_wpQueryFolder(somSelf);
           if(somIsObj(wpFolder)) {
-            if(!_wpFindViewItem(wpFolder , VIEW_ANY, NULLHANDLE))
-              break;
+            if(!_wpFindViewItem(wpFolder , VIEW_ANY, NULLHANDLE)) {
+              PUSEITEM pUseItem;
+              BOOL fOpenView=FALSE;
+              /* Ok, our object isn't in an open folder, but we may have a shadow somewhere in an
+                 open folder. */
+              for(pUseItem=_wpFindUseItem(somSelf, USAGE_LINK, NULL);pUseItem;
+                  pUseItem=_wpFindUseItem(somSelf, USAGE_LINK, pUseItem))
+                {
+                  PLINKITEM pLI=(PLINKITEM)++pUseItem;
+                  pLinkObj=pLI->LinkObj; /* The awake shadow */
+
+                  if(somIsObj(pLinkObj)) {
+                    wpFolder=_wpQueryFolder(pLinkObj);
+                    if(somIsObj(wpFolder)) {
+                      if(_wpFindViewItem(wpFolder , VIEW_ANY, NULLHANDLE)) {
+                        fOpenView=TRUE;
+                        break;
+                      }
+                    }/* somIsObj(wpFolder) */
+                  }
+                }/* for() */
+              if(!fOpenView)
+                break;
+            }
           }
-          
+
           /* Get file name */
           ulSize=sizeof(fName);
           if(!_wpQueryRealName(somSelf, fName, &ulSize, TRUE))
@@ -3829,8 +3858,20 @@ MRESULT EXPENTRY audioWorkerProc(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
         }
         if(ulLoop<20)
           _wpSaveDeferred(somSelf);
+        /* Now we have the audio info */
         _wpCnrRefreshDetails(somSelf);
+        /*
+          @@CHANGE 0.2.9
 
+          Also refresh shadows in containers. For now we only support one shadow but that doesn't is a problem
+          because after the first shadow the linked object has queried the audio data and every other shadow
+          that will be awaked can use that info without ending here. Only problem may be the user opens a lot
+          of folders with shadows and we are not fast enough but I don't care at the momen ;-).
+         */
+        if(pLinkObj!=NULLHANDLE && somIsObj(pLinkObj)) /* The check on NULLHANDLE is very fast while somIsObj() needs 
+                                                          quite some time. So we check for a valid object only if we
+                                                          can be quite sure we have an object (pointer!=NULLHANDLE). */
+          _wpCnrRefreshDetails(pLinkObj);
         return (MRESULT) FALSE;
       }
     default:
