@@ -1,0 +1,11 @@
+/* rexx - Return additional image extensions the MMImage class
+   should handle.   
+   This script is called by M_MMImage.
+*/
+
+
+allExt="*.JPE,*.JPEG"
+return allExt
+EXIT
+
+

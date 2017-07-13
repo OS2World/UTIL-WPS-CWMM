@@ -1,0 +1,1 @@
+sc -shh -S 64000  -m noqualifytypes wpdesk

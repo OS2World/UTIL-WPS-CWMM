@@ -1,0 +1,115 @@
+
+/*
+ * CWAudio.idl:
+ */
+
+#include "..\cwmmdataf.idl"
+
+
+/*
+   CLASS: CWVideo  
+*/
+
+interface M_CWVideo; 
+
+interface CWVideo : CWMMDataFile
+{
+
+    /*
+     * New instance methods
+     *
+     */
+
+#ifdef __SOMIDL__
+  implementation {
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwvideo_;
+    externalstem = cwvideo;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwvideo;           //# specifies the filestem for sc-generated files
+    metaclass = M_CWVideo;
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+    
+
+    passthru C_h_after =  ""
+    "#include \"cwmmres.h\""
+    "";
+
+    /*
+     * Internal instance variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+
+    wpModifyPopupMenu       : override;
+    wpMenuItemSelected      : override;
+    wpOpen                  : override;
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+
+interface M_CWVideo : M_CWMMDataFile
+{
+
+    /*
+     * New class methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwvideoM_;
+    externalstem = cwvideoM;
+    functionprefix = cwvideoM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwvideo;           //# specifies the filestem for sc-generated files
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+    wpclsCreateDefaultTemplates : override;
+    wpclsQueryTitle         	: override;   
+    wpclsQueryDefaultView  : override;   
+    wpclsQueryIconData          : override;
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+
+

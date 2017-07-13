@@ -1,0 +1,18 @@
+ICON ID_ICONCWVIDEOFILE "../icons_video/video.ico"
+ICON ID_ICONMPGFILE "../icons_video/MPG.ico"
+ICON ID_ICONMOVFILE "../icons_video/MOV.ico"
+ICON ID_ICONFLIFILE "../icons_video/FLI.ico"
+ICON ID_ICONAVIFILE "../icons_video/AVI.ico"
+
+
+STRINGTABLE 
+BEGIN
+;Titles of video classes
+IDSTR_CWVIDEOTITLE       "Digital Video"
+IDSTR_MPGTITLE       	 "MPGVideo.MPG"
+IDSTR_MOVTITLE       	 "MOVVideo.MOV"
+IDSTR_FLITITLE       	 "FLIVideo.FLI"
+IDSTR_AVITITLE       	 "AVIVideo.AVI"
+
+END
+

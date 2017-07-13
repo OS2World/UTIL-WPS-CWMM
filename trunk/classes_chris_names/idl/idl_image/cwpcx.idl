@@ -1,0 +1,113 @@
+
+/*
+ * CWgif.idl:
+ */
+
+#include <cwimage.idl>
+
+/*
+   CLASS: 
+*/
+
+interface M_CWPCX; 
+
+interface CWPCX : CWImage
+{
+
+    /*
+     * New instance methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwpcx_;
+    externalstem = cwpcx;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwpcx;           //# specifies the filestem for sc-generated files
+    metaclass = M_CWPCX;
+    dllname = "cwimage.dll";
+    callstyle = oidl;
+
+
+    /*
+     * Internal instance variables
+     *
+     */
+
+
+    /*
+     * methods overridden 
+     *
+     */
+
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+interface M_CWPCX : M_CWImage
+{
+
+    /*
+     * New class methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwpcxM_;
+    externalstem = cwpcxM;
+    functionprefix = cwpcxM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwpcx;           //# specifies the filestem for sc-generated files
+    dllname = "cwimage.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+    wpclsQueryInstanceType  	: override;
+    wpclsQueryInstanceFilter    : override;   
+
+    wpclsQueryDefaultHelp       : override; 
+    wpclsQueryStyle   	        : override;   
+    wpclsQueryTitle   	        : override;   
+    wpclsQueryIconData          : override;
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+
+
+
+

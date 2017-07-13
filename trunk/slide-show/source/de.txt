@@ -1,0 +1,73 @@
+[1]
+installed yes
+
+[1]
+ok ~Ok
+
+[1]
+errortext Ein Fehler trat w„hrend der Programmausfhrung auf. Benachrichtigen sie den Author und h„ngen sie dabei die unten angezeigte Meldung an.
+# Besser noch, versuchen sie den Fehler selber zu finden mit Hilfe des zur Verfgung gestellten Quelltextes und senden Sie einen Patch.
+
+[1]
+error Fehler
+
+[1]
+fullscreen ~Vollbild
+
+[1]
+next ~>>
+
+[1]
+previous ~<<
+
+[1]
+start ~Start
+
+[1]
+stop Sto~pp
+
+[1]
+adddir  ~Verz. hinzufgen...
+
+[1]
+removedir Verz. ent~fernen
+
+[1]
+quit ~Ende
+
+[1]
+random ~Zuf„llig
+
+[1]
+pause ~Pause
+
+[1]
+directories Verzeichnisse
+
+[1]
+settings Einstellungen
+
+
+[1]
+time Anzeigedauer:
+
+[1]
+main Diaschau
+
+[1]
+question Frage
+
+[1]
+questiontext Es existiert kein WPS-Objekt fr die Diaschau. Soll eines auf der Arbeitsoberfl„che angelegt werden?
+
+[1]
+wpsobject Diaschau
+
+[1]
+continue ~Fortsetzen
+
+[1]
+help ~Hilfe
+
+[1]
+helptext === Hilfe fr Tasten === 0ax 0ax Allgemein 0ax 0ax F1 0t2x Diese Hilfe 0ax 0ax Pfeil rechts 0t2x N„chstes Bild 0ax 0ax Pfeil zurck 0t2x Vorheriges Bild 0ax 0ax Leertaste 0t2x Pause/Weiter 0ax 0ax 0ax Im Fenstermodus: 0ax 0ax ESC 0t2x Fenster schlieáen 0ax 0ax RETURN 0t2x Vollbildschirm 0ax 0ax S 0t2x Zeige Bedienkn”pfe 0ax 0ax H 0t2x Verberge Bedienkn”pfe 0ax 0ax 0ax Im Vollbildschirmmodus: 0ax 0ax ESC 0t2x Zurck zum Fenstermodus

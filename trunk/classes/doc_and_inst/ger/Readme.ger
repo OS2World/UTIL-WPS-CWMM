@@ -1,0 +1,109 @@
+CW-Multimedia Klassen
+---------------------
+
+Dieses Paket ist ein kompletter Ersatz fÅr die
+Multimediaklassen von MMOS2. Sie sind robuster gegenÅber
+defekten Bilddateien oder fehlerhaften IO-Prozeduren.
+Das Konvertieren MenÅ wurde erweitert.
+Die BeschrÑnkungen der JPEG IO-Prozedur, die mit Warp
+geliefert wird, bleiben weiterhin bestehen. Diese
+Prozedur stÅrzt bei manchen JPG-Dateien ab und nur ein
+Neustart der WPS stabilisiert das System wieder. Es wird
+daher eine verbesserte neue JPEG IO-Prozedur mitgeliefert.
+
+Zwei neue Klassen sorgen fÅr eine nahtlose
+Integration der MMIO-Prozeduren von Russel O'Connor 
+fÅr MP3- und OGG-Dateien in die WPS. Download der
+DLLs unter:
+
+http://www.math.berkeley.edu/~roconnor/
+
+Nach Installation der Klassen verhalten sich Ogg- und
+MP3-Dateien auf der WPS wie alle anderen Audiodateien
+(z.B. Wavedateien). Sie haben ein eigenes Icon und die
+MenÅs der Åbrigen Audiodateien. So startet z.B. ein
+Doppelklick die Wiedergabe ein weiterer stoppt sie.
+öber das 'Umsetzen'-MenÅ kînnen die Dateien einfach
+in Wavedateien umgesetzt werden.
+
+ZusÑtzlich wird in die Eigenschaftendialoge aller
+Audiodateien eine Informationsseite Åber die Datei
+eingefÅgt (Samplerate, Spieldauer etc.). Diese Daten
+erscheinen auch in der Detailansicht von Ordnern, wenn
+die Ansicht auf Klasse:CWAudio gesetzt wird.
+
+Im ôffnen-MenÅ ist zusÑtzlich ein Eintrag fÅr LautstÑrke.
+Bei MP3-Dateien lassen sich die ID3-Tags Åber den
+Eigenschaftendialog anzeigen und verÑndern. Die ID3-Tags
+werden darÅberhinaus in der Detailansicht von Ordnern
+angezeigt.
+
+
+Weitere Mîglichkeiten
+---------------------
+
+Mit den folgenden SchlÅsselwerten in 'OS2.ini' werden eigene
+Programme beim ôffnen von Audiodateien verwendet. Diese
+Programme mÅssen PM-Programme sein.
+
+CWMM->audioplayer-><Programm zum Abspielen>
+CWMM->audioeditor-><Programm zum Editieren>
+
+Mit den folgenden SchlÅsseln werden die Programme zum
+Abspielen von MPG- und AVI-Filmen festgelegt.
+
+CWMM->aviplayer-><Name of program>
+CWMM->mpgplayer-><Name of program>
+
+Der folgende SchlÅssel gibt den Bildeditor fÅr Bilddateien
+an.
+
+CWMM->imageeditor-><Name of program>
+
+Mit dem folgenden SchlÅssel werden Detailangaben auch fÅr Bilder
+auf CD abgefragt. Nur bei schnellen Laufwerken verwenden.
+
+CWMM->useNewImgClsFeaturesOnCD->1
+
+
+Die Gro·- und Kleinschreibung der SchlÅsselnamen wird unterschieden.
+ 
+
+Installation
+------------
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+ACHTUNG: vor der Installation eine Kopie der
+         INI-Dateien anfertigen.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Die Installationsanweisungen im Wurzel-Verzeichnis der Distribution befolgen.
+
+
+Credits
+-------
+
+Die Icons sind (C) Klaus Staedtler-Przyborski. Vielen Dank auch
+fÅr furchtloses Betatesten.
+
+
+Lizenz
+------
+
+Diese Klassen dÅrfen frei verwendet werden. Das Copyright verbleibt
+jedoch beim Author. Benutzung ausschlie·lich auf eigene
+Gefahr. Es wird KEINE Verantwortung fÅr Datenverluste, Ehekrisen
+und sonstige unerfreuliche Ereignisse Åbernommen.
+
+ 
+Author
+------
+
+Diese Klassen sind (C) 2001-2005 Chris Wohlgemuth.
+
+http://www.geocities.com/SiliconValley/Sector/5785/
+http://www.os2world.com/cdwriting
+
+

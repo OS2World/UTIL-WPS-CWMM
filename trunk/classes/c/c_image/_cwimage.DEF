@@ -1,0 +1,105 @@
+LIBRARY CWIMAGE INITGLOBAL
+DESCRIPTION '$@#(C) C. Wohlgemuth 2001-2002:#@##1## 29.05.2002 18:17:00      My ;-)  : :::0::@@ Extended MM-Classes V0.2.3' 
+;DESCRIPTION '$@#(C) C. Wohlgemuth 2001-2002:#@ Extended MM-Classes V0.2.3'
+PROTMODE
+CODE PRELOAD DISCARDABLE
+DATA SHARED LOADONCALL
+
+EXPORTS  
+        M_CWImageClassData	@1
+        M_CWImageCClassData	@2
+        M_CWImageNewClass	@3
+        CWImageClassData	@4
+        CWImageCClassData	@5
+        CWImageNewClass		@6
+
+        M_CWAVCClassData	@7
+        M_CWAVCCClassData	@8
+        M_CWAVCNewClass		@9
+        CWAVCClassData		@10
+        CWAVCCClassData		@11
+        CWAVCNewClass		@12
+
+        M_CWDIBClassData	@13
+        M_CWDIBCClassData	@14
+        M_CWDIBNewClass		@15
+        CWDIBClassData		@16
+        CWDIBCClassData		@17
+        CWDIBNewClass		@18
+
+        M_CWGIFClassData	@19
+        M_CWGIFCClassData	@20
+        M_CWGIFNewClass		@21
+        CWGIFClassData		@22
+        CWGIFCClassData		@23
+        CWGIFNewClass		@24
+
+        M_CWJPGClassData	@25
+        M_CWJPGCClassData	@26
+        M_CWJPGNewClass		@27
+        CWJPGClassData		@28
+        CWJPGCClassData		@29
+        CWJPGNewClass		@30
+
+        M_CWPhotoCDClassData	@31
+        M_CWPhotoCDCClassData	@32
+        M_CWPhotoCDNewClass	@33
+        CWPhotoCDClassData	@34
+        CWPhotoCDCClassData	@35
+        CWPhotoCDNewClass	@36
+
+        M_CWPCXClassData	@37
+        M_CWPCXCClassData	@38
+        M_CWPCXNewClass		@39
+        CWPCXClassData		@40
+        CWPCXCClassData		@41
+        CWPCXNewClass		@42
+
+        M_CWTargaClassData	@43
+        M_CWTargaCClassData	@44
+        M_CWTargaNewClass	@45
+        CWTargaClassData	@46
+        CWTargaCClassData	@47
+        CWTargaNewClass		@48
+
+        M_CWTIFFClassData	@49
+        M_CWTIFFCClassData	@50
+        M_CWTIFFNewClass	@51
+        CWTIFFClassData		@52
+        CWTIFFCClassData	@53
+        CWTIFFNewClass		@54
+
+        M_CWMMotionClassData	@55
+        M_CWMMotionCClassData	@56
+        M_CWMMotionNewClass	@57
+        CWMMotionClassData	@58
+        CWMMotionCClassData	@59
+        CWMMotionNewClass	@60
+
+
+
+IMPORTS
+	M_WPImageFileClassData=PMWP.495
+	M_WPImageFileCClassData=PMWP.494
+	M_WPImageFileNewClass=PMWP.496
+	WPImageFileClassData=PMWP.492
+	WPImageFileCClassData=PMWP.491
+	WPImageFileNewClass=PMWP.493
+
+;	PMWP.M_WPImageFileClassData
+;	PMWP.M_WPImageFileCClassData
+;	PMWP.M_WPImageFileNewClass
+;	PMWP.WPImageFileClassData
+;	WPImageFileCClassData=PMWP.491
+;	PMWP.WPImageFileNewClass
+
+
+
+;	M_WPImageFileClassData=MMPARTS.M_WPImageFileStubClassData
+;	M_WPImageFileCClassData=MMPARTS.M_WPImageFileStubCClassData
+;	M_WPImageFileNewClass=MMPARTS.M_WPImageFileStubNewClass
+;	WPImageFileClassData=MMPARTS.WPImageFileStubClassData
+;	WPImageFileCClassData=MMPARTS.WPImageFileStubCClassData
+;	WPImageFileNewClass=MMPARTS.WPImageFileStubNewClass
+
+

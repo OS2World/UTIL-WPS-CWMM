@@ -1,0 +1,113 @@
+
+/*
+ * CWfli.idl:
+ */
+
+#include <cwvideo.idl>
+
+
+/*
+   CLASS: CWFLI  
+*/
+
+interface M_CWFLI; 
+
+interface CWFLI : CWVideo
+{
+
+    /*
+     * New instance methods
+     *
+     */
+
+#ifdef __SOMIDL__
+  implementation {
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwfli_;
+    externalstem = cwfli;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwfli;           //# specifies the filestem for sc-generated files
+    metaclass = M_CWFLI;
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+    
+
+    passthru C_h_after =  ""
+    "#include \"cwmmres.h\""
+    "";
+
+    /*
+     * Internal instance variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+
+interface M_CWFLI : M_CWVideo
+{
+
+    /*
+     * New class methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwfliM_;
+    externalstem = cwfliM;
+    functionprefix = cwfliM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwfli;           //# specifies the filestem for sc-generated files
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+    wpclsQueryTitle         	: override;
+    wpclsQueryInstanceType  	: override;
+    wpclsQueryInstanceFilter    : override;   
+    wpclsQueryIconData          : override;
+    wpclsQueryDefaultHelp       : override; 
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+
+

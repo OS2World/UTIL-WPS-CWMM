@@ -1,0 +1,121 @@
+
+/*
+ * mmfolder.idl:
+ *
+ *
+ */
+
+#include <wpfolder.idl>           // this is SOM for WPDisk
+
+/*
+
+   CLASS HIERARCHY:
+
+       SOMObject
+         ÀÄÄ WPObject
+*/
+
+interface M_MMFolder;            // Forward Reference
+
+interface MMFolder : WPFolder
+{
+
+    /*
+     * New instance methods:
+     *
+     */
+
+#ifdef __SOMIDL__
+  implementation {
+
+    /*
+     * Class Modifiers:
+     */
+
+    externalprefix = mmfldr_;
+    externalstem = mmfolder;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = mmfolder;           //# specifies the filestem for sc-generated files
+    metaclass = M_MMFolder;
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal instance variables for CWDisk:
+     *
+     */
+PFNWP	oldFrameProc;
+PFNWP	oldContainerProc;
+ULONG   ulCurrentSize;
+ULONG   usLastSelMenuItem;
+    /*
+     * WPDisk methods overridden by CWDisk:
+     *
+     */
+
+	wpOpen :override;
+/*	wpSetupOnce :override;*/
+	wpRestoreState :override;
+	wpSaveState   :override;
+	wpMenuItemSelected :override;
+	wpObjectReady:override;
+/*wpSetup:override;*/
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+interface M_MMFolder : M_WPFolder
+{
+
+    /*
+     * New class methods for M_CWDisk:
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = mmfldrM_;
+    externalstem = mmfldrM;
+    functionprefix = mmfldrM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = mmfolder;           //# specifies the filestem for sc-generated files
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * M_WPFolder methods overridden:
+     *
+     */
+
+    wpclsQueryTitle: override;
+    wpclsQueryIconData          : override;
+    wpclsQueryIconDataN          : override;
+    
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+
+

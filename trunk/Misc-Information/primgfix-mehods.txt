@@ -1,0 +1,138 @@
+Class:  PracticeImage           	0164e160
+Metaclass:  M_PracticeImage     	0164f294
+Parent:  MMImage                 	016507b8
+Replaces:  MMImage
+
+Module:  D:\OS2\DLL\PRIMAGE.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  Practice Image
+Storage class:  WPFileSystem
+
+Default View:  Running (0x04)
+Class Style:  0x80 (NeverPrint)
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	PracticeImage
+  2	 24	MMImage
+  6	  0	WPImageFile
+  0	  8	XFldDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+  1	 12	XWPFileSystem
+ 41	 52	WPFileSystem
+  1	264	CWObject
+ 19	 52	XFldObject
+163	144	WPObject
+ 32	  0	SOMObject
+279	560	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_PracticeImage
+  4	  0	M_MMImage
+  0	  4	M_WPImageFile
+  0	  0	M_XFldDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  0	  0	M_XWPFileSystem
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+  1	  0	M_XFldObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+165	408	total
+
+PracticeImage - No New methods.
+
+PracticeImage - Override methods:
+
+from WPDataFile:
+265  wpQueryAssociatedFileIcon	1eb102a8
+
+from WPObject:
+083  wpQueryDefaultView      	1eb102d2
+
+M_PracticeImage - No New methods.
+
+M_PracticeImage - Override methods:
+
+from M_WPObject:
+112  wpclsQueryDefaultView   	1eb10260
+120  wpclsQueryTitle         	1eb10230
+
+-------------------------------------------------
+
+Class:  PracticeBitmap          	01316904
+Metaclass:  M_PracticeBitmap    	01317af4
+Parent:  MMBitmap                	01318ea8
+
+Module:  D:\OS2\DLL\PRIMAGE.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  Practice Bitmap
+Storage class:  WPFileSystem
+
+Default View:  Running (0x04)
+Class Style:  0 (none)
+File Associations:
+  Name:  *.BMP
+  Type:  Bitmap
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	PracticeBitmap
+  1	 12	MMBitmap
+  0	  8	WPBitmap
+  6	  0	WPImageFile
+  0	  8	XFldDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+  1	 12	XWPFileSystem
+ 41	 52	WPFileSystem
+  1	264	CWObject
+ 19	 52	XFldObject
+163	144	WPObject
+ 32	  0	SOMObject
+278	556	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_PracticeBitmap
+  1	  0	M_MMBitmap
+  0	  4	M_WPBitmap
+  0	  4	M_WPImageFile
+  0	  0	M_XFldDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  0	  0	M_XWPFileSystem
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+  1	  0	M_XFldObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+162	412	total
+
+PracticeBitmap - No New methods.
+
+PracticeBitmap - Override methods:
+
+from WPDataFile:
+265  wpQueryAssociatedFileIcon	1eb10078
+
+from WPObject:
+083  wpQueryDefaultView      	1eb100a2
+
+M_PracticeBitmap - No New methods.
+
+M_PracticeBitmap - Override methods:
+
+from M_WPObject:
+112  wpclsQueryDefaultView   	1eb10030
+120  wpclsQueryTitle         	1eb10000
+

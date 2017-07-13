@@ -1,0 +1,27 @@
+CW-multimedia classes V0.2.4
+(C) Chris Wohlgemuth 2001-2002
+http://www.geocities.com/SiliconValley/Sector/5785/
+http://www.os2world.com/cdwriting
+
+Replacement classes for the MMOS2 classes (image,
+video, audio).
+WPS classes for seemless integration of MP3 and OGG
+files into the WPS. Standard WPS audio menues like
+any other audio file.
+Information page in the settings notebook about audio
+characteristics.
+ID3 page for MP3 files for viewing and setting.
+Audio and ID3 information shown in details view.
+CDTrack class for use with media folder.
+Improved open function. New JPG IO-procedure
+for reading progressive JPG images.
+
+Requires:	OS/2 Warp 4 or eCS, MMOS2 and EMX runtime
+
+cwmm-0_2_4-ger.zip - german version
+cwmm-0_2_4-eng.zip - english version
+
+Licence:
+This package is provided 'as is' for free.
+
+

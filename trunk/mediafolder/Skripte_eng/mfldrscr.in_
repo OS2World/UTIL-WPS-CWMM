@@ -1,0 +1,45 @@
+[APPLICATION]
+NAME Media Player Scripts
+VERSION 0.1.2.0
+COPYRIGHT (C) Chris Wohlgemuth 2002
+HOME http://www.os2world.com/cdwriting
+INTERNALNAME MFLDRSCR
+TOTALSIZE 13564
+INSTALLER 0.1.1.0
+DESCRIPTION REXX scripts for the Media-Folder. Use these scripts to create audio-CDs from MP3 files or to create new playlists from selected tracks. WPS-Wizard V0.2.0 must be installed to use scripts.
+
+[DESCRIPTION]
+DESCRIPTION  REXX scripts for the Media-Folder. Use these scripts to create audio-CDs from MP3 files or to create new playlists from selected tracks. WPS-Wizard V0.2.0 must be installed to use scripts.
+
+[FILES]
+mfldrscr.in_, %TARGET%\Skripte\ ,  F,  1357
+~Burn audio CD, %TARGET%\Skripte\ ,  F,  3914
+~Create playlist, %TARGET%\Skripte\ ,  F,  3266
+~Play time, %TARGET%\Skripte\ ,  F,  1751
+Create ~M3U playlist, %TARGET%\Skripte\ , F, 3276
+
+[OBJECTS]
+Scripts for Media Folderõ,õ <SKRIPTS_CWMediaFolder>õ,õ CWMenuFolderõ,õ <WPSWIZ_CONFIG>õ,õ CLEARMENUCACHE=1;DEFAULTVIEW=ICON;SHOWALLINTREEVIEW=YES;ICONVIEW=NONFLOWED,MINI;HIDECLASSPAGE=1õ,õ update
+~Burn audio CDõ,õ <MFLDR_BURNAUD_SHW>õ,õ WPShadowõ,õ <SKRIPTS_CWMediaFolder>õ,õ SHADOWID=%TARGET%\Skripte\~Burn audio CDõ,õ update
+~Create playlistõ,õ <MFLDR_PLAYLST_SHW>õ,õ WPShadowõ,õ <SKRIPTS_CWMediaFolder>õ,õ SHADOWID=%TARGET%\Skripte\~Create playlistõ,õ update
+~Play timeõ,õ <MFLDR_PLAYTIME_SHW>õ,õ WPShadowõ,õ <SKRIPTS_CWMediaFolder>õ,õ SHADOWID=%TARGET%\Skripte\~Play timeõ,õ update
+Create ~M3U playlistõ,õ <MFLDR_PLAYLSTM3U_SHW>õ,õ WPShadowõ,õ<SKRIPTS_CWMediaFolder>õ,õ SHADOWID=%TARGET%\Skripte\Create ~M3U playlistõ,õ update
+User menu Media-Folderõ,õ <USERMENU_MEDIAFOLDER>õ,õ CWMenuFolderõ,õ <WPSWIZ_CONFIG>õ,õ CLEARMENUCACHE=1;DEFAULTVIEW=ICON;SHOWALLINTREEVIEW=YES;ICONVIEW=NONFLOWED,MINI;HIDECLASSPAGE=1õ,õ update
+Menu configurationõ,õ <MFLDR_MENUCONFIG_SHW>õ,õ WPShadowõ,õ <USERMENU_MEDIAFOLDER>õ,õ SHADOWID=<WPSWIZ_CONFIG>õ,õ update
+Scripts for M3U Playlistsõ,õ <SKRIPTS_CWM3UFolder>õ,õ CWMenuFolderõ,õ <WPSWIZ_CONFIG>õ,õ CLEARMENUCACHE=1;DEFAULTVIEW=ICON;SHOWALLINTREEVIEW=YES;ICONVIEW=NONFLOWED,MINI;HIDECLASSPAGE=1õ,õ update
+~Burn audio CDõ,õ <M3UFLDR_BURNAUD_SHW>õ,õ WPShadowõ,õ <SKRIPTS_CWM3UFolder>õ,õ SHADOWID=%TARGET%\Skripte\~Burn audio CDõ,õ update
+
+
+[SKRIPTS]
+BEFOREINST õ,õ /* Check for WPS-Wizard installation */;call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs';call SysLoadFuncs;ret=SysQueryClassList('classes.');found=0;DO cls=1 to classes.0;	theclass=WORD(classes.cls, 1);	thePath=SUBWORD(classes.cls, 2);	IF TRANSLATE(theClass)='CWMENUFOLDER' THEN DO;		found=1	;		LEAVE;	END;END;;RC=0;IF found=0 THEN DO;		usrdata._mBTitle="Script package installation";		usrData._mBCBTxt="";		usrdata._mBTxt='WPS-Wizard not found. ';		usrdata._mBTxt=usrdata._mBTxt||'You need this aplication (V0.2.0 or higher) if you ';		usrdata._mBTxt=usrdata._mBTxt||'want to use scripts.'||'0d'x;		usrdata._mBTxt=usrdata._mBTxt||'Get it at'||'0d'x||'0d'x;		usrdata._mBTxt=usrdata._mBTxt||'http://www.os2world.com/cdwriting/'||'0d'x||'0d'x;		usrdata._mBTxt=usrdata._mBTxt||'The script package will not be installed.'||'0d'x;		usrData._mBType="OK";		call beep 1000, 100;		ret=ModalFor('usermsgBox');		RC=1;END;;
+
+[INSTALLPROFILES]
+MFLDRSCR õ,õ Media-folder scripts installation õ,õ Installation of additional REXX scripts to make creation of audio-CDs and new playlists easier. The scripts will be inserted into the menu bar of each media folder. WPS-Wizard V0.2.0 must be installed to use this feature.
+
+[MFLDRSCR]
+MFLDRSCR, , ,S,[ ], mfldrscr.in_
+
+[DEFAULTTARGET]
+PATH %APPS%\CWMMOS2\MediaFld
+
+

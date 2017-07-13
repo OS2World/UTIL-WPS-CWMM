@@ -1,0 +1,144 @@
+1. MP3/Ogg Multimedia Audio-Klassen 12.05.02
+--------------------------------------------
+
+Diese Klassen sorgen fr eine nahtlose
+Integration der MMIO-Prozeduren von Russel O'Connor 
+fr MP3- und OGG-Dateien in die WPS. Download der
+DLLs unter:
+
+http://www.math.berkeley.edu/~roconnor/
+
+Nach Installation der Klassen verhalten sich Ogg- und
+MP3-Dateien auf der WPS wie alle anderen Audiodateien
+(z.B. Wavedateien). Sie haben ein eigenes Icon und die
+Mens der brigen Audiodateien. So startet z.B. ein
+Doppelklick die Wiedergabe ein weiterer stoppt sie.
+šber das 'Umsetzen'-Men k”nnen die Dateien einfach
+in Wavedateien umgesetzt werden.
+
+Zus„tzlich wird in die Eigenschaftendialoge aller
+Audiodateien eine Informationsseite ber die Datei
+eingefgt (Samplerate, Spieldauer etc.). Diese Daten
+erscheinen auch in der Detailansicht von Ordnern, wenn
+die Ansicht auf Klasse:CWAudio gesetzt wird.
+
+Im ™ffnen-Men ist zus„tzlich ein Eintrag fr Lautst„rke.
+
+Bei MP3-Dateien lassen sich die ID3-Tags ber den
+Eigenschaftendialog anzeigen und ver„ndern. Die ID3-Tags
+werden darberhinaus in der Detailansicht von Ordnern
+angezeigt.
+
+
+2. Media-Folder und Audio-Referenzen 12.05.02
+---------------------------------------------
+
+Der Media-Folder ist ein Spieler fr alle OS/2
+bekannten Audiodateien. Die blichen Bedienelemente
+sind vorhanden und Playlisten k”nnen einfach durch
+Fallenlassen von Audiodateien auf den Ordner erstellt
+werden.
+
+Es werden dabei Audio-Referenzen erstellt, die sich wie
+normale Referenzen verhalten aber die Details der
+Audiodateien in der Detailansicht des Media-Folders
+anzeigen.
+
+Ebenfalls enthalten ist ein WPS integrierter CD Spieler
+mit FreeDB-Untersttzung.
+
+
+Installation
+------------
+
+Das Archiv in einen Ordner entpacken und anschlieáend
+install.exe starten. Das Programm installiert die Klassen und
+nach einem WPS-Neustart stehen sie zur Verfgung.
+
+NICHT DIE DATEI install.INS ™FFNEN! ANDERNFALLS K™NNTE
+EINE LTERE VERSION DES INSTALLERS VERWENDET WERDEN, FALLS
+DIESE INSTALLIERT IST.
+
+Evtl kann es erforderlich sein, unter Multimedia-
+Konfiguration Typen MP3 und OGG Digital Audio zuzuordnen
+und gleiches mit den Erweiterungen *MP3 und *.OGG zu tun,
+falls die Mens von Audiodateien nicht arbeiten, wie gewnscht.
+
+Das Skript setFolder.cmd setzt die Detailanzeige und das
+Sortierkriterium auf CWAudio, so daá die neuen Informationen
+in der Detailansicht und im Sortierenmen erscheinen. Einfach
+den jeweiligen Ordner auf das Skrip fallen lassen. 
+
+Das Skript setShadow.cmd setzt die Detailanzeige und das
+Sortierkriterium auf CWAudioShadow, so daá die neuen Informationen
+in der Detailansicht und im Sortierenmen auch bei Verwendung
+der neuen Referenzen erscheinen. Einfach den jeweiligen Ordner
+auf das Skrip fallen lassen. 
+
+Probleme
+--------
+
+Bei manchen VBR-MP3s wird die Spielzeit falsch angegeben. Dies
+ist ein Problem der MMIOMP3-Proc nicht der Klassen.
+
+
+Versionen
+---------
+
+0.1.0:
+
+-Erste ”ffentliche Version der Audioklassen.
+
+0.2.0
+
+-Mnemonic fr Lautst„rke-Menpunkt erg„nzt.
+-Die Audioklassen geben zus„tzlich den Typ 'Digital Audio' zurck.
+-Setzen des .TYPE EA, so daá der Digital Audio Spieler ohne weitere Maánahmen mit MP3/OGG Dateien funktioniert.
+-MP3-Daten werden in den EA gecached, damit das ™ffnen von Ordnern schneller geht.
+-ID3 Tags werden mit der richtigen Codepage angezeigt.
+
+-Neue Klassen CWMediaFolder und CWAudioShadow fr das Abspielen v on Audiodateien.
+
+V0.2.1
+
+-Repeat function added
+-new (and improved) sliders
+-Keyboard control added (not for sliders yet)
+-Display for elapsed time, remaining time and ID3 tags (click to switch)
+-Change playtime font by DnD
+-Drag and drop handling rewritten.
+-Statusline added
+-REXX interface added
+-No audio info reading for files on CD to speed up CD opening. 
+
+V0.2.2
+
+-CD player object with FreeDB support added.
+-Some minor fixes.
+
+
+Credits
+-------
+
+Die Icons und Graphiken sind (C) Klaus Staedtler-Przyborski. Vielen Dank auch
+fr furchtloses Betatesten.
+
+
+Lizenz
+------
+
+Diese Klassen drfen frei verwendet werden. Das Copyright verbleibt
+jedoch beim Author. Benutzung ausschlieálich auf eigene
+Gefahr. Es wird KEINE Verantwortung fr Datenverluste, Ehekrisen
+und sonstige unerfreuliche Ereignisse bernommen.
+
+ 
+Author
+------
+
+Diese Klassen sind (C) 2001-2002 Chris Wohlgemuth.
+
+http://www.geocities.com/SiliconValley/Sector/5785/
+http://www.os2world.com/cdwriting
+
+

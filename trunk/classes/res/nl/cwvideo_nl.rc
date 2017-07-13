@@ -1,0 +1,13 @@
+
+STRINGTABLE 
+BEGIN
+;Titles of video classes
+IDSTR_CWVIDEOTITLE       "Digitale video"
+IDSTR_MPGTITLE       	 "MPGVideo.MPG"
+IDSTR_MOVTITLE       	 "MOVVideo.MOV"
+IDSTR_FLITITLE       	 "FLIVideo.FLI"
+IDSTR_AVITITLE       	 "AVIVideo.AVI"
+IDSTR_VIDPLAYERTITLE       "Video Speler"
+
+END
+

@@ -1,0 +1,44 @@
+[APPLICATION]
+NAME CW-Multimedia-Classes 0.2.9
+VERSION 0.2.9.0
+COPYRIGHT (C) Chris Wohlgemuth 2001-2005
+HOME http://www.os2world.com/cdwriting
+INTERNALNAME CWMM
+TOTALSIZE 0
+INSTALLER 0.1.5.0
+DESCRIPTION Neue Multimediaklassen als Ersatz fÅr die Standardklassen mit erweiterten Funktionen. Neue Multimediaklassen fÅr eine nahtlose Integration von MP3- und OGG-Dateien in die WPS. Nach der Installation verhalten sich diese Audiodateien wie alle anderen. So startet ein Doppelklick die Wiedergabe und ein weiterer stoppt sie. Informationen Åber die Datei wie Samplerate, Spielzeit usw. werden in der Detailansicht von Ordnern angezeigt und ebenso in den Einstellungen aller Audiodateien. Die ID3-Tags (V1.0) von MP3-Dateien lassen sich Åber die Einstellungen Ñndern und erscheinen zusÑtzlich in der Detailansicht. Eine neue Media-Ordner Klasse erlaubt das Abspielen von Audiodateien. Es stehen die Åblichen Bedienelemente zur VerfÅgung. Playlisten werden dabei unterstÅtzt. CD-Spieler mit FreeDB-UnterstÅtzung .
+
+[DESCRIPTION]
+DESCRIPTION  Neue Multimediaklassen als Ersatz fÅr die Standardklassen mit erweiterten Funktionen. Neue Multimediaklassen fÅr eine nahtlose Integration von MP3- und OGG-Dateien in die WPS. Nach der Installation verhalten sich diese Audiodateien wie alle anderen. So startet ein Doppelklick die Wiedergabe und ein weiterer stoppt sie. Informationen Åber die Datei wie Samplerate, Spielzeit usw. werden in der Detailansicht von Ordnern angezeigt und ebenso in den Einstellungen aller Audiodateien. Die ID3-Tags (V1.0) von MP3-Dateien lassen sich Åber die Einstellungen Ñndern und erscheinen zusÑtzlich in der Detailansicht. Eine neue Media-Ordner Klasse erlaubt das Abspielen von Audiodateien. Es stehen die Åblichen Bedienelemente zur VerfÅgung. Playlisten werden dabei unterstÅtzt. CD-Spieler mit FreeDB-UnterstÅtzung .
+
+[LICENSE]
+FILE Lizenz
+
+[INSTALLPROFILES]
+CWMMFULL ı,ı Komplettinstallation Media-Ordner UND MM-klassen ı,ı Diese Option installiert die Multimediaklassen und die neuen Audioklassen fÅr eine nahtlose Integration von MP3- und OGG-Dateien in die WPS sowie den Media-Ordner zum Abspielen von Audiodateien und einen CD-Spieler mit FreeDB-UnterstÅtzung.
+CWMM ı,ı Multimediaklassen Installation ı,ı Erweiterte Multimediaklassen und neue Klassen fÅr eine nahtlose Integration von MP3- und OGG-Dateien in die WPS. Nach der Installation verhalten sich diese Audiodateien wie alle anderen. So startet ein Doppelklick die Wiedergabe und ein weiterer stoppt sie. Informationen Åber die Datei wie Samplerate, Spielzeit usw. werden in der Detailansicht von Ordnern angezeigt und ebenso in den Einstellungen aller Audiodateien. Die ID3-Tags (V1.0) von MP3-Dateien lassen sich Åber die Einstellungen Ñndern und erscheinen zusÑtzlich in der Detailansicht.
+MEDIAFLD ı,ı Installation des Media-Ordners (ein Audiospieler) ı,ı Die Media-Folder Klasse kann u.a. als MP3-Spieler verwendet werden. Die Åblichen Bedienelemente sind vorhanden und Playlisten werden unterstÅtzt. Diese Klasse unterstÅtzt alle von OS/2 unterstÅtzten Audiodateien. ZusÑtzlich enthalten ist ein CD-Spieler mit FreeDB-UnterstÅtzung.
+
+[CWMMFULL]
+CWMM, , ,S,[ ], cwmm-0_2_9-ger\CWmm.ins
+SLIDESHW, , ,S,[ ], Slide-Show\slideshowger.ins
+MEDIAFLD, , ,S,[ ], CWMFldr-0_2_9-ger\mfldrger.ins
+MFLDRSCR, , ,S,[ ], CWMFldr-0_2_9-ger\Skripte\mfldrscr.in_
+FREEDBCL, , ,S,[ ], CWMFldr-0_2_9-ger\freedb\freedbgr.ins
+
+[CWMM]
+CWMM, , ,S,[ ], cwmm-0_2_9-ger\CWmm.ins
+SLIDESHW, , ,S,[ ], Slide-Show\slideshowger.ins
+
+[MEDIAFLD]
+MEDIAFLD, , ,S,[ ], CWMFldr-0_2_9-ger\mfldrger.ins
+MFLDRSCR, , ,S,[ ], CWMFldr-0_2_9-ger\Skripte\mfldrscr.in_
+FREEDBCL, , ,S,[ ], CWMFldr-0_2_9-ger\freedb\freedbgr.ins
+
+[DEFAULTTARGET]
+PATH %APPS%\CWMMOS2
+
+[SKRIPTS]
+#This is a dummy entry so a message box appears at the very start
+#of the installation. The archive for Media-Folder contains a skript.
+

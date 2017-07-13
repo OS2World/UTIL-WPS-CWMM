@@ -1,0 +1,127 @@
+
+/*
+ * CWBmp.idl:
+ */
+
+#include <wpbitmap.idl>
+
+/*
+   CLASS: 
+*/
+
+interface M_CWBitmap; 
+
+interface CWBitmap : WPBitmap
+{
+
+    /*
+     * New instance methods
+     *
+     */
+
+	ULONG cwmmAddImageInformationPage(in HWND hwndNotebook);
+    HBITMAP cwmmQuerySmallBitmapHandle(in ULONG ulSize);
+    void cwmmFreeBitmaps();  
+    void cwmmFreeSmallBitmap();
+    PBYTE cwmmQueryBitmapInfoHeader();
+
+#ifdef __SOMIDL__
+  implementation {
+    releaseorder:     	cwmmAddImageInformationPage,
+   cwmmQuerySmallBitmapHandle,
+    cwmmFreeBitmaps, cwmmFreeSmallBitmap, cwmmQueryBitmapInfoHeader;
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwbmp_;
+    externalstem = cwbmp;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwbmp;           //# specifies the filestem for sc-generated files
+    metaclass = M_CWBitmap;
+    dllname = "cwimage.dll";
+    callstyle = oidl;
+
+
+    /*
+     * Internal instance variables
+     *
+     */
+    HBITMAP hBitmapSmall;   /* (Lighttable)Icon size bitmap */
+    ULONG   ulSizeSmallBitmap;
+    PBYTE   pBmpInfoHeader2;
+    char    chrIOProcName[64];
+    BOOL bNoIOProcAvailable;
+    /*
+     * methods overridden 
+     *
+     */
+    wpModifyPopupMenu       : override;
+    wpMenuItemSelected      : override;
+    wpOpen                  : override;
+    wpAddSettingsPages      : override;
+    wpUnInitData:   override;
+    wpInitData:   override;
+    wpQueryDetailsData      : override; 
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+interface M_CWBitmap : M_WPBitmap
+{
+
+    /*
+     * New class methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwbmpM_;
+    externalstem = cwbmpM;
+    functionprefix = cwbmpM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwbmp;           //# specifies the filestem for sc-generated files
+    dllname = "cwimage.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+
+    wpclsQueryDefaultView : override;
+    wpclsQueryIconData          : override;
+    wpclsQueryDetailsInfo   	: override;
+    wpclsInitData   : override;  
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+
+
+

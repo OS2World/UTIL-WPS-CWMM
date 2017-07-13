@@ -1,0 +1,60 @@
+[APPLICATION]
+NAME Media Spieler 0.2.8
+VERSION 0.2.8.0
+COPYRIGHT (C) Chris Wohlgemuth 2001-2004
+HOME http://www.os2world.com/cdwriting
+INTERNALNAME MEDIAFLD
+TOTALSIZE 262417
+INSTALLER 0.1.5.0
+DESCRIPTION Die Media-Folder Klasse kann u.a. als MP3-Spieler verwendet werden. Die Åblichen Bedienelemente sind vorhanden und Playlisten werden unterstÅtzt. Diese Klasse unterstÅtzt alle von OS/2 unterstÅtzten Audiodateien.
+
+[DESCRIPTION]
+DESCRIPTION  Die Media-Folder Klasse kann u.a. als MP3-Spieler verwendet werden. Die Åblichen Bedienelemente sind vorhanden und Playlisten werden unterstÅtzt. Diese Klasse unterstÅtzt alle von OS/2 unterstÅtzten Audiodateien.
+
+[FILES]
+MFLDRGER.INS, %TARGET%\ ,  F,  4090
+bin\createcd.exe, %TARGET%\ ,  F,  1233
+bin\creatobj.cmd, %TARGET%\ ,  F,  1130
+bin\FLDTree.cmd, %TARGET%\ ,  F,  4136
+bin\insTrack.rx, %TARGET%\ ,  F,  1440
+bin\insTrk2.rx, %TARGET%\ ,  F,  1542
+bin\mediafld.dll, %TARGET%\ ,  F,  163070
+bin\mediafld.hlp, %TARGET%\ ,  F,  4139
+bin\mfldr_de.dll, %TARGET%\ ,  F,  18604
+bin\setFolder.cmd, %TARGET%\ ,  F,  696
+bin\setShadow.cmd, %TARGET%\ ,  F,  1046
+bin\trknames.cmd, %TARGET%\ ,  F,  2744
+DLL\progfldr.dll, %?%:\OS2\ ,  F,  33112
+Doc\mediafldr.inf, %TARGET%\ ,  F,  25435
+
+[CLASSES]
+CWProgFolder, %SYSDLL%\progfldr.dll, 
+CWAudioShadow, %TARGET%\bin\mediafld.dll, 
+CWMediaFolder, %TARGET%\bin\mediafld.dll, 
+CWCDFolder, %TARGET%\bin\mediafld.dll, 
+CWM3UFolder, %TARGET%\bin\mediafld.dll, 
+
+[OBJECTS]
+Spielerı,ı <CWMEDIA_FLDR>ı,ı CWMediaFolderı,ı <MMPM2_FOLDER>ı,ı DEFAULTVIEW=DETAILS;DETAILSCLASS=CWAudioShadow;SORTCLASS=CWAudioShadow;DETAILSTODISPLAY=0,1,4,12,13,14,15,16,17,18,19,20,21;SORTBYATTR=6,24,25,26,27,28,29,30,31,32,33;MEDIAFLDRVOLUME=75;ı,ı update
+STARTUP.WAVı,ı <SHW_STARTUP>ı,ı CWAudioShadowı,ı <CWMEDIA_FLDR>ı,ı SHADOWID=%?%:\MMOS2\SOUNDS\STARTUP.WAVı,ı update
+Media-Spieler^Programmierungı,ı <MFLDR_PROGDOC>ı,ı WPProgramı,ı <MMPM2_FOLDER>ı,ı EXENAME=view.exe;PARAMETERS=%TARGET%\Doc\mediafldr.infı,ı update
+Erstelle Media-Spieler-Baum^(Ordner hier fallen lassen)ı,ı <MFLDR_FLDRTREE>ı,ı WPProgramı,ı <MMPM2_FOLDER>ı,ı EXENAME=%TARGET%\bin\FLDTree.cmd;PARAMETERS="%*" "[Ordnername (KEIN Pfad)]"ı,ı update
+Erstelle CD-Objekteı,ı <MFLDR_CREATECDOBJ>ı,ı WPProgramı,ı <MMPM2_FOLDER>ı,ı MINIMIZED=YES;EXENAME=%TARGET%\bin\creatobj.cmd;ı,ı update
+
+[UPDATEOBJECTS]
+<MMPM2_FOLDER>ı,ı OPEN=DEFAULT;
+
+[SKRIPTS]
+BEFOREINST ı,ı /* */call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs';call SysLoadFuncs;ret=SysQueryClassList('classes.');DO cls=1 to classes.0;theclass=WORD(classes.cls, 1);thePath=SUBWORD(classes.cls, 2);	IF TRANSLATE(theClass)='CWPROGFOLDER' THEN DO;		usrdata._mBTitle="Information";		usrData._mBCBTxt="";		usrdata._mBTxt='CWProgFolder Klasse gefunden. Diese Klasse ist Bestandteil ';		usrdata._mBTxt=usrdata._mBTxt||'von Audio/Data-CD-Creator und wird auch vom';		usrdata._mBTxt=usrdata._mBTxt||' Media-Folder benutzt. Dieses Archiv enthÑlt eine korrigierte ';		usrdata._mBTxt=usrdata._mBTxt||'Version dieser DLL. Wenn sie eine Version von Audio/Data-';		usrdata._mBTxt=usrdata._mBTxt||'CD-Creator verwenden, die Ñlter als 0.51 ist, dann antworten Sie YES ';		usrdata._mBTxt=usrdata._mBTxt||'wenn gefragt wird, ob die DLL <progfldr.dll> ersetzt werden soll.';		usrData._mBType="OK";		call beep 1000, 100;		ret=ModalFor('usermsgBox');		LEAVE;	END;end;RC=0;
+AFTERCLASSES ı,ı /* Message for the user */;call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs';call SysLoadFuncs;;RC=0;;call RxMessageBox "Media-Spieler wurde installiert. Denken Sie daran, die WPS nach Abschlu· der Installation neu zu starten.", "Hinweis", "OK", "INFORMATION";
+
+[INSTALLPROFILES]
+MEDIAFLR ı,ı Media-Folder Klasse zum Abspielen von Audiodateien ı,ı Die Media-Folder Klasse kann u.a. als MP3-Spieler verwendet werden. Die Åblichen Bedienelemente sind vorhanden und Playlisten werden unterstÅtzt. Diese Klasse unterstÅtzt alle von OS/2 unterstÅtzten Audiodateien. Ein REXX-Interface kann genutzt werden, wenn WPS-Wizard V0.2.0 installiert ist.
+
+[MEDIAFLR]
+MEDIAFLD, , ,S,[ ], MFLDRGER.INS
+
+[DEFAULTTARGET]
+PATH %APPS%\CWMMOS2\MediaFld
+
+

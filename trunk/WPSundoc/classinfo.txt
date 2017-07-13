@@ -1,0 +1,546 @@
+Warp 4 FP 10
+
+WPFolder instance data in the .CLASSINFO EA:
+
+
+---- Key 0x0b7a (2938 IDKEY_FDRGRIDINFO) ----
+
+Type:		0x0004 (binary)
+Size:		8
+ 
+Contains the grid spacing for folders. Apparently two ULONG. First is
+horizontal, second vertical spacing.
+
+Example:
+
+04 00 7A 0B 08 00 FF 00 00 00 80 00 00 00 
+^^^^^ ^^^^^ ^^^^^ ^^^^^^^^^^^ ^^^^^^^^^^^
+|     |     |     |           |
+|     |     |     |           Vertical spacing
+|     |     |     Horizontal spacing
+|     |     Size
+|     Key
+Binary
+
+
+---- Key 0x0b74 (2932 Sort class) ----
+
+FF D0 FF FF FF D0 FF FF FF 04 00 74 0B 10 00 08  ÿÐÿÿÿÐÿÿÿ..t....
+                           ^^^^^ ^^^^^ ^^^^^ ^^
+                           |     |     |     |
+                           |     |     |     Unknown
+                           |     |     Size, Init: 0x10, will be modified: already seen: 0x22     
+                           |     Key
+                           Binary     
+
+00 57 50 49 6D 61 67 65 46 69 6C 65 00 FF FF     .WPImageFile.ÿÿ.
+^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^^ 
+|  |                                   |
+|  Sort Class name with ending 0       unknown
+Unknown
+
+
+---- Key 0x0b71 (2929 Sort page) ----
+
+                                             04
+00 71 0B 18 00 FE FF FF FF 00 00 00 00 FE FF FF  .q...þÿÿÿ....þÿÿ
+   ^^^^^ ^^^^^ ^^^^^^^^^^  ^^
+   |     |     |           |
+   |     |     |           Always sort: 01=yes, 00=no
+   |     |     Init: FE FF FF FF, later standard sort e.g. 05 00 00 00
+   |      Size 0x18 (24)
+   Key
+
+FF 00 00 00 00 00 00 00 00 00 00 00 00 04 00 7A  ÿ..............z
+0B 08 00 00 00 00 00 00 00 00 00 02 00 7B 0B 04  .............{..
+00 00 00 00 00 09 00 48 00 57 50 4F 62 6A 65 63  .......H.WPObjec
+74 00 04 00 0B 00 20 00 01 00 00 00 00 00 00 00  t..... .........
+09 00 00 00 80 00 00 00 00 00 00 00 00 00 00 00  ....€...........
+03 00 00 00 02 00 00 00 04 00 0C 00 0E 00 02 00  ................
+32 31 37 33 36 34 40 32 30 00 FF FF 04 00 04 00  217364@20.ÿÿ....
+08 00 FF FF FF FF FF FF FF FF 00 00 00 00 00 00  ..ÿÿÿÿÿÿÿÿ......
+
+
+---- Key 0x0b73 (2931 IDKEY_FDRLONGARRAY) ----
+
+Type:		0x0004 (binary)
+Size:		0x54 (84)
+
+Example:
+
+00 00 04 00 73 0B 54 00 80 00 30 00 64 00 50 00  ....s.T.€.0.d.P.
+      ^^^^^ ^^^^^ ^^^^^ ^^          ^^    ^^
+      |     |     |     |           |     |
+      |     |     |     |           |     View (2. Tree): 0x50: with lines
+      |     |     |     |           |                     0x10: without lines
+      |     |     |     |           Tree Icon: 0x64: small
+      |     |     |     |                      0x44: normal
+      |     |     |     |                      0x41: invisible
+      |     |     |     |
+      |     |     |     View (first view page): 22h: Non flowed, single column, small icons  
+      |     |     |                             02h: Non flowed, single column, normal icons
+      |     |     |                             01h: Non flowed, single column, invisible icons
+      |     |     |                             32h: Non flowed, multiple columns, small icons
+      |     |     |                             12h: Non flowed, multiple columns, normal icons
+      |     |     |                             11h: Non flowed, multiple columns, invisible icons
+      |     |     Size (84 dec)                 04h: Flowed as placed normal icons
+      |     |                                   24h: Flowed as placed small icons 
+      |     Key                                 80h: Gridded 
+      Binary
+
+08 80 30 00 03 00 00 00 00 00 00 00 FF FF FF FF  .€0.........ÿ
+            ^^
+            |
+            
+
+ÿÿÿ
+00 00 00 40 EF FF FF FF EF FF FF FF DD FF FF FF  ...@ïÿÿÿïÿÿÿÝÿÿÿ
+EF FF FF FF EF FF FF FF DD FF FF FF 00 00 00 40  ïÿÿÿïÿÿÿÝÿÿÿ...@
+00 00 00 40 00 00 00 40 00 00 00 00 02 00 00 00  ...@...@........
+D0 FF FF FF D0 FF FF FF D0 FF FF FF 04 00 74 0B  ÐÿÿÿÐÿÿÿÐÿÿÿ..t.
+                                 ^^
+                                  |
+                          Last byte
+
+
+----------------------
+Data structures:
+
+#define INSTANCEDATA_TYPE_LONG		0x0002
+#define INSTANCEDATA_TYPE_STRING	0x0003
+#define INSTANCEDATA_TYPE_BINARY	0x0004
+
+/* Every block of instance data starts with this struct.
+   The data follows directly after this header     */
+typedef struct _InstanceDataHead
+{
+USHORT	usType;				/* One of the INSTANCEDATA_TYPE_* constants */
+USHORT	usKey;				/* key used in wpSaveXXX() */
+USHORT	usLength;			/* size of data followingalue */
+}INSTANCEDATAHEAD;
+
+
+/* The following structs represent the different types
+   of instance data */
+typedef struct _wpInstanceDataLong
+{
+USHORT	usType;				/* 0x0002 */
+USHORT	usKey;				/* key used in wpSaveLong() */
+USHORT	usLength;			/* size of value, always 0x0004 */
+ULONG	ulValue;
+}INSTANCEDATALONG;
+
+
+typedef struct _wpInstanceDataString
+{
+USHORT	usType;				/* 0x0003 */
+USHORT	usKey;				/* key used in wpSaveString() */
+USHORT	usLength;			/* String length including terminating 0 */
+UCHAR	ucData[];			/* The string including a terminating 0 */
+}INSTANCEDATASTRING;
+
+
+typedef struct _wpInstanceDataBinary
+{
+USHORT	usType;				/* 0x0004 */
+USHORT	usKey;				/* key used in wpSaveData() */
+USHORT	usLength;			/* Size of data block */
+BYTE	data[];                         /* Data */
+}INSTANCEDATABINARY;
+
+-----------------
+
+/* Instance data block for a class. For every class in the chain of classes
+there may be one of these blocks. The current class is the first, the parent class
+instance data follows, then the grand parent class instance data etc. Last one is
+always WPObject. */
+typedef struct _InstanceDataBlockHead
+{
+USHORT	usClassNameLength;			/* Length of class name including terminating 0 */
+USHORT	usDataSize;				/* Size of data block starting after this structure */
+UCHAR	ucClassName[];				/* Array holding classname with terminating 0 */
+}DATABLOCKHEAD;
+						/* Data block with variable length is immediately following. 
+						   This data block consist of several INSTANCEDATALONG/STRING/BINARY */
+
+/* The above structure is documented in wpobject.idl as WPSRCLASSBLOCK: */
+
+      /* Notes: The class name immediately follows the control block. The
+       *        first instance variable control block immediately follows
+       *        this.
+       */
+      typedef struct _WPSRCLASSBLOCK
+      {
+        SHORT   ClassNameLength;       /* Length of class name, including the
+                                        * .. null terminator. This must be a
+                                        * .. SHORT and must be at the beginning
+                                        * .. of the structure.
+                                        */
+        USHORT  IVarLength;            /* Length of instance variable
+                                        * .. information, including the two-
+                                        * .. byte null terminator
+                                        */
+      } WPSRCLASSBLOCK;
+
+----------------
+
+struct CLASSINFO
+{
+const USHORT	usEAType;			/* Always EAT_BINARY: 0xFFFE */
+USHORT		usSize;				/* Size of data starting with usUnknown1 */
+USHORT		usUnknown1;
+USHORT		usUnknown2;
+USHORT		usDataSize;			/* Data size following the class name (starting with usOffset) */
+USHORT		usUnknown3;
+UCHAR		ucClassName[];			/* The class of this object including the terminating 0, e.g. WPDataFile */
+USHORT		usOffset;			/* Offset to WPObject instance data block starting at usOffset */
+USHORT		usUnknown4;                     /* Seems to be always 0x19c9 (c9 19)*/
+USHORT		usUnknown5;			/* Seems to be always 0x0010 */
+USHORT		usUnknown6;			/* Always the same as usUnknown4 0x19c9 */
+USHORT		usSizeInstanceData;		/* Size of all INSTANCEDATABLOCKs + sizeof(usSizeInstanceData2) + sizeof(usUnknown6)
+						   + sizeof(usUnknown7) + sizeof(usUnknown8) + sizeof(usSizeInstanceData) */
+USHORT		usUnknown7;			/* Always the same as usUnknown4 0x19c9 */
+USHORT		usSizeInstanceData2;		/* Size of all INSTANCEDATABLOCKs including 6 terminating zero bytes.
+						   Each INSTANCEDATABLOCK structure is followed by a data block of variable length. */
+USHORT		usUnknown8;			/* Seems to be alway 0x0000 (?) */
+INSTANCEDATABLOCK	instanceDataBlocks[];	/* One or more instance data blocks. At least the WPObject data block is present. */
+						/* The WPObject instance data block is always the last one. Attention: the instance
+						   data blocks may have different sizes! */
+const UCHAR		ucZero[6];		/* 6 terminating zero bytes */
+}
+
+Remark:
+All data is stored in INTEL byte order in the EA, this means lowByte-HighByte.
+See example.
+
+******************* Examples *************************************************
+
+FE FF  72 00  10 00 00 00 5F 00 00 00 57 50 44 61  þÿr....._...WPDa
+^^^^^  ^^^^^              ^^^^^       ^^^^^^^^^^^
+|      |                  |           |
+|      |                  |           Class
+|      |                  |
+|      |                  Total data size following starting after the class name and
+|      |                  including the 6 terminating 0 bytes.
+|      |
+|      |  
+|      Size of data following (here 114 dez). Total size of EA is this + 4 (FE FF + size-word)
+|
+|
+EAT_BINARY
+
+                      |----------------------------
+74 61 46 69 6C 65 00  |10 00   2F 15 10 00 2F 15 59  taFile.../.../.Y
+^^^^^^^^^^^^^^^^^^^^  |__________________________________________________Controllblock. Always 16 bytes
+                       ^^^^^               ^^^   ^^  
+                       |                   |     |  
+                       |                   |     Data size til end starting here * (???)
+                       |                   * <-----------------------------------|
+                       |
+                       Total data to Begin of WPObject data block (length word)
+
+--------------------|
+00 2F 15 4F 00 00 00|  09 00 3C 00 57 50 4F 62 6A  ./.O.....<.WPObj
+____________________|  ^^^^^ ^^^^^ ^^^^^^^^^^^^^^
+^^       ^^^^^         |     |     |
+         |             |     |     |
+         |             |     |     Class name in wpSave*() with terminating 0
+         |             |     |
+         |             |     Data in WPObject data block starting after the name (including 0).
+         |             |
+         |             WPObject starts here: Length of name including terminating 0.
+         |             In this example it's the first instance data block.
+         |
+         Size of following data beginning with first class instance data block including terminating 6 zero bytes
+
+
+65 63 74 00   04 00 0B 00 20 00 04 00 00 00 00 00  ect..... .......
+^^^^^^^^^^^   ^^^^^ ^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^
+                    |     |     |
+                    |     |     Value
+                    |     |
+                    |     Length
+                    |
+                    Key (4001 dez)
+
+00 00 09 00 00 00 10 00 00 00 00 00 00 00 00 00  ................
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+00 00 03 00 00 00 02 00 00 00   04 00 0C 00 02 00  ................
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ^^^^^ ^^^^^ ^^^^^
+Value cont.                     |     |     |
+                                |     |     Length
+                                |     |
+                                |     Key
+                                |
+                                Value is ??
+
+FF FF 04 00 04 00 08 00 FF FF FF FF FF FF FF FF  ÿÿ......ÿÿÿÿÿÿÿÿ
+^^^^^ ^^^^^ ^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^
+|     |     |     |     |
+|     |     |     |     Value
+|     |     |     |
+|     |     |     Length
+|     |     |
+|     |     Key
+|     |
+|     Value type
+|
+Value
+
+
+00 00 00 00 00 00                                ......          
+^^^^^^^^^^^^^^^^^
+|
+Terminating 6 zero bytes
+
+
+*********************************
+
+
+
+
+
+******************************************************
+
+Complex example:
+
+
+FE FF  FE 00  00 00 00 00 F0 00 00 00 43 57 4D 50  þÿþ.....ð...CWMP
+^^^^^  ^^^^^              ^^^^^       ^^^^^^^^^^^
+|      |                  |           |
+|      |                  |           Class
+|      |                  |
+|      |                  Total data size following starting after the class name and
+|      |                  including the 6 terminating 0 bytes.
+|      |
+|      |  
+|      Size of data following (here 254 dez). Total size is this + 4 (FE FF + size-word)
+|
+|
+EAT_BINARY
+
+
+33 00   A1 00 2D 15 10 00 2D 15 EA 00 2D 15 E0 00  3.¡.-...-.ê.-.à.
+^^^^^   ^^^^^                               ^^^^^
+|       |                                   |
+|       |                                   Size of all instance data blocks following including terminating zero bytes
+|       |
+|       161 Offset to WPObject starting from this word. See below for an explanation
+|
+Class(cont.)
+
+
+00 00 08 00 85 00 43 57 41 75 64 69 6F 00   02 00  ....….CWAudio...
+      ^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^   ^^^^^
+      |     |     |                         |
+      |     |     |                         Value is a LONG ->wpSaveLong()
+      |     |     |
+      |     |     Class name in wpSave*() with terminating 0
+      |     |
+      |     Total length of data for this name starting after the terminating 0
+      |
+      Length of Class name incl. terminating 0
+
+
+A1 0F 04 00 56 01 00 00    02 00 A3 0F 04 00 44 AC  ¡...V.....£...D¬
+^^^^^ ^^^^^ ^^^^^^^^^^^    ^^^^^ ^^^^^ ^^^^^ ^^^^^
+|     |     |              |     |     |     |
+|     |     |              |     |     |     Value
+|     |     |              |     |     |
+|     |     |              |     |     Length
+|     |     |              |     |
+|     |     |              |     Key
+|     |     |              |
+|     |     |              Value is a LONG
+|     |     |
+|     |     Value (here: 342dez)
+|     |
+|     Length
+|
+Key (4001 dez)
+
+
+00 00   02 00 A2 0F 04 00 02 00 00 00   02 00 A4 0F  ....¢.........¤.
+^^^^^   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ^^^^^^^^^^
+|       |                               |
+|       LONG value                      LONG value
+|
+Value cont.
+
+04 00 10 00 00 00   02 00 A5 0F 04 00 67 8A 62 00  ........¥...gŠb.
+^^^^^^^^^^^^^^^^^   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|                   |
+LONG value cont.    LONG value
+
+02 00 AC 0F 04 00 8B 3A 05 00   03 00 A6 0F 12 00  ..¬...‹:....¦...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ^^^^^ ^^^^^ ^^^^^
+|                               |     |    |
+LONG value                      |     |    Length of String in wpSaveString() including terminating 0
+                                |     |
+                                |     Key for wpSaveString
+                                |
+                                Value is a string
+
+
+57 6F 75 6E 64 20 49 6E 20 4D 79 20 48 65 61 72  Wound In My Hear
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|
+Value of wpSaveString() (+ terminating 0)
+
+74 00    03 00 A7 0F 0B 00 50 72 6F 70 61 67 61 6E  t...§...Propagan
+^^^^^    ^^^^^ ^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^
+         |     |     |          |
+         |     |     |          String value of wpSaveString()...
+         |     |     |
+         |     |     Length of string including 0
+         |     |
+         |     Key for wpSaveString (here: 4007dez)
+         |
+         Value is a string ->wpSaveString()
+
+
+64 61 00    03 00 A8 0F 05 00 31 32 33 34 00   03 00  da...¨...1234...
+^^^^^^^^    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ^^^^^
+            |                                  |
+            |                                  String value
+            |
+            String with length 5 (including 0)
+ 
+
+A9 0F 01 00 00   03 00 AA 0F 01 00 00   03 00 AB 0F  ©......ª......«.
+^^^^^ ^^^^^ ^^   ^^^^^^^^^^^^^^^^^^^^   ^^^^^^^^^^^
+|     |     |    |                      |
+|     |     |    Empty string           Empty string
+|     |     |
+|     |     |
+|     |     String (here: only terminating 0)
+|     |
+|     Length of string (here: 1 this means an empty string, only the terminating 0)
+|
+Key
+
+*************** Now following WPObject instance data ******************
+
+01 00 00   09 00 3C 00 57 50 4F 62 6A 65 63 74 00  .....<.WPObject.
+^^^^^^^^   ^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^
+           |     |     |
+           |     |     Class name with terminating 0
+           |     |
+           |     Total length of this data block starting after the name
+           |
+           Length of Class name incl. terminating 0
+
+04 00 0B 00 20 00 EF BB 00 00 00 00 00 00 09 00  .... .ï»........
+^^^^^ ^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|     |     |     |
+|     |     |     Value
+|     |     |
+|     |     Length
+|     |
+|     Key
+|
+
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00  ................
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+00 00 02 00 00 00   04 00 0C 00 02 00 FF FF   04 00  ............ÿÿ..
+^^^^^^^^^^^^^^^^^   ^^^^^ ^^^^^ ^^^^^ ^^^^^   ^^^^^
+|                   |     |     |     |       |
+Value               |     |     |     |       Value is a ??
+                    |     |     |     |       
+                    |     |     |     Value
+                    |     |     |
+                    |     |     Length (here 2)
+                    |     |
+                    |     Key
+                    |
+                    Value is a ??
+
+04 00 08 00 FF FF FF FF FF FF FF FF   00 00 00 00  ....ÿÿÿÿÿÿÿÿ....
+^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^   ^^^^^^^^^^^              
+|     |     |                         |
+|     |     Value                     ??? 6 terminating 0 bytes
+|     |
+|     Length
+|
+Key
+
+00 00                                            ..              
+^^^^^
+|
+???
+
+---------------------------------
+
+Example 1:
+
+FE FF E9 00 10 00 00 00 D3 00 00 00 57 50 43 6F  þÿé.....Ó...WPCo
+6D 6D 61 6E 64 46 69 6C 65 00
+                             --> 6E 00 2D 15 10 00  mmandFile.n.-...
+                                 ^^^^^
+                                 |
+                                 110 Offset to WPObject
+
+    2D 15 CD 00 2D 15 C3 00 00 00 0E 00 4C 00 57 50  -.Í.-.Ã.....L.WP
+    50 72 6F 67 72 61 6D 46 69 6C 65 00 04 00 0A 00  ProgramFile.....
+    14 00 00 00 00 00 02 00 00 00 00 00 00 00 10 00  ................
+    00 00 01 00 00 00 04 00 0B 00 02 00 FF FF 04 00  ............ÿÿ..
+    06 00 24 00 00 00 00 00 00 00 00 00 00 00 00 00  ..$.............
+    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+    00 00 00 00 00 00 00 00 <--
+
+                            09 00 52 00 57 50 4F 62  ..........R.WPOb
+                            ^^^^^
+                            |
+                            WPObject class name length
+
+    6A 65 63 74 00 04 00 0B 00 20 00 04 00 00 00 00  ject..... ......
+
+
+00 00 00 0B 00 00 00 10 00 00 00 00 00 00 00 00  ................
+00 00 00 03 00 00 00 02 00 00 00 04 00 0C 00 18  ................
+00 02 00 32 30 37 30 39 34 40 32 30 2C 32 31 37  ...207094@20,217
+32 33 33 40 32 30 00 FF FF 04 00 04 00 08 00 FF  233@20.ÿÿ......ÿ
+FF FF FF FF FF FF FF 00 00 00 00 00 00           ÿÿÿÿÿÿÿ......   
+
+------------------
+
+Example 2:
+
+FE FF 7E 00 00 00 00 00 6B 00 00 00 57 50 44 61  þÿ~.....k...WPDa
+74 61 46 69 6C 65 00
+                    --> 10 00 BE 14 10 00 BE 14 65  taFile...¾...¾.e
+                        ^^^^^
+                        |
+                        16 Offset to WPObject starting from this word
+
+00 BE 14 5B 00 00 00 <--
+
+                        09 00 48 00 57 50 4F 62 6A  .¾.[.....H.WPObj
+                        ^^^^^
+                        |
+                        WPObject class name length
+
+65 63 74 00 04 00 0B 00 20 00 00 10 00 00 00 00  ect..... .......
+00 00 09 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+00 00 03 00 00 00 02 00 00 00 04 00 0C 00 0E 00  ................
+02 00 32 30 39 31 32 37 40 32 30 00 FF FF 04 00  ..209127@20.ÿÿ..
+04 00 08 00 FF FF FF FF FF FF FF FF 00 00 00 00  ....ÿÿÿÿÿÿÿÿ....
+00 00                                            ..              
+
+
+------------------------------------------------------------------
+
+WPS bugs
+---------
+
+wpFreeMem(somSelf, pByte) doesn't check for pByte==NULL causing trap.
+
+wpAllocMem() may block if called from within a folder frame procedure. For example
+when owner drawing icons in lighttable folders a method in CW-Multimedia classes
+is called to get a bitmap handle. If that method uses wpAllocMem() internally to
+keep track of data a deadlock occurs. Replacing wpAllocMem() with malloc() solves the
+issue.
+

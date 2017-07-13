@@ -1,0 +1,95 @@
+#define  INCL_GRAPHICBUTTON   /* need this for the graphic buttons control */
+#define  INCL_BITMAP
+
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include <sw.h>
+
+#include "mediafolderres.h"
+#include "version.h"
+#include "build.h"
+
+#ifdef ECS
+MENU ID_MENUABOUT
+BEGIN
+   MENUITEM  "" , ID_MENUSEPARATOR, MIS_SEPARATOR
+   MENUITEM "~Product Information",ID_ABOUTITEM   
+END
+#else
+MENU ID_MENUABOUT
+BEGIN
+   MENUITEM  "" , ID_MENUSEPARATOR, MIS_SEPARATOR
+   MENUITEM "~Media Folder Information",ID_ABOUTITEM   
+END
+#endif
+
+MENU ID_MBMENUSKRIPTS
+BEGIN
+
+END
+
+MENU ID_MENUVIEWCOMPACT
+BEGIN
+   MENUITEM  "~Compact" , ID_MENUVIEWCOMPACT
+END
+
+MENU  ID_MENUTIMECONTEXT
+BEGIN
+	MENUITEM "~Elapsed time"   ,          ID_MENUITEMELAPSED
+	MENUITEM "~Remaining time" ,          ID_MENUITEMREMAINING
+	MENUITEM "~Track information" ,       ID_MENUITEMID3
+END
+
+MENU  ID_MENUFILE
+BEGIN
+	MENUITEM "~Save"   ,          	ID_MENUITEMSAVE
+	MENUITEM ""           ,                 ID_MENUSEPARATOR, MIS_SEPARATOR               
+	MENUITEM "~Exit" ,          		ID_MENUITEMEXIT
+END
+
+
+STRINGTABLE
+BEGIN
+IDSTR_CLOSETITLE "Confirmation"
+IDSTR_CLOSETEXT  "There's currently a song playing. Do you really want to stop playing and close the player?"
+IDSTRSETTING_TOOLBAR "Toolbar"
+IDSTRS_NOFONTPALETTE          "Can't open the font palette. It may have lost it's ID. Check your INI files."
+IDSTRS_NOCOLORPALETTE         "Can't open the color palette. It may have lost it's ID. Check your INI files."
+IDSTRS_MEDIAFLDRSETTINGS   "Media-Folder setup"
+#ifdef ECS
+IDSTR_MENUABOUT          "Product Information"
+#else
+IDSTR_MENUABOUT          "Media-Folder Information"
+#endif
+IDSTR_MENUCOMPACT        "~Compact"
+IDSTR_STATUSCOLLECTING   "Collecting audio tracks..."
+IDSTR_MENUSKRIPTS        "Scripts and tools"
+IDSTR_STATUSTIME1        "%d:%02d mins"
+IDSTR_STATUSTIME2        "%d h %d:%02d mins"
+IDSTR_STATUSTIME3        "%d day(s) %d h %d:%02d mins"
+IDSTR_STATUSTIME4        "%d Audiofiles   -   %d%s%03d%s%03d Bytes   -   %s"
+IDSTR_STATUSTIME5        "%d Audiofiles   -   more than 4 GBytes"
+
+IDSTR_TITLEMEDIAFOLDER   "Media player"
+IDSTR_TITLECDFOLDER      "CD player"
+
+IDSTR_STARTINGTRACK      "Starting track..."
+IDSTR_TITLEM3UFOLDER    "M3U editor"
+IDSTR_M3UCLOSETEXT      "Playlist changed. Save it now?"
+IDSTR_MENUFILE           "~File"
+IDSTR_PLAYLISTVIEWTITLE  "Playlist Editor"
+IDSTR_LAUNCHPADFLYOVER   "Launchpad: Drop objects here"
+IDSTR_VIEWPAGENAME       "~View"
+IDSTR_VIEWCOMPACT        "Compact"
+
+END
+
+rcinclude "mediafolder_en.dlg"
+
+#ifdef ECS
+rcinclude "about_ecs_en.dlg"
+#else
+rcinclude "about_en.dlg"
+#endif
+

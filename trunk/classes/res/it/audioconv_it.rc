@@ -1,0 +1,19 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+
+STRINGTABLE
+BEGIN
+
+IDSTR_CONVERTCHANNELS    "%d canali"
+IDSTR_CONVERTSAMPLERATE  "%d Hz"
+IDSTR_CONVERTPLAYTIME    "Durata: %d:%02d minuti"
+IDSTR_CONVERTDIALOGERROR "Impossibile trovare il modello dialogo! Verificare la corretta installazione della procedura."
+IDSTR_CONVERTNOSPACETITLE   "Converti in wave"
+IDSTR_CONVERTNOSPACETEXT   "Non c'Š spazio sufficiente per il file decodificato. Scegliere un percorso differente, con almeno %d MB di spazio disco libero."
+IDSTR_INSTALLERRORTITLE  "Problema di installazione"
+IDSTR_AUDIOBROWSETITLE   "Nome file audio"
+
+END
+

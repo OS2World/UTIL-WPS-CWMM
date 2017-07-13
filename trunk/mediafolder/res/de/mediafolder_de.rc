@@ -1,0 +1,93 @@
+#define  INCL_GRAPHICBUTTON   /* need this for the graphic buttons control */
+#define  INCL_BITMAP
+
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include <sw.h>
+
+#include "mediafolderres.h"
+#include "version.h"
+#include "build.h"
+
+#ifdef ECS
+MENU ID_MENUABOUT
+BEGIN
+   MENUITEM  "" , ID_MENUSEPARATOR, MIS_SEPARATOR
+   MENUITEM "~Produktinformation",ID_ABOUTITEM   
+END
+#else
+MENU ID_MENUABOUT
+BEGIN
+   MENUITEM  "" , ID_MENUSEPARATOR, MIS_SEPARATOR
+   MENUITEM "~Media-Ordner-Information",ID_ABOUTITEM   
+END
+#endif
+
+MENU ID_MBMENUSKRIPTS
+BEGIN
+
+END
+
+MENU ID_MENUVIEWCOMPACT
+BEGIN
+   MENUITEM  "~Kompakt" , ID_MENUVIEWCOMPACT
+END
+
+MENU  ID_MENUTIMECONTEXT
+BEGIN
+	MENUITEM "~Aktuelle Position"   ,          ID_MENUITEMELAPSED
+	MENUITEM "~Verbleibende Zeit" ,          ID_MENUITEMREMAINING
+	MENUITEM "~Track-Information" ,       ID_MENUITEMID3
+END
+
+MENU  ID_MENUFILE
+BEGIN
+	MENUITEM "~Sichern"   ,          	ID_MENUITEMSAVE
+	MENUITEM ""           ,                 ID_MENUSEPARATOR, MIS_SEPARATOR               
+	MENUITEM "~Beenden" ,          		ID_MENUITEMEXIT
+END
+
+STRINGTABLE
+BEGIN
+IDSTR_CLOSETITLE "Best„tigung"
+IDSTR_CLOSETEXT  "Es wird gerade eine Audiodatei abgespielt. Wirklich Wiedergabe stoppen und Spieler schlieáen?"
+IDSTRSETTING_TOOLBAR 		"Toolbar"
+IDSTRS_NOFONTPALETTE          "Can't open the font palette. It may have lost it's ID. Check your INI files."
+IDSTRS_NOCOLORPALETTE         "Can't open the color palette. It may have lost it's ID. Check your INI files."
+IDSTRS_MEDIAFLDRSETTINGS   "Media-Ordner Einstellungen"
+#ifdef ECS
+IDSTR_MENUABOUT          "Produktinformation"
+#else
+IDSTR_MENUABOUT          "Media-Ordner Information"
+#endif
+IDSTR_MENUCOMPACT        "~Kompakt"
+IDSTR_STATUSCOLLECTING   "Suche Audiotracks..."
+IDSTR_MENUSKRIPTS        "Skripts"
+IDSTR_STATUSTIME1        "%d:%02d min"
+IDSTR_STATUSTIME2        "%d h %d:%02d min"
+IDSTR_STATUSTIME3        "%d Tag(e) %d h %d:%02d min"
+IDSTR_STATUSTIME4        "%d Audiodateien   -   %d%s%03d%s%03d Bytes   -   %s"
+IDSTR_STATUSTIME5        "%d Audiodateien   -   mehr als 4 GBytes"
+
+IDSTR_TITLEMEDIAFOLDER   "Media-Spieler"
+IDSTR_TITLECDFOLDER      "CD Spieler"
+IDSTR_STARTINGTRACK      "Starte Track..."
+IDSTR_TITLEM3UFOLDER     "M3U-Editor"
+IDSTR_M3UCLOSETEXT       "Playlist wurde bearbeitet. Jetzt Speichern?"
+IDSTR_MENUFILE           "~Datei"
+IDSTR_PLAYLISTVIEWTITLE  "Playlist-Editor"
+IDSTR_LAUNCHPADFLYOVER   "Launchpad: Objekte hier ablegen"
+IDSTR_VIEWPAGENAME       "~Anzeige"
+IDSTR_VIEWCOMPACT        "Kompakt"
+
+END
+
+rcinclude "mediafolder_de.dlg"
+
+#ifdef ECS
+rcinclude "about_ecs_de.dlg"
+#else
+rcinclude "about_de.dlg"
+#endif
+

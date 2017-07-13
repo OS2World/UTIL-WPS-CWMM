@@ -1,0 +1,134 @@
+
+/*
+ * CWCDTrack.idl:
+ */
+
+#include <cwaudio.idl>
+
+/*
+   CLASS: 
+*/
+
+interface M_CWCDTrack; 
+
+interface CWCDTrack : CWAudio
+{
+
+    /*
+     * New instance methods
+     *
+     */
+
+#ifdef __SOMIDL__
+  implementation {
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwcdtrack_;
+    externalstem = cwcdtrack;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwcdtrack;           //# specifies the filestem for sc-generated files
+    metaclass = M_CWCDTrack;
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+/*    releaseorder:
+    passthru C_h_after =  ""
+    "";
+*/
+
+    /*
+     * Internal instance variables
+     *
+     */
+   
+    ULONG ulTrackNum;
+
+    /*
+     * methods overridden 
+     *
+     */
+/*    wpQueryDetailsData      : override;
+    wpRestoreState            : override;  
+    wpAddSettingsPages        : override;
+    wpObjectReady             : override; */
+    wpQueryFileSize           : override;
+    wpSetupOnce               : override;
+    wpSetup                   : override;
+    wpAddFileMenuPage         : override;
+    wpAddFile1Page            : override;
+    wpAddFile2Page            : override;
+    wpAddFile3Page            : override;
+    wpAddFileTypePage         : override;
+    wpFilterPopupMenu         : override;
+    wpModifyPopupMenu         : override;
+    wpInsertPopupMenuItems    : override;
+    cwmmQueryTrackInfo        : override;
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+interface M_CWCDTrack : M_CWAudio
+{
+
+    /*
+     * New class methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwcdtrackM_;
+    externalstem = cwcdtrackM;
+    functionprefix = cwcdtrackM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwcdtrack;           //# specifies the filestem for sc-generated files
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+    wpclsQueryStyle   	        : override; 
+    wpclsQueryTitle   	        : override;
+    wpclsQueryInstanceType  	: override;
+    wpclsQueryDefaultHelp       : override;
+/*
+    wpclsQueryInstanceFilter    : override;   
+    wpclsQueryIconData          : override;
+
+    wpclsInitData               : override;
+*/
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+
+
+
+

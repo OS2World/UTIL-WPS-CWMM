@@ -1,0 +1,72 @@
+[1]
+installed yes
+
+[1]
+errortext An error occured during execution of this program. Send a notice to the author with the message below attached.
+#Or even better try to fix it on your own using the provided source code and send a patch.
+
+[1]
+error Fehler
+
+[1]
+ok ~Ok
+
+[1]
+fullscreen ~Fullscreen
+
+[1]
+next ~>>
+
+[1]
+previous ~<<
+
+[1]
+start ~Start
+
+[1]
+stop Sto~p
+
+[1]
+adddir Add ~Dir...
+
+[1]
+removedir ~Remove Dir
+
+[1]
+quit ~Quit
+
+[1]
+random R~andom
+
+[1]
+pause ~Pause
+
+[1]
+directories Directories
+
+[1]
+settings Settings
+
+[1]
+time Time (s):
+
+[1]
+main Slide Show
+
+[1]
+question Question
+
+[1]
+questiontext There's no WPS object for the Slide Show. Do you want me to create one on your desktop?
+
+[1]
+wpsobject Slide Show
+
+[1]
+continue ~Continue
+
+[1]
+help ~Help
+
+[1]
+helptext === Help for keys === 0ax 0ax General keys 0ax 0ax F1 0t2x This Help 0ax 0ax Cursor right 0t2x Next Picture 0ax 0ax Cursor left 0t2x Previous Picture 0ax 0ax SPACE 0t2x Pause/Continue 0ax 0ax 0ax During windowed mode: 0ax 0ax ESC 0t2x Close window 0ax 0ax RETURN 0t2x Fullscreen 0ax 0ax S 0t2x Show controls 0ax 0ax H 0t2x Hide controls 0ax 0ax 0ax During fullscreen: 0ax 0ax ESC 0t2x Back to windowed mode

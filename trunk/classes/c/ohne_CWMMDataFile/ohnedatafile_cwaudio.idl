@@ -1,0 +1,153 @@
+
+/*
+ * CWAudio.idl:
+ */
+
+#include <mmaudio.idl>
+
+#define SIZE_PLAYTIME    11
+#define SIZE_SAMPLERATE  7
+#define SIZE_CHANNELS    2
+#define SIZE_BPS         3
+
+/*
+   CLASS: CWAudio - replacement class for MMAudio 
+*/
+
+interface M_CWAudio; 
+
+interface CWAudio : WPDataFile
+{
+
+    /*
+     * New instance methods
+     *
+     */
+	ULONG cwmmAddWaveInformationPage(in HWND hwndNotebook);
+    BOOL  cwmmSetTrackInfo(in char* chrString, in ULONG ulValue, in int iWhich);
+    ULONG  cwmmQueryTrackInfo(inout char* chrString, in ULONG ulSize, in int iWhich);
+    void   cwmmPlayTrack(in BOOL bPlay);
+#ifdef __SOMIDL__
+  implementation {
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwaudio_;
+    externalstem = cwaudio;
+    majorversion = 1;
+    minorversion = 1;
+    filestem = cwaudio;           //# specifies the filestem for sc-generated files
+    metaclass = M_CWAudio;
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+    releaseorder:
+                cwmmAddWaveInformationPage,
+                cwmmSetTrackInfo,
+                cwmmQueryTrackInfo,
+                cwmmPlayTrack;
+    passthru C_h_after =  ""
+    "#include \"cwmmres.h\""
+    "";
+
+    /*
+     * Internal instance variables
+     *
+     */
+    ULONG  ulPlaySecs;
+    ULONG  ulSampleRate;
+    ULONG  ulChannels;  
+    ULONG  ulBPS;
+    ULONG   ulFileSize;
+    BOOL bNeedSaving;
+    char chrPlayTime[SIZE_PLAYTIME];
+    char chrSampleRate[SIZE_SAMPLERATE];
+    char chrChannels[SIZE_CHANNELS];
+    char chrBPS[SIZE_BPS];
+
+    char id3Name[33+30+1]; /* 63 chars. ID3 allows 30 */
+    char id3Artist[33+30+1];
+    char id3Album[33+30+1];
+    char id3Year[4+1];
+    char id3Comment[30+1];
+    char id3Genre[30+1];
+    
+    HWND hwndObjectPlay;
+    ULONG ulPreviousView;
+    /*
+     * methods overridden 
+     *
+     */
+
+    wpAddSettingsPages      : override;
+    wpQueryDetailsData      : override;   	
+    wpRestoreState          : override;
+    wpSaveState             : override;
+    wpModifyPopupMenu       : override;
+    wpMenuItemSelected      : override;
+    wpObjectReady           : override;
+    wpRefresh               : override;
+    wpSetup                 : override;
+    wpOpen                  : override;
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+
+interface M_CWAudio : M_WPDataFile
+{
+
+    /*
+     * New class methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwaudioM_;
+    externalstem = cwaudioM;
+    functionprefix = cwaudioM_;
+    majorversion = 1;
+    minorversion = 1;
+    filestem = cwaudio;           //# specifies the filestem for sc-generated files
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+    wpclsCreateDefaultTemplates : override;
+    wpclsQueryDetailsInfo   	: override;   
+    wpclsQueryTitle         	: override;   
+    wpclsInitData   	        : override;   
+    wpclsUnInitData   	        : override;
+    wpclsQueryDefaultView  : override;   
+    wpclsQueryIconData          : override;
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+

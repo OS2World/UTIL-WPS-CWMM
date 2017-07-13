@@ -1,0 +1,16 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+MENU  ID_MENUTIMECONTEXT
+BEGIN
+	MENUITEM "V~erstreken tijd"   ,          ID_MENUITEMELAPSED
+	MENUITEM "~Resterende tijd" ,          ID_MENUITEMREMAINING
+	MENUITEM "~Spoor informatie" ,         ID_MENUITEMID3
+END
+
+STRINGTABLE
+BEGIN
+IDSTR_MASTERVOLUMEITEM "Hoofd ~volume"
+END
+

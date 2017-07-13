@@ -1,0 +1,89 @@
+[APPLICATION]
+NAME CW-Multimedia Classes 0.2.5
+VERSION 0.2.5.0
+COPYRIGHT (C) Chris Wohlgemuth 2001-2002
+HOME http://www.os2world.com/cdwriting
+INTERNALNAME CWMM
+TOTALSIZE 747027
+INSTALLER 0.1.5.0
+DESCRIPTION Multimedia classes for replacing the classes coming with MMOS2. More robust operation and improved feature set. New classes to integrate MP3 and OGG files seemlessly into the WPS. After installation these files behave like any other audio file. For example a doubleclick starts playing. Information about the audio file (samplerate, playtime etc.) is shown in the details view of folders and in the settings notebook. The ID3 tags (V1.0) of MP3 files are changeable using a page of the settings notebook and also appear in the details view of folders.
+
+[DESCRIPTION]
+DESCRIPTION  Multimedia classes for replacing the classes coming with MMOS2. More robust operation and improved feature set. New classes to integrate MP3 and OGG files seemlessly into the WPS. After installation these files behave like any other audio file. For example a doubleclick starts playing. Information about the audio file (samplerate, playtime etc.) is shown in the details view of folders and in the settings notebook. The ID3 tags (V1.0) of MP3 files are changeable using a page of the settings notebook and also appear in the details view of folders.
+
+[LICENSE]
+FILE License
+
+[FILES]
+cwmm.dll, %TARGET%\ ,  F,  365673
+cwmm.hlp, %TARGET%\ ,  F,  2982
+cwmm.ins, %TARGET%\ ,  F,  5843
+FILE_ID.DIZ, %TARGET%\ ,  F,  710
+license, %TARGET%\ ,  F,  489
+Readme.eng, %TARGET%\ ,  F,  5186
+bin\audconv.exe, %TARGET%\ ,  F,  14423
+bin\audfldr.cmd, %TARGET%\ ,  F,  504
+bin\imgconv.exe, %TARGET%\ ,  F,  12375
+bin\imgfldr.cmd, %TARGET%\ ,  F,  504
+bin\installmm.cmd, %TARGET%\ ,  F,  8626
+bin\uninstmm.cmd, %TARGET%\ ,  F,  7559
+bin\volume.exe, %TARGET%\ ,  F,  13376
+DLL\GBM.DLL, %?%:\MMOS2\ ,  F,  279468
+DLL\JPEGIO.DLL, %?%:\MMOS2\ ,  F,  27769
+DLL\JPEGIO.SYM, %?%:\MMOS2\ ,  F,  1540
+
+[CLASSES]
+CWMMDataFile, %TARGET%\cwmm.dll, 
+CWAudio, %TARGET%\cwmm.dll, 
+CWMP3, %TARGET%\cwmm.dll, 
+CWOGG, %TARGET%\cwmm.dll, 
+CWWAV, %TARGET%\cwmm.dll, 
+CWAIF, %TARGET%\cwmm.dll, 
+CWAU, %TARGET%\cwmm.dll, 
+CW_AU, %TARGET%\cwmm.dll, 
+CWIFF, %TARGET%\cwmm.dll, 
+CWSNDF, %TARGET%\cwmm.dll, 
+CWVOC, %TARGET%\cwmm.dll, 
+CWCDTrack, %TARGET%\cwmm.dll, 
+CWMIDI, %TARGET%\cwmm.dll, 
+CWVideo, %TARGET%\cwmm.dll, 
+CWAVI, %TARGET%\cwmm.dll, 
+CWFLI, %TARGET%\cwmm.dll, 
+CWMOV, %TARGET%\cwmm.dll, 
+CWMPG, %TARGET%\cwmm.dll, 
+CWImage, %TARGET%\cwmm.dll, 
+CWAVC, %TARGET%\cwmm.dll, 
+CWDIB, %TARGET%\cwmm.dll, 
+CWGIF, %TARGET%\cwmm.dll, 
+CWJPG, %TARGET%\cwmm.dll, 
+CWPhotoCD, %TARGET%\cwmm.dll, 
+CWPCX, %TARGET%\cwmm.dll, 
+CWTarga, %TARGET%\cwmm.dll, 
+CWTIFF, %TARGET%\cwmm.dll, 
+CWMMotion, %TARGET%\cwmm.dll, 
+CWBitmap, %TARGET%\cwmm.dll, WPBitmap
+CWMMDisk, %TARGET%\cwmm.dll, WPDisk
+MMFolder, %TARGET%\cwmm.dll, 
+
+[OBJECTS]
+Volumeõ,õ <MMPM2_MMVOLUME>õ,õ WPProgramõ,õ <MMPM2_FOLDER>õ,õ EXENAME=%TARGET%\bin\volume.exe;õ,õ update
+CD-Playerõ,õ <MMPM2_CDPLAYER>õ,õ WPProgramõ,õ <MMPM2_FOLDER>õ,õ EXENAME=cdpm.exeõ,õ update
+
+[SKRIPTS]
+BEFOREINST õ,õ /* Message for the user */;call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs';call SysLoadFuncs;;RC=0;;usrdata._mBTitle="Installation";usrData._mBCBTxt="";usrdata._mBTxt='Did you make a copy of JPEGIO.DLL in the directory MMOS2\DLL?';usrdata._mBTxt=usrdata._mBTxt||'0d'x||'0d'x||'NO will abort the installation.';usrData._mBType="YESNO";call beep 1000, 100;ret=ModalFor('usermsgBox');IF TRANSLATE(ret)='NO' THEN rc=1;
+AFTERCOPY õ,õ /* Load all the Rexx Util functions */;call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs';call SysLoadFuncs;call RxFuncAdd 'RxWinReplaceObjectClass', 'mmparts', 'RxWinReplaceObjectClass';;deinstalling = '-R';;/* First uninstall the standard MM-stuff */;MMClasses.   = '';MMClasses.1  = 'MMDataFile';MMClasses.2  = 'MMImage';MMClasses.3  = 'MMAudio';MMClasses.4  = 'MMVideo';MMClasses.5  = 'MMMIDI';MMClasses.6  = 'MMTarga';MMClasses.7  = 'MMTIFF';MMClasses.8  = 'MMGIF';MMClasses.9  = 'MMPCX';MMClasses.10 = 'MMPhotoCD';MMClasses.11 = 'MMAVC';MMClasses.12 = 'MMMMotion';MMClasses.13 = 'MMDIB';MMClasses.14 = 'MMDevice';MMClasses.15 = 'MMCDDevice';MMClasses.16 = 'MMLVDDevice';MMClasses.17 = 'MMVolume';MMClasses.18 = 'MMVOC';MMClasses.19 = 'MM_AU';MMClasses.20 = 'MMAU';MMClasses.21 = 'MMAIF';MMClasses.22 = 'MMIFF';MMClasses.23 = 'MMSNDF';MMClasses.24 = 'MMAVI';MMClasses.25 = 'MMFLI';MMClasses.26 = 'MMMPG';MMClasses.27 = 'MMJPG';MMClasses.28 = 'MMWAV';MMClasses.29 = 'MMMOV';MMClasses.30 = 'MMFolder';MMClasses.31 = 'MMFinder';;x = 1;;;do while MMClasses.x <> ''   /* loop until no more classes */;   if deinstalling = '-R' then;      if SysDeregisterObjectClass(MMClasses.x) then;         say MMClasses.x 'class deregistration successful';      else;         say MMClasses.x 'class deregistration failed';   else;      if SysRegisterObjectClass(MMClasses.x, "mmparts") then;         say MMClasses.x 'class registration successful';      else;         say MMClasses.x 'class registration failed';   x = x + 1;end;;/* Do MMBitmap Replacement Class */;;if deinstalling = '-R' then;   do;      if RxWinReplaceObjectClass('WPBitmap','MMBitmap', '0') then;         say 'UnReplace MMBitmap successful';      else;         say 'UnReplace MMBitmap failed';;      if SysDeregisterObjectClass('MMBitmap') then;         say 'MMBitmap class deregistration successful';      else;         say 'MMBitmap class deregistration failed';;   end;;rc=SysDestroyObject('<MMPM2_MMVOLUME>');;RC=0;;
+
+[INSTALLPROFILES]
+CWMM õ,õ Install new multimedia classes for WPS õ,õ Install new multimedia classes for replacing the classes coming with MMOS2. More robust operation and improved feature set. New classes to integrate MP3 and OGG files seemlessly into the WPS. After installation these files behave like any other audio file. For example a doubleclick starts playing. Information about the audio file (samplerate, playtime etc.) is shown in the details view of folders and in the settings notebook. The ID3 tags (V1.0) of MP3 files are changeable using a page of the settings notebook and also appear in the details view of folders.
+
+[CWMM]
+CWMM, , ,S,[ ], cwmm.ins
+
+[DEFAULTTARGET]
+PATH %APPS%\CWMMOS2\CWMM
+
+[INI]
+USER õ,õ CWMM õ,õ audioconverter õ,õ %TARGET%\bin\audconv.exe õ,õ YES
+USER õ,õ CWMM õ,õ imageconverter õ,õ %TARGET%\bin\imgconv.exe õ,õ YES
+
+

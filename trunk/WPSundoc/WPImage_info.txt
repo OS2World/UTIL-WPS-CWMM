@@ -1,0 +1,18 @@
+              // now we have the WPImageFile...
+                // in any case, LOCK it so it won't go dormant
+                // behind our butt
+                _wpLockObject(pobjImage);
+
+                // now we need to return a HBITMAP... unfortunately
+                // WPImageFile does NO reference counting whatsover
+                // when doing _wpQueryBitmapHandle, but will create
+                // a new HBITMAP for every call, which is just plain
+                // stupid. So that's what we need the image cache
+                // for: create only one HBITMAP for every image file,
+                // no matter how many times it is used...
+
+                // so check if we can find it in the cache
+                if (fLocked = LockImages())
+                {
+                    PLISTNODE pNode = lstQueryFirstNode(&G_llImages);
+                    while (pNode)

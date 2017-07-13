@@ -1,0 +1,13 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+STRINGTABLE
+BEGIN
+IDSTR_TYPEAUDIO       "Audio"
+IDSTR_TYPEIMAGE       "Image"
+IDSTR_TYPEVIDEO       "Video"
+IDSTR_AUDIOINFOTEXT   "Play time:\t%02d:%02d\n\nSamplerate:\t%d\n\nBits per sample:\t%d\n\nChannels:\t%d"
+IDSTR_NOMMTEMPLATEFLDRTITLE "Error during file creation"
+IDSTR_NOMMTEMPLATEFLDR "Multimedia template folder can't be found. It may has lost the object ID <MMPM2_MMTEMPLATEFOLDER>."
+END

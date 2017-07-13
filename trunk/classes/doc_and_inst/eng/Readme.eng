@@ -1,0 +1,102 @@
+CW-MM classes
+-------------
+This package is a complete replacement for the
+multimedia classes coming with MMOS2. The convert menu
+is enhanced and the image classes are more robust WRT
+broken image files or buggy IO-procs. The limitations
+of the JPG-IO proc are still there. This procedure crashes
+on some images and the only way to resolve is a restart of
+the WPS. To overcome this limitiation a new JPGIO-IO procedure
+is included.
+
+Two classes are for seemless integration of the
+MMIO procedures for MP3 and OGG files written by
+Russel O'Connor.
+Get these procedures from:
+
+http://www.math.berkeley.edu/~roconnor/
+
+After installation Ogg- and MP3 files are treated the
+same way by the WPS as the other audio files. They have
+their own Icons and the same menus as for example
+wave files. A doubleclick starts playback another one
+stops it. The convert menu item helps you decoding the
+file to wave without any other program. 
+
+The settings notebook of every audio file gets a new
+page added describing the audio characteristics like
+playtime or samplerate. This data is also shown in the
+details view of folders if set to class:CWAudio.
+
+There's also a new open-item for volume.
+You may view and change the ID3 tags of MP3 files
+using the settings notebook. These tags are also shown
+in the details view.
+
+
+Additional features
+-------------------
+With the following keys in OS2.ini you may specify
+the programs to use when opening audio files. These
+programs must be PM programs.
+
+CWMM->audioplayer-><Name of program>
+CWMM->audioeditor-><Name of program>
+
+The following keys specify the videoplayer to use for
+MPG and AVI files:
+
+CWMM->aviplayer-><Name of program>
+CWMM->mpgplayer-><Name of program>
+
+The following key specifies the image editor to use when
+selecting the apropriate menu:
+
+CWMM->imageeditor-><Name of program>
+
+Use this key to enable details for image files on CD. Use
+only with fast drives.
+
+CWMM->useNewImgClsFeaturesOnCD->1
+
+Note: The keynames are case sensitive.
+
+
+Installation:
+-------------
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Make a backup of your INI files !
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Follow the instructions in the Readme of the root directory of the distribution.
+
+
+Credits
+-------
+
+The Icons are (C) Klaus Staedtler-Przyborski. Thanks for fearless
+beta testing.
+
+
+License
+--------
+
+Theses classes are free to use but copyrighted. Use them on your own
+risk. If they burn your house or destroy your data it's all your
+fault.
+
+
+Author
+------
+
+These classes are
+
+(C) Chris Wohlgemuth 2001-2003
+
+http://www.geocities.com/SiliconValley/Sector/5785/
+http://www.os2world.com/cdwriting
+
+
+

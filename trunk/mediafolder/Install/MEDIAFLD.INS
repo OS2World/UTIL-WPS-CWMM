@@ -1,0 +1,61 @@
+[APPLICATION]
+NAME Media Player 0.2.8
+VERSION 0.2.8.0
+COPYRIGHT (C) Chris Wohlgemuth 2001-2004
+HOME http://www.os2world.com/cdwriting
+INTERNALNAME MEDIAFLD
+TOTALSIZE 261552
+INSTALLER 0.1.5.0
+DESCRIPTION The Media-Folder class can be used as an MP3 player. It has the usual play controls and playlist support. This player supports any audio file known to OS/2. A REXX interface is available if WPS-wizard is installed.
+
+[DESCRIPTION]
+DESCRIPTION  The Media-Folder class can be used as an MP3 player. It has the usual play controls and playlist support. This player supports any audio file known to OS/2. A REXX interface is available if WPS-wizard is installed.
+
+[FILES]
+MEDIAFLD.INS, %TARGET%\ ,  F,  3871
+bin\createcd.exe, %TARGET%\ ,  F,  1233
+bin\creatobj.cmd, %TARGET%\ ,  F,  1130
+bin\FLDTree.cmd, %TARGET%\ ,  F,  4136
+bin\insTrack.rx, %TARGET%\ ,  F,  1440
+bin\insTrk2.rx, %TARGET%\ ,  F,  1542
+bin\mediafld.dll, %TARGET%\ ,  F,  163070
+bin\mediafld.hlp, %TARGET%\ ,  F,  3548
+bin\mfldr_en.dll, %TARGET%\ ,  F,  18549
+bin\setFolder.cmd, %TARGET%\ ,  F,  696
+bin\setShadow.cmd, %TARGET%\ ,  F,  1046
+bin\trknames.cmd, %TARGET%\ ,  F,  2744
+DLL\progfldr.dll, %?%:\OS2\ ,  F,  33112
+Doc\mediafldr.inf, %TARGET%\ ,  F,  25435
+
+[CLASSES]
+CWProgFolder, %SYSDLL%\progfldr.dll, 
+CWAudioShadow, %TARGET%\bin\mediafld.dll, 
+CWMediaFolder, %TARGET%\bin\mediafld.dll, 
+CWCDFolder, %TARGET%\bin\mediafld.dll, 
+CWM3UFolder, %TARGET%\bin\mediafld.dll, 
+
+[OBJECTS]
+Playerõ,õ <CWMEDIA_FLDR>õ,õ CWMediaFolderõ,õ <MMPM2_FOLDER>õ,õ DEFAULTVIEW=DETAILS;DETAILSCLASS=CWAudioShadow;SORTCLASS=CWAudioShadow;DETAILSTODISPLAY=0,1,4,12,13,14,15,16,17,18,19,20,21;SORTBYATTR=6,24,25,26,27,28,29,30,31,32,33;MEDIAFLDRVOLUME=75;õ,õ update
+STARTUP.WAVõ,õ <SHW_STARTUP>õ,õ CWAudioShadowõ,õ <CWMEDIA_FLDR>õ,õ SHADOWID=%?%:\MMOS2\SOUNDS\STARTUP.WAVõ,õ update
+Media-Player^Programming tutorialõ,õ <MFLDR_PROGDOC>õ,õ WPProgramõ,õ <MMPM2_FOLDER>õ,õ EXENAME=view.exe;PARAMETERS=%TARGET%\Doc\mediafldr.infõ,õ update
+Create Media folder tree^(Drop folder here)õ,õ <MFLDR_FLDRTREE>õ,õ WPProgramõ,õ <MMPM2_FOLDER>õ,õ EXENAME=%TARGET%\bin\FLDTree.cmd;PARAMETERS="%*" "[Folder name (NO path)]"õ,õ update
+Create CD objectsõ,õ <MFLDR_CREATECDOBJ>õ,õ WPProgramõ,õ <MMPM2_FOLDER>õ,õ MINIMIZED=YES;EXENAME=%TARGET%\bin\creatobj.cmd;õ,õ update
+
+
+[UPDATEOBJECTS]
+<MMPM2_FOLDER>õ,õ OPEN=DEFAULT;
+
+[SKRIPTS]
+BEFOREINST õ,õ /* */call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs';call SysLoadFuncs;ret=SysQueryClassList('classes.');DO cls=1 to classes.0;theclass=WORD(classes.cls, 1);thePath=SUBWORD(classes.cls, 2);	IF TRANSLATE(theClass)='CWPROGFOLDER' THEN DO;		usrdata._mBTitle="Information";		usrData._mBCBTxt="";		usrdata._mBTxt='CWProgFolder class found. This class comes with ';		usrdata._mBTxt=usrdata._mBTxt||'Audio/Data-CD-Creator and is also used by the  ';		usrdata._mBTxt=usrdata._mBTxt||'Media-Folder. This package contains a bugfixed ';		usrdata._mBTxt=usrdata._mBTxt||'version of this DLL. If you use an Audio/Data-';		usrdata._mBTxt=usrdata._mBTxt||'CD-Creator release older than 0.51 answer YES ';		usrdata._mBTxt=usrdata._mBTxt||'when asked to replace the DLL <progfldr.dll>.  ';		usrData._mBType="OK";		call beep 1000, 100;		ret=ModalFor('usermsgBox');		LEAVE;	END;end;RC=0;
+AFTERCLASSES õ,õ /* Message for the user */;call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs';call SysLoadFuncs;;RC=0;;call RxMessageBox "Media folder installed. Remember to restart the WPS after installation is finished.", "Hinweis", "OK", "INFORMATION";
+
+[INSTALLPROFILES]
+MEDIAFLR õ,õ Media-Folder class for playing any audio file õ,õ The Media-Folder class can be used as an MP3 player. It has the usual play controls and playlist support. This player supports any audio file known to OS/2.
+
+[MEDIAFLR]
+MEDIAFLD, , ,S,[ ], MEDIAFLD.INS
+
+[DEFAULTTARGET]
+PATH %APPS%\CWMMOS2\MediaFld
+
+

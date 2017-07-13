@@ -1,0 +1,113 @@
+
+/*
+ * cw_au.idl:
+ */
+
+#include <cwaudio.idl>
+
+
+/*
+   CLASS: 
+*/
+
+interface M_CW_AU; 
+
+interface CW_AU : CWAudio
+{
+
+    /*
+     * New instance methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cw_au_;
+    externalstem = cw_au;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cw_au;           //# specifies the filestem for sc-generated files
+    metaclass = M_CW_AU;
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+
+    /*
+     * Internal instance variables
+     *
+     */
+
+
+    /*
+     * methods overridden 
+     *
+     */
+
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+interface M_CW_AU : M_CWAudio
+{
+
+    /*
+     * New class methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cw_auM_;
+    externalstem = cw_auM;
+    functionprefix = cw_auM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cw_au;           //# specifies the filestem for sc-generated files
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+    wpclsQueryInstanceType  	: override;
+    wpclsQueryInstanceFilter    : override;   
+
+    wpclsQueryDefaultHelp       : override; 
+    wpclsQueryTitle   	        : override;   
+    wpclsQueryIconData          : override;
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+
+
+
+

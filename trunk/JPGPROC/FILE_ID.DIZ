@@ -1,0 +1,22 @@
+JPEG IO-procedure V0.1.0 (freeware)
+(C) Chris Wohlgemuth 2002
+
+http://www.geocities.com/SiliconValley/Sector/5785/
+http://www.os2world.com/cdwriting
+
+This IO-procedure is a drop in replacement for the
+image file loading/writing procedure coming with MMOS/2.
+It supports progressive JPEG files which are not
+loadable with the default DLL.
+Full source included.
+
+
+Prerequsites:
+Warp 4 and above (not tested with Warp 3 but will probably work)
+MMOS/2
+
+
+License:
+Freeware under a BSD-style license. See Readme.txt for
+more.
+

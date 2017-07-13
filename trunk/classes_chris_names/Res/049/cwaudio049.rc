@@ -1,0 +1,117 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include "cwmmres.h"
+
+rcinclude "cwaudio049.dlg"
+
+ICON ID_ICONCWAUDIOFILE  "../Icons_audio/cwaudio.ico"
+ICON ID_ICONMP3FILE      "../Icons_audio/MP3.ico"
+ICON ID_ICONOGGFILE      "../Icons_audio/OGG.ico"
+ICON ID_ICONWAVFILE      "../Icons_audio/WAV.ico"
+
+ICON ID_ICONAIFFILE      "../Icons_audio/AIF.ico"
+ICON ID_ICONAUFILE       "../Icons_audio/AU.ico"
+ICON ID_ICON_AUFILE      "../Icons_audio/_AU.ico"
+ICON ID_ICONIFFFILE      "../Icons_audio/IFF.ico"
+ICON ID_ICONSNDFFILE     "../Icons_audio/SNDF.ico"
+ICON ID_ICONVOCFILE      "../Icons_audio/VOC.ico"
+ICON ID_ICONMIDIFILE     "../Icons_audio/MIDI.ico"
+ICON ID_ICONAUDIOSTREAM  "../Icons_audio/audiostream.ico"
+
+ICON ID_ICONLIGHTTABLE   "../Icons_mm/mmfolder.ico"
+ICON ID_ICONLIGHTTABLE2  "../Icons_mm/mmfolder2.ico"
+
+MENU ID_MENU_VOLUME
+BEGIN
+        MENUITEM "~LautstÑrke",ID_MENU_VOLUME       
+END
+
+MENU ID_MENU_START
+BEGIN
+        MENUITEM "~Start",ID_MENU_START       
+END
+
+MENU ID_MENU_STOP
+BEGIN
+        MENUITEM "~Stopp", ID_MENU_STOP       
+END
+
+MENU ID_MENU_EDITOR
+BEGIN
+        MENUITEM "~Audioeditor", ID_MENU_EDITOR       
+END
+
+MENU ID_MENU_PLAYER
+BEGIN
+        MENUITEM "S~pieler", ID_MENU_PLAYER
+END
+
+MENU ID_MENU_CONVERT
+BEGIN
+	SUBMENU  "~Umsetzen in",ID_MENU_CONVERT
+	BEGIN
+        MENUITEM "~WAV (RIFF WAVE Digital Audio)", ID_ITEM_CONVERT
+	END
+END
+
+MENU ID_MENUICONSIZE
+BEGIN
+;   MENUITEM  "" , ID_MENUICONSIZE, MIS_SEPARATOR
+   MENUITEM "Normale Symbole", ID_NORMALICONSITEM
+   MENUITEM  "50 * 50" , ID_50X50ITEM
+   MENUITEM  "100 * 100" , ID_100X100ITEM
+   MENUITEM  "150 * 150" , ID_150X150ITEM
+   MENUITEM  "200 * 200" , ID_200X200ITEM
+   MENUITEM  "250 * 250" , ID_250X250ITEM
+END
+
+STRINGTABLE 
+BEGIN
+ID_WAVEINFOPAGENAME "~Audio Information"
+ID_ID3TAGSPAGENAME  "~ID3 Tags"
+ID_TRACKNAMEPAGENAME "~Trackname"
+IDSTR_TRACKNAME      "Trackname"
+
+IDSTR_PLAYTIME      "Spielzeit"
+IDSTR_SAMPLERATE    "Samplerate"
+IDSTR_CHANNELS      "KanÑle"
+IDSTR_BPS           "Bits pro Sample"
+
+IDSTR_BITRATE       "Bitrate"
+IDSTR_VBR           "VBR"
+
+IDSTR_TITLE         "Titel"
+IDSTR_ARTIST        "Interpret"
+IDSTR_ALBUM         "Album"
+IDSTR_YEAR          "Jahr"
+IDSTR_COMMENT       "Kommentar"
+IDSTR_GENRE         "Genre"
+
+IDSTR_CWMMDATAFILETITLE "MM-Datei"
+IDSTR_HELPLIBRARY      "MMPARTS.HLP"
+;Titles of audio classes
+IDSTR_CWAUDIOTITLE   "Digital Audio"
+IDSTR_AIFTITLE       "AIFAudio.AIF"
+IDSTR_AUTITLE        "AUAudio.AU"
+IDSTR__AUTITLE       "_AUAudio._AU"
+IDSTR_IFFTITLE       "IFFAudio.IFF"
+IDSTR_SNDFTITLE      "SNDAudio.SND"
+IDSTR_VOCTITLE       "VOCAudio.VOC"
+IDSTR_WAVTITLE       "WAVAudio.WAV"
+IDSTR_OGGTITLE       "OGGAudio.OGG"
+IDSTR_MP3TITLE       "MP3Audio.MP3"
+IDSTR_MIDITITLE       "MIDI.MID"
+IDSTR_LIGHTTABLETITLE "Leuchttisch"
+
+IDSTR_ICONSIZEMENU    "Symbolgrî·e"
+;Used as an information when starting and audio file from the WPS
+IDSTR_STARTINGTRACK      "Starte Track..."
+;Title for audiofile scanning window
+IDSTR_AUDIOSCANNING     "öberprÅfe Audiodatei..."
+IDSTR_STREAMURLPAGENAME "~URL-Angabe"
+END
+
+rcinclude "cwvideo049.rc"
+rcinclude "cwimage049.rc"
+

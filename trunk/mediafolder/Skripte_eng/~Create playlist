@@ -1,0 +1,110 @@
+/* Create a playlist from all selected tracks */
+
+/* Load Rexxutil functions */
+call RxFuncAdd 'SysLoadFuncs', 'RexxUtil', 'SysLoadFuncs'
+call SysLoadFuncs
+
+QC_FIRST=0
+QC_NEXT=1
+QC_LAST=2
+
+/* Check if we are executing */
+if ARG(1)\='/EXECUTE' THEN EXIT
+
+/* The media folder running this skript */
+mFldr=ARG(2)
+/* And the frame handle */
+frameHandle=ARG(3)
+
+/*Get the container handle */
+container=WPSWizCallWinFunc( "winQueryContainerHWND", frameHandle)
+
+if container=0 THEN DO
+    rc=RxMessageBox("Cannot get container handle!", "",'OK', "Information")
+     EXIT
+END
+
+pRec=WPSWizCallWinFunc( "winQueryContRecEmphasis", container, 16 , 1)
+
+a=0
+tracks.0=0
+DO WHILE (pRec\=0 & pRec\=-1)
+	/* Get object pointer */
+	obj=WPSWizCallWinFunc( "winObjectFromPRec", pRec)
+	/* Follow shadows to file system object */
+	obj=MFldrCallFunc( "cwGetFileSystemObject", mFldr, obj)
+	/* Check if it's an audio object */
+	IF MFldrCallFunc( "cwIsA", obj, "CWAudio")\=0 THEN DO
+	        a=a+1
+		tracks.a._obj=obj
+	END
+	pRec=WPSWizCallWinFunc( "winQueryContRecEmphasis", container, pRec , 1)
+	tracks.0=a
+END
+
+if tracks.0=0 THEN DO
+	rc=RxMessageBox("No audio tracks selected.", "Information",'OK')
+	EXIT
+END
+
+/* Try to find the desktop folder */
+
+/* Get the persistent object handle */
+hObject=WPSWizCallWinFunc( "winQueryObject" ,"<WP_DESKTOP>")
+
+if hObject\=0 THEN DO
+	/* Get the class object of the given object pointer */
+	classObject=WPSWizCallWPSFunc("somGetClass",mFldr)
+
+	/* Get the object pointer from the handle */
+	theObject=WPSWizCallWPSClsFunc("wpclsQueryObject", classObject, hObject)
+
+	/* Query the full path of the object */
+	desktop=WPSWizCallFunc("cwQueryRealName", theObject, 1)
+
+	/* The object was locked because of "wpclsQueryObject" */
+	rc=WPSWizCallWPSFunc("wpUnlockObject", theObject)
+END
+
+if desktop\='' THEN
+    desktop=desktop||'\newFolder'
+
+/* Get a name for the new folder from the user */
+folderName=WPSWizCallWinFunc( "winFileDlg", 1, "New folder name for play list", desktop)
+
+/* No name, so quit */
+if foldername="" THEN exit
+
+/* Check if an error occurred */
+if foldername="ERROR:" THEN DO
+  rc=RxMessageBox("File dialog returned an error!", "Error",'OK', "ERROR")
+  EXIT
+END
+
+/* Get the path */
+thePath=FILESPEC('drive',foldername)||FILESPEC('path',foldername)
+thePath=LEFT(thePath,LENGTH(thePath)-1)
+
+/* Create a new media folder to hold the selected tracks */
+setup='DETAILSTODISPLAY=0,1,4,12,13,14,15,16,17,18,19,20,21;SORTBYATTR=6,24,25,26,27,28,29,30,31,32,33;DETAILSCLASS=CWAudioShadow;MEDIAFLDRVOLUME=70;SORTCLASS=CWAudioShadow;DEFAULTVIEW=DETAILS;'
+newFldr=SysCreateObject("CWMediaFolder", FILESPEC('name',foldername), thePath, setup , 'update')
+
+if newFldr=0 THEN DO
+	/* Folder creation failed */
+	rc=RxMessageBox("Cannot create media folder", "Media folder creation",'OK')
+	EXIT
+END
+
+
+/* Now create shadows of the selected tracks */
+DO a=tracks.0 to 1 by -1
+	objName=MFldrCallFunc( "cwQueryRealName", tracks.a._obj, 0)
+	rc=SysCreateObject("CWAudioShadow",objName, folderName, "SHADOWID="||MFldrCallFunc( "cwQueryRealName", tracks.a._obj,1),'update')
+END
+/* Open the folder */
+rc=SysSetObjectData(folderName, "OPEN=DEFAULT")
+rc=0
+
+exit
+
+

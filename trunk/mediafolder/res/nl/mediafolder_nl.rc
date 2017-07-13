@@ -1,0 +1,95 @@
+#define  INCL_GRAPHICBUTTON   /* need this for the graphic buttons control */
+#define  INCL_BITMAP
+
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include <sw.h>
+
+#include "mediafolderres.h"
+#include "version.h"
+#include "build.h"
+
+#ifdef ECS
+MENU ID_MENUABOUT
+BEGIN
+   MENUITEM  "" , ID_MENUSEPARATOR, MIS_SEPARATOR
+   MENUITEM "~Product Information",ID_ABOUTITEM   
+END
+#else
+MENU ID_MENUABOUT
+BEGIN
+   MENUITEM  "" , ID_MENUSEPARATOR, MIS_SEPARATOR
+   MENUITEM "~Media map Informatie",ID_ABOUTITEM   
+END
+#endif
+
+MENU ID_MBMENUSKRIPTS
+BEGIN
+
+END
+
+MENU ID_MENUVIEWCOMPACT
+BEGIN
+   MENUITEM  "~Compact" , ID_MENUVIEWCOMPACT
+END
+
+MENU  ID_MENUTIMECONTEXT
+BEGIN
+	MENUITEM "V~erstreken tijd"   ,          ID_MENUITEMELAPSED
+	MENUITEM "~Resterende tijd" ,          ID_MENUITEMREMAINING
+	MENUITEM "~Spoor informatie" ,         ID_MENUITEMID3
+END
+
+MENU  ID_MENUFILE
+BEGIN
+	MENUITEM "Ops~laan"   ,          	ID_MENUITEMSAVE
+	MENUITEM ""           ,                 ID_MENUSEPARATOR, MIS_SEPARATOR               
+	MENUITEM "Afsluit~en" ,          	ID_MENUITEMEXIT
+END
+
+
+STRINGTABLE
+BEGIN
+IDSTR_CLOSETITLE "Bevestiging"
+IDSTR_CLOSETEXT  "Er speelt momenteel een lied. Wilt u echt stoppen met afspelen en de speler afsluiten?"
+IDSTRSETTING_TOOLBAR "Gereedschapsbalk"
+IDSTRS_NOFONTPALETTE          "Kan het lettertype palet niet openen. Het kan zijn ID kwijt zijn. Controleer uw INI bestanden."
+IDSTRS_NOCOLORPALETTE         "Kan het kleuren palet niet openen. Het kan zijn ID kwijt zijn. Controleer uw INI bestanden."
+IDSTRS_MEDIAFLDRSETTINGS   "Media-map instellingen"
+#ifdef ECS
+IDSTR_MENUABOUT          "Produktinformation"
+#else
+IDSTR_MENUABOUT          "Media-map informatie"
+#endif
+IDSTR_MENUCOMPACT        "~Compact"
+IDSTR_STATUSCOLLECTING   "Verzamelen geluidssporen..."
+IDSTR_MENUSKRIPTS        "Scripts en gereedschappen"
+IDSTR_STATUSTIME1        "%d:%02d min"
+IDSTR_STATUSTIME2        "%d u %d:%02d min"
+IDSTR_STATUSTIME3        "%d dag(en) %d u %d:%02d min"
+IDSTR_STATUSTIME4        "%d Geluidsbestanden   -   %d%s%03d%s%03d Bytes   -   %s"
+IDSTR_STATUSTIME5        "%d Geluidsbestanden   -   meer dan 4 GBytes"
+
+IDSTR_TITLEMEDIAFOLDER   "Media speler"
+IDSTR_TITLECDFOLDER      "Cd speler"
+
+IDSTR_STARTINGTRACK      "Starten spoor..."
+IDSTR_TITLEM3UFOLDER    "M3U editor"
+IDSTR_M3UCLOSETEXT      "Afspeellijst gewijzigd. Hem nu opslaan?"
+IDSTR_MENUFILE           "~Bestand"
+IDSTR_PLAYLISTVIEWTITLE  "Afspeellijst Editor"
+IDSTR_LAUNCHPADFLYOVER   "Hoofdvenster: Laat objecten hierop vallen"
+IDSTR_VIEWPAGENAME       "O~verzicht"
+IDSTR_VIEWCOMPACT        "Compact"
+
+END
+
+rcinclude "mediafolder_nl.dlg"
+
+#ifdef ECS
+rcinclude "about_ecs_nl.dlg"
+#else
+rcinclude "about_nl.dlg"
+#endif
+

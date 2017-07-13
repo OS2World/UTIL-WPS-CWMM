@@ -1,0 +1,14 @@
+#ifdef ECS
+ICON ID_ICONCWVIDEOFILE "../Icons/Icons_video_ecs/video.ico"
+ICON ID_ICONMPGFILE "../Icons/Icons_video_ecs/MPG.ico"
+ICON ID_ICONMOVFILE "../Icons/Icons_video_ecs/MOV.ico"
+ICON ID_ICONFLIFILE "../Icons/Icons_video_ecs/FLI.ico"
+ICON ID_ICONAVIFILE "../Icons/Icons_video_ecs/AVI.ico"
+#else
+ICON ID_ICONCWVIDEOFILE "../Icons/Icons_video/video.ico"
+ICON ID_ICONMPGFILE "../Icons/Icons_video/MPG.ico"
+ICON ID_ICONMOVFILE "../Icons/Icons_video/MOV.ico"
+ICON ID_ICONFLIFILE "../Icons/Icons_video/FLI.ico"
+ICON ID_ICONAVIFILE "../Icons/Icons_video/AVI.ico"
+#endif
+

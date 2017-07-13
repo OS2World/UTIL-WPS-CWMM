@@ -1,0 +1,99 @@
+
+//  Module Header
+//
+//  Module Name: CWImage
+//
+//  OS/2 Presentation Manager Workplace class definitions
+//
+//
+
+#ifndef cwimage_idl
+#define cwimage_idl
+
+#include <wpimage.idl>
+#include <somcls.idl>
+
+
+interface M_CWImage;
+
+interface CWImage : WPImageFile                                                
+
+{
+    /*
+     * New instance methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+    releaseorder:     wpQueryBitmapHandle, wpQueryBitmapInfoHeader,
+    wpQueryBitmapData, wpSetBitmapData, wpReadImageFile, wpWriteImageFile;
+
+    externalstem = cwimage;
+    local;
+    externalprefix = cwimg_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwimage;
+    metaclass = M_CWImage;
+    callstyle = oidl;
+    dllname = "cwimage.dll";               
+
+    passthru C_h_after =  ""
+    "#include \"cwimageres.h\""
+    "";
+
+    /*
+     * Internal instance variables
+     *
+     */
+
+    HBITMAP hBitmap;
+    PBYTE   pBmpInfoHeader2;
+
+    wpQueryBitmapHandle : override;            
+    wpQueryBitmapInfoHeader    : override;            
+    wpQueryBitmapData: override;            
+    wpSetBitmapData: override;            
+    wpReadImageFile: override;            
+    wpWriteImageFile: override;
+    wpUnInitData:   override;
+    wpModifyPopupMenu       : override;
+    wpMenuItemSelected      : override;
+    wpOpen                  : override;
+
+  };
+#endif /* __SOMIDL__ */
+};
+
+interface M_CWImage : M_WPImageFile                                            
+{
+
+#ifdef __SOMIDL__
+  implementation {
+
+    externalstem = cwimage;
+    local;
+    externalprefix = cwimgM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwimage;
+    callstyle = oidl;
+    dllname = "cwimage.dll";               
+
+    wpclsQueryInstanceType: override;
+    wpclsQueryInstanceFilter: override;   
+    wpclsInitData   : override;
+    wpclsQueryDefaultView : override;
+/*    wpclsQueryStyle: override; */
+    wpclsQueryTitle: override;
+    wpclsQueryIconData: override;
+/*    wpclsQueryDefaultHelp: override;*/
+
+  };
+#endif /* __SOMIDL__ */
+};
+
+#endif  /* cwimage_idl */

@@ -1,0 +1,152 @@
+
+/*
+ * cwdataf.idl
+ */
+
+#include <wpdataf.idl>
+
+/*
+   CLASS: MMDataFile
+*/
+
+interface M_MMDataFile; 
+
+interface MMDataFile : WPDataFile
+{
+
+    /*
+     * New instance methods
+     *
+     */
+    /* These functions are used as placeholders. The parameters and the return type are both
+       unknown. There seems to be no documentation available for the MM-Classes.
+     */
+    ULONG mmFilterPopupMenu(in ULONG ulFlags, in HWND hwndcnr, in BOOL fMultiSelect);
+    ULONG mmViewNotify();           
+    ULONG mmDetermineViewFor();     
+
+#ifdef __SOMIDL__
+  implementation {
+releaseorder:   mmFilterPopupMenu,
+                mmViewNotify,
+                mmDetermineViewFor;
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = mmdatafile_;
+    externalstem = mmdatafile;
+    majorversion = 1;
+    minorversion = 1;
+    filestem = mmdataf;           //# specifies the filestem for sc-generated files
+    metaclass = M_MMDataFile;
+    dllname = "MMPARTS.DLL";
+    callstyle = oidl;
+
+    /*
+     * Internal instance variables
+     *
+     */
+    /* Used as placeholder only. */
+    ULONG   ul1;
+    ULONG   ul2;
+    ULONG   ul3;
+    /*
+     *  methods overridden 
+     *
+     */
+
+    wpFilterPopupMenu: override;
+    wpInitData       : override;
+    wpMenuItemHelpSelected: override;
+    wpMenuItemSelected      : override;
+    wpModifyPopupMenu       : override;
+    wpOpen                  : override;
+    wpQueryConcurrentView   : override;
+    wpQueryDefaultView      : override;
+    wpSetTitle              : override;
+    wpSetup              : override;
+    wpUnInitData         : override;
+    wpObjectReady    : override;
+
+
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+interface M_MMDataFile : M_WPDataFile
+{
+
+    /*
+     * New class methods
+     *
+     */
+    /* These functions are used as placeholders. The parameters and the return type are both
+       unknown. There seems to be no documentation available for the MM-Classes.
+     */
+    BOOL mmclsDeleteFromTypeList(in PSZ pszType); 	
+    BOOL mmclsDeleteFromExtensionList(in PSZ pszExt);
+    BOOL mmclsInitTypesAndExtensions();	
+    BOOL mmclsSetDefaultView(in ULONG ulView);     	
+
+
+
+#ifdef __SOMIDL__
+  implementation {
+releaseorder:   mmclsDeleteFromTypeList,
+                mmclsDeleteFromExtensionList,
+                mmclsInitTypesAndExtensions,
+                mmclsSetDefaultView;
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = mmdatafileM_;
+    externalstem = mmdatafileM;
+    functionprefix = mmdatafileM_;
+    majorversion = 1;
+    minorversion = 1;
+    filestem = mmdataf;           //# specifies the filestem for sc-generated files
+    dllname = "MMPARTS.DLL";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     *  methods overridden 
+     *
+     */
+
+wpclsQueryInstanceType  	: override;
+wpclsQueryInstanceFilter	: override;
+
+wpclsCreateDefaultTemplates	: override;
+wpclsInitData           	: override;
+wpclsQueryDefaultHelp   	: override;
+wpclsQueryDefaultView   	: override;
+wpclsQueryStyle         	: override;
+wpclsQueryTitle         	: override;
+wpclsUnInitData         	: override;
+wpclsQueryIconData      	: override;
+
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+
+
+
+

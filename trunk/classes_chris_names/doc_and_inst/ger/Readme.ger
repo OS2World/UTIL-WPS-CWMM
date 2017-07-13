@@ -1,0 +1,201 @@
+CW-Multimedia Klassen
+---------------------
+
+Dieses Paket ist ein kompletter Ersatz fÅr die
+Multimediaklassen von MMOS2. Sie sind robuster gegenÅber
+defekten Bilddateien oder fehlerhaften IO-Prozeduren.
+Das Konvertieren MenÅ wurde erweitert.
+Die BeschrÑnkungen der JPEG IO-Prozedur, die mit Warp
+geliefert wird, bleiben weiterhin bestehen. Diese
+Prozedur stÅrzt bei manchen JPG-Dateien ab und nur ein
+Neustart der WPS stabilisiert das System wieder. Es wird
+daher eine verbesserte neue JPEG IO-Prozedur mitgeliefert.
+
+Zwei neue Klassen sorgen fÅr eine nahtlose
+Integration der MMIO-Prozeduren von Russel O'Connor 
+fÅr MP3- und OGG-Dateien in die WPS. Download der
+DLLs unter:
+
+http://www.math.berkeley.edu/~roconnor/
+
+Nach Installation der Klassen verhalten sich Ogg- und
+MP3-Dateien auf der WPS wie alle anderen Audiodateien
+(z.B. Wavedateien). Sie haben ein eigenes Icon und die
+MenÅs der Åbrigen Audiodateien. So startet z.B. ein
+Doppelklick die Wiedergabe ein weiterer stoppt sie.
+öber das 'Umsetzen'-MenÅ kînnen die Dateien einfach
+in Wavedateien umgesetzt werden.
+
+ZusÑtzlich wird in die Eigenschaftendialoge aller
+Audiodateien eine Informationsseite Åber die Datei
+eingefÅgt (Samplerate, Spieldauer etc.). Diese Daten
+erscheinen auch in der Detailansicht von Ordnern, wenn
+die Ansicht auf Klasse:CWAudio gesetzt wird.
+
+Im ôffnen-MenÅ ist zusÑtzlich ein Eintrag fÅr LautstÑrke.
+Bei MP3-Dateien lassen sich die ID3-Tags Åber den
+Eigenschaftendialog anzeigen und verÑndern. Die ID3-Tags
+werden darÅberhinaus in der Detailansicht von Ordnern
+angezeigt.
+
+
+Weitere Mîglichkeiten
+---------------------
+
+Mit den folgenden SchlÅsselwerten in 'OS2.ini' werden eigene
+Programme beim ôffnen von Audiodateien verwendet. Diese
+Programme mÅssen PM-Programme sein.
+
+CWMM->audioplayer-><Programm zum Abspielen>
+CWMM->audioeditor-><Programm zum Editieren>
+
+Mit den folgenden SchlÅsseln werden die Programme zum
+Abspielen von MPG- und AVI-Filmen festgelegt.
+
+CWMM->aviplayer-><Name of program>
+CWMM->mpgplayer-><Name of program>
+
+Der folgende SchlÅssel gibt den Bildeditor fÅr Bilddateien
+an.
+
+CWMM->imageeditor-><Name of program>
+
+Mit dem folgenden SchlÅssel werden Detailangaben auch fÅr Bilder
+auf CD abgefragt. Nur bei schnellen Laufwerken verwenden.
+
+CWMM->useNewImgClsFeaturesOnCD->1
+
+
+Die Gro·- und Kleinschreibung der SchlÅsselnamen wird unterschieden.
+ 
+
+Installation
+------------
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+ACHTUNG: vor der Installation eine Kopie der
+         INI-Dateien anfertigen.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+ZunÑchst eine Kopie der JPEG IO-Prozedur JPEGIO.DLL im
+Verzeichnis MMOS2\DLL anfertigen.
+
+Evtl. vorhandene frÅhere Versionen des CWAudio-Klassen
+deinstallieren.
+Dieses Archiv in einen Ordner entpacken und anschlie·end
+cwmm.ins starten. Der Installer installiert die Klassen und
+nach einem WPS-Neustart stehen sie zur VerfÅgung.
+
+Der Installer wird automatisch mit Audio/Data-CDCreator
+oder den CW-Multimedia Klassen installiert ist aber auch unter
+
+http://www.os2world.com/cdwriting
+http://www.geocities.com/SiliconValley/Sector/5785/
+
+erhÑltlich.
+
+Evtl kann es erforderlich sein, unter Multimedia-
+Konfiguration Typen MP3 und OGG Digital Audio zuzuordnen
+und gleiches mit den Erweiterungen *MP3 und *.OGG zu tun,
+falls die MenÅs von Audiodateien nicht arbeiten, wie gewÅnscht.
+
+Das Skript audFldr.cmd setzt die Detailanzeige und das
+Sortierkriterium auf CWAudio, so da· die neuen Informationen
+in der Detailansicht und im SortierenmenÅ erscheinen. Einfach
+den jeweiligen Ordner auf das Skrip fallen lassen. 
+Das Skript imgFldr.cmd setzt die Kriterien auf CWImage, so da·
+Informationen Åber Bilddateien angezeigt werden.
+
+
+Bei Installationsproblemen
+--------------------------
+
+Falls es Probleme nach der Installation gibt, wie eine nicht startende
+Workplace Shell, dann booten Sie zu einer Kommandozeile und entfernen die
+Datei CWMM.DLL. Auf diese Weise kînnen die neuen Klassen nicht gefunden werden
+und der Rechner sollte normal starten.
+Im Verzeichnis BIN findet sich ein konventionelles REXX-Skript zum Installieren
+der Klassen. Diese Skript mu· (ebenso wie das Deinstallationskript) zunÑchst in
+das Basisverzeichnis des Archivs verschoben werden.
+Im Verzeichnis x:\MMOS2\install findet sich das Skript INSTMMVW.CMD, das die normalen
+Multimediaklassen von MMOS2 installiert.
+
+
+Probleme
+--------
+
+Bei manchen VBR-MP3s wird die Spielzeit falsch angegeben. Dies
+ist ein Problem der MMIOMP3-Proc nicht der Klassen.
+
+
+Versionen
+---------
+
+0.1.0:
+
+Erste îffentliche Version.
+
+0.2.0:
+
+-Mnemonic fÅr LautstÑrke-MenÅpunkt ergÑnzt.
+-Die Audioklassen geben zusÑtzlich den Typ 'Digital Audio' zurÅck.
+-Setzen des .TYPE EA, so da· der Digital Audio Spieler ohne weitere Ma·nahmen mit MP3/OGG Dateien funktioniert.
+-MP3-Daten werden in den EA gecached, damit das ôffnen von Ordnern schneller geht.
+-ID3 Tags werden mit der richtigen Codepage angezeigt.
+
+0.2.1:
+
+-Diverse kleinere Berichtigungen.
+-Audio-Daten von Dateien auf CDs werden nicht mehr beim Ordnerîffnen eingelesen.
+ Dieses fÅhrt zu deutlich schnellerem Anzeigen der Dateien.
+
+0.2.2
+
+-Neue CD-Track-Klasse fÅr CD-Spieler mit FreeDB-UnterstÅtzung
+-Neue ôffnen-Funktion. Siehe Media-Ordner Dokumentation
+ 
+
+0.2.3 (13.07.2002)
+
+-Neue Klassen fÅr Audio-, Video- und Bilddateien. Die bisherigen Klassen von Warp
+ werden komplett ersetzt.
+-Erweiterter Leuchttisch-Ordner mit einstellbarer Icon-Grî·e.
+
+
+V0.2.4
+-Added some more exception handlers.
+-Image details aren't read from CD unless key in INI file is set (see docs).
+-Titlebar of volume control may be hidden
+-Tabbing in volume control enabled
+-Save colors and position of volume control, audio- and image converter
+-Query audio information on a separate thread when awakening objects (speed boost for MP3)
+-Print menu removed for audio and video files.
+-Improved ID3 handling. ID3 V1.1 tracknumber is kept if present.
+
+Credits
+-------
+
+Die Icons sind (C) Klaus Staedtler-Przyborski. Vielen Dank auch
+fÅr furchtloses Betatesten.
+
+
+Lizenz
+------
+
+Diese Klassen dÅrfen frei verwendet werden. Das Copyright verbleibt
+jedoch beim Author. Benutzung ausschlie·lich auf eigene
+Gefahr. Es wird KEINE Verantwortung fÅr Datenverluste, Ehekrisen
+und sonstige unerfreuliche Ereignisse Åbernommen.
+
+ 
+Author
+------
+
+Diese Klassen sind (C) 2001-2002 Chris Wohlgemuth.
+
+http://www.geocities.com/SiliconValley/Sector/5785/
+http://www.os2world.com/cdwriting
+
+

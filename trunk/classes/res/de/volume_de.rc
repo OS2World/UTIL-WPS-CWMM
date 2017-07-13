@@ -1,0 +1,12 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+MENU    IDM_POPUP
+BEGIN
+    MENUITEM    "Titelleiste ~verdecken",    IDM_ITEMTITLEBAR
+    MENUITEM    "",    0, MIS_SEPARATOR
+    MENUITEM    "~Beenden",    IDM_ITEMEXIT
+END
+
+

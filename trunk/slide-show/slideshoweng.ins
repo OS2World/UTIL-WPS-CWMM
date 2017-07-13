@@ -1,0 +1,40 @@
+[APPLICATION]
+NAME Slide Show  1.0.0
+VERSION 1.0.0.0
+COPYRIGHT (C) Chris Wohlgemuth 2004
+HOME http://www.os2world.com/cdwriting
+INTERNALNAME SLIDESHW
+TOTALSIZE 425661
+INSTALLER 0.1.1.0
+DESCRIPTION Slide show program which displays the contents of one ore more directories. Fullscreen and windowed mode. Randomize function.
+
+[DESCRIPTION]
+DESCRIPTION  Slide show program which displays the contents of one ore more directories. Fullscreen and windowed mode. Randomize function.
+
+[FILES]
+creatobj.CMD, %TARGET%\ ,  F,  934
+Readme.txt, %TARGET%\ ,  F,  4072
+slide-show.EXE, %TARGET%\ ,  F,  194048
+bin\drctl017.dll, %TARGET%\ ,  F,  137586
+bin\gbmsize.exe, %TARGET%\ ,  F,  57460
+lang\LANG.INI, %TARGET%\ ,  F,  3061
+source\addnls.CMD, %TARGET%\ ,  F,  2712
+source\de.txt, %TARGET%\ ,  F,  1381
+source\en.txt, %TARGET%\ ,  F,  1246
+source\slide-show.RES, %TARGET%\ ,  F,  23161
+
+[OBJECTS]
+Slide Showõ,õ <CWMM_SLIDESHOW_PGM>õ,õ WPProgramõ,õ <MMPM2_FOLDER>õ,õ EXENAME=%TARGET%\slide-show.exe;õ,õ replace
+
+[INSTALLPROFILES]
+SLIDESHW õ,õ Slide show program for displaying directory contents õ,õ Slide show program which displays the contents of one ore more directories. Fullscreen and windowed mode. Randomize function.
+
+[SLIDESHW]
+SLIDESHW, , ,S,[ ], slideshoweng.ins
+
+[DEFAULTTARGET]
+PATH %APPS%\CWMMOS2\Slide-show
+
+[INI]
+USER õ,õ CWMM õ,õ slideshowpgm õ,õ %TARGET%\slide-show.exe õ,õ YES
+

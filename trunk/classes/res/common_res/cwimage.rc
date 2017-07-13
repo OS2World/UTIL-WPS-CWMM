@@ -1,0 +1,33 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+#ifdef ECS
+ICON ID_ICONCWIMAGEFILE "../Icons/Icons_image_ecs/cwimage.ico"
+ICON ID_ICONAVCFILE     "../Icons/Icons_image_ecs/AVC.ico"
+ICON ID_ICONDIBFILE     "../Icons/Icons_image_ecs/DIB.ico"
+ICON ID_ICONGIFFILE     "../Icons/Icons_image_ecs/GIF.ico"
+ICON ID_ICONJPGFILE     "../Icons/Icons_image_ecs/JPG.ico"
+ICON ID_ICONPCDFILE     "../Icons/Icons_image_ecs/PCD.ico"
+ICON ID_ICONPCXFILE     "../Icons/Icons_image_ecs/PCX.ico"
+ICON ID_ICONTGAFILE     "../Icons/Icons_image_ecs/TGA.ico"
+ICON ID_ICONTIFFILE     "../Icons/Icons_image_ecs/TIF.ico"
+ICON ID_ICON_IMFILE     "../Icons/Icons_image_ecs/_IM.ico"
+ICON ID_ICONBMPFILE     "../Icons/Icons_image_ecs/BMP.ico"
+ICON ID_ICONPNGFILE     "../Icons/Icons_image_ecs/png.ico"
+#else
+ICON ID_ICONCWIMAGEFILE "../Icons/Icons_image/cwimage.ico"
+ICON ID_ICONAVCFILE     "../Icons/Icons_image/AVC.ico"
+ICON ID_ICONDIBFILE     "../Icons/Icons_image/DIB.ico"
+ICON ID_ICONGIFFILE     "../Icons/Icons_image/GIF.ico"
+ICON ID_ICONJPGFILE     "../Icons/Icons_image/JPG.ico"
+ICON ID_ICONPCDFILE     "../Icons/Icons_image/PCD.ico"
+ICON ID_ICONPCXFILE     "../Icons/Icons_image/PCX.ico"
+ICON ID_ICONTGAFILE     "../Icons/Icons_image/TGA.ico"
+ICON ID_ICONTIFFILE     "../Icons/Icons_image/TIF.ico"
+ICON ID_ICON_IMFILE     "../Icons/Icons_image/_IM.ico"
+ICON ID_ICONBMPFILE     "../Icons/Icons_image/BMP.ico"
+ICON ID_ICONPNGFILE     "../Icons/Icons_image/png.ico"
+#endif
+
+

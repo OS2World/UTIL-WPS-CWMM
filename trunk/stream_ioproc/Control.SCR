@@ -1,0 +1,18 @@
+package="Stream IO procedure"
+codepage=437
+filelist="MASTER.DSK"
+groupcount=1
+munitcount=1
+medianame="Stream IO"
+
+/*** Destination Directorys ***/
+destindir = "\\MMOS2\\DLL\\"                           = 0
+destindir = "\\MMOS2\\INSTALL\\"                       = 1
+
+ssgroup=1
+sssize=100
+ssname="Stream IO"
+ssversion="0.1.0"
+ssinich="STREAMIO.SCR"
+ssselect="YES"
+

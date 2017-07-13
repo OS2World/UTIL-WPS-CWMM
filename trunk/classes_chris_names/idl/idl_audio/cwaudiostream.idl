@@ -1,0 +1,116 @@
+
+/*
+ * cwaudiostream.idl:
+ */
+
+#include <cwaudio.idl>
+#include <wprootf.idl>
+
+/*
+   CLASS: 
+*/
+
+interface M_CWAudioStream; 
+
+interface CWAudioStream : CWAudio
+{
+
+    /*
+     * New instance methods
+     *
+     */
+	ULONG cwmmAddURLPage(in HWND hwndNotebook); 
+
+#ifdef __SOMIDL__
+  implementation {
+    releaseorder:
+        cwmmAddURLPage;
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwastream_;
+    externalstem = cwastream;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwastream;           //# specifies the filestem for sc-generated files
+    metaclass = M_CWAudioStream;
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+
+    /*
+     * Internal instance variables
+     *
+     */
+
+
+    /*
+     * methods overridden 
+     *
+     */
+    wpModifyPopupMenu          : override;
+    wpAddSettingsPages         : override;
+    wpInitData                 : override;
+    cwmmAddWaveInformationPage : override;
+    cwmmAddTrackNamePage       : override;
+
+#ifdef __PRIVATE__
+
+#endif
+
+  }; // implementation
+#endif /* __SOMIDL__ */
+};
+
+
+interface M_CWAudioStream : M_CWAudio
+{
+
+    /*
+     * New class methods
+     *
+     */
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    /*
+     * Class Modifiers:
+     *
+     */
+
+    externalprefix = cwastreamM_;
+    externalstem = cwastreamM;
+    functionprefix = cwastreamM_;
+    majorversion = 1;
+    minorversion = 2;
+    filestem = cwastream;           //# specifies the filestem for sc-generated files
+    dllname = "CWMM.dll";
+    callstyle = oidl;
+
+    /*
+     * Internal class variables
+     *
+     */
+
+    /*
+     * methods overridden 
+     *
+     */
+    wpclsQueryInstanceType  	: override;
+    wpclsQueryDefaultHelp       : override; 
+    wpclsQueryTitle   	        : override;   
+    wpclsQueryIconData          : override;
+  };
+
+#endif /* __SOMIDL__ */
+
+};
+
+
+
+

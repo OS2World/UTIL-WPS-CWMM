@@ -1,0 +1,2316 @@
+Objects:
+
+ID:		<MMPM_DAPLAYER1>
+Title:		Digital-Audio-
+Spieler
+Location:	<MMPM2_FOLDER>
+Path:		WEPM.EXE
+Parameter:	Waveaudio01
+Working dir:	J:\MMOS2\SOUNDS
+
+ID:		<MMPM_MIDIPLAYER1>
+Title:		MIDI-Spieler
+Location:	<MMPM2_FOLDER>
+Path:		MPPM.EXE
+Parameter:	Sequencer01
+Working dir:	J:\MMOS2\SOUNDS
+
+ID:		<MMPM2_SOFTWARE_MOTION_VIDEO1>
+Title:		Digital-Video-
+Spieler
+Location:	<MMPM2_FOLDER>
+Path:		MPPM.EXE
+Parameter:	Digitalvideo01
+Working dir:	J:\MMOS2\MOVIES
+
+ID:		<MMPM_CDPLAYER1>
+Title:		CD-Spieler
+Location:	<MMPM2_FOLDER>
+Path:		CDPM.EXE
+Parameter:	CDaudio01
+Working dir:	J:\MMOS2\SOUNDS
+
+------------------------------------------------
+
+Class:  WPImageFile             	00e682bc
+Metaclass:  M_WPImageFile       	00e690d8
+Parent:  CWDataFile              	00e6eba0
+
+Module:  D:\OS2\DLL\PMWP.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  Bilddatei
+Storage class:  WPFileSystem
+
+Default View:  Running (0x04)
+Class Style:  0x90 (NeverTemplate NeverPrint)
+File Associations:
+  Name:  none
+  Type:  Bilddatei
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  6	  0	WPImageFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+256	200	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  4	M_WPImageFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+160	408	total
+
+WPImageFile - 6 New methods:
+
+250  wpQueryBitmapHandle     	1fd019b8
+251  wpQueryBitmapInfoHeader 	1fd019b4
+252  wpQueryBitmapData       	1fd019b0
+253  wpSetBitmapData         	1fd019ac
+254  wpReadImageFile         	1fd019a8
+255  wpWriteImageFile        	1fd019a4
+
+WPImageFile - Override methods:
+
+from WPDataFile:
+247  wpSetContentsFromHandle 	1fd019bc
+248  wpQueryHandleFromContents	1fd01cf8
+
+from WPObject:
+128  wpUnInitData            	1fc7020c
+
+from SOMObject:
+000  somDefaultInit          	1fcb1d78
+001  somDestruct             	1fcb0488
+
+M_WPImageFile - No New methods.
+
+M_WPImageFile - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1fcbd980
+
+from M_WPObject:
+111  wpclsQueryDefaultHelp   	1fd0198c
+119  wpclsQueryStyle         	1fcb1d64
+120  wpclsQueryTitle         	1fcdd000
+
+--------------------------------------------
+
+Class:  MMImage                 	0125f334
+Metaclass:  M_MMImage           	012606b0
+Parent:  WPImageFile             	00e682bc
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  Digitales Bild
+Storage class:  WPFileSystem
+
+Default View:  User+22315 (0xbc2b)
+Class Style:  0x80 (NeverPrint)
+File Associations:
+  Name:  *.JPN
+  Type:  none
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  2	 24	MMImage
+  6	  0	WPImageFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+258	224	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  4	  0	M_MMImage
+  0	  4	M_WPImageFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	408	total
+
+MMImage - 2 New methods:
+
+256  mmViewNotify            	1f11f5f0
+257  mmDetermineViewFor      	1f11fff0
+
+MMImage - Override methods:
+
+from WPImageFile:
+250  wpQueryBitmapHandle     	1f11fda1
+251  wpQueryBitmapInfoHeader 	1f11fd51
+252  wpQueryBitmapData       	1f11fd00
+253  wpSetBitmapData         	1f11fc30
+254  wpReadImageFile         	1f11fac1
+255  wpWriteImageFile        	1f11fa30
+
+from WPFileSystem:
+211  wpRefresh               	1f11fb50
+
+from WPObject:
+061  wpFilterPopupMenu       	1f11f640
+064  wpFormatDragItem        	1f11f3e3
+068  wpInitData              	1f11f421
+072  wpMenuItemHelpSelected  	1f11fea4
+073  wpMenuItemSelected      	1f1206f0
+074  wpModifyPopupMenu       	1f120547
+077  wpOpen                  	1f120750
+079  wpQueryConcurrentView   	1f11f510
+083  wpQueryDefaultView      	1f11f4d0
+125  wpSetTitle              	1f120413
+126  wpSetup                 	1f11ff20
+128  wpUnInitData            	1f11f460
+132  wpObjectReady           	1f11f084
+
+from SOMObject:
+000  somDefaultInit          	1f952430
+001  somDestruct             	1f952320
+
+M_MMImage - 4 New methods:
+
+160  mmclsDeleteFromTypeList 	1f11f360
+161  mmclsDeleteFromExtensionList	1f11f2d7
+162  mmclsInitTypesAndExtensions	1f120306
+163  mmclsSetDefaultView     	1f1200f0
+
+M_MMImage - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f120220
+156  wpclsQueryInstanceFilter	1f120238
+
+from M_WPObject:
+107  wpclsCreateDefaultTemplates	1f11eef2
+108  wpclsInitData           	1f120250
+111  wpclsQueryDefaultHelp   	1f11f1b0
+112  wpclsQueryDefaultView   	1f1200b0
+119  wpclsQueryStyle         	1f11eed0
+120  wpclsQueryTitle         	1f120130
+121  wpclsUnInitData         	1f11f1e0
+128  wpclsQueryIconData      	1f1204f5
+
+----------------------------------------------
+
+Class:  MMAVC                   	0124c644
+Metaclass:  M_MMAVC             	0124d620
+Parent:  MMImage                 	0125f334
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  AVCImage._IM
+Storage class:  WPFileSystem
+
+Default View:  User+22315 (0xbc2b)
+Class Style:  0x80 (NeverPrint)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *._IM
+  Type:  AVC Image
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMAVC
+  2	 24	MMImage
+  6	  0	WPImageFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+258	224	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMAVC
+  4	  0	M_MMImage
+  0	  4	M_WPImageFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	408	total
+
+MMAVC - No New methods.
+
+MMAVC - Override methods:
+
+M_MMAVC - No New methods.
+
+M_MMAVC - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f123c80
+156  wpclsQueryInstanceFilter	1f123cb0
+
+from M_WPObject:
+107  wpclsCreateDefaultTemplates	1f123d15
+108  wpclsInitData           	1f123fd7
+111  wpclsQueryDefaultHelp   	1f123bf0
+119  wpclsQueryStyle         	1f123c40
+120  wpclsQueryTitle         	1f123e70
+121  wpclsUnInitData         	1f123ce0
+128  wpclsQueryIconData      	1f123f70
+
+----------------
+
+Class:  MMDIB                   	01248530
+Metaclass:  M_MMDIB             	0124950c
+Parent:  MMImage                 	0125f334
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  DIBImage.DIB
+Storage class:  WPFileSystem
+
+Default View:  User+22315 (0xbc2b)
+Class Style:  0x80 (NeverPrint)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.DIB
+  Type:  DIB
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMDIB
+  2	 24	MMImage
+  6	  0	WPImageFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+258	224	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMDIB
+  4	  0	M_MMImage
+  0	  4	M_WPImageFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	408	total
+
+MMDIB - No New methods.
+
+MMDIB - Override methods:
+
+M_MMDIB - No New methods.
+
+M_MMDIB - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f124580
+156  wpclsQueryInstanceFilter	1f1245b0
+
+from M_WPObject:
+107  wpclsCreateDefaultTemplates	1f124615
+108  wpclsInitData           	1f1248d7
+111  wpclsQueryDefaultHelp   	1f1244f0
+119  wpclsQueryStyle         	1f124540
+120  wpclsQueryTitle         	1f124770
+121  wpclsUnInitData         	1f1245e0
+128  wpclsQueryIconData      	1f124870
+
+-----------------
+
+Class:  MMGIF                   	0127a9d4
+Metaclass:  M_MMGIF             	0127b9b0
+Parent:  MMImage                 	0125f334
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  GIFImage.GIF
+Storage class:  WPFileSystem
+
+Default View:  User+22315 (0xbc2b)
+Class Style:  0x80 (NeverPrint)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.GIF
+  Type:  GIF
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMGIF
+  2	 24	MMImage
+  6	  0	WPImageFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+258	224	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMGIF
+  4	  0	M_MMImage
+  0	  4	M_WPImageFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	408	total
+
+MMGIF - No New methods.
+
+MMGIF - Override methods:
+
+M_MMGIF - No New methods.
+
+M_MMGIF - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f122f40
+156  wpclsQueryInstanceFilter	1f122f70
+
+from M_WPObject:
+107  wpclsCreateDefaultTemplates	1f122fd5
+108  wpclsInitData           	1f123297
+111  wpclsQueryDefaultHelp   	1f122eb0
+119  wpclsQueryStyle         	1f122f00
+120  wpclsQueryTitle         	1f123130
+121  wpclsUnInitData         	1f122fa0
+128  wpclsQueryIconData      	1f123230
+
+----------
+
+Class:  MMJPG                   	012464b4
+Metaclass:  M_MMJPG             	01247490
+Parent:  MMImage                 	0125f334
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  JPGImage.JPG
+Storage class:  WPFileSystem
+
+Default View:  User+22315 (0xbc2b)
+Class Style:  0x10080 (NeverPrint DontTemplate)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.JPG
+  Type:  JPG
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMJPG
+  2	 24	MMImage
+  6	  0	WPImageFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+258	224	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMJPG
+  4	  0	M_MMImage
+  0	  4	M_WPImageFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	408	total
+
+MMJPG - No New methods.
+
+MMJPG - Override methods:
+
+M_MMJPG - No New methods.
+
+M_MMJPG - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f12b290
+156  wpclsQueryInstanceFilter	1f12b2c0
+
+from M_WPObject:
+107  wpclsCreateDefaultTemplates	1f12b325
+108  wpclsInitData           	1f12b5e7
+111  wpclsQueryDefaultHelp   	1f12b200
+119  wpclsQueryStyle         	1f12b250
+120  wpclsQueryTitle         	1f12b480
+121  wpclsUnInitData         	1f12b2f0
+128  wpclsQueryIconData      	1f12b580
+
+----------
+
+Class:  MMMMotion               	0124a5c0
+Metaclass:  M_MMMMotion         	0124b5a0
+Parent:  MMImage                 	0125f334
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  VIDImage.VID
+Storage class:  WPFileSystem
+
+Default View:  User+22315 (0xbc2b)
+Class Style:  0x80 (NeverPrint)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.VID
+  Type:  MMotion Image
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMMMotion
+  2	 24	MMImage
+  6	  0	WPImageFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+258	224	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMMMotion
+  4	  0	M_MMImage
+  0	  4	M_WPImageFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	408	total
+
+MMMMotion - No New methods.
+
+MMMMotion - Override methods:
+
+M_MMMMotion - No New methods.
+
+M_MMMMotion - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f124100
+156  wpclsQueryInstanceFilter	1f124130
+
+from M_WPObject:
+107  wpclsCreateDefaultTemplates	1f124195
+108  wpclsInitData           	1f124457
+111  wpclsQueryDefaultHelp   	1f124070
+119  wpclsQueryStyle         	1f1240c0
+120  wpclsQueryTitle         	1f1242f0
+121  wpclsUnInitData         	1f124160
+128  wpclsQueryIconData      	1f1243f0
+
+--------
+
+Class:  MMPCX                   	0125072c
+Metaclass:  M_MMPCX             	012516e4
+Parent:  MMImage                 	0125f334
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  PCXImage.PCX
+Storage class:  WPFileSystem
+
+Default View:  User+22315 (0xbc2b)
+Class Style:  0x80 (NeverPrint)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.PCX
+  Type:  PCX
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMPCX
+  2	 24	MMImage
+  6	  0	WPImageFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+258	224	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMPCX
+  4	  0	M_MMImage
+  0	  4	M_WPImageFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	408	total
+
+MMPCX - No New methods.
+
+MMPCX - Override methods:
+
+M_MMPCX - No New methods.
+
+M_MMPCX - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f1233c0
+156  wpclsQueryInstanceFilter	1f1233f0
+
+from M_WPObject:
+107  wpclsCreateDefaultTemplates	1f123455
+108  wpclsInitData           	1f123717
+111  wpclsQueryDefaultHelp   	1f123330
+119  wpclsQueryStyle         	1f123380
+120  wpclsQueryTitle         	1f1235b0
+121  wpclsUnInitData         	1f123420
+128  wpclsQueryIconData      	1f1236b0
+
+-----------
+
+Class:  MMPhotoCD               	0124e6ac
+Metaclass:  M_MMPhotoCD         	0124f68c
+Parent:  MMImage                 	0125f334
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  PCDImage.PCD
+Storage class:  WPFileSystem
+
+Default View:  User+22315 (0xbc2b)
+Class Style:  0x10080 (NeverPrint DontTemplate)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.PCD
+  Type:  Photo CD
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMPhotoCD
+  2	 24	MMImage
+  6	  0	WPImageFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+258	224	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMPhotoCD
+  4	  0	M_MMImage
+  0	  4	M_WPImageFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	408	total
+
+MMPhotoCD - No New methods.
+
+MMPhotoCD - Override methods:
+
+M_MMPhotoCD - No New methods.
+
+M_MMPhotoCD - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f123840
+156  wpclsQueryInstanceFilter	1f123870
+
+from M_WPObject:
+108  wpclsInitData           	1f123b57
+111  wpclsQueryDefaultHelp   	1f1237b0
+119  wpclsQueryStyle         	1f123800
+120  wpclsQueryTitle         	1f1239f0
+121  wpclsUnInitData         	1f1238a0
+128  wpclsQueryIconData      	1f123af0
+
+--------------
+
+Class:  MMTIFF                  	0127ca54
+Metaclass:  M_MMTIFF            	01255e58
+Parent:  MMImage                 	0125f334
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  TIFImage.TIF
+Storage class:  WPFileSystem
+
+Default View:  User+22315 (0xbc2b)
+Class Style:  0x80 (NeverPrint)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.TIF
+  Type:  TIFF
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMTIFF
+  2	 24	MMImage
+  6	  0	WPImageFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+258	224	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMTIFF
+  4	  0	M_MMImage
+  0	  4	M_WPImageFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	408	total
+
+MMTIFF - No New methods.
+
+MMTIFF - Override methods:
+
+M_MMTIFF - No New methods.
+
+M_MMTIFF - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f122ac0
+156  wpclsQueryInstanceFilter	1f122af0
+
+from M_WPObject:
+107  wpclsCreateDefaultTemplates	1f122b55
+108  wpclsInitData           	1f122e17
+111  wpclsQueryDefaultHelp   	1f122a30
+119  wpclsQueryStyle         	1f122a80
+120  wpclsQueryTitle         	1f122cb0
+121  wpclsUnInitData         	1f122b20
+128  wpclsQueryIconData      	1f122db0
+
+-------------
+
+Class:  MMTarga                 	01256f00
+Metaclass:  M_MMTarga           	01257ee0
+Parent:  MMImage                 	0125f334
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  TargaImage.TGA
+Storage class:  WPFileSystem
+
+Default View:  User+22315 (0xbc2b)
+Class Style:  0x80 (NeverPrint)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.TGA
+  Type:  Targa
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMTarga
+  2	 24	MMImage
+  6	  0	WPImageFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+258	224	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMTarga
+  4	  0	M_MMImage
+  0	  4	M_WPImageFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	408	total
+
+MMTarga - No New methods.
+
+MMTarga - Override methods:
+
+M_MMTarga - No New methods.
+
+M_MMTarga - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f122640
+156  wpclsQueryInstanceFilter	1f122670
+
+from M_WPObject:
+107  wpclsCreateDefaultTemplates	1f1226d5
+108  wpclsInitData           	1f122997
+111  wpclsQueryDefaultHelp   	1f1225b0
+119  wpclsQueryStyle         	1f122600
+120  wpclsQueryTitle         	1f122830
+121  wpclsUnInitData         	1f1226a0
+128  wpclsQueryIconData      	1f122930
+
+----------------
+
+Class:  WPBitmap                	00e65e90
+Metaclass:  M_WPBitmap          	00e66d30
+Parent:  WPImageFile             	00e682bc
+
+Module:  D:\OS2\DLL\PMWP.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  Bitmap
+Storage class:  WPFileSystem
+
+Default View:  Running (0x04)
+Class Style:  0 (none)
+File Associations:
+  Name:  *.BMP
+  Type:  Bitmap
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  8	WPBitmap
+  6	  0	WPImageFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+256	208	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  4	M_WPBitmap
+  0	  4	M_WPImageFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+160	412	total
+
+WPBitmap - No New methods.
+
+WPBitmap - Override methods:
+
+from WPImageFile:
+250  wpQueryBitmapHandle     	1fcbbb08
+251  wpQueryBitmapInfoHeader 	1fcbbaa8
+252  wpQueryBitmapData       	1fcbba40
+253  wpSetBitmapData         	1fced1cc
+254  wpReadImageFile         	1fcbb0d8
+255  wpWriteImageFile        	1fced0e8
+
+from WPFileSystem:
+211  wpRefresh               	1fcecff4
+
+from WPObject:
+064  wpFormatDragItem        	1fced2a0
+068  wpInitData              	1fcb1c40
+120  wpSetupOnce             	1fced4e0
+128  wpUnInitData            	1fcafab8
+
+from SOMObject:
+000  somDefaultInit          	1fcb1c94
+001  somDestruct             	1fcafb20
+
+M_WPBitmap - No New methods.
+
+M_WPBitmap - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1fcb1bd0
+156  wpclsQueryInstanceFilter	1fcc00e8
+
+from M_WPObject:
+108  wpclsInitData           	1fcc00f0
+111  wpclsQueryDefaultHelp   	1fcecfdc
+119  wpclsQueryStyle         	1fcb1bb4
+120  wpclsQueryTitle         	1fcb1bc8
+
+---------------
+
+Class:  MMBitmap                	00e63ce4
+Metaclass:  M_MMBitmap          	00e64d4c
+Parent:  WPBitmap                	00e65e90
+Replaces:  WPBitmap
+
+Module:  D:\MMOS2\DLL\MMBIT.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  Bitmap
+Storage class:  WPFileSystem
+
+Default View:  User+22315 (0xbc2b)
+Class Style:  0 (none)
+File Associations:
+  Name:  *.BMP
+  Type:  Bitmap
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  1	 12	MMBitmap
+  0	  8	WPBitmap
+  6	  0	WPImageFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+257	220	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  1	  0	M_MMBitmap
+  0	  4	M_WPBitmap
+  0	  4	M_WPImageFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+161	412	total
+
+MMBitmap - 1 New methods:
+
+256  mmDetermineViewFor      	1f128595
+
+MMBitmap - Override methods:
+
+from WPObject:
+061  wpFilterPopupMenu       	1f128270
+064  wpFormatDragItem        	1f127f45
+068  wpInitData              	1f128235
+072  wpMenuItemHelpSelected  	1f128d20
+073  wpMenuItemSelected      	1f128db2
+074  wpModifyPopupMenu       	1f128b40
+077  wpOpen                  	1f128815
+125  wpSetTitle              	1f128720
+126  wpSetup                 	1f1284b2
+128  wpUnInitData            	1f1281c0
+132  wpObjectReady           	1f128063
+
+from SOMObject:
+000  somDefaultInit          	1f952430
+001  somDestruct             	1f952320
+
+M_MMBitmap - 1 New methods:
+
+160  mmclsSetDefaultView     	1f1286c8
+
+M_MMBitmap - Override methods:
+
+from M_WPObject:
+112  wpclsQueryDefaultView   	1f128670
+128  wpclsQueryIconData      	1f128ad6
+
+-----------
+
+Class:  MMFolder                	01226c68
+Metaclass:  M_MMFolder          	01227b7c
+Parent:  CandyFolder             	00b42f84
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  Leuchttisch
+Storage class:  WPFileSystem
+
+Default View:  Contents (0x01)
+Class Style:  0x10080 (NeverPrint DontTemplate)
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  5	  4	MMFolder
+  1	 32	CandyFolder
+  0	 12	CWFolder
+102	302	WPFolder
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+344	552	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMFolder
+  0	  0	M_CandyFolder
+  0	  0	M_CWFolder
+  6	  0	M_WPFolder
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MMFolder - 5 New methods:
+
+339  wpGetContentItem        	1f12f1b2
+340  wpAddContentItem        	1f12f0c0
+341  wpRemoveContentItem     	1f12ef40
+342  wpRemoveAllContent      	1f12ee64
+343  wpDetermineType         	1f12e6f1
+
+MMFolder - Override methods:
+
+from WPFolder:
+238  wpSetFldrFont           	1f12fe55
+270  wpAddToContent          	1f12fa28
+271  wpDeleteFromContent     	1f12f972
+
+from WPFileSystem:
+211  wpRefresh               	1f12fd27
+
+from WPObject:
+057  wpDragOver              	1f12fc07
+058  wpDrop                  	1f12fb10
+068  wpInitData              	1f130220
+077  wpOpen                  	1f130087
+096  wpRegisterView          	1f12ff80
+128  wpUnInitData            	1f130147
+
+M_MMFolder - No New methods.
+
+M_MMFolder - Override methods:
+
+from M_WPFolder:
+158  wpclsQueryIconDataN     	1f12f310
+
+from M_WPObject:
+107  wpclsCreateDefaultTemplates	1f12e652
+108  wpclsInitData           	1f12f868
+111  wpclsQueryDefaultHelp   	1f12f593
+112  wpclsQueryDefaultView   	1f12f4f4
+120  wpclsQueryTitle         	1f12f650
+121  wpclsUnInitData         	1f12f788
+128  wpclsQueryIconData      	1f12f426
+
+-------------
+
+Class:  MMDataFile              	01261934
+Metaclass:  M_MMDataFile        	01262c18
+Parent:  CWDataFile              	00e6eba0
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  Multimediadatei
+Storage class:  WPFileSystem
+
+Default View:  User+22255 (0xbbef)
+Class Style:  0x10000 (DontTemplate)
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  3	 12	MMDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+253	212	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  4	  0	M_MMDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MMDataFile - 3 New methods:
+
+250  mmFilterPopupMenu       	1f11d651
+251  mmViewNotify            	1f11d607
+252  mmDetermineViewFor      	1f11dea0
+
+MMDataFile - Override methods:
+
+from WPObject:
+061  wpFilterPopupMenu       	1f11d810
+068  wpInitData              	1f11d7f0
+072  wpMenuItemHelpSelected  	1f11e781
+073  wpMenuItemSelected      	1f11e717
+074  wpModifyPopupMenu       	1f11e480
+077  wpOpen                  	1f11e951
+079  wpQueryConcurrentView   	1f11d710
+083  wpQueryDefaultView      	1f11e3f8
+125  wpSetTitle              	1f11e127
+126  wpSetup                 	1f11ddd3
+128  wpUnInitData            	1f11d6b6
+132  wpObjectReady           	1f11e205
+
+M_MMDataFile - 4 New methods:
+
+160  mmclsDeleteFromTypeList 	1f11d584
+161  mmclsDeleteFromExtensionList	1f11d4f1
+162  mmclsInitTypesAndExtensions	1f11d3d8
+163  mmclsSetDefaultView     	1f11dfa0
+
+M_MMDataFile - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f11e0d0
+156  wpclsQueryInstanceFilter	1f11e0e8
+
+from M_WPObject:
+107  wpclsCreateDefaultTemplates	1f11d3c0
+108  wpclsInitData           	1f11e100
+111  wpclsQueryDefaultHelp   	1f11d350
+112  wpclsQueryDefaultView   	1f11df60
+119  wpclsQueryStyle         	1f11d380
+120  wpclsQueryTitle         	1f11dfe0
+121  wpclsUnInitData         	1f11d3a2
+128  wpclsQueryIconData      	1f11e3a0
+
+-----------
+
+Class:  MMAudio                 	0125d160
+Metaclass:  M_MMAudio           	0125e074
+Parent:  MMDataFile              	01261934
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  Digital-Audio
+Storage class:  WPFileSystem
+
+Default View:  User+22255 (0xbbef)
+Class Style:  0x10000 (DontTemplate)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.MP3,*.OGG
+  Type:  Digital Audio,OGGS,WAV,MP3
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  8	MMAudio
+  3	 12	MMDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+253	220	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMAudio
+  4	  0	M_MMDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MMAudio - No New methods.
+
+MMAudio - Override methods:
+
+from MMDataFile:
+250  mmFilterPopupMenu       	1f121832
+251  mmViewNotify            	1f1217d1
+
+from WPObject:
+064  wpFormatDragItem        	1f121723
+073  wpMenuItemSelected      	1f121c80
+074  wpModifyPopupMenu       	1f121c00
+077  wpOpen                  	1f121cd0
+083  wpQueryDefaultView      	1f121780
+128  wpUnInitData            	1f121761
+
+M_MMAudio - No New methods.
+
+M_MMAudio - Override methods:
+
+from M_MMDataFile:
+160  mmclsDeleteFromTypeList 	1f1216a0
+161  mmclsDeleteFromExtensionList	1f121608
+162  mmclsInitTypesAndExtensions	1f121510
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f121b50
+156  wpclsQueryInstanceFilter	1f121b68
+
+from M_WPObject:
+108  wpclsInitData           	1f121b80
+111  wpclsQueryDefaultHelp   	1f1214c2
+120  wpclsQueryTitle         	1f121a64
+121  wpclsUnInitData         	1f1214f2
+128  wpclsQueryIconData      	1f121ba7
+
+---------
+
+Class:  MMAIF                   	0123c300
+Metaclass:  M_MMAIF             	0123d2d8
+Parent:  MMAudio                 	0125d160
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  AIFAudio.AIF
+Storage class:  WPFileSystem
+
+Default View:  User+22255 (0xbbef)
+Class Style:  0x10000 (DontTemplate)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.AIF
+  Type:  AIF
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMAIF
+  0	  8	MMAudio
+  3	 12	MMDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+253	220	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMAIF
+  0	  0	M_MMAudio
+  4	  0	M_MMDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MMAIF - No New methods.
+
+MMAIF - Override methods:
+
+M_MMAIF - No New methods.
+
+M_MMAIF - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f129638
+156  wpclsQueryInstanceFilter	1f129665
+
+from M_WPObject:
+108  wpclsInitData           	1f129927
+111  wpclsQueryDefaultHelp   	1f1295f0
+120  wpclsQueryTitle         	1f1297c0
+121  wpclsUnInitData         	1f129692
+128  wpclsQueryIconData      	1f1298c0
+
+------------
+
+Class:  MMAU                    	0123e33c
+Metaclass:  M_MMAU              	0123f314
+Parent:  MMAudio                 	0125d160
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  AUAudio.AU
+Storage class:  WPFileSystem
+
+Default View:  User+22255 (0xbbef)
+Class Style:  0x10000 (DontTemplate)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.AU
+  Type:  AU
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMAU
+  0	  8	MMAudio
+  3	 12	MMDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+253	220	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMAU
+  0	  0	M_MMAudio
+  4	  0	M_MMDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MMAU - No New methods.
+
+MMAU - Override methods:
+
+M_MMAU - No New methods.
+
+M_MMAU - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f129268
+156  wpclsQueryInstanceFilter	1f129295
+
+from M_WPObject:
+108  wpclsInitData           	1f129557
+111  wpclsQueryDefaultHelp   	1f129220
+120  wpclsQueryTitle         	1f1293f0
+121  wpclsUnInitData         	1f1292c2
+128  wpclsQueryIconData      	1f1294f0
+
+-----------
+
+Class:  MMIFF                   	0123a2c0
+Metaclass:  M_MMIFF             	0123b298
+Parent:  MMAudio                 	0125d160
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  IFFAudio.IFF
+Storage class:  WPFileSystem
+
+Default View:  User+22255 (0xbbef)
+Class Style:  0x10000 (DontTemplate)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.IFF
+  Type:  IFF
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMIFF
+  0	  8	MMAudio
+  3	 12	MMDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+253	220	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMIFF
+  0	  0	M_MMAudio
+  4	  0	M_MMDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MMIFF - No New methods.
+
+MMIFF - Override methods:
+
+M_MMIFF - No New methods.
+
+M_MMIFF - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f129e88
+156  wpclsQueryInstanceFilter	1f129eb5
+
+from M_WPObject:
+108  wpclsInitData           	1f12a177
+111  wpclsQueryDefaultHelp   	1f129e40
+120  wpclsQueryTitle         	1f12a010
+121  wpclsUnInitData         	1f129ee2
+128  wpclsQueryIconData      	1f12a110
+
+-------------------
+
+Class:  MMSNDF                  	0123827c
+Metaclass:  M_MMSNDF            	01239258
+Parent:  MMAudio                 	0125d160
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  SNDAudio.SND
+Storage class:  WPFileSystem
+
+Default View:  User+22255 (0xbbef)
+Class Style:  0x10000 (DontTemplate)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.SND
+  Type:  SND
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMSNDF
+  0	  8	MMAudio
+  3	 12	MMDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+253	220	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMSNDF
+  0	  0	M_MMAudio
+  4	  0	M_MMDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MMSNDF - No New methods.
+
+MMSNDF - Override methods:
+
+M_MMSNDF - No New methods.
+
+M_MMSNDF - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f12a258
+156  wpclsQueryInstanceFilter	1f12a285
+
+from M_WPObject:
+108  wpclsInitData           	1f12a547
+111  wpclsQueryDefaultHelp   	1f12a210
+120  wpclsQueryTitle         	1f12a3e0
+121  wpclsUnInitData         	1f12a2b2
+128  wpclsQueryIconData      	1f12a4e0
+
+------------------
+
+Class:  MMVOC                   	012423bc
+Metaclass:  M_MMVOC             	01243394
+Parent:  MMAudio                 	0125d160
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  VOCAudio.VOC
+Storage class:  WPFileSystem
+
+Default View:  User+22255 (0xbbef)
+Class Style:  0x10000 (DontTemplate)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.VOC
+  Type:  VOC
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMVOC
+  0	  8	MMAudio
+  3	 12	MMDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+253	220	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMVOC
+  0	  0	M_MMAudio
+  4	  0	M_MMDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MMVOC - No New methods.
+
+MMVOC - Override methods:
+
+M_MMVOC - No New methods.
+
+M_MMVOC - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f12b6c8
+156  wpclsQueryInstanceFilter	1f12b6f5
+
+from M_WPObject:
+108  wpclsInitData           	1f12b9b7
+111  wpclsQueryDefaultHelp   	1f12b680
+120  wpclsQueryTitle         	1f12b850
+121  wpclsUnInitData         	1f12b722
+128  wpclsQueryIconData      	1f12b950
+
+-----------------
+
+Class:  MMWAV                   	0124443c
+Metaclass:  M_MMWAV             	01245414
+Parent:  MMAudio                 	0125d160
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  WAVAudio.WAV
+Storage class:  WPFileSystem
+
+Default View:  User+22255 (0xbbef)
+Class Style:  0 (none)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.WAV
+  Type:  WAV,Digital Audio
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMWAV
+  0	  8	MMAudio
+  3	 12	MMDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+253	220	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMWAV
+  0	  0	M_MMAudio
+  4	  0	M_MMDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MMWAV - No New methods.
+
+MMWAV - Override methods:
+
+M_MMWAV - No New methods.
+
+M_MMWAV - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f129a50
+156  wpclsQueryInstanceFilter	1f129a80
+
+from M_WPObject:
+107  wpclsCreateDefaultTemplates	1f129ae5
+108  wpclsInitData           	1f129da7
+111  wpclsQueryDefaultHelp   	1f1299c0
+119  wpclsQueryStyle         	1f129a10
+120  wpclsQueryTitle         	1f129c40
+121  wpclsUnInitData         	1f129ab0
+128  wpclsQueryIconData      	1f129d40
+
+---------------------
+
+Class:  MM_AU                   	0124037c
+Metaclass:  M_MM_AU             	01241354
+Parent:  MMAudio                 	0125d160
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  _AUAudio._AU
+Storage class:  WPFileSystem
+
+Default View:  User+22255 (0xbbef)
+Class Style:  0x10000 (DontTemplate)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *._AU
+  Type:  _AU
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MM_AU
+  0	  8	MMAudio
+  3	 12	MMDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+253	220	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MM_AU
+  0	  0	M_MMAudio
+  4	  0	M_MMDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MM_AU - No New methods.
+
+MM_AU - Override methods:
+
+M_MM_AU - No New methods.
+
+M_MM_AU - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f128e98
+156  wpclsQueryInstanceFilter	1f128ec5
+
+from M_WPObject:
+108  wpclsInitData           	1f129187
+111  wpclsQueryDefaultHelp   	1f128e50
+120  wpclsQueryTitle         	1f129020
+121  wpclsUnInitData         	1f128ef2
+128  wpclsQueryIconData      	1f129120
+
+-----------------
+
+Class:  MMMIDI                  	01258f10
+Metaclass:  M_MMMIDI            	01259e68
+Parent:  MMDataFile              	01261934
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  MIDI.MID
+Storage class:  WPFileSystem
+
+Default View:  User+22255 (0xbbef)
+Class Style:  0 (none)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.MID
+  Type:  MIDI
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  8	MMMIDI
+  3	 12	MMDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+253	220	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMMIDI
+  4	  0	M_MMDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MMMIDI - No New methods.
+
+MMMIDI - Override methods:
+
+from MMDataFile:
+251  mmViewNotify            	1f121fc0
+
+from WPObject:
+064  wpFormatDragItem        	1f121ef5
+068  wpInitData              	1f121fa1
+073  wpMenuItemSelected      	1f122400
+074  wpModifyPopupMenu       	1f122380
+077  wpOpen                  	1f122450
+083  wpQueryDefaultView      	1f121f50
+128  wpUnInitData            	1f121f33
+
+M_MMMIDI - No New methods.
+
+M_MMMIDI - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f121e82
+156  wpclsQueryInstanceFilter	1f121ea0
+
+from M_WPObject:
+107  wpclsCreateDefaultTemplates	1f121ee0
+108  wpclsInitData           	1f122300
+111  wpclsQueryDefaultHelp   	1f121e30
+119  wpclsQueryStyle         	1f121e60
+120  wpclsQueryTitle         	1f122217
+121  wpclsUnInitData         	1f121ec0
+128  wpclsQueryIconData      	1f122327
+
+---------------
+
+Class:  MMVideo                 	0125b0c0
+Metaclass:  M_MMVideo           	0125c018
+Parent:  MMDataFile              	01261934
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  Digital-Video
+Storage class:  WPFileSystem
+
+Default View:  User+22255 (0xbbef)
+Class Style:  0x10000 (DontTemplate)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.DAT,*.M2P,*.CDI,*.M2T,*.M1T
+  Type:  Digital Video
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  8	MMVideo
+  3	 12	MMDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+253	220	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMVideo
+  4	  0	M_MMDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MMVideo - No New methods.
+
+MMVideo - Override methods:
+
+from MMDataFile:
+251  mmViewNotify            	1f120e01
+
+from WPObject:
+064  wpFormatDragItem        	1f120d53
+073  wpMenuItemSelected      	1f121290
+074  wpModifyPopupMenu       	1f121210
+077  wpOpen                  	1f1212e0
+083  wpQueryDefaultView      	1f120db0
+128  wpUnInitData            	1f120d91
+
+M_MMVideo - No New methods.
+
+M_MMVideo - Override methods:
+
+from M_MMDataFile:
+160  mmclsDeleteFromTypeList 	1f120cd0
+161  mmclsDeleteFromExtensionList	1f120c48
+162  mmclsInitTypesAndExtensions	1f120b50
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f121160
+156  wpclsQueryInstanceFilter	1f121178
+
+from M_WPObject:
+108  wpclsInitData           	1f121190
+111  wpclsQueryDefaultHelp   	1f120ae2
+117  wpclsQueryIcon          	1f120b12
+120  wpclsQueryTitle         	1f121070
+121  wpclsUnInitData         	1f120b30
+128  wpclsQueryIconData      	1f1211b7
+
+---------------------
+
+Class:  MMAVI                   	01236238
+Metaclass:  M_MMAVI             	01237210
+Parent:  MMVideo                 	0125b0c0
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  AVIVideo.AVI
+Storage class:  WPFileSystem
+
+Default View:  User+22255 (0xbbef)
+Class Style:  0 (none)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.AVI
+  Type:  AVI,Digital Video
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMAVI
+  0	  8	MMVideo
+  3	 12	MMDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+253	220	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMAVI
+  0	  0	M_MMVideo
+  4	  0	M_MMDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MMAVI - No New methods.
+
+MMAVI - Override methods:
+
+M_MMAVI - No New methods.
+
+M_MMAVI - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f12a670
+156  wpclsQueryInstanceFilter	1f12a6a0
+
+from M_WPObject:
+107  wpclsCreateDefaultTemplates	1f12a705
+108  wpclsInitData           	1f12a9c7
+111  wpclsQueryDefaultHelp   	1f12a5e0
+119  wpclsQueryStyle         	1f12a630
+120  wpclsQueryTitle         	1f12a860
+121  wpclsUnInitData         	1f12a6d0
+128  wpclsQueryIconData      	1f12a960
+
+----------------
+
+Class:  MMFLI                   	01253e08
+Metaclass:  M_MMFLI             	01254de0
+Parent:  MMVideo                 	0125b0c0
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  FLIVideo.FLI
+Storage class:  WPFileSystem
+
+Default View:  User+22255 (0xbbef)
+Class Style:  0x10000 (DontTemplate)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.FLI,*.FLC
+  Type:  FLC/FLI
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMFLI
+  0	  8	MMVideo
+  3	 12	MMDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+253	220	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMFLI
+  0	  0	M_MMVideo
+  4	  0	M_MMDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MMFLI - No New methods.
+
+MMFLI - Override methods:
+
+M_MMFLI - No New methods.
+
+M_MMFLI - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f12aaa8
+156  wpclsQueryInstanceFilter	1f12aad5
+
+from M_WPObject:
+108  wpclsInitData           	1f12ad97
+111  wpclsQueryDefaultHelp   	1f12aa60
+120  wpclsQueryTitle         	1f12ac30
+121  wpclsUnInitData         	1f12ab02
+128  wpclsQueryIconData      	1f12ad30
+
+-----------------
+
+Class:  MMMOV                   	0122fa7c
+Metaclass:  M_MMMOV             	01230a54
+Parent:  MMVideo                 	0125b0c0
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  MOVVideo.MOV
+Storage class:  WPFileSystem
+
+Default View:  User+22255 (0xbbef)
+Class Style:  0x10000 (DontTemplate)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.MOV,*.QT
+  Type:  QuickTime Movie
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMMOV
+  0	  8	MMVideo
+  3	 12	MMDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+253	220	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMMOV
+  0	  0	M_MMVideo
+  4	  0	M_MMDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MMMOV - No New methods.
+
+MMMOV - Override methods:
+
+M_MMMOV - No New methods.
+
+M_MMMOV - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f132998
+156  wpclsQueryInstanceFilter	1f1329c5
+
+from M_WPObject:
+108  wpclsInitData           	1f132c87
+111  wpclsQueryDefaultHelp   	1f132950
+120  wpclsQueryTitle         	1f132b20
+121  wpclsUnInitData         	1f1329f2
+128  wpclsQueryIconData      	1f132c20
+
+-------------------
+
+Class:  MMMPG                   	01231af4
+Metaclass:  M_MMMPG             	01252d64
+Parent:  MMVideo                 	0125b0c0
+
+Module:  D:\MMOS2\DLL\MMPARTS.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  MPGVideo.MPG
+Storage class:  WPFileSystem
+
+Default View:  User+22255 (0xbbef)
+Class Style:  0x10000 (DontTemplate)
+PM_Workplace:IplLoad:  yes
+File Associations:
+  Name:  *.MPG,*.VBS
+  Type:  MPEG
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  0	  0	MMMPG
+  0	  8	MMVideo
+  3	 12	MMDataFile
+  0	  0	CWDataFile
+ 14	  0	WPDataFile
+ 41	 52	WPFileSystem
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+253	220	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMMPG
+  0	  0	M_MMVideo
+  4	  0	M_MMDataFile
+  0	  0	M_CWDataFile
+  2	  0	M_WPDataFile
+  6	  0	M_WPFileSystem
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+164	404	total
+
+MMMPG - No New methods.
+
+MMMPG - Override methods:
+
+M_MMMPG - No New methods.
+
+M_MMMPG - Override methods:
+
+from M_WPFileSystem:
+155  wpclsQueryInstanceType  	1f12ae78
+156  wpclsQueryInstanceFilter	1f12aea5
+
+from M_WPObject:
+108  wpclsInitData           	1f12b167
+111  wpclsQueryDefaultHelp   	1f12ae30
+120  wpclsQueryTitle         	1f12b000
+121  wpclsUnInitData         	1f12aed2
+128  wpclsQueryIconData      	1f12b100
+
+---------------
+
+Class:  WPSound                 	018fd514
+Metaclass:  M_WPSound           	018fe1a8
+Parent:  WPAbstract              	00b567f0
+
+Module:  D:\OS2\DLL\WPCONFIG.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  Ton
+Storage class:  WPAbstract
+
+Default View:  Settings (0x02)
+Class Style:  0xd8 (NeverCopy NeverTemplate NeverDelete NeverPrint)
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  2	  0	WPSound
+  0	  4	WPAbstract
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+197	152	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_WPSound
+  5	  0	M_WPAbstract
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+157	404	total
+
+WPSound - 2 New methods:
+
+195  wpAddSoundWarningBeepPage	1e738dc4
+196  wpAddSoundSchemePage    	1e738d18
+
+WPSound - Override methods:
+
+from WPObject:
+034  wpAddObjectWindowPage   	1e738494
+035  wpAddSettingsPages      	1e738cd0
+062  wpFilterMenu            	1e738ca0
+
+from SOMObject:
+000  somDefaultInit          	1e738c4c
+001  somDestruct             	1e738bdc
+
+M_WPSound - No New methods.
+
+M_WPSound - Override methods:
+
+from M_WPObject:
+111  wpclsQueryDefaultHelp   	1e73844c
+112  wpclsQueryDefaultView   	1e738444
+119  wpclsQueryStyle         	1e738bc8
+120  wpclsQueryTitle         	1e73848c
+128  wpclsQueryIconData      	1e738464
+
+-------------
+
+Class:  MMSound                 	018e9cd8
+Metaclass:  M_WPSound           	018fe1a8
+Parent:  WPSound                 	018fd514
+Replaces:  WPSound
+
+Module:  D:\MMOS2\DLL\MMSND.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  Ton
+Storage class:  WPAbstract
+
+Default View:  Settings (0x02)
+Class Style:  0xd8 (NeverCopy NeverTemplate NeverDelete NeverPrint)
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  1	  0	MMSound
+  2	  0	WPSound
+  0	  4	WPAbstract
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+198	152	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_WPSound
+  5	  0	M_WPAbstract
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+157	404	total
+
+MMSound - 1 New methods:
+
+197  wpAddSoundFilePage      	1e6b32e0
+
+MMSound - Override methods:
+
+from WPObject:
+035  wpAddSettingsPages      	1e6b31a0
+068  wpInitData              	1e6b30d6
+
+from SOMObject:
+000  somDefaultInit          	1f952430
+001  somDestruct             	1f952320
+
+M_WPSound - No New methods.
+
+M_WPSound - Override methods:
+
+from M_WPObject:
+111  wpclsQueryDefaultHelp   	1e73844c
+112  wpclsQueryDefaultView   	1e738444
+119  wpclsQueryStyle         	1e738bc8
+120  wpclsQueryTitle         	1e73848c
+128  wpclsQueryIconData      	1e738464
+
+------------------
+
+Class:  MMShadow                	00e7722c
+Metaclass:  M_MMShadow          	00e77fa8
+Parent:  WPShadow                	00e57b58
+Replaces:  WPShadow
+
+Module:  D:\MMOS2\DLL\MMSHD.DLL
+Load cause:  WPS registration
+
+Registered WPS class
+Title:  Referenz
+Storage class:  WPAbstract
+
+Default View:  Unknown (-1)
+Class Style:  0x90 (NeverTemplate NeverPrint)
+
+Instance Method & Data Summary
+Cnt	Size	Source
+  1	528	MMShadow
+  4	 24	WPShadow
+  0	  4	WPAbstract
+  0	  0	CWObject
+163	144	WPObject
+ 32	  0	SOMObject
+200	704	total
+
+Class Method & Data Summary
+Cnt	Size	Source
+  0	  0	M_MMShadow
+  0	  0	M_WPShadow
+  5	  0	M_WPAbstract
+  0	  0	M_CWObject
+ 45	 20	M_WPObject
+ 75	380	SOMClass
+ 32	  0	SOMObject
+157	404	total
+
+MMShadow - 1 New methods:
+
+199  TestRemovableMediaLink  	1f130c10
+
+MMShadow - Override methods:
+
+from WPShadow:
+197  wpSetLinkToObject       	1f1309c2
+
+from WPObject:
+032  wpAddObjectGeneralPage  	1f1303b0
+061  wpFilterPopupMenu       	1f130880
+068  wpInitData              	1f130b80
+071  wpInsertSettingsPage    	1f130a10
+077  wpOpen                  	1f1308d4
+105  wpRestoreState          	1f130750
+111  wpSaveState             	1f1307f0
+128  wpUnInitData            	1f130464
+129  wpViewObject            	1f130420
+
+from SOMObject:
+000  somDefaultInit          	1f952430
+001  somDestruct             	1f952320
+
+M_MMShadow - No New methods.
+
+M_MMShadow - Override methods:
+
+-------------------
+
+

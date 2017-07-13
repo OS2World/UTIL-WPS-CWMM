@@ -1,0 +1,127 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+MENU ID_MENU_VOLUME
+BEGIN
+        MENUITEM "~LautstÑrke",ID_MENU_VOLUME       
+END
+
+MENU ID_MENU_START
+BEGIN
+        MENUITEM "~Start",ID_MENU_START       
+END
+
+MENU ID_MENU_STOP
+BEGIN
+        MENUITEM "~Stopp", ID_MENU_STOP       
+END
+
+MENU ID_MENU_PAUSE
+BEGIN
+        MENUITEM "~Pause", ID_MENU_PAUSE       
+END
+
+MENU ID_MENU_RESUME
+BEGIN
+        MENUITEM "~Fortsetzen", ID_MENU_RESUME       
+END
+
+MENU ID_MENU_EDITOR
+BEGIN
+        MENUITEM "~Audioeditor", ID_MENU_EDITOR       
+END
+
+MENU ID_MENU_PLAYER
+BEGIN
+        MENUITEM "S~pieler", ID_MENU_PLAYER
+END
+
+MENU ID_MENU_CONVERT
+BEGIN
+	SUBMENU  "~Umsetzen in",ID_MENU_CONVERT
+	BEGIN
+        MENUITEM "~WAV (RIFF WAVE Digital Audio)", ID_ITEM_CONVERT
+	END
+END
+
+MENU ID_MENUICONSIZE
+BEGIN
+   MENUITEM "Normale Symbole", ID_NORMALICONSITEM
+   MENUITEM  "50 * 50" , ID_50X50ITEM
+   MENUITEM  "100 * 100" , ID_100X100ITEM
+   MENUITEM  "150 * 150" , ID_150X150ITEM
+   MENUITEM  "200 * 200" , ID_200X200ITEM
+   MENUITEM  "250 * 250" , ID_250X250ITEM
+END
+
+MENU ID_MENU_M3UEDITOR
+BEGIN
+        MENUITEM "Playlist-~Editor", ID_MENU_M3UEDITOR       
+END
+
+MENU ID_MENU_M3UPLAYER
+BEGIN
+        MENUITEM "Liste ~spielen", ID_MENU_M3UPLAYER       
+END
+
+
+STRINGTABLE 
+BEGIN
+ID_WAVEINFOPAGENAME "~Audio Information"
+ID_ID3TAGSPAGENAME  "~ID3 Tags"
+ID_TRACKNAMEPAGENAME "~Trackname"
+IDSTR_TRACKNAME      "Trackname"
+
+IDSTR_PLAYTIME      "Spielzeit"
+IDSTR_SAMPLERATE    "Samplerate"
+IDSTR_CHANNELS      "KanÑle"
+IDSTR_BPS           "Bits pro Sample"
+
+;IDSTR_BITRATE       "Bitrate"
+;IDSTR_VBR           "VBR"
+
+IDSTR_TITLE         "Titel"
+IDSTR_ARTIST        "Interpret"
+IDSTR_ALBUM         "Album"
+IDSTR_YEAR          "Jahr"
+IDSTR_COMMENT       "Kommentar"
+IDSTR_GENRE         "Genre"
+
+IDSTR_CWMMDATAFILETITLE "MM-Datei"
+IDSTR_HELPLIBRARY      "MMPARTS.HLP"
+;Titles of audio classes
+IDSTR_CWAUDIOTITLE   "Digital Audio"
+IDSTR_AIFTITLE       "AIFAudio.AIF"
+IDSTR_AUTITLE        "AUAudio.AU"
+IDSTR__AUTITLE       "_AUAudio._AU"
+IDSTR_IFFTITLE       "IFFAudio.IFF"
+IDSTR_SNDFTITLE      "SNDAudio.SND"
+IDSTR_VOCTITLE       "VOCAudio.VOC"
+IDSTR_WAVTITLE       "WAVAudio.WAV"
+IDSTR_OGGTITLE       "OGGAudio.OGG"
+IDSTR_MP3TITLE       "MP3Audio.MP3"
+IDSTR_MIDITITLE       "MIDI.MID"
+IDSTR_FLACTITLE       "FLACAudio.FLA"
+IDSTR_LIGHTTABLETITLE "Leuchttisch"
+
+IDSTR_ICONSIZEMENU    "Symbolgrî·e"
+;Used as an information when starting and audio file from the WPS
+IDSTR_STARTINGTRACK      "Starte Track..."
+;Title for audiofile scanning window
+IDSTR_AUDIOSCANNING     "öberprÅfe Audiodatei..."
+IDSTR_AUDIOSTREAMTITLE  "Audio-Stream"
+IDSTR_STREAMURLPAGENAME "~URL-Angabe"
+IDSTR_CDTRACKTITLE      "CD-Track"
+IDSTR_M3UTITLE          "M3U-Playlist"
+;Titles used when starting player and editor applications
+IDSTR_AUDPLAYERTITLE       "Audio-Spieler"
+IDSTR_AUDEDITORTITLE       "Audio-Editor"
+IDSTR_M3UEDITORTITLE       "Playlist-Editor"
+IDSTR_TRACKPAUSED          " (Pause)"
+;Used for window list
+IDSTR_VOLUMETITLE           "LautstÑrke"
+
+END
+
+
