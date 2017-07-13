@@ -963,31 +963,35 @@ ULONG CWMediaFolder::wpFilterPopupMenu(ULONG ulFlags, HWND hwndCnr, BOOL fMultiS
     return CWProgFolder::wpFilterPopupMenu( ulFlags, hwndCnr, fMultiSelect) & ~( CTXT_TREE | CTXT_ICON);
 }
 
-#if 0
+//#if 0
 BOOL CWMediaFolder::wpRefresh(ULONG ulView, PVOID pReserved)
 {
   somId mySomId;
+  ULONG rc;
 
-    if((mySomId=somIdFromString("wpAddSettingsPages"))!=NULLHANDLE) {
-      rc=((somTD_WPObject_wpAddSettingsPages)
+    if((mySomId=somIdFromString("wpRefresh"))!=NULLHANDLE) {
+      rc=((somTD_WPFileSystem_wpRefresh)
           somParentNumResolve(__ClassObject->somGetPClsMtabs(),
                               1,
                               __ClassObject->
-                              somGetMethodToken(mySomId))                    
-          )(this,hwndNotebook);  
+                              somGetMethodToken(mySomId))                  
+          )(this, ulView,pReserved);  
       SOMFree(mySomId);
     }
     else 
       rc=CWProgFolder::wpRefresh(ulView, pReserved);
 
+    /* Start timer which triggers time calculation */
+    WinStartTimer(WinQueryAnchorBlock(hwndBottom),hwndBottom, IDTIMER_STATUS, 300);
+    return rc;
 }
-#endif
+//#endif
 
 BOOL CWMediaFolder::wpAddSettingsPages(HWND hwndNotebook)
 {
 	ULONG rc;
     somId mySomId;
-    
+
     if((mySomId=somIdFromString("wpAddSettingsPages"))!=NULLHANDLE) {
       rc=((somTD_WPObject_wpAddSettingsPages)
           somParentNumResolve(__ClassObject->somGetPClsMtabs(),

@@ -1697,8 +1697,12 @@ MRESULT EXPENTRY bottomCtrlDialogProc(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM m
             thisPtr->lPad->lpSetFlyOverText(text);
           }
         }
-        /* Start timer which triggers time calculation */
-        WinStartTimer(WinQueryAnchorBlock(hwnd),hwnd, IDTIMER_STATUS, 300);
+        /* 
+           FIXME:
+           Start timer which triggers time calculation. The timer is rather long so the objects may
+           awake first. This is not yet bullet proof, because if there're a lot of objects in the folder
+           the time will be too short. */
+        WinStartTimer(WinQueryAnchorBlock(hwnd),hwnd, IDTIMER_STATUS, 5000);
         return (MRESULT)FALSE;
       }
     case WM_TIMER:

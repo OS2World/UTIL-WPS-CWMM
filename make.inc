@@ -8,7 +8,7 @@ export CWMMRELEASE	=	YES
 #define the next makro if compiling eCS. Undef if normal compile!
 #That's used for createcd.exe until I find a decent documentation for make to do it better...
 #Also used for including the right icons
-ECS_COMPILE	=	YES
+#ECS_COMPILE	=	YES
 
 ifdef    ECS_COMPILE
 #         Don't use an empty string here!
